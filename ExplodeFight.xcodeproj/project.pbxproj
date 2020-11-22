@@ -42,6 +42,8 @@
 		FF9364E22384017600E4B867 /* ExplodeFightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExplodeFightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9364E62384017600E4B867 /* ExplodeFightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplodeFightTests.swift; sourceTree = "<group>"; };
 		FF9364E82384017600E4B867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
+		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +67,10 @@
 		FF9364BF2384017300E4B867 = {
 			isa = PBXGroup;
 			children = (
+				FFC6773E256A8FB20011CE34 /* README.md */,
 				FF9364CA2384017300E4B867 /* ExplodeFight */,
 				FF9364E52384017600E4B867 /* ExplodeFightTests */,
+				FFC6773D256A8F560011CE34 /* Design */,
 				FF9364C92384017300E4B867 /* Products */,
 			);
 			sourceTree = "<group>";
