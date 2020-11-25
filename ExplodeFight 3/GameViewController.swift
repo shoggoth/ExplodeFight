@@ -43,19 +43,9 @@ class GameViewController: UIViewController {
         }
     }
 
-    override var shouldAutorotate: Bool {
-        return true
-    }
+    override var shouldAutorotate: Bool { return true }
 
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIDevice.current.userInterfaceIdiom == .phone ? .allButUpsideDown : .all }
 
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+    override var prefersStatusBarHidden: Bool { return true }
 }
