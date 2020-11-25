@@ -7,54 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF9364CC2384017300E4B867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9364CB2384017300E4B867 /* AppDelegate.swift */; };
-		FF9364CE2384017300E4B867 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF9364CD2384017300E4B867 /* GameScene.sks */; };
-		FF9364D02384017300E4B867 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF9364CF2384017300E4B867 /* Actions.sks */; };
-		FF9364D22384017300E4B867 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9364D12384017300E4B867 /* GameScene.swift */; };
-		FF9364D42384017300E4B867 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9364D32384017300E4B867 /* GameViewController.swift */; };
-		FF9364D72384017300E4B867 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9364D52384017300E4B867 /* Main.storyboard */; };
-		FF9364D92384017600E4B867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF9364D82384017600E4B867 /* Assets.xcassets */; };
-		FF9364DC2384017600E4B867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9364DA2384017600E4B867 /* LaunchScreen.storyboard */; };
-		FF9364E72384017600E4B867 /* ExplodeFightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9364E62384017600E4B867 /* ExplodeFightTests.swift */; };
+		FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF080690256BD29700F2EBA7 /* AppDelegate.swift */; };
+		FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF080692256BD29700F2EBA7 /* GameScene.sks */; };
+		FF080695256BD29700F2EBA7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF080694256BD29700F2EBA7 /* Actions.sks */; };
+		FF080697256BD29700F2EBA7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF080696256BD29700F2EBA7 /* GameScene.swift */; };
+		FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF080698256BD29700F2EBA7 /* GameViewController.swift */; };
+		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
+		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FF9364E32384017600E4B867 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF9364C02384017300E4B867 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FF9364C72384017300E4B867;
-			remoteInfo = ExplodeFight;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		FF9364C82384017300E4B867 /* ExplodeFight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExplodeFight.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF9364CB2384017300E4B867 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF9364CD2384017300E4B867 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		FF9364CF2384017300E4B867 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		FF9364D12384017300E4B867 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		FF9364D32384017300E4B867 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		FF9364D62384017300E4B867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FF9364D82384017600E4B867 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FF9364DB2384017600E4B867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FF9364DD2384017600E4B867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF9364E22384017600E4B867 /* ExplodeFightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExplodeFightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF9364E62384017600E4B867 /* ExplodeFightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplodeFightTests.swift; sourceTree = "<group>"; };
-		FF9364E82384017600E4B867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF08068E256BD29700F2EBA7 /* ExplodeFight 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ExplodeFight 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF080690256BD29700F2EBA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FF080692256BD29700F2EBA7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		FF080694256BD29700F2EBA7 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		FF080696256BD29700F2EBA7 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		FF080698256BD29700F2EBA7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		FF08069B256BD29700F2EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FF9364C52384017300E4B867 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF9364DF2384017600E4B867 /* Frameworks */ = {
+		FF08068B256BD29700F2EBA7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -64,12 +41,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF08068F256BD29700F2EBA7 /* ExplodeFight 3 */ = {
+			isa = PBXGroup;
+			children = (
+				FF080690256BD29700F2EBA7 /* AppDelegate.swift */,
+				FF080698256BD29700F2EBA7 /* GameViewController.swift */,
+				FF080696256BD29700F2EBA7 /* GameScene.swift */,
+				FF080692256BD29700F2EBA7 /* GameScene.sks */,
+				FF080694256BD29700F2EBA7 /* Actions.sks */,
+				FF08069A256BD29700F2EBA7 /* Main.storyboard */,
+				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
+				FF08069F256BD29800F2EBA7 /* Info.plist */,
+			);
+			path = "ExplodeFight 3";
+			sourceTree = "<group>";
+		};
 		FF9364BF2384017300E4B867 = {
 			isa = PBXGroup;
 			children = (
 				FFC6773E256A8FB20011CE34 /* README.md */,
-				FF9364CA2384017300E4B867 /* ExplodeFight */,
-				FF9364E52384017600E4B867 /* ExplodeFightTests */,
+				FF08068F256BD29700F2EBA7 /* ExplodeFight 3 */,
 				FFC6773D256A8F560011CE34 /* Design */,
 				FF9364C92384017300E4B867 /* Products */,
 			);
@@ -78,74 +69,30 @@
 		FF9364C92384017300E4B867 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF9364C82384017300E4B867 /* ExplodeFight.app */,
-				FF9364E22384017600E4B867 /* ExplodeFightTests.xctest */,
+				FF08068E256BD29700F2EBA7 /* ExplodeFight 3.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		FF9364CA2384017300E4B867 /* ExplodeFight */ = {
-			isa = PBXGroup;
-			children = (
-				FF9364CB2384017300E4B867 /* AppDelegate.swift */,
-				FF9364CD2384017300E4B867 /* GameScene.sks */,
-				FF9364CF2384017300E4B867 /* Actions.sks */,
-				FF9364D12384017300E4B867 /* GameScene.swift */,
-				FF9364D32384017300E4B867 /* GameViewController.swift */,
-				FF9364D52384017300E4B867 /* Main.storyboard */,
-				FF9364D82384017600E4B867 /* Assets.xcassets */,
-				FF9364DA2384017600E4B867 /* LaunchScreen.storyboard */,
-				FF9364DD2384017600E4B867 /* Info.plist */,
-			);
-			path = ExplodeFight;
-			sourceTree = "<group>";
-		};
-		FF9364E52384017600E4B867 /* ExplodeFightTests */ = {
-			isa = PBXGroup;
-			children = (
-				FF9364E62384017600E4B867 /* ExplodeFightTests.swift */,
-				FF9364E82384017600E4B867 /* Info.plist */,
-			);
-			path = ExplodeFightTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF9364C72384017300E4B867 /* ExplodeFight */ = {
+		FF08068D256BD29700F2EBA7 /* ExplodeFight 3 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF9364EB2384017600E4B867 /* Build configuration list for PBXNativeTarget "ExplodeFight" */;
+			buildConfigurationList = FF0806B6256BD29800F2EBA7 /* Build configuration list for PBXNativeTarget "ExplodeFight 3" */;
 			buildPhases = (
-				FF9364C42384017300E4B867 /* Sources */,
-				FF9364C52384017300E4B867 /* Frameworks */,
-				FF9364C62384017300E4B867 /* Resources */,
+				FF08068A256BD29700F2EBA7 /* Sources */,
+				FF08068B256BD29700F2EBA7 /* Frameworks */,
+				FF08068C256BD29700F2EBA7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ExplodeFight;
-			productName = ExplodeFight;
-			productReference = FF9364C82384017300E4B867 /* ExplodeFight.app */;
+			name = "ExplodeFight 3";
+			productName = "ExplodeFight 3";
+			productReference = FF08068E256BD29700F2EBA7 /* ExplodeFight 3.app */;
 			productType = "com.apple.product-type.application";
-		};
-		FF9364E12384017600E4B867 /* ExplodeFightTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FF9364EE2384017600E4B867 /* Build configuration list for PBXNativeTarget "ExplodeFightTests" */;
-			buildPhases = (
-				FF9364DE2384017600E4B867 /* Sources */,
-				FF9364DF2384017600E4B867 /* Frameworks */,
-				FF9364E02384017600E4B867 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FF9364E42384017600E4B867 /* PBXTargetDependency */,
-			);
-			name = ExplodeFightTests;
-			productName = ExplodeFightTests;
-			productReference = FF9364E22384017600E4B867 /* ExplodeFightTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -153,16 +100,12 @@
 		FF9364C02384017300E4B867 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1120;
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Dogstar Industries Ltd.";
 				TargetAttributes = {
-					FF9364C72384017300E4B867 = {
-						CreatedOnToolsVersion = 11.2.1;
-					};
-					FF9364E12384017600E4B867 = {
-						CreatedOnToolsVersion = 11.2.1;
-						TestTargetID = FF9364C72384017300E4B867;
+					FF08068D256BD29700F2EBA7 = {
+						CreatedOnToolsVersion = 12.2;
 					};
 				};
 			};
@@ -179,83 +122,92 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF9364C72384017300E4B867 /* ExplodeFight */,
-				FF9364E12384017600E4B867 /* ExplodeFightTests */,
+				FF08068D256BD29700F2EBA7 /* ExplodeFight 3 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FF9364C62384017300E4B867 /* Resources */ = {
+		FF08068C256BD29700F2EBA7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF9364D72384017300E4B867 /* Main.storyboard in Resources */,
-				FF9364CE2384017300E4B867 /* GameScene.sks in Resources */,
-				FF9364D92384017600E4B867 /* Assets.xcassets in Resources */,
-				FF9364DC2384017600E4B867 /* LaunchScreen.storyboard in Resources */,
-				FF9364D02384017300E4B867 /* Actions.sks in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF9364E02384017600E4B867 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */,
+				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
+				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
+				FF080695256BD29700F2EBA7 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FF9364C42384017300E4B867 /* Sources */ = {
+		FF08068A256BD29700F2EBA7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF9364D22384017300E4B867 /* GameScene.swift in Sources */,
-				FF9364D42384017300E4B867 /* GameViewController.swift in Sources */,
-				FF9364CC2384017300E4B867 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF9364DE2384017600E4B867 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF9364E72384017600E4B867 /* ExplodeFightTests.swift in Sources */,
+				FF080697256BD29700F2EBA7 /* GameScene.swift in Sources */,
+				FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */,
+				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		FF9364E42384017600E4B867 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FF9364C72384017300E4B867 /* ExplodeFight */;
-			targetProxy = FF9364E32384017600E4B867 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		FF9364D52384017300E4B867 /* Main.storyboard */ = {
+		FF08069A256BD29700F2EBA7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FF9364D62384017300E4B867 /* Base */,
+				FF08069B256BD29700F2EBA7 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FF9364DA2384017600E4B867 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF9364DB2384017600E4B867 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FF0806B7256BD29800F2EBA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5F9CYF5K3F;
+				INFOPLIST_FILE = "ExplodeFight 3/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi.dogstar.ExplodeFight-3";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FF0806B8256BD29800F2EBA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5F9CYF5K3F;
+				INFOPLIST_FILE = "ExplodeFight 3/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi.dogstar.ExplodeFight-3";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		FF9364E92384017600E4B867 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -282,6 +234,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -342,6 +295,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -370,112 +324,23 @@
 			};
 			name = Release;
 		};
-		FF9364EC2384017600E4B867 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5F9CYF5K3F;
-				INFOPLIST_FILE = ExplodeFight/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ltd.dogstar.ExplodeFight;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		FF9364ED2384017600E4B867 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5F9CYF5K3F;
-				INFOPLIST_FILE = ExplodeFight/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ltd.dogstar.ExplodeFight;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		FF9364EF2384017600E4B867 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5F9CYF5K3F;
-				INFOPLIST_FILE = ExplodeFightTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ltd.dogstar.ExplodeFightTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExplodeFight.app/ExplodeFight";
-			};
-			name = Debug;
-		};
-		FF9364F02384017600E4B867 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5F9CYF5K3F;
-				INFOPLIST_FILE = ExplodeFightTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ltd.dogstar.ExplodeFightTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExplodeFight.app/ExplodeFight";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FF0806B6256BD29800F2EBA7 /* Build configuration list for PBXNativeTarget "ExplodeFight 3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF0806B7256BD29800F2EBA7 /* Debug */,
+				FF0806B8256BD29800F2EBA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FF9364C32384017300E4B867 /* Build configuration list for PBXProject "ExplodeFight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF9364E92384017600E4B867 /* Debug */,
 				FF9364EA2384017600E4B867 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FF9364EB2384017600E4B867 /* Build configuration list for PBXNativeTarget "ExplodeFight" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FF9364EC2384017600E4B867 /* Debug */,
-				FF9364ED2384017600E4B867 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FF9364EE2384017600E4B867 /* Build configuration list for PBXNativeTarget "ExplodeFightTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FF9364EF2384017600E4B867 /* Debug */,
-				FF9364F02384017600E4B867 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

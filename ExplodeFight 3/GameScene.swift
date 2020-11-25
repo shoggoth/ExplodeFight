@@ -1,9 +1,9 @@
 //
 //  GameScene.swift
-//  ExplodeFight
+//  ExplodeFight 3
 //
-//  Created by Richard Henry on 19/11/2019.
-//  Copyright © 2019 Dogstar Industries Ltd. All rights reserved.
+//  Created by Richard Henry on 23/11/2020.
+//  Copyright © 2020 Dogstar Industries Ltd. All rights reserved.
 //
 
 import SpriteKit

@@ -4,10 +4,28 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ExplodeFight.xcscheme_^#shared#^_</key>
+		<key>ExplodeFight 3.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>FF08068D256BD29700F2EBA7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF0806A3256BD29800F2EBA7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF0806AE256BD29800F2EBA7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
