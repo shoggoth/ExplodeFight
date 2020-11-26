@@ -62,14 +62,11 @@
 		FF08068F256BD29700F2EBA7 /* ExplodeFight 3 */ = {
 			isa = PBXGroup;
 			children = (
-				FF080690256BD29700F2EBA7 /* AppDelegate.swift */,
-				FF080698256BD29700F2EBA7 /* GameViewController.swift */,
 				FF080696256BD29700F2EBA7 /* GameScene.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
 				FF080694256BD29700F2EBA7 /* Actions.sks */,
-				FF08069A256BD29700F2EBA7 /* Main.storyboard */,
 				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
-				FF08069F256BD29800F2EBA7 /* Info.plist */,
+				FFC222D8256FC71800CFA23F /* iOS */,
 			);
 			path = "ExplodeFight 3";
 			sourceTree = "<group>";
@@ -99,6 +96,17 @@
 				FFC222A7256EB9D400CFA23F /* GameControls.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFC222D8256FC71800CFA23F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				FF080690256BD29700F2EBA7 /* AppDelegate.swift */,
+				FF080698256BD29700F2EBA7 /* GameViewController.swift */,
+				FF08069A256BD29700F2EBA7 /* Main.storyboard */,
+				FF08069F256BD29800F2EBA7 /* Info.plist */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
