@@ -7,10 +7,11 @@
 //
 
 import SpriteKit
+import SpriteKitAddons
 import GameplayKit
 import GameControls
 
-class GameScene: SKScene {
+class GameScene: SKScene, ButtonSKNodeResponder {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -44,7 +45,11 @@ class GameScene: SKScene {
         }
     }
     
-    
+    func buttonTriggered(button: ButtonSKNode) {
+        
+        print("triggered OMG")
+    }
+
     func touchDown(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
