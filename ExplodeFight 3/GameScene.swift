@@ -20,7 +20,11 @@ class GameScene: SKScene, ButtonSKNodeResponder {
 
     func buttonTriggered(button: ButtonSKNode) {
         
-        print("triggered OMG \(button.name)")
+        if let label = self.childNode(withName: "//helloLabel") as? SKLabelNode {
+            
+            label.text = button.name ?? "NoName button"
+            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+        }
     }
 
     override func update(_ currentTime: TimeInterval) {
