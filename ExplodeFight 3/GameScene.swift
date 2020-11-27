@@ -22,8 +22,13 @@ class GameScene: SKScene, ButtonSKSpriteNodeResponder {
         
         if let label = self.childNode(withName: "//helloLabel") as? SKLabelNode {
             
-            label.text = button.name ?? "NoName button"
+            label.text = button.name ?? "Unnamed button"
             label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+        }
+        
+        if button.name == "selectedButton" {
+            
+            button.isSelected.toggle()
         }
     }
 
