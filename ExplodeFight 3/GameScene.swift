@@ -47,7 +47,7 @@ class GameScene: SKScene, ButtonSKNodeResponder {
     
     func buttonTriggered(button: ButtonSKNode) {
         
-        print("triggered OMG")
+        print("triggered OMG \(button.name)")
     }
 
     func touchDown(atPoint pos : CGPoint) {
