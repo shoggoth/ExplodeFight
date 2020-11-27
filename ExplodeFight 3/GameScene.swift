@@ -11,14 +11,14 @@ import SpriteKitAddons
 import GameplayKit
 import GameControls
 
-class GameScene: SKScene, ButtonSKNodeResponder {
+class GameScene: SKScene, ButtonSKSpriteNodeResponder {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
     private var lastUpdateTime : TimeInterval = 0
 
-    func buttonTriggered(button: ButtonSKNode) {
+    func buttonTriggered(button: ButtonSKSpriteNode) {
         
         if let label = self.childNode(withName: "//helloLabel") as? SKLabelNode {
             
