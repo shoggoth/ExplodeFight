@@ -11,7 +11,7 @@ import SpriteKitAddons
 import GameplayKit
 import GameControls
 
-class GameScene: SKScene, ButtonSKNodeResponder {
+class GameScene: SKScene {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -43,11 +43,6 @@ class GameScene: SKScene, ButtonSKNodeResponder {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
-    }
-    
-    func buttonTriggered(button: ButtonSKNode) {
-        
-        print("triggered OMG \(button.name)")
     }
 
     func touchDown(atPoint pos : CGPoint) {
