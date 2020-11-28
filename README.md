@@ -1,5 +1,5 @@
 # Explode Fight III
-Where were I and II? Never made it lads.
+branch exp/buttons
 
 ## Current Tasks
 
@@ -9,5 +9,8 @@ Where were I and II? Never made it lads.
 - See if buttons can be made up of labels that are children of some shape as well as having textures.
 
 ## Next Tasks
+
+### BLOCKED
+- Set shader code on the button. In Xcode 12.1 this causes a fault in decoding the scene.
 
 ## Notes
