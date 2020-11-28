@@ -11,6 +11,6 @@ branch exp/buttons
 ## Next Tasks
 
 ### BLOCKED
-- Set shader code on the button. In Xcode 12.1 this causes a fault in decoding the scene.
+- Set shader code on the button. In Xcode 12.1 this causes a fault in decoding the scene. This seems to be the fault of the template for a game with the GameplayKit selected.
 
 ## Notes
