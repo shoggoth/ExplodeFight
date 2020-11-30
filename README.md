@@ -2,13 +2,14 @@
 master   Where were EFI and EFII? Never made it lads.
 
 ## Current Tasks
-- Make the viewcontroller load an SKScene rather than a GKScene to avoid the problems with the sprite editor.
-- Look at making SceneManager functions an extension, perhaps on SKView.
 - Finish the touch joystick controls and add them to the framework.
-- (branch) Add a shader and a component to test that the above is working.
+- Add a shader and a component to test that the above is working on branch exp/shaders.
 
 ### DONE
+- Make the viewcontroller load an SKScene rather than a GKScene to avoid the problems with the sprite editor.
+- Look at making SceneManager functions an extension, perhaps on SKView.
 - Move the spawner and the other functions to the framework from RF.
+
 - Button experiments on branch exp/buttons.
 
 ## Next Tasks
