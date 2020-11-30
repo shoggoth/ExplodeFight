@@ -11,7 +11,7 @@ import SpriteKitAddons
 import GameplayKit
 import GameControls
 
-class GameScene: SKScene {
+class GameScene: BaseSKScene {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -85,7 +85,7 @@ class GameScene: SKScene {
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) { for t in touches { self.touchUp(atPoint: t.location(in: self)) }}
     
-    override func update(_ currentTime: TimeInterval) { // Called before each frame is rendered
+    /*override func update(_ currentTime: TimeInterval) { // Called before each frame is rendered
 
         // Initialize _lastUpdateTime if it has not already been
         if (self.lastUpdateTime == 0) { self.lastUpdateTime = currentTime }
@@ -97,5 +97,5 @@ class GameScene: SKScene {
         entities.forEach { $0.update(deltaTime: dt) }
         
         self.lastUpdateTime = currentTime
-    }
+    }*/
 }
