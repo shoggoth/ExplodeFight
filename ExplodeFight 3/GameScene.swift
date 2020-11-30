@@ -17,10 +17,15 @@ class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
     
     override func didMove(to view: SKView) {
         
-        joystick.joyFunctions = [
-            { touch in self.printToLabel("Joy touch 1") },
-            { touch in self.printToLabel("Joy touch 2") }
+        guard let moveIndicator = self.childNode(withName: "//joystickBoundsLeft/indicator") else { return }
+        guard let fireIndicator = self.childNode(withName: "//joystickBoundsRight/indicator") else { return }
+        
+        let absoluteFunctions: [TouchFunction] = [
+            { touch in moveIndicator.position = touch.location(in: self) },
+            { touch in fireIndicator.position = touch.location(in: self) }
         ]
+        
+        joystick.joyFunctions = absoluteFunctions
     }
     
     override func update(delta: TimeInterval) {

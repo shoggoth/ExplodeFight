@@ -1,16 +1,11 @@
 # Explode Fight III
-master   Where were EFI and EFII? Never made it lads.
+exp/joystick
 
 ## Current Tasks
 - Finish the touch joystick controls and add them to the framework.
+- Devise some functions and add demo code for them.
 
 ### DONE
-- Make the viewcontroller load an SKScene rather than a GKScene to avoid the problems with the sprite editor.
-- Look at making SceneManager functions an extension, perhaps on SKView.
-- Move the spawner and the other functions to the framework from RF.
-
-- Button experiments on branch exp/buttons.
-- Shader and component experiments on exp/shaders.
 
 ## Next Tasks
 
