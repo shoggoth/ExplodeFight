@@ -2,7 +2,7 @@
 master   Where were EFI and EFII? Never made it lads.
 
 ## Current Tasks
-- Finish the touch joystick controls and add them to the framework.
+- Touch joystick experiments on exp/joystick.
 
 ### DONE
 - Make the viewcontroller load an SKScene rather than a GKScene to avoid the problems with the sprite editor.
