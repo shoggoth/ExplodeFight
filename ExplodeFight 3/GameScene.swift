@@ -13,6 +13,16 @@ import GameControls
 
 class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
     
+    private let joystick = TouchJoystick()
+    
+    override func didMove(to view: SKView) {
+        
+        joystick.joyFunctions = [
+            { touch in self.printToLabel("Joy touch 1") },
+            { touch in self.printToLabel("Joy touch 2") }
+        ]
+    }
+    
     override func update(delta: TimeInterval) {
         
         super.update(delta: delta)
@@ -30,25 +40,29 @@ class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        for (i, t) in touches.enumerated() { printToLabel("Begin touch \(i) at \(t.location(in: self))") }
+        joystick.touchesBegan(touches, with: event)
+        //for (i, t) in touches.enumerated() { printToLabel("Begin touch \(i) at \(t.location(in: self))") }
         //for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        for (i, t) in touches.enumerated() { printToLabel("Moved touch \(i) at \(t.location(in: self))") }
+        joystick.touchesMoved(touches, with: event)
+        //for (i, t) in touches.enumerated() { printToLabel("Moved touch \(i) at \(t.location(in: self))") }
         //for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        for (i, t) in touches.enumerated() { printToLabel("Ended touch \(i) at \(t.location(in: self))") }
+        joystick.touchesEnded(touches, with: event)
+        //for (i, t) in touches.enumerated() { printToLabel("Ended touch \(i) at \(t.location(in: self))") }
         //for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        for (i, t) in touches.enumerated() { printToLabel("Cancelled touch \(i) at \(t.location(in: self))") }
+        joystick.touchesCancelled(touches, with: event)
+        //for (i, t) in touches.enumerated() { printToLabel("Cancelled touch \(i) at \(t.location(in: self))") }
         //for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
@@ -64,6 +78,65 @@ class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
             
             button.isSelected.toggle()
         }
+    }
+}
+
+class TouchJoystick {
+    
+    typealias JoystickTouchFunction = (_ touch: UITouch) -> Void
+    
+    public var joyFunctions: [TouchFunction] = []
+
+    private var joyTouches: [UITouch?] = []
+
+    func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        touches.forEach { t in
+            
+            // Use the first slot in the array where we find a nil value. If there are no nil slots, append to the array
+            // as long as there aren't more touches than there are functions to be called on that touch.
+            if let i = joyTouches.firstIndex(where: { $0 == nil }) {
+                
+                joyTouches[i] = t
+                joyFunctions[i](t)
+                
+            } else {
+                
+                if joyTouches.count < joyFunctions.count {
+                    
+                    joyFunctions[joyTouches.count](t)
+                    joyTouches.append(t)
+                }
+            }
+        }
+    }
+    
+    func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        touches.forEach { t in
+
+            // Find the touch in the touch array and call the appropriate function (at the same index).
+            if let i = joyTouches.firstIndex(where: { $0 == t }) { joyFunctions[i](t) }
+        }
+    }
+    
+    func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        touches.forEach { t in
+
+            // Set the appropriate slot in the array to nil so that it can be re-used.
+            if let i = joyTouches.firstIndex(where: { $0 == t }) {
+                
+                joyFunctions[i](t)
+                joyTouches[i] = nil
+            }
+        }
+    }
+    
+    func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        // Just do the same operation as if the touch had ended.
+        touchesEnded(touches, with: event)
     }
 }
 
