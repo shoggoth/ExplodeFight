@@ -18,3 +18,32 @@ class GameScene: BaseSKScene {
         super.update(delta: delta)
     }
 }
+
+public class DebugComponent: GKComponent {
+    
+    @GKInspectable var identifier: String = "Anonymous"
+    
+    public override class var supportsSecureCoding: Bool { true }
+    
+    deinit { print(" \(self.identifier) \(self) deinits") }
+    
+    // MARK: Update
+    
+    public override func update(deltaTime seconds: TimeInterval) {
+        
+        super.update(deltaTime: seconds)
+        
+        print("\(self) update at \(seconds)s")
+    }
+    
+    public override func didAddToEntity() {
+        
+        print("Component \(self.identifier) \(self) added to entity \(String(describing: entity))")
+        //print("Sprite component \(String(describing: spriteComponent))")
+    }
+    
+    public override func willRemoveFromEntity() {
+        
+        print("Component \(self) will remove from entity \(String(describing: entity))")
+    }
+}
