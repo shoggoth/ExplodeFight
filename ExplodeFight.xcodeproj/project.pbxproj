@@ -26,6 +26,7 @@
 		FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC222D9256FCD4100CFA23F /* LaunchScreen.storyboard */; };
 		FFC222E8257003B400CFA23F /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; };
 		FFC222E9257003B400CFA23F /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFD684AB25769EC30089842A /* pixelShatter.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFD684AA25769EC30089842A /* pixelShatter.fsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +66,7 @@
 		FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FFD684AA25769EC30089842A /* pixelShatter.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = pixelShatter.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				FF3E025D25766F890074FCC2 /* shield2.fsh */,
 				FF2662252575152B0082D4E0 /* vortexSprite.fsh */,
 				FFBDFE71257686D900FD33EA /* texOffset.fsh */,
+				FFD684AA25769EC30089842A /* pixelShatter.fsh */,
 				FFC222D8256FC71800CFA23F /* iOS */,
 			);
 			path = "ExplodeFight 3";
@@ -202,6 +205,7 @@
 				FF3E025325765A310074FCC2 /* Textures.xcassets in Resources */,
 				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
+				FFD684AB25769EC30089842A /* pixelShatter.fsh in Resources */,
 				FF266224257515130082D4E0 /* hotPink.fsh in Resources */,
 				FF3E025E25766F890074FCC2 /* shield2.fsh in Resources */,
 				FF2662262575152B0082D4E0 /* vortexSprite.fsh in Resources */,

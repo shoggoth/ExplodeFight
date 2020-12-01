@@ -14,15 +14,34 @@ import GameControls
 class GameScene: BaseSKScene {
     
     override func didMove(to view: SKView) {
+ 
+        let texOffsetAttributeName = "a_texOffset"
+        let animationAttributeName = "a_animation"
+        let texOffsetShader = SKShader(fileNamed: "texOffset.fsh")
+        texOffsetShader.attributes = [SKAttribute(name: texOffsetAttributeName, type: .vectorFloat2), SKAttribute(name: animationAttributeName, type: .float)]
         
-        if let node = childNode(withName: "texOffsetNode") as? SKSpriteNode {
+        let customAction = SKAction.customAction(withDuration: 2.0) { node, t in
             
-            let shader = SKShader(fileNamed: "texOffset.fsh")
-            shader.attributes = [SKAttribute(name: "a_texOffset", type: .vectorFloat2)]
+            if let node = node as? SKSpriteNode {
+                
+                node.setValue(SKAttributeValue(float: Float(t * 0.5)), forAttribute: animationAttributeName)
+            }
+        }
+        
+        [("texOffsetNode", vector_float2(0.0, 0.5)), ("texOffsetNode2", vector_float2(0.5, 0.0))].forEach { name, tc in
             
-            node.shader = shader
-            
-            node.setValue(SKAttributeValue(vectorFloat2: vector_float2(0.0, 0.5)), forAttribute: "a_texOffset")
+            if let node = childNode(withName: name) as? SKSpriteNode {
+                
+                node.shader = texOffsetShader
+                node.setValue(SKAttributeValue(vectorFloat2: tc), forAttribute: texOffsetAttributeName)
+                node.setValue(SKAttributeValue(float: 0), forAttribute: animationAttributeName)
+                
+                node.run(.repeatForever(.sequence([
+                    .wait(forDuration: 1.0),
+                    customAction,
+                    customAction.reversed()
+                ])))
+            }
         }
     }
     
