@@ -2,13 +2,13 @@
 exp/joystick
 
 ## Current Tasks
+
+### DONE
 - Finish the touch joystick controls and add them to the framework.
 - Devise some functions and add demo code for them.
 
-### DONE
-
 ## Next Tasks
-
+- Add clipping and normalising functions that work in cooperation with the window function we have already.
 ### Notes
 
 ### Resources
