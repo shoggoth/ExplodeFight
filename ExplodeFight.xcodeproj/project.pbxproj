@@ -17,6 +17,7 @@
 		FF266224257515130082D4E0 /* hotPink.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF266223257515130082D4E0 /* hotPink.fsh */; };
 		FF2662262575152B0082D4E0 /* vortexSprite.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF2662252575152B0082D4E0 /* vortexSprite.fsh */; };
 		FF3E025325765A310074FCC2 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF3E025225765A310074FCC2 /* Textures.xcassets */; };
+		FF3E025C25765D210074FCC2 /* shield.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF3E025B25765D210074FCC2 /* shield.fsh */; };
 		FFC222A8256EB9D400CFA23F /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; };
 		FFC222A9256EB9D400CFA23F /* GameControls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC222D9256FCD4100CFA23F /* LaunchScreen.storyboard */; };
@@ -52,6 +53,7 @@
 		FF266223257515130082D4E0 /* hotPink.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = hotPink.fsh; path = ../../Developer/Shaders/Sprite/hotPink.fsh; sourceTree = "<group>"; };
 		FF2662252575152B0082D4E0 /* vortexSprite.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = vortexSprite.fsh; path = ../../Developer/Shaders/Sprite/vortexSprite.fsh; sourceTree = "<group>"; };
 		FF3E025225765A310074FCC2 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Textures.xcassets; sourceTree = "<group>"; };
+		FF3E025B25765D210074FCC2 /* shield.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shield.fsh; sourceTree = "<group>"; };
 		FFC222A7256EB9D400CFA23F /* GameControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC222DA256FCD4100CFA23F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
 				FF3E025225765A310074FCC2 /* Textures.xcassets */,
 				FF266223257515130082D4E0 /* hotPink.fsh */,
+				FF3E025B25765D210074FCC2 /* shield.fsh */,
 				FF2662252575152B0082D4E0 /* vortexSprite.fsh */,
 				FFC222D8256FC71800CFA23F /* iOS */,
 			);
@@ -194,6 +197,7 @@
 				FF2662262575152B0082D4E0 /* vortexSprite.fsh in Resources */,
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,
 				FF080695256BD29700F2EBA7 /* Actions.sks in Resources */,
+				FF3E025C25765D210074FCC2 /* shield.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

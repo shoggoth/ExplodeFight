@@ -3,6 +3,7 @@ branch exp/shaders
 
 ## Current Tasks
 - Find out how to animate shader parameters in the sprite via an SKAction
+- Contrast shield with gradient texturte and shield with angle compute. Is the second version less pixellated.
 - Look into creating a pixel shatter and other explosion shaders, being aware of the game's name and all that.
 
 ### DONE
