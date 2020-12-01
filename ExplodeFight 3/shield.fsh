@@ -7,7 +7,7 @@ void main() {
     // [1 - ORIGINAL CHECK] If the original is transparent AND
     // [2 - HEALTH CHECK] The gradient image has a black value less than the remaining health AND
     // [3 - MASKING] The gradient pixel is not transparent
-    if (val.a < 0.1 && grad.r < u_time * 0.001 && grad.a > 0.8) {
+    if (val.a < 0.1 && grad.r < u_amount && grad.a > 0.8) {
         gl_FragColor = vec4(0.0, 1.0, 0.0, 1.0);
     } else {
         gl_FragColor = val;
