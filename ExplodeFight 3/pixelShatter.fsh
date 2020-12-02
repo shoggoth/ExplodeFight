@@ -3,13 +3,16 @@ void main() {
 
     float a_split_count = 5.0;
     
-    vec2  uv = v_tex_coord;
-    float sc = 2.0 / a_split_count;
+    vec2  st = v_tex_coord;
+    float sc = 1.0 / a_split_count;
     
-    if (uv.x > 0.75) discard;
-    
-    else if (mod(uv.y, sc) > sc * 0.5) discard;
-    
+    if (mod(st.y, sc * 2.0) > sc) discard;
+
     // Pixels shattering a la Robotron
-    else gl_FragColor = texture2D(u_texture, vec2(uv.x, uv.y));
+    else {
+        float offset = floor(st.y / sc) * (1.0 / (a_split_count + 1));
+        float coords = mod(st.y, sc) * (a_split_count / ceil(a_split_count * 0.5));
+        float t = offset + coords;
+        gl_FragColor = texture2D(u_texture, vec2(st.x, t));
+    }
 }
