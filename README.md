@@ -3,6 +3,7 @@ master
 
 ## Current Tasks
 - See what other things I had working in Royal Flush and move them into here should they be useful.
+- Make this build on TVOS as well.
 - Device screen size independance. Placing of components such as HUD bits with expanded playfield on larger devices.
 - Get the robot animation back in and remind myself of how animations and sprites are loaded from sks files.
 
