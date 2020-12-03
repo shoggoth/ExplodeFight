@@ -23,6 +23,7 @@ master
 - Where are EFI and EFII? Never made it lads.
 
 ### Resources
+https://code.bitbebop.com/spritekit-game-aspect-ratio-resolution/ - Device screen size independance example.
 https://kenney.nl - Free game assets  
 https://developer.apple.com/library/archive/documentation/General/Conceptual/GameplayKit_Guide/StateMachine.html - State machine info  
 
