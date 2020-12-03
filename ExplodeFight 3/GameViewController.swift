@@ -49,11 +49,13 @@ class GameViewController: UIViewController {
         print("TODO: Handle these with pausing in the current scene = \(notification)")
     }
     
-    // MARK: View behaviour
+    // MARK: Overrides
     
     override var shouldAutorotate: Bool { return true }
 
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return UIDevice.current.userInterfaceIdiom == .phone ? .allButUpsideDown : .all }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .landscape }
 
     override var prefersStatusBarHidden: Bool { return true }
+    
+    override var prefersHomeIndicatorAutoHidden: Bool { return true }
 }
