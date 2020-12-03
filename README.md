@@ -6,6 +6,7 @@ master
 - Make this build on TVOS as well.
 - Device screen size independance. Placing of components such as HUD bits with expanded playfield on larger devices.
 - Get the robot animation back in and remind myself of how animations and sprites are loaded from sks files.
+- Spawn experiments on branch __exp/spawner__.
 
 ### DONE
 - Button experiments on branch __exp/buttons__.
