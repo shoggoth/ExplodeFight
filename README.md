@@ -10,7 +10,6 @@ master
 - Button experiments on branch __exp/buttons__.
 - Shader and explosion experiments on __exp/shaders__.
 - Touch joystick experiments on __exp/joystick__.
-
 - See what other things I had working in Royal Flush and move them into here should they be useful.
 - Get the robot animation back in and remind myself of how animations and sprites are loaded from sks files.
 - Make the viewcontroller load an SKScene rather than a GKScene to avoid the problems with the sprite editor.
