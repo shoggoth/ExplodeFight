@@ -19,6 +19,8 @@ class GameViewController: UIViewController {
         
         guard let view = self.view as? SKView else { return }
         
+        setNeedsUpdateOfScreenEdgesDeferringSystemGestures()
+        
         // Set up the view
         view.preferredFramesPerSecond = 120
         view.ignoresSiblingOrder = true
