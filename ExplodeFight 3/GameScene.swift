@@ -85,7 +85,6 @@ extension SpawnSKNode {
             
             newNode.position = CGPoint(x: CGFloat(arc4random() % 100) - 50, y: CGFloat(arc4random() % 200) - 100)
             newNode.run(SKAction.repeatForever(SKAction(named: "Pulse")!))
-            newNode.physicsBody = SKPhysicsBody(circleOfRadius: 3)
             newNode.isPaused = false
             
             return nil
