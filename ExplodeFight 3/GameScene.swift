@@ -20,12 +20,21 @@ class GameScene: BaseSKScene {
         super.didMove(to: view)
         
         // Set up user control
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapped)))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(spawn)))
+        view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(clear)))
+
+        // Set up scene physics
+        self.physicsBody = SKPhysicsBody (edgeLoopFrom: self.frame)
     }
     
-    @objc func tapped(_ tap: UITapGestureRecognizer) {
+    @objc func spawn(_ tap: UITapGestureRecognizer) {
         
         spawnNode?.testNodeSpawn()
+    }
+    
+    @objc func clear(_ tap: UITapGestureRecognizer) {
+        
+        spawnNode?.kill()
     }
     
     override func update(delta: TimeInterval) {
