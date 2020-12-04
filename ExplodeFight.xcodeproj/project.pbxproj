@@ -16,6 +16,8 @@
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
 		FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF95A51D25792F9B00954B50 /* SplashScene.sks */; };
 		FF95A5202579303800954B50 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95A51F2579303800954B50 /* SplashScene.swift */; };
+		FF95A524257A57A300954B50 /* Robot.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF95A523257A57A300954B50 /* Robot.xcassets */; };
+		FF95A526257A582F00954B50 /* Spawn.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF95A525257A582F00954B50 /* Spawn.sks */; };
 		FFC222A8256EB9D400CFA23F /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; };
 		FFC222A9256EB9D400CFA23F /* GameControls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC222D9256FCD4100CFA23F /* LaunchScreen.storyboard */; };
@@ -50,6 +52,8 @@
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF95A51D25792F9B00954B50 /* SplashScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SplashScene.sks; sourceTree = "<group>"; };
 		FF95A51F2579303800954B50 /* SplashScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
+		FF95A523257A57A300954B50 /* Robot.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Robot.xcassets; sourceTree = "<group>"; };
+		FF95A525257A582F00954B50 /* Spawn.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spawn.sks; sourceTree = "<group>"; };
 		FFC222A7256EB9D400CFA23F /* GameControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC222DA256FCD4100CFA23F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,8 +81,10 @@
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
 				FF95A51F2579303800954B50 /* SplashScene.swift */,
 				FF95A51D25792F9B00954B50 /* SplashScene.sks */,
+				FF95A525257A582F00954B50 /* Spawn.sks */,
 				FF080694256BD29700F2EBA7 /* Actions.sks */,
 				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
+				FF95A523257A57A300954B50 /* Robot.xcassets */,
 				FFC222D8256FC71800CFA23F /* iOS */,
 			);
 			path = "ExplodeFight 3";
@@ -184,6 +190,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */,
+				FF95A526257A582F00954B50 /* Spawn.sks in Resources */,
+				FF95A524257A57A300954B50 /* Robot.xcassets in Resources */,
 				FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */,
 				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
