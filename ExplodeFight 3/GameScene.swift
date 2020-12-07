@@ -29,8 +29,7 @@ class GameScene: BaseSKScene {
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
-        spawnNode?.spawnEntityRobot()
-        //spawnNode?.spawnMultiRobots(count: 10)
+        spawnNode?.spawnMultiRobots()
     }
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
@@ -43,43 +42,6 @@ class GameScene: BaseSKScene {
         super.update(delta: delta)
         
         spawnNode?.update(delta: delta)
-    }
-}
-
-// MARK: - Spawn with entity
-
-extension SpawnSKNode {
-    
-    func spawnEntityRobot() {
-        
-        spawn(name: "Robot") { robotNode in
-            
-            let robotEntity = GKEntity()
-            
-            //robotEntity.addComponent(DebugComponent())
-            //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
-            
-            robotNode.position = CGPoint(x: (CGFloat(arc4random() % 100) - 50) * 0.0001, y: 0.0)
-
-            return robotEntity
-        }
-    }
-    
-    func spawnEntityRobotAndReturn() -> GKEntity {
-        
-        let robotEntity = GKEntity()
-
-        spawn(name: "Robot") { robotNode in
-            
-            robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
-            
-            //robotEntity.addComponent(DebugComponent())
-            //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
-            
-            return nil
-        }
-        
-        return robotEntity
     }
 }
 
