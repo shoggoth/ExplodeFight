@@ -29,7 +29,8 @@ class GameScene: BaseSKScene {
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
-        spawnNode?.testNodeSpawn()
+        spawnNode?.spawnEntityRobot()
+        //spawnNode?.spawnMultiRobots(count: 10)
     }
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
@@ -40,48 +41,55 @@ class GameScene: BaseSKScene {
     override func update(delta: TimeInterval) {
         
         super.update(delta: delta)
+        
+        spawnNode?.update(delta: delta)
     }
 }
 
+// MARK: - Spawn with entity
+
 extension SpawnSKNode {
     
-    func testEntitySpawn() {
+    func spawnEntityRobot() {
         
         spawn(name: "Robot") { robotNode in
             
             let robotEntity = GKEntity()
             
             //robotEntity.addComponent(DebugComponent())
-            //robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
-            //robotEntity.addComponent(RopeComponent())
-            //robotEntity.addComponent(ScannerComponent())
+            //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
             
+            robotNode.position = CGPoint(x: (CGFloat(arc4random() % 100) - 50) * 0.0001, y: 0.0)
+
             return robotEntity
         }
     }
     
-    func testEntitySpawn2() -> GKEntity {
+    func spawnEntityRobotAndReturn() -> GKEntity {
         
         let robotEntity = GKEntity()
 
         spawn(name: "Robot") { robotNode in
             
-            //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
-            //robotEntity.addComponent(RopeComponent())
-            //robotEntity.addComponent(ScannerComponent())
+            robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
+            
             //robotEntity.addComponent(DebugComponent())
+            //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
             
             return nil
         }
         
         return robotEntity
     }
+}
+
+// MARK: - Spawn without entity
+
+extension SpawnSKNode {
     
-    func testNodeSpawn() {
+    func spawnMultiRobots(count: Int = 25) {
         
-        let amount = 25
-        
-        (0..<amount).forEach { _ in spawn(name: "Robot") { newNode in
+        (0..<count).forEach { _ in spawn(name: "Robot") { newNode in
             
             newNode.position = CGPoint(x: CGFloat(arc4random() % 100) - 50, y: CGFloat(arc4random() % 200) - 100)
             newNode.run(SKAction.repeatForever(SKAction(named: "Pulse")!))
@@ -91,7 +99,7 @@ extension SpawnSKNode {
             }
         }
         
-        (0..<amount).forEach { _ in spawn(name: "RobotAnim") { newNode in
+        (0..<count).forEach { _ in spawn(name: "RobotAnim") { newNode in
             
             newNode.position = CGPoint(x: CGFloat(arc4random() % 200) - 100, y: CGFloat(arc4random() % 100) - 50)
             newNode.isPaused = false
