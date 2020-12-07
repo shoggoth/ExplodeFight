@@ -53,11 +53,8 @@ extension SpawnSKNode {
         
         spawn(name: "Robot") { robotNode in
             
-            let robotEntity = GKEntity()
-            
-            //robotEntity.addComponent(DebugComponent())
-            //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
-            
+            let robotEntity = RobotEntity()
+
             robotNode.position = CGPoint(x: (CGFloat(arc4random() % 100) - 50) * 0.0001, y: 0.0)
 
             return robotEntity
