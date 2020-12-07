@@ -30,7 +30,6 @@ class GameScene: BaseSKScene {
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
         spawnNode?.spawnEntityRobot()
-        //spawnNode?.spawnMultiRobots(count: 10)
     }
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
@@ -80,32 +79,5 @@ extension SpawnSKNode {
         }
         
         return robotEntity
-    }
-}
-
-// MARK: - Spawn without entity
-
-extension SpawnSKNode {
-    
-    func spawnMultiRobots(count: Int = 25) {
-        
-        (0..<count).forEach { _ in spawn(name: "Robot") { newNode in
-            
-            newNode.position = CGPoint(x: CGFloat(arc4random() % 100) - 50, y: CGFloat(arc4random() % 200) - 100)
-            newNode.run(SKAction.repeatForever(SKAction(named: "Pulse")!))
-            newNode.isPaused = false
-            
-            return nil
-            }
-        }
-        
-        (0..<count).forEach { _ in spawn(name: "RobotAnim") { newNode in
-            
-            newNode.position = CGPoint(x: CGFloat(arc4random() % 200) - 100, y: CGFloat(arc4random() % 100) - 50)
-            newNode.isPaused = false
-            
-            return nil
-            }
-        }
     }
 }
