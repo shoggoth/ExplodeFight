@@ -2,11 +2,12 @@
 master
 
 ## Current Tasks
-- Spawn experiments on branch __exp/spawner__.
 - Device screen size independance. Placing of components such as HUD bits with expanded playfield on larger devices.
-- Make this build on TVOS as well.
+- Make this build on TVOS as well. Look at the button class and get the focus rings to work.
 
 ### DONE
+- User defaults and static configuration along with templates as a reminder.
+- Spawn experiments on branch __exp/spawner__.
 - Button experiments on branch __exp/buttons__.
 - Shader and explosion experiments on __exp/shaders__.
 - Touch joystick experiments on __exp/joystick__.

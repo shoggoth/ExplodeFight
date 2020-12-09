@@ -8,10 +8,10 @@
 
 import SpriteKit
 import SpriteKitAddons
-import GameplayKit
-import GameControls
 
 class GameScene: BaseSKScene {
+    
+    override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
     override func update(delta: TimeInterval) {
         
