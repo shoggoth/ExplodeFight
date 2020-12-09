@@ -13,10 +13,10 @@ import GameplayKit
 class RobotEntity: GKEntity, GKAgentDelegate {
     
     var rotationSync: Bool = true
+
+    var agent: GKAgent2D? { component(ofType: GKAgent2D.self) }
     
-    private var agent: GKAgent2D? { component(ofType: GKAgent2D.self) }
-    
-    override init() {
+    init(track: GKAgent2D? = nil) {
         
         super.init()
         
@@ -27,7 +27,11 @@ class RobotEntity: GKEntity, GKAgentDelegate {
         agent.rotation = Float.random(in: 0.0...Float.pi * 2.0)
         
         agent.delegate = self
-        agent.behavior = GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0...1.0) * agent.maxSpeed), weight: 100)
+        if let ta = track {
+            agent.behavior = GKBehavior(goal: GKGoal(toSeekAgent: ta), weight: 100)
+        } else {
+            agent.behavior = GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0...1.0) * agent.maxSpeed), weight: 100)
+        }
         
         addComponent(agent)
     }

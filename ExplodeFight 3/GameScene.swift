@@ -29,11 +29,13 @@ class GameScene: BaseSKScene {
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
-        spawnNode?.spawnEntityRobot()
+        if trackEntity == nil { trackEntity = spawnNode?.spawnEntityRobotAndReturn() }
+        else { spawnNode?.spawnEntityRobot() }
     }
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
         
+        trackEntity = nil
         spawnNode?.kill()
     }
     
@@ -42,8 +44,11 @@ class GameScene: BaseSKScene {
         super.update(delta: delta)
         
         spawnNode?.update(delta: delta)
+        trackEntity?.update(deltaTime: delta)
     }
 }
+
+var trackEntity: RobotEntity?
 
 // MARK: - Spawn with entity
 
@@ -53,7 +58,7 @@ extension SpawnSKNode {
         
         spawn(name: "RobotNoG") { robotNode in
             
-            let robotEntity = RobotEntity()
+            let robotEntity = RobotEntity(track: trackEntity?.agent)
 
             robotNode.position = CGPoint(x: (CGFloat(arc4random() % 100) - 50) * 0.0001, y: 0.0)
 
@@ -61,11 +66,11 @@ extension SpawnSKNode {
         }
     }
     
-    func spawnEntityRobotAndReturn() -> GKEntity {
+    func spawnEntityRobotAndReturn() -> RobotEntity {
         
-        let robotEntity = GKEntity()
+        let robotEntity = RobotEntity()
 
-        spawn(name: "Robot") { robotNode in
+        spawn(name: "RobotNoG") { robotNode in
             
             robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
             
