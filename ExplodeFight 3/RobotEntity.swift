@@ -12,15 +12,22 @@ import GameplayKit
 
 class RobotEntity: GKEntity, GKAgentDelegate {
     
-    var agent: GKAgent2D? { component(ofType: GKAgent2D.self) }
+    var rotationSync: Bool = true
+    
+    private var agent: GKAgent2D? { component(ofType: GKAgent2D.self) }
     
     override init() {
         
         super.init()
         
         let agent = GKAgent2D()
+        agent.maxSpeed = 500.0
+        agent.maxAcceleration = 10.0
+        agent.mass = 0.027
+        agent.rotation = Float.random(in: 0.0...Float.pi * 2.0)
+        
         agent.delegate = self
-        agent.behavior = GKBehavior()
+        agent.behavior = GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0...1.0) * agent.maxSpeed), weight: 100)
         
         addComponent(agent)
     }
@@ -29,25 +36,9 @@ class RobotEntity: GKEntity, GKAgentDelegate {
     
     // MARK: GKAgentDelegate
     
-    func agentWillUpdate(_: GKAgent) {
+    func agentWillUpdate(_ a: GKAgent) {
         
         syncAgentToSprite()
-        
-        /*
-            `GKAgent`s do not operate in the SpriteKit physics world,
-            and are not affected by SpriteKit physics collisions.
-            Because of this, the agent's position and rotation in the scene
-            may have values that are not valid in the SpriteKit physics simulation.
-            For example, the agent may have moved into a position that is not allowed
-            by interactions between the `TaskBot`'s physics body and the level's scenery.
-            To counter this, set the agent's position and rotation to match
-            the `TaskBot` position and orientation before the agent calculates
-            its steering physics update.
-        */
-        
-        //updateAgentPositionToMatchNodePosition()
-        //updateAgentRotationToMatchTaskBotOrientation()
-        
     }
     
     func agentDidUpdate(_: GKAgent) {
@@ -59,15 +50,32 @@ class RobotEntity: GKEntity, GKAgentDelegate {
     
     func syncAgentToSprite() {
         
-        guard let agent = agent, let pos = spriteComponent?.node.position else { return }
+        guard let agent = agent, let node = spriteComponent?.node else { return }
         
-        agent.position = SIMD2<Float>(x: Float(pos.x), y: Float(pos.y))
+        let spritePos = node.position
+        agent.position = SIMD2<Float>(x: Float(spritePos.x), y: Float(spritePos.y))
+        
+        // guard rotationSync else { return }
+        // agent.rotation = Float(node.zRotation)
     }
     
     func syncSpriteToAgent() {
         
-        guard let pos = agent?.position, let node = spriteComponent?.node else { return }
+        guard let agent = agent, let node = spriteComponent?.node else { return }
         
-        node.position = CGPoint(x: CGFloat(pos.x), y: CGFloat(pos.y))
+        // Update position
+        let agentPos = agent.position
+        node.position = CGPoint(x: CGFloat(agentPos.x), y: CGFloat(agentPos.y))
+        
+        // Update rotation
+        guard rotationSync else { return }
+        
+        let rotation: Float
+        if agent.velocity.x > 0.0 || agent.velocity.y > 0.0 {
+            rotation = atan2(agent.velocity.y, agent.velocity.x)
+        } else { rotation = agent.rotation }
+        
+        // Ensure we have got a valid rotation.
+        if !rotation.isNaN { node.zRotation = CGFloat(rotation)}
     }
 }

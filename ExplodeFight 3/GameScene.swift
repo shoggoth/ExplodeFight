@@ -51,7 +51,7 @@ extension SpawnSKNode {
     
     func spawnEntityRobot() {
         
-        spawn(name: "Robot") { robotNode in
+        spawn(name: "RobotNoG") { robotNode in
             
             let robotEntity = RobotEntity()
 
