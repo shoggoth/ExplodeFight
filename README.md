@@ -2,7 +2,7 @@
 master
 
 ## Current Tasks
-- Have a look at rules and state machines
+- Rules and state machine experiments on branch __exp/mechanics__.
 
 ### DONE
 - Spawn experiments on branch __exp/spawner__.
