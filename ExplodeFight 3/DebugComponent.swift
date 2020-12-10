@@ -28,7 +28,7 @@ public class DebugComponent: GKComponent {
     public override func didAddToEntity() {
         
         print("Component \(self.identifier) \(self) added to entity \(String(describing: entity))")
-        print("Sprite component \(String(describing: spriteComponent))")
+        print("Sprite component \(String(describing: entity?.spriteComponent))")
     }
     
     public override func willRemoveFromEntity() {
