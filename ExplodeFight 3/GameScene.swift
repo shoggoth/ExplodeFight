@@ -44,7 +44,6 @@ class GameScene: BaseSKScene {
         super.update(delta: delta)
         
         spawnNode?.update(delta: delta)
-        trackEntity?.update(deltaTime: delta)
     }
 }
 
@@ -74,10 +73,10 @@ extension SpawnSKNode {
             
             robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
             
-            //robotEntity.addComponent(DebugComponent())
+            robotEntity.addComponent(DebugComponent())
             //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
             
-            return nil
+            return robotEntity
         }
         
         return robotEntity

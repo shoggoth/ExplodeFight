@@ -12,9 +12,9 @@ import SpriteKitAddons
 public class DebugComponent: GKComponent {
     
     @GKInspectable var identifier: String = "Anonymous"
-    @GKInspectable var dumpTiming: Bool = true
+    @GKInspectable var dumpTiming: Bool = false
     
-    deinit { print(" \(self.identifier) \(self) deinits") }
+    deinit { print("\(self.identifier) \(self) deinits") }
     
     // MARK: Update
     

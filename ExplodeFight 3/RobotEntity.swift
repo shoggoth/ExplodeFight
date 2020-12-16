@@ -21,7 +21,7 @@ class RobotEntity: GKEntity, GKAgentDelegate {
         super.init()
         
         let agent = GKAgent2D()
-        agent.maxSpeed = 500.0
+        agent.maxSpeed = 300.0
         agent.maxAcceleration = 10.0
         agent.mass = 0.027
         agent.rotation = Float.random(in: 0.0...Float.pi * 2.0)
