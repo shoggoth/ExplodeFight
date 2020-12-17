@@ -35,4 +35,8 @@ public class DebugComponent: GKComponent {
         
         print("Component \(self) will remove from entity \(String(describing: entity))")
     }
+    
+    // MARK: Required
+    
+    public override class var supportsSecureCoding: Bool { return true }
 }
