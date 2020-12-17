@@ -14,6 +14,8 @@
 		FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF080698256BD29700F2EBA7 /* GameViewController.swift */; };
 		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
+		FF6EEA56258BB3F7006938E0 /* AIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EEA55258BB3F7006938E0 /* AIComponent.swift */; };
+		FF6EEA58258BBB4B006938E0 /* RobotStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EEA57258BBB4B006938E0 /* RobotStates.swift */; };
 		FF7C69A6257E7D4D004B67FE /* RobotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C69A5257E7D4D004B67FE /* RobotEntity.swift */; };
 		FF8361E725850C7100019D09 /* RobotRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8361E625850C7100019D09 /* RobotRules.swift */; };
 		FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF95A51D25792F9B00954B50 /* SplashScene.sks */; };
@@ -53,6 +55,8 @@
 		FF08069B256BD29700F2EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF6EEA55258BB3F7006938E0 /* AIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIComponent.swift; sourceTree = "<group>"; };
+		FF6EEA57258BBB4B006938E0 /* RobotStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotStates.swift; sourceTree = "<group>"; };
 		FF7C69A5257E7D4D004B67FE /* RobotEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotEntity.swift; sourceTree = "<group>"; };
 		FF8361E625850C7100019D09 /* RobotRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotRules.swift; sourceTree = "<group>"; };
 		FF95A51D25792F9B00954B50 /* SplashScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SplashScene.sks; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 				FF080696256BD29700F2EBA7 /* GameScene.swift */,
 				FF7C69A5257E7D4D004B67FE /* RobotEntity.swift */,
 				FF8361E625850C7100019D09 /* RobotRules.swift */,
+				FF6EEA57258BBB4B006938E0 /* RobotStates.swift */,
+				FF6EEA55258BB3F7006938E0 /* AIComponent.swift */,
 				FFDFED6D257E4C8D007004EC /* DebugComponent.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
 				FF95A525257A582F00954B50 /* Spawn.sks */,
@@ -217,6 +223,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF080697256BD29700F2EBA7 /* GameScene.swift in Sources */,
+				FF6EEA58258BBB4B006938E0 /* RobotStates.swift in Sources */,
+				FF6EEA56258BB3F7006938E0 /* AIComponent.swift in Sources */,
 				FF95A5202579303800954B50 /* SplashScene.swift in Sources */,
 				FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */,
 				FF8361E725850C7100019D09 /* RobotRules.swift in Sources */,

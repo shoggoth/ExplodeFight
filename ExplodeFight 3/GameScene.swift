@@ -59,7 +59,7 @@ extension SpawnSKNode {
             
             let robotEntity = RobotEntity(track: trackEntity?.agent)
 
-            robotNode.position = CGPoint(x: (CGFloat(arc4random() % 100) - 50) * 0.0001, y: 0.0)
+            robotEntity.addComponent(AIComponent(states: [WanderState(entity: robotEntity)]))
 
             return robotEntity
         }
@@ -73,7 +73,7 @@ extension SpawnSKNode {
             
             robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
             
-            robotEntity.addComponent(DebugComponent())
+            //robotEntity.addComponent(DebugComponent())
             //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
             
             return robotEntity
