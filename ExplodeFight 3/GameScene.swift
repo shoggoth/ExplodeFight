@@ -59,7 +59,7 @@ extension SpawnSKNode {
             
             let robotEntity = RobotEntity(track: trackEntity?.agent)
 
-            robotEntity.addComponent(AIComponent(states: [WanderState(entity: robotEntity)]))
+            robotEntity.addComponent(AIComponent(states: [WanderState(entity: robotEntity), DebugState(name: "Burpleson")]))
 
             return robotEntity
         }
@@ -71,7 +71,7 @@ extension SpawnSKNode {
 
         spawn(name: "RobotNoG") { robotNode in
             
-            robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
+            //robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
             
             //robotEntity.addComponent(DebugComponent())
             //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
