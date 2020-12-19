@@ -39,7 +39,8 @@ class WanderState: RobotState {
             let rand = Int.random(in: 0...2)
             
             print("Call me wanderer... \(rand)")
-            stateMachine?.enter(DebugState.self)
+            //stateMachine?.enter(DebugState.self)
+            stateMachine?.enter(PhysicsState.self)
         }
     }
 
@@ -60,7 +61,7 @@ class WanderState: RobotState {
             elapsedTime = 0.0
             return false
             
-        case is FollowState.Type, is ReturnState.Type:
+        case is FollowState.Type, is ReturnState.Type, is PhysicsState.Type:
             return true
             
         case is DebugState.Type:
@@ -69,6 +70,16 @@ class WanderState: RobotState {
         default:
             return false
         }
+    }
+}
+
+class PhysicsState: RobotState {
+
+    override func didEnter(from previousState: GKState?) {
+        
+        super.didEnter(from: previousState)
+        
+        entity.spriteComponent?.node.physicsBody?.affectedByGravity = true
     }
 }
 
