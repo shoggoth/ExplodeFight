@@ -1,13 +1,9 @@
 # Explode Fight III
-exp/mechanics
+exp/rules
 
 ## Current Tasks
-- Experiment a bit with the state machines and rules to increase understanding of these concepts and their usefulness.
+- Add level rules that can be used to track progress and relational state.
 - Add rules for the distance of the agent to the agent it's following.
-- Create a state machine that switches state with distance from the agent it's following.
-- Switch behaviours depending on the state machine.
-- If the Agent has its position set to somewhere outside the playfield then kill it and remove the sprite node.
-- Find out why a new spawn is affecting nodes that have already spawned.
 
 ### DONE
 
