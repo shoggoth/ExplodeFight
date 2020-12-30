@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- Rules and state machine experiments on branch __exp/rules__.
 - Rules and state machine experiments on branch __exp/mechanics__.
 
 ### DONE
