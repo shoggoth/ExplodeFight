@@ -8,5 +8,74 @@
 
 import GameplayKit
 
-public class RulesComponent: GKComponent {
+class RulesComponent: GKComponent {
+    
+    var ruleSystem: GKRuleSystem = GKRuleSystem()
+    var ruleSystemUpdateInterval: TimeInterval = 1.0
+    
+    private var timeSinceLastRuleSystemUpdate: TimeInterval = 0.0
+    private var updateCount = 0
+    
+    override class var supportsSecureCoding: Bool { return true }
+    
+    override func update(deltaTime seconds: TimeInterval) {
+        
+        timeSinceLastRuleSystemUpdate += seconds
+        if timeSinceLastRuleSystemUpdate < ruleSystemUpdateInterval { return }
+        timeSinceLastRuleSystemUpdate -= ruleSystemUpdateInterval
+        
+        updateCount += 1
+        
+        print("drift: \(timeSinceLastRuleSystemUpdate)")
+        
+        ruleSystem.reset()
+        ruleSystem.state["updateCount"] = updateCount
+        ruleSystem.evaluate()
+        
+        print("State \(ruleSystem.state)")
+        print("Facts \(ruleSystem.facts)")
+    }
+}
+
+class FuzzyUpdateRule: GKRule {
+    
+    let fact: String
+    var count: Int!
+    
+    // MARK: Initializers
+    
+    init(fact: String) {
+        
+        self.fact = fact
+        
+        super.init()
+        
+        // Set the salience so that 'fuzzy' rules will evaluate first.
+        salience = Int.max
+    }
+    
+    func grade() -> Float { return 0.0 }
+    
+    // MARK: GPRule Overrides
+    
+    override func evaluatePredicate(in system: GKRuleSystem) -> Bool {
+        
+        count = system.state["updateCount"] as? Int
+        
+        return grade() >= 0.0;
+    }
+}
+
+class UpdateCountLowRule: FuzzyUpdateRule {
+    
+    // MARK: Initializers
+    
+    init() { super.init(fact: "updateCountLow") }
+    
+    // MARK: Properties
+    
+    override func grade() -> Float {
+        
+        return Float(count) * 0.1
+    }
 }
