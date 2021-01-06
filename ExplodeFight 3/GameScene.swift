@@ -29,8 +29,8 @@ class GameScene: BaseSKScene {
         // Set up rules
         if let ruleSystem = self.entity?.component(ofType: RulesComponent.self)?.ruleSystem {
         
-            ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue < 10"), assertingFact: "updateCountIsLow" as NSObject, grade: 0.2))
-            ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue == 7"), retractingFact: "updateCountIsLow" as NSObject, grade: 1.0))
+            ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue < 10"), assertingFact: "updateCountIsLow" as NSObject, grade: 0.7))
+            ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue == 7"), retractingFact: "updateCountIsLow" as NSObject, grade: 0.3))
             print("Setting up rules component \(ruleSystem.state)")
         }
     }

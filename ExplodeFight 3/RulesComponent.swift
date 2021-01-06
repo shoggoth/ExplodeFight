@@ -26,14 +26,17 @@ class RulesComponent: GKComponent {
         
         updateCount += 1
         
-        print("drift: \(timeSinceLastRuleSystemUpdate)")
+        //print("drift: \(timeSinceLastRuleSystemUpdate)")
         
         ruleSystem.reset()
         ruleSystem.state["updateCount"] = updateCount
         ruleSystem.evaluate()
         
-        print("State \(ruleSystem.state)")
-        print("Facts \(ruleSystem.facts)")
+        if ruleSystem.grade(forFact: "updateCountIsLow" as NSObject) > 0.5 {
+            
+            print("State \(ruleSystem.state)")
+            print("Facts \(ruleSystem.facts) \(ruleSystem.grade(forFact: "updateCountIsLow" as NSObject))")
+        }
     }
 }
 
