@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- Shotting experiments on branch __exp/shoot__.
 - Rules and state machine experiments on branch __exp/rules__.
 - Rules and state machine experiments on branch __exp/mechanics__.
 
