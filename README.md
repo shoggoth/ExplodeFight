@@ -1,45 +1,20 @@
 # Explode Fight III
-master
+exp/shoot
 
 ## Current Tasks
-- Shotting experiments on branch __exp/shoot__.
-- Rules and state machine experiments on branch __exp/rules__.
-- Rules and state machine experiments on branch __exp/mechanics__.
+- Decide which of the 3 methods I have thought of already are worth investigating and if there are others that I haven't thought of.
+
+### SKAction driven
+- I think this might be the most efficient.
+- Can collision be detected and the node be removed after the collision but before the end of the action?
+
+### Physics driven
+- Might this be less efficient?
+- Could this be saved for missile projectiles?
+
+### SKAction driven
+- Somewhat more complex possibly?
+- Has the advantage that it will allow in flight changes to the missile trajectory
+- Might be useful for 'smart' weaponry.
 
 ### DONE
-- Spawn experiments on branch __exp/spawner__.
-- Button experiments on branch __exp/buttons__.
-- Shader and explosion experiments on __exp/shaders__.
-- Touch joystick experiments on __exp/joystick__.
-- Device screen size independance. Placing of components such as HUD bits with expanded playfield on larger devices.
-- User defaults and static configuration along with templates as a reminder.
-- See what other things I had working in Royal Flush and move them into here should they be useful.
-- Get the robot animation back in and remind myself of how animations and sprites are loaded from sks files.
-- Make the viewcontroller load an SKScene rather than a GKScene to avoid the problems with the sprite editor.
-- Look at making SceneManager functions an extension, perhaps on SKView.
-- Move the spawner and the other functions to the framework from RF.
-- Explosion shaders inception.
-
-## Next Tasks
-- Start adding mob experiments on the mob/ branches.
-- Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
-
-### Notes
-- Where are EFI and EFII? Never made it lads.
-
-### Resources
-https://code.bitbebop.com/spritekit-game-aspect-ratio-resolution/ - Device screen size independance example.
-https://kenney.nl - Free game assets  
-https://developer.apple.com/library/archive/documentation/General/Conceptual/GameplayKit_Guide/StateMachine.html - State machine info  
-
-### Story
-Robotron & crystal quest crossover with retro influences and references to some of the older games on the commodore and the SNES.
-
-### Monster Animals
-- Shoggoth - eyes fall off on damage and can be picked up. Rather like the dumpfers in cq.
-
-### Level names
-- The Mountains of madness - shoggoth level
-
-### Achievements
-- Tekeli-li - collect 5 shoggoth eyes in a level.
