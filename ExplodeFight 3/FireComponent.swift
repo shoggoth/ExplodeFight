@@ -9,32 +9,60 @@
 import GameplayKit
 import SpriteKitAddons
 
+protocol Ticking {
+    
+    func tick(deltaTime seconds: TimeInterval, tickFunction: (() -> Void)) -> Self
+}
+
+struct Accumulator: Ticking {
+
+    let tickInterval: TimeInterval
+    var timeSinceLastTick: TimeInterval = 0.0
+
+    func tick(deltaTime seconds: TimeInterval, tickFunction: (() -> Void)) -> Accumulator {
+        
+        let time = timeSinceLastTick + seconds
+        
+        if time > tickInterval {
+            
+            tickFunction()
+            
+            return Accumulator(tickInterval: tickInterval, timeSinceLastTick: time - tickInterval)
+        }
+        
+        return Accumulator(tickInterval: tickInterval, timeSinceLastTick: timeSinceLastTick + seconds)
+    }
+}
+
 class FireComponent: GKComponent {
     
-    override class var supportsSecureCoding: Bool { return true }
+    private var fireTicker = Accumulator(tickInterval: 0.5)
     
-    //private let bulletNode = SKShapeNode.init(rectOf: CGSize.init(width: 10, height: 10), cornerRadius: 3)
     private var bulletNode : SKShapeNode?
-
     
     override func update(deltaTime seconds: TimeInterval) {
         
-        print("Thinking about firing... c = \(entity?.spriteComponent?.node)")
+        fireTicker = fireTicker.tick(deltaTime: seconds) { fire() }
     }
     
     func fire() {
         
-        /*if let bulletNode = self.bulletNode {
+        let vec: CGVector = CGPoint.zero + CGPoint.zero
+        if self.bulletNode == nil {
             
+            let bulletNode = SKShapeNode.init(rectOf: CGSize.init(width: 10, height: 10), cornerRadius: 3)
+
             bulletNode.lineWidth = 2.5
             
             bulletNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
             bulletNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5), SKAction.fadeOut(withDuration: 0.5), SKAction.removeFromParent()]))
-        }*/
+            
+            self.bulletNode = bulletNode
+        }
         
         if let n = self.bulletNode?.copy() as? SKShapeNode, var p = entity?.spriteComponent?.node.position {
             
-            p.normalize().multiply(scalar: 30)
+            //p.normalize().multiply(scalar: 30)
 
             n.position = CGPoint(x:  p.x, y: p.y)
             n.strokeColor = SKColor.blue
@@ -43,7 +71,7 @@ class FireComponent: GKComponent {
                 let body = SKPhysicsBody(circleOfRadius: 5)
                 
                 body.affectedByGravity = false
-                body.velocity = v.multiply(scalar: 10)
+                //body.velocity = v.multiply(scalar: 10)
                 
                 return body
             }()
@@ -51,6 +79,8 @@ class FireComponent: GKComponent {
             entity?.spriteComponent?.node.addChild(n)
         }
     }
+    
+    override class var supportsSecureCoding: Bool { return true }
 }
 
 // MARK: - Move this somewhere else
@@ -58,7 +88,7 @@ class FireComponent: GKComponent {
 //import CoreGraphics
 //import SpriteKit
 
-public extension CGPoint {
+extension CGPoint {
   /**
    * Creates a new CGPoint given a CGVector.
    */
@@ -135,6 +165,10 @@ public extension CGPoint {
  */
 public func + (left: CGPoint, right: CGPoint) -> CGPoint {
   return CGPoint(x: left.x + right.x, y: left.y + right.y)
+}
+
+public func + (left: CGPoint, right: CGPoint) -> CGVector {
+    return CGVector(dx: left.x + right.x, dy: left.y + right.y)
 }
 
 /**
