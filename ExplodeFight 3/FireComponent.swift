@@ -36,7 +36,7 @@ struct Accumulator: Ticking {
 
 class FireComponent: GKComponent {
     
-    private var fireTicker = Accumulator(tickInterval: 0.5)
+    private var fireTicker = Accumulator(tickInterval: 0.25)
     
     private var bulletNode : SKShapeNode?
     
@@ -47,7 +47,6 @@ class FireComponent: GKComponent {
     
     func fire() {
         
-        let vec: CGVector = CGPoint.zero + CGPoint.zero
         if self.bulletNode == nil {
             
             let bulletNode = SKShapeNode.init(rectOf: CGSize.init(width: 10, height: 10), cornerRadius: 3)
@@ -60,30 +59,30 @@ class FireComponent: GKComponent {
             self.bulletNode = bulletNode
         }
         
-        if let n = self.bulletNode?.copy() as? SKShapeNode, var p = entity?.spriteComponent?.node.position {
+        if let bullet = self.bulletNode?.copy() as? SKShapeNode, let node = entity?.spriteComponent?.node {
             
-            //p.normalize().multiply(scalar: 30)
+            let v = CGVector(angle: CGFloat(Double.pi * 0.5)).normalized() * 32
 
-            n.position = CGPoint(x:  p.x, y: p.y)
-            n.strokeColor = SKColor.blue
-            n.physicsBody = {
+            bullet.position = node.position + v
+            bullet.strokeColor = SKColor.blue
+            bullet.physicsBody = {
                 
                 let body = SKPhysicsBody(circleOfRadius: 5)
                 
-                body.affectedByGravity = false
-                //body.velocity = v.multiply(scalar: 10)
+                body.affectedByGravity = true
+                body.velocity = v * 25
                 
                 return body
             }()
 
-            entity?.spriteComponent?.node.addChild(n)
+            node.addChild(bullet)
         }
     }
     
     override class var supportsSecureCoding: Bool { return true }
 }
 
-// MARK: - Move this somewhere else
+/* MARK: - Move this somewhere else
 
 //import CoreGraphics
 //import SpriteKit
@@ -312,4 +311,4 @@ public func /= (left: inout CGPoint, right: CGVector) {
 public func lerp(start: CGPoint, end: CGPoint, t: CGFloat) -> CGPoint {
   return start + (end - start) * t
 }
-
+*/
