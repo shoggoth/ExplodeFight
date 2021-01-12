@@ -11,46 +11,28 @@ import SpriteKitAddons
 
 class FireComponent: GKComponent {
     
-    private var fireTicker = PeriodicTimer(tickInterval: 0.25)
-    private var bulletNode : SKShapeNode?
+    private var fireTicker = PeriodicTimer(tickInterval: 0.3)
+    private var weapon : Weapon?
+    
+    override func didAddToEntity() {
+        
+        let bullet = SKShapeNode.init(rectOf: CGSize.init(width: 10, height: 10), cornerRadius: 3)
+        
+        bullet.lineWidth = 2.5
+        bullet.strokeColor = SKColor.blue
+        
+        bullet.run(SKAction.repeatForever(SKAction.rotate(byAngle: pi, duration: 1)))
+        bullet.run(SKAction.sequence([SKAction.wait(forDuration: 0.5), SKAction.fadeOut(withDuration: 0.5), SKAction.removeFromParent()]))
+        bullet.run(SKAction.playSoundFileNamed("blast.caf", waitForCompletion: false))
+        
+        weapon = PhysicsWeapon(bullet: bullet)
+    }
     
     override func update(deltaTime seconds: TimeInterval) {
         
-        fireTicker = fireTicker.tick(deltaTime: seconds) { fire() }
-    }
-    
-    func fire() {
+        guard let sourceNode = entity?.spriteComponent?.node else { return }
         
-        if self.bulletNode == nil {
-            
-            let bullet = SKShapeNode.init(rectOf: CGSize.init(width: 10, height: 10), cornerRadius: 3)
-
-            bullet.lineWidth = 2.5
-            bullet.strokeColor = SKColor.blue
-
-            bullet.run(SKAction.repeatForever(SKAction.rotate(byAngle: pi, duration: 1)))
-            bullet.run(SKAction.sequence([SKAction.wait(forDuration: 0.5), SKAction.fadeOut(withDuration: 0.5), SKAction.removeFromParent()]))
-            
-            self.bulletNode = bullet
-        }
-        
-        if let bullet = self.bulletNode?.copy() as? SKShapeNode, let node = entity?.spriteComponent?.node {
-            
-            let v = CGVector(angle: halfPi) * 32
-
-            bullet.position = node.position + v
-            bullet.physicsBody = {
-                
-                let body = SKPhysicsBody(circleOfRadius: 5)
-                
-                body.affectedByGravity = true
-                body.velocity = v * 25
-                
-                return body
-            }()
-
-            node.addChild(bullet)
-        }
+        fireTicker = fireTicker.tick(deltaTime: seconds) { weapon?.fire(from: sourceNode) }
     }
     
     override class var supportsSecureCoding: Bool { return true }

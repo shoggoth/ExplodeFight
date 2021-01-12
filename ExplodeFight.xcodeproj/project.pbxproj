@@ -16,6 +16,8 @@
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
 		FF88FAC025A87E0C00B09BD8 /* Sprites.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF88FABF25A87E0C00B09BD8 /* Sprites.xcassets */; };
 		FF88FAC225A8AE5D00B09BD8 /* FireComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FAC125A8AE5D00B09BD8 /* FireComponent.swift */; };
+		FF88FB4225ADBE8000B09BD8 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB4125ADBE8000B09BD8 /* Weapon.swift */; };
+		FF88FB4925ADD48700B09BD8 /* blast.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF88FB4825ADD48700B09BD8 /* blast.caf */; };
 		FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF95A51D25792F9B00954B50 /* SplashScene.sks */; };
 		FF95A5202579303800954B50 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95A51F2579303800954B50 /* SplashScene.swift */; };
 		FFC222A8256EB9D400CFA23F /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; };
@@ -52,6 +54,8 @@
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF88FABF25A87E0C00B09BD8 /* Sprites.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sprites.xcassets; sourceTree = "<group>"; };
 		FF88FAC125A8AE5D00B09BD8 /* FireComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireComponent.swift; sourceTree = "<group>"; };
+		FF88FB4125ADBE8000B09BD8 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		FF88FB4825ADD48700B09BD8 /* blast.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blast.caf; sourceTree = "<group>"; };
 		FF95A51D25792F9B00954B50 /* SplashScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SplashScene.sks; sourceTree = "<group>"; };
 		FF95A51F2579303800954B50 /* SplashScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
 		FFC222A7256EB9D400CFA23F /* GameControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,15 +83,25 @@
 			children = (
 				FF080696256BD29700F2EBA7 /* GameScene.swift */,
 				FF88FAC125A8AE5D00B09BD8 /* FireComponent.swift */,
+				FF88FB4125ADBE8000B09BD8 /* Weapon.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
 				FF95A51F2579303800954B50 /* SplashScene.swift */,
 				FF95A51D25792F9B00954B50 /* SplashScene.sks */,
 				FF080694256BD29700F2EBA7 /* Actions.sks */,
 				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
 				FF88FABF25A87E0C00B09BD8 /* Sprites.xcassets */,
+				FF88FB4725ADD45700B09BD8 /* Sound */,
 				FFC222D8256FC71800CFA23F /* iOS */,
 			);
 			path = "ExplodeFight 3";
+			sourceTree = "<group>";
+		};
+		FF88FB4725ADD45700B09BD8 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				FF88FB4825ADD48700B09BD8 /* blast.caf */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 		FF9364BF2384017300E4B867 = {
@@ -196,6 +210,7 @@
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,
 				FF080695256BD29700F2EBA7 /* Actions.sks in Resources */,
+				FF88FB4925ADD48700B09BD8 /* blast.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +226,7 @@
 				FF88FAC225A8AE5D00B09BD8 /* FireComponent.swift in Sources */,
 				FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
+				FF88FB4225ADBE8000B09BD8 /* Weapon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
