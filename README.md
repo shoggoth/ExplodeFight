@@ -12,7 +12,7 @@ exp/shoot
 - Might this be less efficient?
 - Could this be saved for missile projectiles?
 
-### SKAction driven
+### GKAgent driven
 - Somewhat more complex possibly?
 - Has the advantage that it will allow in flight changes to the missile trajectory
 - Might be useful for 'smart' weaponry.
