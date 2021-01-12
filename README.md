@@ -2,6 +2,8 @@
 master
 
 ## Current Tasks
+- Create a countdown single shot timer and use it for the splash transition.
+- Abstract out a base class for the scenes involved in the attract phase, allow them to rotate with timing or select or start the game from any displayed phase quickly.
 - Shotting experiments on branch __exp/shoot__.
 - Rules and state machine experiments on branch __exp/rules__.
 - Rules and state machine experiments on branch __exp/mechanics__.
