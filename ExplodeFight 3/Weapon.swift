@@ -11,12 +11,16 @@ import SpriteKitAddons
 
 protocol Weapon {
     
+    var name: String { get }
     func fire(from node: SKNode)
 }
 
 class PhysicsWeapon: Weapon {
     
-    private var bulletNode : SKNode
+    let name = "Physics Weapon"
+    
+    private var bulletNode: SKNode
+    private var recycle: [SKNode] = []
 
     init(bullet: SKNode) {
         
@@ -24,22 +28,24 @@ class PhysicsWeapon: Weapon {
     }
     
     func fire(from node: SKNode) {
-        
-        if let bullet = self.bulletNode.copy() as? SKNode {
+ 
+        if let bullet = recycle.popLast() ?? self.bulletNode.copy() as? SKNode {
             
             let v = CGVector(angle: halfPi) * 32
+            
+            bullet.run(SKAction.playSoundFileNamed("blast.caf", waitForCompletion: false))
+            bullet.run(SKAction.repeatForever(SKAction.rotate(byAngle: pi, duration: 1)))
+            bullet.run(SKAction.sequence([SKAction.wait(forDuration: 0.75), SKAction.fadeOut(withDuration: 0.25), SKAction.removeFromParent(), SKAction.run {
+                
+                bullet.removeAllActions()
+                bullet.alpha = 1
 
+                self.recycle.append(bullet)
+            }]))
+            
             bullet.position = node.position + v
-            bullet.physicsBody = {
-                
-                let body = SKPhysicsBody(circleOfRadius: 5)
-                
-                body.affectedByGravity = true
-                body.velocity = v * 25
-                
-                return body
-            }()
-
+            bullet.physicsBody?.velocity = v * 30
+            
             node.addChild(bullet)
         }
     }
