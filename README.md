@@ -4,11 +4,10 @@ master
 ## Current Tasks
 - Create a countdown single shot timer and use it for the splash transition.
 - Make placeholder sprites for the player and an enemy.
-- Move configuration components from splash scene to somewhere more appropriate.
 - Abstract out a base class for the scenes involved in the attract phase, allow them to rotate with timing or select or start the game from any displayed phase quickly.
-- Sprite atlas performance experiments (branch off from the old one that has many robots) on branch __exp/shoot__.
 
 ### DONE
+- Sprite atlas performance experiments (branch off from the old one that has many robots) on branch __exp/shoot__.
 - Shotting experiments on branch __exp/shoot__.
 - Rules and state machine experiments on branch __exp/rules__.
 - Rules and state machine experiments on branch __exp/mechanics__.
@@ -16,6 +15,7 @@ master
 - Button experiments on branch __exp/buttons__.
 - Shader and explosion experiments on __exp/shaders__.
 - Touch joystick experiments on __exp/joystick__.
+- Move configuration components from splash scene to somewhere more appropriate.
 - Device screen size independance. Placing of components such as HUD bits with expanded playfield on larger devices.
 - User defaults and static configuration along with templates as a reminder.
 - See what other things I had working in Royal Flush and move them into here should they be useful.
