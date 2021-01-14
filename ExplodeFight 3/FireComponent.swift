@@ -11,14 +11,21 @@ import SpriteKitAddons
 
 class FireComponent: GKComponent {
     
+    @GKInspectable var bulletType = 1
+    
     private var fireTicker = PeriodicTimer(tickInterval: 0.3)
     private let weapon = PhysicsWeapon(bullet: DebugBullet())
     
+    override func didAddToEntity() {
+        
+    }
+    
     override func update(deltaTime seconds: TimeInterval) {
         
+        guard bulletType > 0 else { return }
         guard let sourceNode = entity?.spriteComponent?.node else { return }
         
-        fireTicker = fireTicker.tick(deltaTime: seconds) { weapon.fire(from: sourceNode) }
+        fireTicker = fireTicker.tick(deltaTime: seconds) { weapon.fire(from: sourceNode, type: bulletType) }
     }
     
     override class var supportsSecureCoding: Bool { return true }
