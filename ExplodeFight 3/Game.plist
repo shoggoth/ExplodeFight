@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>infoString</key>
-	<string>This is some info about the game...</string>
+	<key>initialSceneName</key>
+	<string>AttractScene</string>
 </dict>
 </plist>

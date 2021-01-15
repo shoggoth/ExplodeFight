@@ -10,8 +10,6 @@ import UIKit
 
 @main class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    static let config = Configuration.parse(fromPList: "Game")
-
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

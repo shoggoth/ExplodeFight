@@ -2,16 +2,15 @@
 master
 
 ## Current Tasks
-- Create a countdown single shot timer and use it for the splash transition.
-- Make placeholder sprites for the player and an enemy.
 - Abstract out a base class for the scenes involved in the attract phase, allow them to rotate with timing or select or start the game from any displayed phase quickly.
+- Make placeholder sprites for the player and an enemy.
 
 ### DONE
-- Sprite atlas performance experiments (branch off from the old one that has many robots) on branch __exp/shoot__.
 - Shotting experiments on branch __exp/shoot__.
 - Rules and state machine experiments on branch __exp/rules__.
 - Rules and state machine experiments on branch __exp/mechanics__.
 - Spawn experiments on branch __exp/spawner__.
+- Sprite atlas performance experiments (branch off from the old one that has many robots) on branch __exp/spawner__.
 - Button experiments on branch __exp/buttons__.
 - Shader and explosion experiments on __exp/shaders__.
 - Touch joystick experiments on __exp/joystick__.
@@ -42,6 +41,7 @@ Robotron & crystal quest crossover with retro influences and references to some 
 
 ### Monster Animals
 - Shoggoth - eyes fall off on damage and can be picked up. Rather like the dumpfers in cq.
+- Zapstar - a tribute to Minter
 
 ### Level names
 - The Mountains of madness - shoggoth level
