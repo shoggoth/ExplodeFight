@@ -14,6 +14,7 @@
 		FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF080698256BD29700F2EBA7 /* GameViewController.swift */; };
 		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
+		FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF49711325B5E1DE0083C36B /* AttractModes.sks */; };
 		FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB4C25B08F1900B09BD8 /* Configuration.swift */; };
 		FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF88FB4E25B0943E00B09BD8 /* Game.plist */; };
 		FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */; };
@@ -52,6 +53,7 @@
 		FF08069B256BD29700F2EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF49711325B5E1DE0083C36B /* AttractModes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttractModes.sks; sourceTree = "<group>"; };
 		FF88FB4C25B08F1900B09BD8 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		FF88FB4E25B0943E00B09BD8 /* Game.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Game.plist; sourceTree = "<group>"; };
 		FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractScene.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				FF95A51D25792F9B00954B50 /* SplashScene.sks */,
 				FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */,
 				FF88FB5225B1F38300B09BD8 /* AttractScene.sks */,
+				FF49711325B5E1DE0083C36B /* AttractModes.sks */,
 				FF080694256BD29700F2EBA7 /* Actions.sks */,
 				FF88FB4C25B08F1900B09BD8 /* Configuration.swift */,
 				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
@@ -195,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */,
 				FF88FB5325B1F38300B09BD8 /* AttractScene.sks in Resources */,
 				FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */,
 				FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */,
