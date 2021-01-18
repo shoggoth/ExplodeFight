@@ -19,7 +19,7 @@ class SplashScene : BaseSKScene {
         let transition = SKTransition.crossFade(withDuration: Defaults.splashTiming.crossFadeDuration)
         transition.pausesIncomingScene = false
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + timeUntilNextPhase) { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName, transition: transition) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + timeUntilNextPhase) { view.load(sceneWithFileName: GameViewController.config.initialSceneName, transition: transition) }
     }
     
     override func update(delta: TimeInterval) {
