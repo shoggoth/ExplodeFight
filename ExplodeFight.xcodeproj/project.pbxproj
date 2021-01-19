@@ -15,6 +15,8 @@
 		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
 		FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF49711325B5E1DE0083C36B /* AttractModes.sks */; };
+		FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */; };
+		FF49713725B72FB30083C36B /* MobComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49713625B72FB30083C36B /* MobComponent.swift */; };
 		FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB4C25B08F1900B09BD8 /* Configuration.swift */; };
 		FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF88FB4E25B0943E00B09BD8 /* Game.plist */; };
 		FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */; };
@@ -44,7 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FF08068E256BD29700F2EBA7 /* ExplodeFight 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ExplodeFight 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF08068E256BD29700F2EBA7 /* EF3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EF3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF080690256BD29700F2EBA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF080692256BD29700F2EBA7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		FF080694256BD29700F2EBA7 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -54,6 +56,8 @@
 		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF49711325B5E1DE0083C36B /* AttractModes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttractModes.sks; sourceTree = "<group>"; };
+		FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlComponent.swift; sourceTree = "<group>"; };
+		FF49713625B72FB30083C36B /* MobComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobComponent.swift; sourceTree = "<group>"; };
 		FF88FB4C25B08F1900B09BD8 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		FF88FB4E25B0943E00B09BD8 /* Game.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Game.plist; sourceTree = "<group>"; };
 		FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractScene.swift; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 			children = (
 				FF080696256BD29700F2EBA7 /* GameScene.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
+				FF49712B25B72CA70083C36B /* Components */,
 				FF95A51F2579303800954B50 /* SplashScene.swift */,
 				FF95A51D25792F9B00954B50 /* SplashScene.sks */,
 				FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */,
@@ -96,6 +101,15 @@
 				FFC222D8256FC71800CFA23F /* iOS */,
 			);
 			path = "ExplodeFight 3";
+			sourceTree = "<group>";
+		};
+		FF49712B25B72CA70083C36B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */,
+				FF49713625B72FB30083C36B /* MobComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		FF9364BF2384017300E4B867 = {
@@ -112,7 +126,7 @@
 		FF9364C92384017300E4B867 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF08068E256BD29700F2EBA7 /* ExplodeFight 3.app */,
+				FF08068E256BD29700F2EBA7 /* EF3.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,9 +156,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF08068D256BD29700F2EBA7 /* ExplodeFight 3 */ = {
+		FF08068D256BD29700F2EBA7 /* EF3 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF0806B6256BD29800F2EBA7 /* Build configuration list for PBXNativeTarget "ExplodeFight 3" */;
+			buildConfigurationList = FF0806B6256BD29800F2EBA7 /* Build configuration list for PBXNativeTarget "EF3" */;
 			buildPhases = (
 				FF08068A256BD29700F2EBA7 /* Sources */,
 				FF08068B256BD29700F2EBA7 /* Frameworks */,
@@ -155,9 +169,9 @@
 			);
 			dependencies = (
 			);
-			name = "ExplodeFight 3";
+			name = EF3;
 			productName = "ExplodeFight 3";
-			productReference = FF08068E256BD29700F2EBA7 /* ExplodeFight 3.app */;
+			productReference = FF08068E256BD29700F2EBA7 /* EF3.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -188,7 +202,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF08068D256BD29700F2EBA7 /* ExplodeFight 3 */,
+				FF08068D256BD29700F2EBA7 /* EF3 */,
 			);
 		};
 /* End PBXProject section */
@@ -221,7 +235,9 @@
 				FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */,
 				FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */,
 				FF95A5202579303800954B50 /* SplashScene.swift in Sources */,
+				FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */,
 				FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */,
+				FF49713725B72FB30083C36B /* MobComponent.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +425,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF0806B6256BD29800F2EBA7 /* Build configuration list for PBXNativeTarget "ExplodeFight 3" */ = {
+		FF0806B6256BD29800F2EBA7 /* Build configuration list for PBXNativeTarget "EF3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF0806B7256BD29800F2EBA7 /* Debug */,

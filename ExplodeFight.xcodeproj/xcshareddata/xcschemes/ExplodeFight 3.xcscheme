@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF08068D256BD29700F2EBA7"
-               BuildableName = "ExplodeFight 3.app"
-               BlueprintName = "ExplodeFight 3"
+               BuildableName = "EF3.app"
+               BlueprintName = "EF3"
                ReferencedContainer = "container:ExplodeFight.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -65,8 +65,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF08068D256BD29700F2EBA7"
-            BuildableName = "ExplodeFight 3.app"
-            BlueprintName = "ExplodeFight 3"
+            BuildableName = "EF3.app"
+            BlueprintName = "EF3"
             ReferencedContainer = "container:ExplodeFight.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -82,8 +82,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF08068D256BD29700F2EBA7"
-            BuildableName = "ExplodeFight 3.app"
-            BlueprintName = "ExplodeFight 3"
+            BuildableName = "EF3.app"
+            BlueprintName = "EF3"
             ReferencedContainer = "container:ExplodeFight.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

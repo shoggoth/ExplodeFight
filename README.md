@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- Make a user-controlled entity and a mob entity.
 - Make placeholder sprites for the player and an enemy.
 
 ### DONE

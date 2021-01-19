@@ -8,10 +8,13 @@
 
 import SpriteKit
 import SpriteKitAddons
+import GameControls
 
 class GameScene: BaseSKScene {
     
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
+    
+    private let touchJoystick = TouchJoystick()
     
     override func update(delta: TimeInterval) {
         
