@@ -52,7 +52,6 @@ class GameViewController: UIViewController {
     @objc func updateActiveStatus(withNotification notification: NSNotification) {
         
         (self.view as? SKView)?.scene?.isPaused = notification.name == UIApplication.didEnterBackgroundNotification
-        print("TODO: Handle these with pausing in the current scene = \(notification)")
     }
     
     // MARK: Overrides
