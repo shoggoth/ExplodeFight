@@ -34,6 +34,7 @@ class GameViewController: UIViewController {
         #if DEBUG
         view.showsFPS = true
         view.showsNodeCount = true
+        view.showsDrawCount = true
         
         view.load(sceneWithFileName: Self.config.initialSceneName)
         #else
@@ -50,6 +51,7 @@ class GameViewController: UIViewController {
     
     @objc func updateActiveStatus(withNotification notification: NSNotification) {
         
+        (self.view as? SKView)?.scene?.isPaused = notification.name == UIApplication.didEnterBackgroundNotification
         print("TODO: Handle these with pausing in the current scene = \(notification)")
     }
     

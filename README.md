@@ -2,7 +2,6 @@
 master
 
 ## Current Tasks
-- Abstract out a base class for the scenes involved in the attract phase, allow them to rotate with timing or select or start the game from any displayed phase quickly.
 - Make placeholder sprites for the player and an enemy.
 
 ### DONE
@@ -14,6 +13,8 @@ master
 - Button experiments on branch __exp/buttons__.
 - Shader and explosion experiments on __exp/shaders__.
 - Touch joystick experiments on __exp/joystick__.
+- Abstract out a base class for the scenes involved in the attract phase, allow them to rotate with timing or select or start the game from any displayed phase quickly.
+- Extend SKScene to clone a node with a specified name and then remove it from its parent.
 - Move configuration components from splash scene to somewhere more appropriate.
 - Device screen size independance. Placing of components such as HUD bits with expanded playfield on larger devices.
 - User defaults and static configuration along with templates as a reminder.

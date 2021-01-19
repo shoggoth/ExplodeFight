@@ -10,10 +10,12 @@ import SpriteKit
 import SpriteKitAddons
 import GameplayKit
 
-class AttractScene : BaseSKScene {
+class AttractScene: BaseSKScene {
     
-    var stateMachine = GKStateMachine(states: [ShowEnemies(), ShowHiScores()])
+    lazy var modeScene : SKScene? = { SKScene(fileNamed: "AttractModes") }()
     
+    private var stateMachine: GKStateMachine!
+
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
@@ -28,7 +30,14 @@ class AttractScene : BaseSKScene {
         // Set up scene physics
         //self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         
-        stateMachine.enter(ShowEnemies.self)
+        let findSourceNode = { name in self.modeScene?.orphanedChildNode(withName: name) }
+        
+        stateMachine = GKStateMachine(states: [
+            ShowEnemies(sourceNode: findSourceNode("EnemiesRoot")!, destinationNode: self),
+            ShowHiScores(sourceNode: findSourceNode("HiScoreRoot")!, destinationNode: self),
+            ShowPlayDemo(sourceNode: findSourceNode("//PlayDemoRoot")!, destinationNode: self)
+        ])
+        stateMachine.enter(ShowHiScores.self)
     }
     
     @objc func start(_ tap: UITapGestureRecognizer) {
@@ -49,38 +58,59 @@ class AttractScene : BaseSKScene {
 
 // MARK: - State Machine States
 
-private class ShowEnemies: GKState {
+private class ShowEnemies: AttractState {
     
     override func didEnter(from previousState: GKState?) {
         
-        print("gonna show enemies tbh lad")
-    }
-    
-    override func update(deltaTime seconds: TimeInterval) {
+        super.didEnter(from: previousState)
         
-        
-    }
-    
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        
-        return true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { self.stateMachine?.enter(ShowHiScores.self) }
     }
 }
 
-private class ShowHiScores: GKState {
+private class ShowHiScores: AttractState {
     
     override func didEnter(from previousState: GKState?) {
         
-        print("gonna show some of the high scores tbh lad")
+        super.didEnter(from: previousState)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { self.stateMachine?.enter(ShowPlayDemo.self) }
+    }
+}
+
+private class ShowPlayDemo: AttractState {
+    
+    override func didEnter(from previousState: GKState?) {
+        
+        super.didEnter(from: previousState)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { self.stateMachine?.enter(ShowEnemies.self) }
+    }
+}
+
+// MARK: -
+
+private class AttractState: GKState {
+
+    let src: SKNode
+    let dst: SKNode
+
+    init(sourceNode: SKNode, destinationNode: SKNode) {
+        
+        self.src = sourceNode
+        self.dst = destinationNode
+        
+        super.init()
     }
     
-    override func update(deltaTime seconds: TimeInterval) {
+    override func didEnter(from previousState: GKState?) {
         
-        print("updating")
+        dst.addChild(src)
+        src.isPaused = false
     }
-
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+    
+    override func willExit(to nextState: GKState) {
         
-        return true
+        src.removeFromParent()
     }
 }
