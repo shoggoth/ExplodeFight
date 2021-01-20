@@ -27,9 +27,12 @@ struct Defaults {
     // Hard coded
     static let splashTiming = (nextPhaseTime: 1.5, crossFadeDuration: 0.5)
     
+    // User defaults
+    @UserDefault("JoystickType", defaultValue: "standard") static var joystickType: String
+
     // Example - unused
     static let serverURL = { Bundle.main.object(forInfoDictionaryKey: "SERVER_URL") as! String }()
-    static let webAppEndpoint = { "\(serverURL)/app/unknown" }()
+    static let webAppEndpoint = { "\(serverURL)/app/EF3" }()
     
     // User defaults - unused
     @UserDefault("UserToken", defaultValue: "G4R9leqQP2wmE4jxWGDXnzDpPGUNXo") static var userToken: String
