@@ -11,6 +11,8 @@ import GameControls
 
 class PlayerControlComponent: GKComponent {
     
+    let playerControlAgent = GKAgent2D()
+    
     var joystick: TouchJoystick? { didSet {
         
         guard let joystick = joystick else { return }
