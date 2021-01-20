@@ -14,15 +14,32 @@ class GameScene: BaseSKScene {
     
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
-    let joystick = TouchJoystick()
+    private let joystick = TouchJoystick()
     
     override func didMove(to view: SKView) {
         
-        setupJoystick(joystick)
+        // Setup player entity
+        if let playerEntity = scene?.childNode(withName: "Player")?.entity {
+            
+            playerEntity.component(ofType: PlayerControlComponent.self)?.joystick = joystick
+        }
     }
     
     override func update(delta: TimeInterval) {
         
         super.update(delta: delta)
     }
+}
+
+// MARK: - Touch handling
+
+extension GameScene {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesBegan(touches, with: event) }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesMoved(touches, with: event) }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesEnded(touches, with: event) }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesCancelled(touches, with: event) }
 }
