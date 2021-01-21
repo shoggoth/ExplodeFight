@@ -2,7 +2,9 @@
 master
 
 ## Current Tasks
-- Make a user-controlled entity and a mob entity.
+- Make move, fire and possibly render components.
+- Make a user-controlled entity and a mob entity or do this using components so that the behaviour can be switched for a demo attract phase.
+- Think about how contact can be handled without subclassing an entity.
 - Make placeholder sprites for the player and an enemy.
 
 ### DONE
