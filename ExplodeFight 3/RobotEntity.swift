@@ -13,8 +13,6 @@ import GameplayKit
 class RobotEntity: GKEntity, GKAgentDelegate {
     
     var rotationSync: Bool = true
-
-    var agent: GKAgent2D? { component(ofType: GKAgent2D.self) }
     
     init(track: GKAgent2D? = nil) {
         
