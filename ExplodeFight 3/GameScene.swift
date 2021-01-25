@@ -31,12 +31,12 @@ class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
             { touch in
                 
                 moveWindowFunc.handleTouch(touch: touch)
-                moveIndicator.position = moveWindowFunc.windowVector
+                moveIndicator.position = CGPoint(vector: moveWindowFunc.windowVector)
             },
             { touch in
                 
                 fireWindowFunc.handleTouch(touch: touch)
-                fireIndicator.position = fireWindowFunc.windowVector
+                fireIndicator.position = CGPoint(vector: fireWindowFunc.windowVector)
             }
         ]
 
