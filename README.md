@@ -2,6 +2,7 @@
 exp/rules
 
 ## Current Tasks
+- Reset after recycle
 - Add level rules that can be used to track progress and relational state.
 - Add rules for the distance of the agent to the agent it's following.
 

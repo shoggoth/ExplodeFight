@@ -44,14 +44,14 @@ class GameScene: BaseSKScene {
     @objc func clear(_ tap: UITapGestureRecognizer) {
         
         trackEntity = nil
-        spawnNode?.kill()
+        spawnNode?.spawner?.kill()
     }
     
     override func update(delta: TimeInterval) {
         
         super.update(delta: delta)
         
-        spawnNode?.update(delta: delta)
+        spawnNode?.spawner?.update(delta: delta)
     }
 }
 
@@ -67,6 +67,7 @@ extension SpawnSKNode {
             
             let robotEntity = RobotEntity(track: trackEntity?.agent)
 
+            robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
             robotEntity.addComponent(AIComponent(states: [WanderState(entity: robotEntity), PhysicsState(entity: robotEntity), DebugState(name: "Burpleson")]))
 
             return robotEntity
@@ -79,7 +80,7 @@ extension SpawnSKNode {
 
         spawn(name: "RobotNoG") { robotNode in
             
-            //robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
+            robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
             
             //robotEntity.addComponent(DebugComponent())
             //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
