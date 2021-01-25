@@ -34,14 +34,14 @@ class GameScene: BaseSKScene {
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
         
-        spawnNode?.kill()
+        spawnNode?.spawner?.kill()
     }
     
     override func update(delta: TimeInterval) {
         
         super.update(delta: delta)
         
-        spawnNode?.update(delta: delta)
+        spawnNode?.spawner?.update(delta: delta)
     }
 }
 
