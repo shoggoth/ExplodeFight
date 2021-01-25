@@ -36,14 +36,14 @@ class GameScene: BaseSKScene {
     @objc func clear(_ tap: UITapGestureRecognizer) {
         
         trackEntity = nil
-        spawnNode?.kill()
+        spawnNode?.spawner?.kill()
     }
     
     override func update(delta: TimeInterval) {
         
         super.update(delta: delta)
         
-        spawnNode?.update(delta: delta)
+        spawnNode?.spawner?.update(delta: delta)
         trackEntity?.update(deltaTime: delta)
     }
 }
@@ -59,6 +59,8 @@ extension SpawnSKNode {
         spawn(name: "RobotNoG") { robotNode in
             
             let robotEntity = RobotEntity(track: trackEntity?.agent)
+
+            robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
 
             robotNode.position = CGPoint(x: (CGFloat(arc4random() % 100) - 50) * 0.0001, y: 0.0)
 
