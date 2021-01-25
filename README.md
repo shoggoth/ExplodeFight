@@ -2,6 +2,7 @@
 exp/entity
 
 ## Current Tasks
+- Reset after a recycle.
 
 ### DONE
 - Make the agent track another agent somewhere.
