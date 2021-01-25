@@ -47,37 +47,4 @@ class RobotEntity: GKEntity, GKAgentDelegate {
         
         syncSpriteToAgent()
     }
-    
-    // MARK: Sync
-    
-    func syncAgentToSprite() {
-        
-        guard let agent = agent, let node = spriteComponent?.node else { return }
-        
-        let spritePos = node.position
-        agent.position = SIMD2<Float>(x: Float(spritePos.x), y: Float(spritePos.y))
-        
-        // guard rotationSync else { return }
-        // agent.rotation = Float(node.zRotation)
-    }
-    
-    func syncSpriteToAgent() {
-        
-        guard let agent = agent, let node = spriteComponent?.node else { return }
-        
-        // Update position
-        let agentPos = agent.position
-        node.position = CGPoint(x: CGFloat(agentPos.x), y: CGFloat(agentPos.y))
-        
-        // Update rotation
-        guard rotationSync else { return }
-        
-        let rotation: Float
-        if agent.velocity.x > 0.0 || agent.velocity.y > 0.0 {
-            rotation = atan2(agent.velocity.y, agent.velocity.x)
-        } else { rotation = agent.rotation }
-        
-        // Ensure we have got a valid rotation.
-        if !rotation.isNaN { node.zRotation = CGFloat(rotation)}
-    }
 }
