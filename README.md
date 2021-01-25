@@ -2,6 +2,8 @@
 exp/spawner
 
 ## Current Tasks
+- Abstract the factory component from the spawn node so that it can be used independantly of the scene.
+- Add recycling to the spawner in the same manner as with the weapon.
 
 ### DONE
 - Use a texture atlas for the robot sprite and check the app package contents to make sure it looks sane.
