@@ -2,6 +2,7 @@
 exp/mechanics
 
 ## Current Tasks
+- Reset behaviour after recycle
 - If the Agent has its position set to somewhere outside the playfield then kill it and remove the sprite node.
 
 ### DONE
