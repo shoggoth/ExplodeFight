@@ -13,7 +13,7 @@ import GameControls
 
 class GameScene: BaseSKScene {
     
-    private lazy var spawnNode = { self.childNode(withName: "//Spawner_0") as? SpawnSKNode }()
+    private lazy var spawner = { Spawner(scene: SKScene(fileNamed: "Spawn")!) }()
 
     override func didMove(to view: SKView) {
         
@@ -29,46 +29,50 @@ class GameScene: BaseSKScene {
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
-        spawnNode?.spawnMultiRobots()
+        if let node = self.childNode(withName: ["Spawn_0", "Spawn_1", "Spawn_2", "Spawn_3"].randomElement()!) { spawner.spawnMultiRobots(on: node) }
     }
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
         
-        if tap.state == .began { spawnNode?.spawner?.kill(nodesWithName: "RobotAnim") }
-        if tap.state == .ended { spawnNode?.spawner?.kill(nodesWithName: "Robot") }
+        if tap.state == .began { spawner.kill(nodesWithName: "RobotAnim") }
+        if tap.state == .ended { spawner.kill(nodesWithName: "Robot") }
     }
     
     override func update(delta: TimeInterval) {
         
         super.update(delta: delta)
         
-        spawnNode?.spawner?.update(delta: delta)
+        spawner.update(delta: delta)
     }
 }
 
 // MARK: - Spawn without entity
 
-extension SpawnSKNode {
+extension Spawner {
     
-    func spawnMultiRobots(count: Int = 25) {
+    func spawnMultiRobots(on node: SKNode, count: Int = 25) {
         
-        (0..<count).forEach { _ in spawn(name: "Robot") { newNode in
+        (0..<count).forEach { _ in
+            
+            if let child = (spawn(name: "Robot") { newNode in
             
             newNode.position = CGPoint(x: CGFloat(arc4random() % 100) - 50, y: CGFloat(arc4random() % 200) - 100)
             newNode.run(SKAction.repeatForever(SKAction(named: "Pulse")!))
             newNode.isPaused = false
             
             return nil
-            }
+            }) { node.addChild(child) }
         }
         
-        (0..<count).forEach { _ in spawn(name: "RobotAnim") { newNode in
+        (0..<count).forEach { _ in
+            
+            if let child = (spawn(name: "RobotAnim") { newNode in
             
             newNode.position = CGPoint(x: CGFloat(arc4random() % 200) - 100, y: CGFloat(arc4random() % 100) - 50)
             newNode.isPaused = false
             
             return nil
-            }
+            }) { node.addChild(child) }
         }
     }
 }
