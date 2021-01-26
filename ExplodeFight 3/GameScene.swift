@@ -35,8 +35,10 @@ class GameScene: BaseSKScene {
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
         
+        guard tap.state == .began else { return }
+        
         trackEntity = nil
-        spawnNode?.spawner?.kill()
+        spawnNode?.spawner?.kill(recycle: false)
     }
     
     override func update(delta: TimeInterval) {
