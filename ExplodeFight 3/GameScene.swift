@@ -76,6 +76,8 @@ extension SpawnSKNode {
             
             robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
             
+            robotNode.position = CGPoint.zero
+
             //robotEntity.addComponent(DebugComponent())
             //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
             
