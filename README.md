@@ -8,6 +8,7 @@ master
 - Make placeholder sprites for the player and an enemy.
 
 ### DONE
+- Check if the player entity can be given an agent in the editor. (Causes scene to be unable to load Xcode 12.4)
 - Shotting experiments on branch __exp/shoot__.
 - Rules and state machine experiments on branch __exp/rules__.
 - Rules and state machine experiments on branch __exp/mechanics__.
