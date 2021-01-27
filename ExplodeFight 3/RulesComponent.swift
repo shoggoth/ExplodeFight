@@ -10,23 +10,22 @@ import GameplayKit
 
 class RulesComponent: GKComponent {
     
+    var updateCount = 0
+
     var ruleSystem: GKRuleSystem = GKRuleSystem()
     var ruleSystemUpdateInterval: TimeInterval = 1.0
     
     private var timeSinceLastRuleSystemUpdate: TimeInterval = 0.0
-    private var updateCount = 0
     
     override class var supportsSecureCoding: Bool { return true }
     
-    override func update(deltaTime seconds: TimeInterval) {
+    override func update(deltaTime delta: TimeInterval) {
         
-        timeSinceLastRuleSystemUpdate += seconds
+        timeSinceLastRuleSystemUpdate += delta
         if timeSinceLastRuleSystemUpdate < ruleSystemUpdateInterval { return }
         timeSinceLastRuleSystemUpdate -= ruleSystemUpdateInterval
         
         updateCount += 1
-        
-        //print("drift: \(timeSinceLastRuleSystemUpdate)")
         
         ruleSystem.reset()
         ruleSystem.state["updateCount"] = updateCount

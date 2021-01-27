@@ -13,7 +13,7 @@ import GameControls
 
 class GameScene: BaseSKScene {
     
-    private lazy var spawnNode = { self.childNode(withName: "//Spawner_0") as? SpawnSKNode }()
+    private lazy var spawnNode = { self.childNode(withName: "Spawner_0") as? SpawnSKNode }()
 
     override func didMove(to view: SKView) {
         
@@ -47,6 +47,9 @@ class GameScene: BaseSKScene {
         
         trackEntity = nil
         spawnNode?.spawner?.kill(recycle: false)
+        
+        // Reset the rules component's update count.
+        self.entity?.component(ofType: RulesComponent.self)?.updateCount = 0
     }
     
     override func update(delta: TimeInterval) {

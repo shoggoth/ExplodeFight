@@ -18,7 +18,6 @@
 		FF6EEA58258BBB4B006938E0 /* RobotStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EEA57258BBB4B006938E0 /* RobotStates.swift */; };
 		FF6EEA5A258D046A006938E0 /* RulesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EEA59258D046A006938E0 /* RulesComponent.swift */; };
 		FF7C69A6257E7D4D004B67FE /* RobotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C69A5257E7D4D004B67FE /* RobotEntity.swift */; };
-		FF8361E725850C7100019D09 /* RobotRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8361E625850C7100019D09 /* RobotRules.swift */; };
 		FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF95A51D25792F9B00954B50 /* SplashScene.sks */; };
 		FF95A5202579303800954B50 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95A51F2579303800954B50 /* SplashScene.swift */; };
 		FF95A524257A57A300954B50 /* Robot.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF95A523257A57A300954B50 /* Robot.xcassets */; };
@@ -231,7 +230,6 @@
 				FF6EEA5A258D046A006938E0 /* RulesComponent.swift in Sources */,
 				FF95A5202579303800954B50 /* SplashScene.swift in Sources */,
 				FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */,
-				FF8361E725850C7100019D09 /* RobotRules.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
 				FFDFED6E257E4C8D007004EC /* DebugComponent.swift in Sources */,
 				FF7C69A6257E7D4D004B67FE /* RobotEntity.swift in Sources */,
