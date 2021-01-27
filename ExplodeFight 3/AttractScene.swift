@@ -35,7 +35,7 @@ class AttractScene: BaseSKScene {
         stateMachine = GKStateMachine(states: [
             ShowEnemies(sourceNode: findSourceNode("EnemiesRoot")!, destinationNode: self),
             ShowHiScores(sourceNode: findSourceNode("HiScoreRoot")!, destinationNode: self),
-            ShowPlayDemo(sourceNode: findSourceNode("//PlayDemoRoot")!, destinationNode: self)
+            ShowPlayDemo(sourceNode: findSourceNode("OffsetRoot/PlayDemoRoot")!, destinationNode: self)
         ])
         stateMachine.enter(ShowHiScores.self)
     }
