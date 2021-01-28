@@ -20,12 +20,13 @@ class GameScene: BaseSKScene {
     override func didMove(to view: SKView) {
         
         // Set up scene physics
-        self.physicsBody = SKPhysicsBody (edgeLoopFrom: self.frame)
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
 
-        // Setup player entity
         if let node = scene?.childNode(withName: "Player") { entities.append(PlayerEntity(withNode: node)) }
+        if let node = scene?.childNode(withName: "Mob") { entities.append(PlayerEntity(withNode: node)) }
     }
 }
+        // Setup entities
 
 // MARK: - Touch handling
 
