@@ -3,6 +3,7 @@ master
 
 ## Current Tasks
 - Make move, fire and possibly render components.
+- Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Make a user-controlled entity and a mob entity or do this using components so that the behaviour can be switched for a demo attract phase.
 - Think about how contact can be handled without subclassing an entity.
 - Make placeholder sprites for the player and an enemy.

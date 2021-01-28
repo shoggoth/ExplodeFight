@@ -8,6 +8,7 @@
 
 import SpriteKit
 import SpriteKitAddons
+import GameplayKit
 import GameControls
 
 class GameScene: BaseSKScene {
@@ -18,16 +19,11 @@ class GameScene: BaseSKScene {
     
     override func didMove(to view: SKView) {
         
+        // Set up scene physics
+        self.physicsBody = SKPhysicsBody (edgeLoopFrom: self.frame)
+
         // Setup player entity
-        if let playerEntity = scene?.childNode(withName: "Player")?.entity {
-            
-            playerEntity.component(ofType: PlayerControlComponent.self)?.joystick = joystick
-        }
-    }
-    
-    override func update(delta: TimeInterval) {
-        
-        super.update(delta: delta)
+        if let node = scene?.childNode(withName: "Player") { entities.append(PlayerEntity(withNode: node)) }
     }
 }
 
