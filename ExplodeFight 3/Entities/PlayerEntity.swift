@@ -17,8 +17,8 @@ class PlayerEntity: GKEntity {
         node.entity = self
         node.zRotation = CGFloat(Float.random(in: 0.0 ... Float.pi * 2.0))
 
-        addComponent(MoveComponent(maxSpeed: 300, maxAcceleration: 10, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
         addComponent(GKSKNodeComponent(node: node))
+        addComponent(MoveComponent(maxSpeed: 300, maxAcceleration: 10, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
     }
 
     required init?(coder: NSCoder) { fatalError() }
