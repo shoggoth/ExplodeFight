@@ -9,22 +9,35 @@
 import GameplayKit
 import GameControls
 
+protocol MoveFireVectors {
+    
+    var moveVector: CGVector { get }
+    var fireVector: CGVector { get }
+}
+
 class PlayerControlComponent: GKComponent {
     
-    let playerControlAgent = GKAgent2D()
+    private let joystick: TouchJoystick
+    private let playerControlAgent = GKAgent2D()
+
+    private var moveVector: CGVector = .zero
+    private var fireVector: CGVector = .zero
     
-    var joystick: TouchJoystick? { didSet {
+    init(joystick: TouchJoystick) {
         
-        guard let joystick = joystick else { return }
+        self.joystick = joystick
+        
+        super.init()
         
         // TODO: Load from the configuration or defaults.
         let moveWindowFunc = TouchJoystick.WindowFunction(windowSize: CGSize(width: 40, height: 40), deadZoneR2: 4)
         let fireWindowFunc = TouchJoystick.WindowFunction(windowSize: CGSize(width: 40, height: 40))
-
+        
         joystick.joyFunctions = [
             { touch in
                 
                 moveWindowFunc.handleTouch(touch: touch)
+                self.moveVector = moveWindowFunc.windowVector
                 print("move stick = \(moveWindowFunc.windowVector)")
             },
             { touch in
@@ -33,19 +46,27 @@ class PlayerControlComponent: GKComponent {
                 print("fire stick = \(fireWindowFunc.windowVector)")
             }
         ]
-    }}
-
-    override func didAddToEntity() {
-        
-        print("PlayerControlComponent added to entity with agent: \(entity?.agent)")
-        //if let ta = track {
-        //    agent.behavior = GKBehavior(goal: GKGoal(toSeekAgent: ta), weight: 100)
-        //} else {
-        //    agent.behavior = GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * agent.maxSpeed), weight: 100)
-        //}
     }
     
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    //if let ta = track {
+    //    agent.behavior = GKBehavior(goal: GKGoal(toSeekAgent: ta), weight: 100)
+    //} else {
+    //    agent.behavior = GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * agent.maxSpeed), weight: 100)
+    //}
+    
     override func update(deltaTime seconds: TimeInterval) {
+        
+        if let moveComponent = entity?.component(ofType: MoveComponent.self) {
+            
+            let trackVector = moveComponent.position + vector_float2(x: Float(moveVector.dx), y: Float(moveVector.dy))
+            
+            let ta = GKAgent2D()
+            ta.position = trackVector
+            
+            moveComponent.behavior = GKBehavior(goal: GKGoal(toSeekAgent: ta), weight: 100)
+        }
         
         super.update(deltaTime: seconds)
     }

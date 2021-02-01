@@ -22,11 +22,17 @@ class GameScene: BaseSKScene {
         // Set up scene physics
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
 
-        if let node = scene?.childNode(withName: "Player") { entities.append(PlayerEntity(withNode: node)) }
+        // Setup entities
+        if let node = scene?.childNode(withName: "Player") {
+            
+            let playerEntity = PlayerEntity(withNode: node)
+            playerEntity.addComponent(PlayerControlComponent(joystick: joystick))
+
+            entities.append(playerEntity)
+        }
         if let node = scene?.childNode(withName: "Mob") { entities.append(PlayerEntity(withNode: node)) }
     }
 }
-        // Setup entities
 
 // MARK: - Touch handling
 

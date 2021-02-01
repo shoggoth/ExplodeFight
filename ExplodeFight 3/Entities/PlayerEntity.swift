@@ -10,13 +10,16 @@ import GameplayKit
 
 class PlayerEntity: GKEntity {
     
+    var moveComponent: MoveComponent? { component(ofType: MoveComponent.self) }
+
     init(withNode node: SKNode) {
         
         super.init()
         
-        node.entity = self
         node.zRotation = CGFloat(Float.random(in: 0.0 ... Float.pi * 2.0))
 
+        // Entity setup
+        node.entity = self
         addComponent(GKSKNodeComponent(node: node))
         addComponent(MoveComponent(maxSpeed: 300, maxAcceleration: 10, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
     }
