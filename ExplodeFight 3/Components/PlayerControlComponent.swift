@@ -50,22 +50,22 @@ class PlayerControlComponent: GKComponent {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    //if let ta = track {
-    //    agent.behavior = GKBehavior(goal: GKGoal(toSeekAgent: ta), weight: 100)
-    //} else {
-    //    agent.behavior = GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * agent.maxSpeed), weight: 100)
-    //}
-    
     override func update(deltaTime seconds: TimeInterval) {
         
         if let moveComponent = entity?.component(ofType: MoveComponent.self) {
             
-            let trackVector = moveComponent.position + vector_float2(x: Float(moveVector.dx), y: Float(moveVector.dy))
+            if moveVector.lengthSquared() == 0 {
+                
+                moveComponent.behavior = GKBehavior(goal: GKGoal(toReachTargetSpeed: 0), weight: 100)
             
-            let ta = GKAgent2D()
-            ta.position = trackVector
-            
-            moveComponent.behavior = GKBehavior(goal: GKGoal(toSeekAgent: ta), weight: 100)
+            } else {
+                let trackVector = moveComponent.position + vector_float2(x: Float(moveVector.dx), y: Float(moveVector.dy))
+                
+                let ta = GKAgent2D()
+                ta.position = trackVector
+                
+                moveComponent.behavior = GKBehavior(goal: GKGoal(toSeekAgent: ta), weight: 100)
+            }
         }
         
         super.update(deltaTime: seconds)
