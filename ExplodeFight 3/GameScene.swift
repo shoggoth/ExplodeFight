@@ -30,7 +30,8 @@ class GameScene: BaseSKScene {
 
             entities.append(playerEntity)
         }
-        if let node = scene?.childNode(withName: "Mob") { entities.append(PlayerEntity(withNode: node)) }
+        
+        if let node = scene?.childNode(withName: "Mob") { entities.append(MobEntity(withNode: node)) }
     }
 }
 

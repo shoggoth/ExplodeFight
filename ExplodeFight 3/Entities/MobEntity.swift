@@ -8,8 +8,10 @@
 
 import GameplayKit
 
-class PlayerEntity: GKEntity {
- 
+class MobEntity: GKEntity {
+    
+    var moveComponent: MoveComponent? { component(ofType: MoveComponent.self) }
+
     init(withNode node: SKNode) {
         
         super.init()
@@ -19,9 +21,7 @@ class PlayerEntity: GKEntity {
         // Entity setup
         node.entity = self
         addComponent(GKSKNodeComponent(node: node))
-        addComponent(GKAgent2D())
-        
-        agent?.delegate = self.spriteComponent
+        addComponent(MoveComponent(maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
     }
 
     required init?(coder: NSCoder) { fatalError() }

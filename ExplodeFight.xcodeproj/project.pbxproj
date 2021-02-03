@@ -30,6 +30,8 @@
 		FFC222E8257003B400CFA23F /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; };
 		FFC222E9257003B400CFA23F /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFE0186325C2E81A0051984F /* MoveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186225C2E81A0051984F /* MoveComponent.swift */; };
+		FFE0186525C958840051984F /* MobEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186425C958840051984F /* MobEntity.swift */; };
+		FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186625CACFAD0051984F /* FireComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,6 +75,8 @@
 		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFE0186225C2E81A0051984F /* MoveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveComponent.swift; sourceTree = "<group>"; };
+		FFE0186425C958840051984F /* MobEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobEntity.swift; sourceTree = "<group>"; };
+		FFE0186625CACFAD0051984F /* FireComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 				FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */,
 				FFE0186225C2E81A0051984F /* MoveComponent.swift */,
 				FF49713625B72FB30083C36B /* MobComponent.swift */,
+				FFE0186625CACFAD0051984F /* FireComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				FFB527AB25C1CBA900B584C7 /* PlayerEntity.swift */,
+				FFE0186425C958840051984F /* MobEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -245,8 +251,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFE0186525C958840051984F /* MobEntity.swift in Sources */,
 				FF080697256BD29700F2EBA7 /* GameScene.swift in Sources */,
 				FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */,
+				FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */,
 				FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */,
 				FF95A5202579303800954B50 /* SplashScene.swift in Sources */,
 				FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */,

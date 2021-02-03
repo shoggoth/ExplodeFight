@@ -19,6 +19,9 @@ class PlayerControlComponent: GKComponent {
     
     private let joystick: TouchJoystick
     private let playerControlAgent = GKAgent2D()
+    
+    private let trackBehavior: GKBehavior
+    private let stopBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 0), weight: 100)
 
     private var moveVector: CGVector = .zero
     private var fireVector: CGVector = .zero
@@ -26,7 +29,8 @@ class PlayerControlComponent: GKComponent {
     init(joystick: TouchJoystick) {
         
         self.joystick = joystick
-        
+        self.trackBehavior = GKBehavior(goal: GKGoal(toSeekAgent: playerControlAgent), weight: 100)
+
         super.init()
         
         // TODO: Load from the configuration or defaults.
@@ -38,12 +42,11 @@ class PlayerControlComponent: GKComponent {
                 
                 moveWindowFunc.handleTouch(touch: touch)
                 self.moveVector = moveWindowFunc.windowVector
-                print("move stick = \(moveWindowFunc.windowVector)")
             },
             { touch in
                 
                 fireWindowFunc.handleTouch(touch: touch)
-                print("fire stick = \(fireWindowFunc.windowVector)")
+                self.fireVector = fireWindowFunc.windowVector
             }
         ]
     }
@@ -52,19 +55,18 @@ class PlayerControlComponent: GKComponent {
     
     override func update(deltaTime seconds: TimeInterval) {
         
-        if let moveComponent = entity?.component(ofType: MoveComponent.self) {
+        if let agent = entity?.agent {
             
             if moveVector.lengthSquared() == 0 {
                 
-                moveComponent.behavior = GKBehavior(goal: GKGoal(toReachTargetSpeed: 0), weight: 100)
+                agent.behavior = stopBehaviour
             
             } else {
-                let trackVector = moveComponent.position + vector_float2(x: Float(moveVector.dx), y: Float(moveVector.dy))
+                let trackVector = agent.position + vector_float2(x: Float(moveVector.dx), y: Float(moveVector.dy))
                 
-                let ta = GKAgent2D()
-                ta.position = trackVector
+                playerControlAgent.position = trackVector
                 
-                moveComponent.behavior = GKBehavior(goal: GKGoal(toSeekAgent: ta), weight: 100)
+                agent.behavior = trackBehavior
             }
         }
         
