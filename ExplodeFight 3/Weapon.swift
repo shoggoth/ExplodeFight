@@ -12,7 +12,7 @@ import SpriteKitAddons
 protocol Weapon {
     
     var name: String { get }
-    func fire(from node: SKNode, type: Int)
+    func fire(from node: SKNode)
 }
 
 class PhysicsWeapon: Weapon {
@@ -27,7 +27,7 @@ class PhysicsWeapon: Weapon {
         self.bulletNode = bullet
     }
     
-    func fire(from node: SKNode, type: Int) {
+    func fire(from node: SKNode) {
  
         if let bullet = recycle.popLast() ?? self.bulletNode.copy() as? SKNode {
             
@@ -40,6 +40,7 @@ class PhysicsWeapon: Weapon {
                 bullet.removeAllActions()
                 bullet.alpha = 1
 
+                // TODO: Move this to the bullet definition.
                 self.recycle.append(bullet)
             }]))
             
