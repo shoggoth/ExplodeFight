@@ -2,7 +2,9 @@
 exp/shoot
 
 ## Current Tasks
+- Discover why the bullet is offset from the centre in the current weapon setup.
 - Decide on how I am going to change the type of bullet fired and the type of the weapon it's fired from.
+- See if contact detection can be done without physics body (already thought about this in the SKAction section, it seems).
 - Decide which of the 3 methods I have thought of already are worth investigating and if there are others that I haven't thought of.
 
 ### SKAction driven

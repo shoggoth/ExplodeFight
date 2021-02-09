@@ -13,7 +13,7 @@ class FireComponent: GKComponent {
     
     @GKInspectable var weaponType = 1
     
-    private var fireTicker = PeriodicTimer(tickInterval: 0.3)
+    private var fireTicker = PeriodicTimer(tickInterval: 1.0)
     private let weapon = PhysicsWeapon(bullet: DebugBullet())
     
     override func didAddToEntity() {
@@ -30,20 +30,3 @@ class FireComponent: GKComponent {
     override class var supportsSecureCoding: Bool { return true }
 }
 
-class DebugBullet: SKShapeNode {
-    
-    override init() {
-        
-        super.init()
-        
-        path = CGPath(ellipseIn: CGRect(origin: CGPoint.zero, size: CGSize(width: 10, height: 10)), transform: nil)
-        lineWidth = 2.5
-        strokeColor = .blue
-        
-        physicsBody = SKPhysicsBody(circleOfRadius: 5)
-    }
-    
-    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
-    deinit { print("deinit") }
-}

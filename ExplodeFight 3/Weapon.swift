@@ -15,6 +15,12 @@ protocol Weapon {
     func fire(from node: SKNode)
 }
 
+protocol Bullet {
+    
+    func fire(completion: ((SKNode) -> Void)?)
+    func reset()
+}
+
 class PhysicsWeapon: Weapon {
     
     let name = "Physics Weapon"
@@ -25,6 +31,8 @@ class PhysicsWeapon: Weapon {
     init(bullet: SKNode) {
         
         self.bulletNode = bullet
+        
+        bullet.removeFromParent()
     }
     
     func fire(from node: SKNode) {
@@ -32,22 +40,73 @@ class PhysicsWeapon: Weapon {
         if let bullet = recycle.popLast() ?? self.bulletNode.copy() as? SKNode {
             
             let v = CGVector(angle: node.zRotation + (pi * 0.5))
-            
-            bullet.run(SKAction.playSoundFileNamed("blast.caf", waitForCompletion: false))
-            bullet.run(SKAction.repeatForever(SKAction.rotate(byAngle: pi, duration: 1)))
-            bullet.run(SKAction.sequence([SKAction.wait(forDuration: 0.75), SKAction.fadeOut(withDuration: 0.25), SKAction.removeFromParent(), SKAction.run {
-                
-                bullet.removeAllActions()
-                bullet.alpha = 1
-
-                // TODO: Move this to the bullet definition.
-                self.recycle.append(bullet)
-            }]))
-            
-            bullet.position = CGPoint(x: 0, y: 32)
+                        
+            bullet.position = CGPoint(x: 0, y: 24)
+            bullet.physicsBody = nil
             bullet.physicsBody?.velocity = v * 1024
             
             node.addChild(bullet)
+            
+            (bullet as? Bullet)?.fire { node in self.recycle.append(node) }
         }
     }
 }
+
+// MARK: -
+
+class RoundBullet: SKShapeNode, Bullet {
+    
+    override init() {
+        
+        super.init()
+        
+        setup(radius: 3)
+    }
+    
+    init(radius: CGFloat) {
+        
+        super.init()
+        
+        setup(radius: radius)
+    }
+    
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    func setup(radius: CGFloat) {
+        
+        let diameter = radius * 2
+        
+        path = CGPath(ellipseIn: CGRect(origin: CGPoint(x: -radius, y: -radius), size: CGSize(width: diameter, height: diameter)), transform: nil)
+        lineWidth = radius * 0.25
+        strokeColor = .blue
+        
+        // TODO: Need physics for collision?
+        physicsBody = SKPhysicsBody(circleOfRadius: radius)
+    }
+    
+    func fire(completion: ((SKNode) -> Void)? = nil) {
+
+        run(SKAction.playSoundFileNamed("blast.caf", waitForCompletion: false))
+        run(SKAction.repeatForever(SKAction.rotate(byAngle: pi, duration: 1)))
+        run(SKAction.sequence([SKAction.wait(forDuration: 0.75), SKAction.fadeOut(withDuration: 0.25), SKAction.removeFromParent(), SKAction.run { self.reset(); completion?(self) }]))
+    }
+    
+    func reset() {
+        
+        removeAllActions()
+        
+        alpha = 1
+    }
+}
+
+// MARK: -
+
+class DebugBullet: RoundBullet {
+    
+    override init() { super.init() }
+    
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    deinit { print("deinit") }
+}
+
