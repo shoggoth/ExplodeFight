@@ -21,6 +21,24 @@ protocol Bullet {
     func reset()
 }
 
+class NodeCannon<T: SKNode & Bullet>: Weapon {
+    
+    let name = "Node Cannon"
+
+    private var magazine: [T] = []
+
+    func fire(from node: SKNode) {
+        
+        guard magazine.count > 0 else { return }
+        
+        if let foo = magazine.popLast() {
+            
+            foo.physicsBody = nil
+            foo.fire { _ in }
+        }
+    }
+}
+
 class PhysicsWeapon: Weapon {
     
     let name = "Physics Weapon"
@@ -40,9 +58,9 @@ class PhysicsWeapon: Weapon {
         if let bullet = recycle.popLast() ?? self.bulletNode.copy() as? SKNode {
             
             let v = CGVector(angle: node.zRotation + (pi * 0.5))
-                        
-            bullet.position = CGPoint(x: 0, y: 24)
-            bullet.physicsBody = nil
+            
+            bullet.position = CGPoint(x: 0, y: 32)
+            //bullet.physicsBody = nil
             bullet.physicsBody?.velocity = v * 1024
             
             node.addChild(bullet)
@@ -60,7 +78,7 @@ class RoundBullet: SKShapeNode, Bullet {
         
         super.init()
         
-        setup(radius: 3)
+        setup(radius: 4)
     }
     
     init(radius: CGFloat) {
@@ -78,6 +96,7 @@ class RoundBullet: SKShapeNode, Bullet {
         
         path = CGPath(ellipseIn: CGRect(origin: CGPoint(x: -radius, y: -radius), size: CGSize(width: diameter, height: diameter)), transform: nil)
         lineWidth = radius * 0.25
+        //glowWidth = radius * 0.125
         strokeColor = .blue
         
         // TODO: Need physics for collision?
@@ -86,7 +105,7 @@ class RoundBullet: SKShapeNode, Bullet {
     
     func fire(completion: ((SKNode) -> Void)? = nil) {
 
-        run(SKAction.playSoundFileNamed("blast.caf", waitForCompletion: false))
+        //run(SKAction.playSoundFileNamed("blast.caf", waitForCompletion: false))
         run(SKAction.repeatForever(SKAction.rotate(byAngle: pi, duration: 1)))
         run(SKAction.sequence([SKAction.wait(forDuration: 0.75), SKAction.fadeOut(withDuration: 0.25), SKAction.removeFromParent(), SKAction.run { self.reset(); completion?(self) }]))
     }
