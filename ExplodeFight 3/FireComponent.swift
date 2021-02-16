@@ -18,6 +18,7 @@ class FireComponent: GKComponent {
     
     override func didAddToEntity() {
         
+        print("Weapon type = \(weaponType)")
     }
     
     override func update(deltaTime seconds: TimeInterval) {

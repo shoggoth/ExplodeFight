@@ -78,6 +78,7 @@ class RoundBullet: SKShapeNode, Bullet {
         
         super.init()
         
+        name = "Round Bullet"
         setup(radius: 4)
     }
     

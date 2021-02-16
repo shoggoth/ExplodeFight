@@ -31,6 +31,6 @@ extension GameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        print("Contact between \(contact.bodyA.node) and \(contact.bodyB.node)")
+        print("Contact between \(contact.bodyA.node?.name) and \(contact.bodyB.node?.name)")
     }
 }
