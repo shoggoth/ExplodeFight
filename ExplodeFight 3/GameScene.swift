@@ -13,8 +13,24 @@ class GameScene: BaseSKScene {
     
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
+    override func didMove(to view: SKView) {
+        
+        super.didMove(to: view)
+
+        // The scene will handle physics contacts itself.
+        physicsWorld.contactDelegate = self
+    }
+    
     override func update(delta: TimeInterval) {
         
         super.update(delta: delta)
+    }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        print("Contact between \(contact.bodyA.node) and \(contact.bodyB.node)")
     }
 }
