@@ -11,8 +11,8 @@ import SpriteKitAddons
 
 protocol Weapon {
     
-    var name: String { get }
-    func fire(from node: SKNode)
+    func fire(direction: CGVector)
+    //func fire(from node: SKNode)
 }
 
 protocol Bullet {
@@ -21,7 +21,7 @@ protocol Bullet {
     func reset()
 }
 
-class NodeCannon<T: SKNode & Bullet>: Weapon {
+/*class NodeCannon<T: SKNode & Bullet>: Weapon {
     
     let name = "Node Cannon"
 
@@ -37,33 +37,35 @@ class NodeCannon<T: SKNode & Bullet>: Weapon {
             foo.fire { _ in }
         }
     }
-}
+}*/
 
 class PhysicsWeapon: Weapon {
     
     let name = "Physics Weapon"
     
+    private var parent: SKNode?
     private var bulletNode: SKNode
     private var recycle: [SKNode] = []
 
-    init(bullet: SKNode) {
+    init(bullet: SKNode, parent: SKNode? = nil) {
         
         self.bulletNode = bullet
+        self.parent = parent
         
         bullet.removeFromParent()
     }
     
-    func fire(from node: SKNode) {
+    func fire(direction: CGVector) {
  
         if let bullet = recycle.popLast() ?? self.bulletNode.copy() as? SKNode {
             
-            let v = CGVector(angle: node.zRotation + (pi * 0.5))
+            //let v = CGVector(angle: node.zRotation + (pi * 0.5))
             
             bullet.position = CGPoint(x: 0, y: 32)
             //bullet.physicsBody = nil
-            bullet.physicsBody?.velocity = v * 1024
+            bullet.physicsBody?.velocity = direction * 1024
             
-            node.addChild(bullet)
+            parent?.addChild(bullet)
             
             (bullet as? Bullet)?.fire { node in self.recycle.append(node) }
         }
