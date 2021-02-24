@@ -9,16 +9,30 @@
 import GameplayKit
 import SpriteKitAddons
 
-protocol Weapon {
+protocol NodeWeapon {
     
-    func fire(direction: CGVector)
+    func fire(direction: CGVector, parent: SKNode?)
     //func fire(from node: SKNode)
 }
 
-protocol Bullet {
+protocol NodeBullet {
     
     func fire(completion: ((SKNode) -> Void)?)
     func reset()
+}
+
+class NodeCannon: NodeWeapon {
+    
+    var magazine: [SKNode]?
+    
+    init() {
+        
+        magazine = [1, 2, 3].map { rad in  RoundBullet(radius: rad) }
+    }
+    
+    func fire(direction: CGVector, parent: SKNode?) {
+        
+    }
 }
 
 /*class NodeCannon<T: SKNode & Bullet>: Weapon {
@@ -37,7 +51,7 @@ protocol Bullet {
             foo.fire { _ in }
         }
     }
-}*/
+}
 
 class PhysicsWeapon: Weapon {
     
@@ -48,6 +62,9 @@ class PhysicsWeapon: Weapon {
     private var recycle: [SKNode] = []
 
     init(bullet: SKNode, parent: SKNode? = nil) {
+        
+        let magazine = [1, 2, 3].map { rad in  RoundBullet(radius: rad) }
+        print(magazine)
         
         self.bulletNode = bullet
         self.parent = parent
@@ -133,3 +150,4 @@ class DebugBullet: RoundBullet {
     deinit { print("deinit") }
 }
 
+ */

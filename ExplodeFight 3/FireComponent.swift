@@ -24,7 +24,7 @@ class FireComponent: GKComponent {
         case 1:
             weapon = PhysicsWeapon(bullet: DebugBullet(), parent: entity?.spriteComponent?.node)
         case 2:
-            weapon = PhysicsWeapon(bullet: RoundBullet(radius: 23), parent: entity?.spriteComponent?.node)
+            weapon = PhysicsWeapon(bullet: RoundBullet(radius: 23), parent: entity?.spriteComponent?.node.scene)
         default: break
         }
     }
