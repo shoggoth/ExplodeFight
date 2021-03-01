@@ -22,9 +22,20 @@ class FireComponent: GKComponent {
         
         switch weaponType {
         case 1:
-            weapon = PhysicsWeapon(bullet: DebugBullet(), parent: entity?.spriteComponent?.node)
+            weapon = {
+                let w = NodeCannon()
+                w.emitNode = entity?.spriteComponent?.node
+                
+                return w
+            }()
         case 2:
-            weapon = PhysicsWeapon(bullet: RoundBullet(radius: 23), parent: entity?.spriteComponent?.node.scene)
+            weapon = {
+                let w = NodeCannon()
+                w.emitNode = entity?.spriteComponent?.node
+                w.magazine = [2, 16, 32].map { rad in  RoundBullet(radius: rad) }
+                
+                return w
+            }()
         default: break
         }
     }

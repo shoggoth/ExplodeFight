@@ -9,29 +9,37 @@
 import GameplayKit
 import SpriteKitAddons
 
-protocol NodeWeapon {
+protocol Weapon {
     
-    func fire(direction: CGVector, parent: SKNode?)
-    //func fire(from node: SKNode)
+    func fire(direction: CGVector)
 }
 
-protocol NodeBullet {
+protocol NodeBullet: SKNode {
     
-    func fire(completion: ((SKNode) -> Void)?)
+    func fire(completion: ((NodeBullet) -> Void)?)
     func reset()
 }
 
-class NodeCannon: NodeWeapon {
+class NodeCannon: Weapon {
     
-    var magazine: [SKNode]?
-    
-    init() {
+    var magazine: [NodeBullet]?
+    var emitNode: SKNode?
+
+    func fire(direction: CGVector) {
         
-        magazine = [1, 2, 3].map { rad in  RoundBullet(radius: rad) }
-    }
-    
-    func fire(direction: CGVector, parent: SKNode?) {
+        guard let bullet = magazine?.popLast() else { return }
         
+        bullet.position = CGPoint(x: 0, y: 32)
+        //bullet.physicsBody = nil
+        bullet.physicsBody?.velocity = direction * 1024
+        
+        emitNode?.addChild(bullet)
+
+        bullet.fire { b in
+            
+            b.reset()
+            self.magazine?.insert(b, at: 0)
+        }
     }
 }
 
@@ -88,10 +96,11 @@ class PhysicsWeapon: Weapon {
         }
     }
 }
+ */
 
 // MARK: -
 
-class RoundBullet: SKShapeNode, Bullet {
+class RoundBullet: SKShapeNode, NodeBullet {
     
     override init() {
         
@@ -123,7 +132,7 @@ class RoundBullet: SKShapeNode, Bullet {
         physicsBody = SKPhysicsBody(circleOfRadius: radius)
     }
     
-    func fire(completion: ((SKNode) -> Void)? = nil) {
+    func fire(completion: ((NodeBullet) -> Void)? = nil) {
 
         // TODO: Use an action for the movement here abd allow the fire method to be switched between that and one propelled by physics velocity.
         //run(SKAction.playSoundFileNamed("blast.caf", waitForCompletion: false))
@@ -150,4 +159,3 @@ class DebugBullet: RoundBullet {
     deinit { print("deinit") }
 }
 
- */
