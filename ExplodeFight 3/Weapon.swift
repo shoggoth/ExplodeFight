@@ -27,13 +27,17 @@ class NodeCannon: Weapon {
 
     func fire(direction: CGVector) {
         
-        guard let bullet = magazine?.popLast() else { return }
+        guard let emitNode = self.emitNode,
+              let scene = emitNode.scene,
+              let bullet = magazine?.popLast() else { return }
         
-        bullet.position = CGPoint(x: 0, y: 32)
         //bullet.physicsBody = nil
         bullet.physicsBody?.velocity = direction * 1024
         
-        emitNode?.addChild(bullet)
+        let firePos = CGPoint(x: 0, y: 34)
+        bullet.position = scene.convert(firePos, from: emitNode)
+        
+        scene.addChild(bullet)
 
         bullet.fire { b in
             
@@ -43,62 +47,7 @@ class NodeCannon: Weapon {
     }
 }
 
-/*class NodeCannon<T: SKNode & Bullet>: Weapon {
-    
-    let name = "Node Cannon"
-
-    private var magazine: [T] = []
-
-    func fire(from node: SKNode) {
-        
-        guard magazine.count > 0 else { return }
-        
-        if let foo = magazine.popLast() {
-            
-            foo.physicsBody = nil
-            foo.fire { _ in }
-        }
-    }
-}
-
-class PhysicsWeapon: Weapon {
-    
-    let name = "Physics Weapon"
-    
-    private var parent: SKNode?
-    private var bulletNode: SKNode
-    private var recycle: [SKNode] = []
-
-    init(bullet: SKNode, parent: SKNode? = nil) {
-        
-        let magazine = [1, 2, 3].map { rad in  RoundBullet(radius: rad) }
-        print(magazine)
-        
-        self.bulletNode = bullet
-        self.parent = parent
-        
-        bullet.removeFromParent()
-    }
-    
-    func fire(direction: CGVector) {
- 
-        if let bullet = recycle.popLast() ?? self.bulletNode.copy() as? SKNode {
-            
-            //let v = CGVector(angle: node.zRotation + (pi * 0.5))
-            
-            bullet.position = CGPoint(x: 0, y: 32)
-            //bullet.physicsBody = nil
-            bullet.physicsBody?.velocity = direction * 1024
-            
-            parent?.addChild(bullet)
-            
-            (bullet as? Bullet)?.fire { node in self.recycle.append(node) }
-        }
-    }
-}
- */
-
-// MARK: -
+// MARK: - Bullets -
 
 class RoundBullet: SKShapeNode, NodeBullet {
     

@@ -25,7 +25,8 @@ class FireComponent: GKComponent {
             weapon = {
                 let w = NodeCannon()
                 w.emitNode = entity?.spriteComponent?.node
-                
+                //w.magazine = [1, 1, 1].map { rad in  RoundBullet(radius: rad) }
+
                 return w
             }()
         case 2:
