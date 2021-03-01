@@ -20,6 +20,8 @@ protocol NodeBullet: SKNode {
     func reset()
 }
 
+// MARK: - Weapons -
+
 class NodeCannon: Weapon {
     
     var magazine: [NodeBullet]?
