@@ -2,7 +2,7 @@
 exp/shoot
 
 ## Current Tasks
-- Test emitting of a multi parent node with differing z rotations.
+- Fix emitting of a multi parent node with differing z rotations.
 - See if contact detection can be done without physics body (already thought about this in the SKAction section, it seems).
 - Decide which of the methods I have thought of already are worth investigating and if there are others that I haven't thought of.
 

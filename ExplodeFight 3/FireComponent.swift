@@ -33,8 +33,8 @@ class FireComponent: GKComponent {
             weapon = {
                 let w = NodeCannon()
                 w.emitNode = entity?.spriteComponent?.node
-                w.magazine = [2, 16, 32].map { rad in  RoundBullet(radius: rad) }
-                
+                w.magazine = [1, 2, 3, 4, 5, 4, 3, 2, 1].map { rad in  RoundBullet(radius: rad) }
+
                 return w
             }()
         case 3:
@@ -49,7 +49,7 @@ class FireComponent: GKComponent {
             weapon = {
                 let w = NodeCannon()
                 w.emitNode = entity?.spriteComponent?.node
-                w.magazine = [1, 2, 3, 4, 5, 4, 3, 2, 1].map { rad in  RoundBullet(radius: rad) }
+                w.magazine = [2, 16, 32].map { rad in  RoundBullet(radius: rad) }
 
                 return w
             }()
