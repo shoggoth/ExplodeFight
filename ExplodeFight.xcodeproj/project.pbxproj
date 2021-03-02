@@ -15,6 +15,8 @@
 		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
 		FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21CD6425EE503900873CD3 /* Weapon.swift */; };
+		FF32D69D25EE6C6700DF1AFB /* Tilesets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF32D69C25EE6C6700DF1AFB /* Tilesets.xcassets */; };
+		FF32D6A725EE70C000DF1AFB /* Charset32.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF32D6A625EE70C000DF1AFB /* Charset32.sks */; };
 		FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF49711325B5E1DE0083C36B /* AttractModes.sks */; };
 		FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */; };
 		FF49713725B72FB30083C36B /* MobComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49713625B72FB30083C36B /* MobComponent.swift */; };
@@ -61,6 +63,9 @@
 		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF21CD6425EE503900873CD3 /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		FF32D68825EE6A3700DF1AFB /* Charset32.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Charset32.atlas; sourceTree = "<group>"; };
+		FF32D69C25EE6C6700DF1AFB /* Tilesets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Tilesets.xcassets; sourceTree = "<group>"; };
+		FF32D6A625EE70C000DF1AFB /* Charset32.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Charset32.sks; sourceTree = "<group>"; };
 		FF49711325B5E1DE0083C36B /* AttractModes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttractModes.sks; sourceTree = "<group>"; };
 		FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlComponent.swift; sourceTree = "<group>"; };
 		FF49713625B72FB30083C36B /* MobComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobComponent.swift; sourceTree = "<group>"; };
@@ -110,9 +115,20 @@
 				FF080694256BD29700F2EBA7 /* Actions.sks */,
 				FF88FB4C25B08F1900B09BD8 /* Configuration.swift */,
 				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
+				FF32D69C25EE6C6700DF1AFB /* Tilesets.xcassets */,
+				FF32D68A25EE6AD400DF1AFB /* Tilesets */,
 				FFC222D8256FC71800CFA23F /* iOS */,
 			);
 			path = "ExplodeFight 3";
+			sourceTree = "<group>";
+		};
+		FF32D68A25EE6AD400DF1AFB /* Tilesets */ = {
+			isa = PBXGroup;
+			children = (
+				FF32D68825EE6A3700DF1AFB /* Charset32.atlas */,
+				FF32D6A625EE70C000DF1AFB /* Charset32.sks */,
+			);
+			path = Tilesets;
 			sourceTree = "<group>";
 		};
 		FF49712B25B72CA70083C36B /* Components */ = {
@@ -235,11 +251,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF32D69D25EE6C6700DF1AFB /* Tilesets.xcassets in Resources */,
 				FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */,
 				FF88FB5325B1F38300B09BD8 /* AttractScene.sks in Resources */,
 				FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */,
 				FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */,
 				FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */,
+				FF32D6A725EE70C000DF1AFB /* Charset32.sks in Resources */,
 				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,
