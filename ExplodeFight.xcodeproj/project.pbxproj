@@ -14,6 +14,7 @@
 		FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF080698256BD29700F2EBA7 /* GameViewController.swift */; };
 		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
+		FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21CD6425EE503900873CD3 /* Weapon.swift */; };
 		FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF49711325B5E1DE0083C36B /* AttractModes.sks */; };
 		FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */; };
 		FF49713725B72FB30083C36B /* MobComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49713625B72FB30083C36B /* MobComponent.swift */; };
@@ -59,6 +60,7 @@
 		FF08069B256BD29700F2EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF21CD6425EE503900873CD3 /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		FF49711325B5E1DE0083C36B /* AttractModes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttractModes.sks; sourceTree = "<group>"; };
 		FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlComponent.swift; sourceTree = "<group>"; };
 		FF49713625B72FB30083C36B /* MobComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobComponent.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				FF080696256BD29700F2EBA7 /* GameScene.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
+				FF21CD6425EE503900873CD3 /* Weapon.swift */,
 				FFB527AA25C1CB8400B584C7 /* Entities */,
 				FF49712B25B72CA70083C36B /* Components */,
 				FF95A51F2579303800954B50 /* SplashScene.swift */,
@@ -255,6 +258,7 @@
 				FF080697256BD29700F2EBA7 /* GameScene.swift in Sources */,
 				FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */,
 				FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */,
+				FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */,
 				FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */,
 				FF95A5202579303800954B50 /* SplashScene.swift in Sources */,
 				FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */,
