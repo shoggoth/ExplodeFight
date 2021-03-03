@@ -32,6 +32,36 @@ class GameScene: BaseSKScene {
         }
         
         if let node = scene?.childNode(withName: "Mob") { entities.append(MobEntity(withNode: node)) }
+        
+        tilemapbits()
+    }
+    
+    private func tilemapbits() {
+        
+        guard let edNode = scene?.childNode(withName: "CharacterTileMap") as? SKTileMapNode else { return }
+        guard let prNode = scene?.childNode(withName: "ProgrTMRoot") else { return }
+        
+        makeTileMap(on: prNode)
+    }
+    
+    private func makeTileMap(on node: SKNode) {
+        
+        print("making programmatic tile map... \(node)")
+        
+        // Create tile sets
+        let groups = ["0", "1"].map { SKTileGroup(tileDefinition: SKTileDefinition(texture: SKTexture(imageNamed: $0))) }
+        let tileSet = SKTileSet(tileGroups: groups)
+        tileSet.defaultTileSize = CGSize(width: 32, height: 32)
+        
+        // Create tile map
+        let tileMap = SKTileMapNode(tileSet: tileSet, columns: 40, rows: 4, tileSize: tileSet.defaultTileSize)
+        tileMap.fill(with: groups.first)
+        
+        // Add it to the scene
+        node.addChild(tileMap)
+        
+        print("mog \(groups)")
+        print("mog \(tileSet)")
     }
 }
 
