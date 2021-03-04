@@ -38,11 +38,7 @@ class GameScene: BaseSKScene {
     
     private func tilemapbits() {
         
-        guard let edNode = scene?.childNode(withName: "CharacterTileMap") as? SKTileMapNode else { return }
         guard let prNode = scene?.childNode(withName: "ProgrTMRoot") else { return }
-        
-        // Shader
-        edNode.shader = SKShader(fileNamed: "charMap.fsh")
 
         // Procedural tilemap
         let mapper = CharacterTileSetMap(alphabet: "ABCEFGH".map { String($0) } + ["D", "W", "6", "7", "2", "0", "_plus", "_star"], defaultSize: CGSize(width: 32, height: 32))
