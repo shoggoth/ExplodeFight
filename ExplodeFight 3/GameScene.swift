@@ -74,45 +74,6 @@ class GameScene: BaseSKScene {
     }
 }
 
-struct CharacterTileSetMap {
-    
-    let tiles: [String : SKTileGroup]
-    let tileSet: SKTileSet
-
-    init(alphabet: [String], defaultSize: CGSize) {
-        
-        tiles = Dictionary(uniqueKeysWithValues: alphabet.map { ($0, SKTileGroup(tileDefinition: SKTileDefinition(texture: SKTexture(imageNamed: String($0))))) })
-        tileSet = SKTileSet(tileGroups: tiles.map { $0.1 })
-        tileSet.defaultTileSize = defaultSize
-    }
-    
-    
-    func print(key: String, to tileMap: SKTileMapNode, at: CGPoint) {
-        
-        let x = Int(at.x)
-        let y = Int(at.y)
-        
-        guard x >= 0 && y >= 0 && x < tileMap.numberOfColumns && y < tileMap.numberOfRows else { fatalError("Character coordinates out of tilemap bounds.") }
-        
-        tileMap.setTileGroup(tiles[key], forColumn: x, row: tileMap.numberOfRows - y - 1)
-    }
-
-    func print(keys: [String], to tileMap: SKTileMapNode, at: CGPoint) {
-        
-        let x = Int(at.x)
-        let y = Int(at.y)
-        
-        guard x >= 0 && y >= 0 && x < tileMap.numberOfColumns && y < tileMap.numberOfRows else { fatalError("Character coordinates out of tilemap bounds.") }
-        
-        keys.enumerated().forEach { (i, key) in tileMap.setTileGroup(tiles[key], forColumn: (x + i) % tileMap.numberOfColumns, row: tileMap.numberOfRows - y - 1) }
-    }
-}
-
-extension SKTileMapNode {
-    
-    func bung(mapper: CharacterTileSetMap) { setTileGroup(mapper.tiles["_plus"], forColumn: 3, row: numberOfRows - 3) }
-}
-
 // MARK: - Touch handling
 
 extension GameScene {
