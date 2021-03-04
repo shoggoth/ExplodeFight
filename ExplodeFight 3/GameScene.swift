@@ -57,19 +57,19 @@ class GameScene: BaseSKScene {
     private func makeTileMap(on tileMap: SKTileMapNode, mapper: CharacterTileSetMap) {
         
         tileMap.fill(with: mapper.tiles[" "])
-        tileMap.setTileGroup(mapper.tiles["A"], forColumn: 1, row: 1)
-        tileMap.setTileGroup(mapper.tiles["B"], forColumn: 0, row: 2)
-        tileMap.setTileGroup(mapper.tiles["C"], forColumn: 1, row: 3)
-        tileMap.setTileGroup(mapper.tiles["D"], forColumn: 2, row: 3)
-        tileMap.setTileGroup(mapper.tiles["_star"], forColumn: 7, row: 3)
+        mapper.print(key: "A", to: tileMap, at: CGPoint(x: 1, y: 1))
+        mapper.print(key: "B", to: tileMap, at: CGPoint(x: 12, y: 2))
+        mapper.print(key: "C", to: tileMap, at: CGPoint(x: 15, y: 3))
+        mapper.print(key: "D", to: tileMap, at: CGPoint(x: 2, y: 3))
+        mapper.print(key: "_star", to: tileMap, at: CGPoint(x: 7, y: 3))
         
         mapper.print(key: "2", to: tileMap, at: CGPoint(x: 29, y: 2))
-        mapper.print(keys: ["7", "2", "6", "0"], to: tileMap, at: CGPoint(x: 31, y: 3))
-        mapper.print(keys: "CABBAGE DEAD FACE".map { String($0) }, to: tileMap, at: CGPoint(x: 0, y: 2))
+        mapper.print(keys: ["7", "2", "6", "0"], to: tileMap, at: CGPoint(x: 31, y: 2))
+        mapper.print(keys: "CABBAGE DEAD FACE".map { String($0) }, to: tileMap, at: CGPoint(x: 0, y: 0))
 
         tileMap.run(SKAction.sequence([SKAction.wait(forDuration: 3.0),
-                                       SKAction.run { tileMap.setTileGroup(mapper.tiles["_plus"], forColumn: 3, row: 3) },
-                                       SKAction.wait(forDuration: 1.0),
+                                       SKAction.run { mapper.print(key: "_plus", to: tileMap, at: CGPoint(x: 3, y: 3)) },
+                                       SKAction.wait(forDuration: 100.0),
                                        SKAction(named: "TMAnimation")!]))
     }
 }
