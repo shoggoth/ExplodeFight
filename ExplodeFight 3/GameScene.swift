@@ -41,43 +41,76 @@ class GameScene: BaseSKScene {
         guard let edNode = scene?.childNode(withName: "CharacterTileMap") as? SKTileMapNode else { return }
         guard let prNode = scene?.childNode(withName: "ProgrTMRoot") else { return }
         
-        // Shader?
+        // Shader
         edNode.shader = SKShader(fileNamed: "charMap.fsh")
 
-        makeTileMap(on: prNode)
+        // Procedural tilemap
+        let mapper = CharacterTileSetMap(alphabet: "ABCEFGH".map { String($0) } + ["D", "W", "6", "7", "2", "0", "_plus", "_star"], defaultSize: CGSize(width: 32, height: 32))
+        let tileMap = SKTileMapNode(tileSet: mapper.tileSet, columns: 32, rows: 4, tileSize: mapper.tileSet.defaultTileSize)
+        
+        // Add it to the scene
+        prNode.addChild(tileMap)
+
+        makeTileMap(on: tileMap, mapper: mapper)
     }
     
-    private func makeTileMap(on node: SKNode) {
+    private func makeTileMap(on tileMap: SKTileMapNode, mapper: CharacterTileSetMap) {
         
-        let mapper = CharTileSetMapper(alphabet: "ABCDW6720", defaultSize: CGSize(width: 32, height: 32))
-
-        // Create tile map
-        let tileMap = SKTileMapNode(tileSet: mapper.tileSet, columns: 32, rows: 4, tileSize: mapper.tileSet.defaultTileSize)
-        tileMap.fill(with: mapper.tiles["W"])
+        tileMap.fill(with: mapper.tiles[" "])
         tileMap.setTileGroup(mapper.tiles["A"], forColumn: 1, row: 1)
         tileMap.setTileGroup(mapper.tiles["B"], forColumn: 0, row: 2)
         tileMap.setTileGroup(mapper.tiles["C"], forColumn: 1, row: 3)
+        tileMap.setTileGroup(mapper.tiles["D"], forColumn: 2, row: 3)
+        tileMap.setTileGroup(mapper.tiles["_star"], forColumn: 7, row: 3)
         
-        // Add it to the scene
-        node.addChild(tileMap)
+        mapper.print(key: "2", to: tileMap, at: CGPoint(x: 29, y: 2))
+        mapper.print(keys: ["7", "2", "6", "0"], to: tileMap, at: CGPoint(x: 31, y: 3))
+        mapper.print(keys: "CABBAGE DEAD FACE".map { String($0) }, to: tileMap, at: CGPoint(x: 0, y: 2))
+
         tileMap.run(SKAction.sequence([SKAction.wait(forDuration: 3.0),
-                                       SKAction.run { tileMap.setTileGroup(mapper.tiles["D"], forColumn: 3, row: 3) },
+                                       SKAction.run { tileMap.setTileGroup(mapper.tiles["_plus"], forColumn: 3, row: 3) },
                                        SKAction.wait(forDuration: 1.0),
                                        SKAction(named: "TMAnimation")!]))
     }
 }
 
-struct CharTileSetMapper {
+struct CharacterTileSetMap {
     
     let tiles: [String : SKTileGroup]
     let tileSet: SKTileSet
 
-    init(alphabet: String, defaultSize: CGSize) {
+    init(alphabet: [String], defaultSize: CGSize) {
         
-        tiles = Dictionary(uniqueKeysWithValues: alphabet.map { (String($0), SKTileGroup(tileDefinition: SKTileDefinition(texture: SKTexture(imageNamed: String($0))))) })
+        tiles = Dictionary(uniqueKeysWithValues: alphabet.map { ($0, SKTileGroup(tileDefinition: SKTileDefinition(texture: SKTexture(imageNamed: String($0))))) })
         tileSet = SKTileSet(tileGroups: tiles.map { $0.1 })
         tileSet.defaultTileSize = defaultSize
     }
+    
+    
+    func print(key: String, to tileMap: SKTileMapNode, at: CGPoint) {
+        
+        let x = Int(at.x)
+        let y = Int(at.y)
+        
+        guard x >= 0 && y >= 0 && x < tileMap.numberOfColumns && y < tileMap.numberOfRows else { fatalError("Character coordinates out of tilemap bounds.") }
+        
+        tileMap.setTileGroup(tiles[key], forColumn: x, row: tileMap.numberOfRows - y - 1)
+    }
+
+    func print(keys: [String], to tileMap: SKTileMapNode, at: CGPoint) {
+        
+        let x = Int(at.x)
+        let y = Int(at.y)
+        
+        guard x >= 0 && y >= 0 && x < tileMap.numberOfColumns && y < tileMap.numberOfRows else { fatalError("Character coordinates out of tilemap bounds.") }
+        
+        keys.enumerated().forEach { (i, key) in tileMap.setTileGroup(tiles[key], forColumn: (x + i) % tileMap.numberOfColumns, row: tileMap.numberOfRows - y - 1) }
+    }
+}
+
+extension SKTileMapNode {
+    
+    func bung(mapper: CharacterTileSetMap) { setTileGroup(mapper.tiles["_plus"], forColumn: 3, row: numberOfRows - 3) }
 }
 
 // MARK: - Touch handling
