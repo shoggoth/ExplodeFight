@@ -38,14 +38,14 @@ class GameScene: BaseSKScene {
     
     private func tilemapbits() {
         
-        guard let prNode = scene?.childNode(withName: "ProgrTMRoot") else { return }
+        guard let parentNode = scene?.childNode(withName: "ProgrTMRoot") else { return }
 
         // Procedural tilemap
         let mapper = CharacterTileSetMap(alphabet: "ABCEFGH".map { String($0) } + ["D", "W", "6", "7", "2", "0", "_plus", "_star"], defaultSize: CGSize(width: 32, height: 32))
         let tileMap = SKTileMapNode(tileSet: mapper.tileSet, columns: 32, rows: 4, tileSize: mapper.tileSet.defaultTileSize)
         
         // Add it to the scene
-        prNode.addChild(tileMap)
+        parentNode.addChild(tileMap)
 
         makeTileMap(on: tileMap, mapper: mapper)
     }
@@ -65,8 +65,11 @@ class GameScene: BaseSKScene {
 
         tileMap.run(SKAction.sequence([SKAction.wait(forDuration: 3.0),
                                        SKAction.run { mapper.print(key: "_plus", to: tileMap, at: CGPoint(x: 3, y: 3)) },
+                                       SKAction.wait(forDuration: 3.0),
+                                       SKAction.run { mapper.print(keys: "DEAD CABBAGE".map { String($0) }, to: tileMap, at: CGPoint(x: 18, y: 0)) },
                                        SKAction.wait(forDuration: 100.0),
-                                       SKAction(named: "TMAnimation")!]))
+                                       SKAction(named: "TMAnimation")!,
+                                       SKAction.removeFromParent()]))
     }
 }
 

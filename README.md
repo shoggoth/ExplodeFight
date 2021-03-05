@@ -3,9 +3,9 @@ exp/chartiles
 
 ## Current Tasks
 - Teletype animation
-- SKAction removeFromParent after fade
 
 ### DONE
+- SKAction removeFromParent after fade
 - Try with a texture atlas rather than a sprite atlas.
 - Demo shader
 - SKLabelNode replacement with sprite or tilemap optimisations.
