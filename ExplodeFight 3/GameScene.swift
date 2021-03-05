@@ -41,7 +41,7 @@ class GameScene: BaseSKScene {
         guard let parentNode = scene?.childNode(withName: "ProgrTMRoot") else { return }
 
         // Procedural tilemap
-        let mapper = CharacterTileSetMap(alphabet: "ABCEFGH".map { String($0) } + ["D", "W", "6", "7", "2", "0", "_plus", "_star"], defaultSize: CGSize(width: 32, height: 32))
+        let mapper = CharacterTileSetMap(alphabet: "ABCEFGH".map { String($0) } + ["D", "W", "6", "7", "2", "0", "_plus", "_star", "_comma"], defaultSize: CGSize(width: 32, height: 32))
         let tileMap = SKTileMapNode(tileSet: mapper.tileSet, columns: 32, rows: 4, tileSize: mapper.tileSet.defaultTileSize)
         
         // Add it to the scene
@@ -58,7 +58,8 @@ class GameScene: BaseSKScene {
         mapper.print(key: "C", to: tileMap, at: CGPoint(x: 15, y: 3))
         mapper.print(key: "D", to: tileMap, at: CGPoint(x: 2, y: 3))
         mapper.print(key: "_star", to: tileMap, at: CGPoint(x: 7, y: 3))
-        
+        mapper.print(key: "_comma", to: tileMap, at: CGPoint(x: 8, y: 3))
+
         mapper.print(key: "2", to: tileMap, at: CGPoint(x: 29, y: 2))
         mapper.print(keys: ["7", "2", "6", "0"], to: tileMap, at: CGPoint(x: 31, y: 2))
         mapper.print(keys: "CABBAGE DEAD FACE".map { String($0) }, to: tileMap, at: CGPoint(x: 0, y: 0))
