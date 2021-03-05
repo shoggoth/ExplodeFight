@@ -2,13 +2,13 @@
 master
 
 ## Current Tasks
-- SKLabelNode replacement with sprite or tilemap optimisations.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Make a user-controlled entity and a mob entity or do this using components so that the behaviour can be switched for a demo attract phase.
 - Think about how contact can be handled without subclassing an entity.
 - Make placeholder sprites for the player and an enemy.
 
 ### DONE
+- SKLabelNode replacement with sprite or tilemap optimisations.
 - Make move, fire and possibly render components.
 - Check if the player entity can be given an agent in the editor. (Causes scene to be unable to load Xcode 12.4)
 - Shotting experiments on branch __exp/shoot__.
