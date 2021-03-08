@@ -61,7 +61,7 @@ class FireComponent: GKComponent {
         
         guard let weapon = weapon, let sourceNode = entity?.spriteComponent?.node else { return }
         
-        fireTicker = fireTicker.tick(deltaTime: seconds) { weapon.fire(direction: CGVector(angle: sourceNode.zRotation + (pi * 0.5))) }
+        fireTicker = fireTicker.tick(deltaTime: seconds) { weapon.fire(direction: CGVector(angle: sourceNode.zRotation)) }
     }
     
     override class var supportsSecureCoding: Bool { return true }
