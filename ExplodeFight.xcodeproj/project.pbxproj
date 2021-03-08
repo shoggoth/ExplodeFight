@@ -17,7 +17,7 @@
 		FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21CD6425EE503900873CD3 /* Weapon.swift */; };
 		FF3F969A25F258F800AF63B9 /* Charset32.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FF3F969925F258F800AF63B9 /* Charset32.atlas */; };
 		FF3F969E25F259CD00AF63B9 /* charMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF3F969D25F259CD00AF63B9 /* charMap.fsh */; };
-		FF3F96A925F6394300AF63B9 /* Robotron.TTF in Resources */ = {isa = PBXBuildFile; fileRef = FF3F96A825F6394300AF63B9 /* Robotron.TTF */; };
+		FF3F96AA25F63B4A00AF63B9 /* Robotron.TTF in Resources */ = {isa = PBXBuildFile; fileRef = FF3F96A825F6394300AF63B9 /* Robotron.TTF */; };
 		FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF49711325B5E1DE0083C36B /* AttractModes.sks */; };
 		FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */; };
 		FF49713725B72FB30083C36B /* MobComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49713625B72FB30083C36B /* MobComponent.swift */; };
@@ -277,9 +277,9 @@
 				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
 				FF3F969A25F258F800AF63B9 /* Charset32.atlas in Resources */,
-				FF3F96A925F6394300AF63B9 /* Robotron.TTF in Resources */,
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,
 				FF080695256BD29700F2EBA7 /* Actions.sks in Resources */,
+				FF3F96AA25F63B4A00AF63B9 /* Robotron.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
