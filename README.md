@@ -3,6 +3,7 @@ master
 
 ## Current Tasks
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
+- Spawned entities have to be counted in the snapshot.
 - Make a user-controlled entity and a mob entity or do this using components so that the behaviour can be switched for a demo attract phase.
 - Think about how contact can be handled without subclassing an entity.
 - Make placeholder sprites for the player and an enemy.
