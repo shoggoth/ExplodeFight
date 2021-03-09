@@ -4,11 +4,16 @@ master
 ## Current Tasks
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
+- Add rules for a demo: maintain the number of Mobs at 10 until 100 total have been spawned.
+
+## Next Tasks
 - Make a user-controlled entity and a mob entity or do this using components so that the behaviour can be switched for a demo attract phase.
 - Think about how contact can be handled without subclassing an entity.
 - Make placeholder sprites for the player and an enemy.
+- Start adding mob experiments on the mob/ branches.
+- Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 
-### DONE
+### Completed Tasks
 - SKLabelNode replacement with sprite or tilemap optimisations.
 - Make move, fire and possibly render components.
 - Check if the player entity can be given an agent in the editor. (Causes scene to be unable to load Xcode 12.4)
@@ -31,10 +36,6 @@ master
 - Look at making SceneManager functions an extension, perhaps on SKView.
 - Move the spawner and the other functions to the framework from RF.
 - Explosion shaders inception.
-
-## Next Tasks
-- Start adding mob experiments on the mob/ branches.
-- Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 
 ### Notes
 - Where are EFI and EFII? Never made it lads.

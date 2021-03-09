@@ -51,7 +51,7 @@ class GameScene: BaseSKScene {
     
     override func update(delta: TimeInterval) {
         
-        super.update(delta)
+        super.update(delta: delta)
         
         // Get rid of the now-stale `LevelStateSnapshot` if it exists. It will be regenerated when next needed.
         levelStateSnapshot = nil
