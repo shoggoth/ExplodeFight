@@ -16,6 +16,7 @@ class GameScene: BaseSKScene {
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
     private let joystick = TouchJoystick()
+    private var spawner: Spawner?
 
     override func didMove(to view: SKView) {
         
@@ -32,6 +33,17 @@ class GameScene: BaseSKScene {
         }
         
         if let node = scene?.childNode(withName: "Mob") { entities.append(MobEntity(withNode: node)) }
+        
+        // Setup spawner
+        spawner = Spawner(scene: self)
+        
+        (1...200).forEach { _ in
+            if let bar = spawner?.spawn(name: "Mob") {
+                
+                addChild(bar)
+                entities.append(MobEntity(withNode: bar))
+            }
+        }
     }
 
     // MARK: - Rule State

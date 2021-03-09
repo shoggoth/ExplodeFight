@@ -12,13 +12,12 @@ import SpriteKitAddons
 class FireComponent: GKComponent {
     
     @GKInspectable var weaponType = 1
-    
-    private var fireTicker = PeriodicTimer(tickInterval: 1.0)
+    @GKInspectable var fireRate = 1.0
+
+    private var fireTicker: PeriodicTimer!
     private var weapon: Weapon? = nil
     
     override func didAddToEntity() {
-        
-        print("Weapon type = \(weaponType)")
         
         switch weaponType {
         case 1:
@@ -55,6 +54,8 @@ class FireComponent: GKComponent {
             }()
         default: break
         }
+        
+        fireTicker = PeriodicTimer(tickInterval: fireRate)
     }
     
     override func update(deltaTime seconds: TimeInterval) {
