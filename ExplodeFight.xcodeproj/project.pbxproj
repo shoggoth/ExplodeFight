@@ -36,6 +36,7 @@
 		FFE0186325C2E81A0051984F /* MoveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186225C2E81A0051984F /* MoveComponent.swift */; };
 		FFE0186525C958840051984F /* MobEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186425C958840051984F /* MobEntity.swift */; };
 		FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186625CACFAD0051984F /* FireComponent.swift */; };
+		FFEF768325F66D5600DB234B /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEF768225F66D5600DB234B /* Snapshot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -85,6 +86,7 @@
 		FFE0186225C2E81A0051984F /* MoveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveComponent.swift; sourceTree = "<group>"; };
 		FFE0186425C958840051984F /* MobEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobEntity.swift; sourceTree = "<group>"; };
 		FFE0186625CACFAD0051984F /* FireComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireComponent.swift; sourceTree = "<group>"; };
+		FFEF768225F66D5600DB234B /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				FF080696256BD29700F2EBA7 /* GameScene.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
 				FF21CD6425EE503900873CD3 /* Weapon.swift */,
+				FFEF768225F66D5600DB234B /* Snapshot.swift */,
 				FFB527AA25C1CB8400B584C7 /* Entities */,
 				FF49712B25B72CA70083C36B /* Components */,
 				FF95A51F2579303800954B50 /* SplashScene.swift */,
@@ -303,6 +306,7 @@
 				FFB527AC25C1CBA900B584C7 /* PlayerEntity.swift in Sources */,
 				FF49713725B72FB30083C36B /* MobComponent.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
+				FFEF768325F66D5600DB234B /* Snapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

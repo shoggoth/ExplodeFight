@@ -16,7 +16,7 @@ class GameScene: BaseSKScene {
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
     private let joystick = TouchJoystick()
-    
+
     override func didMove(to view: SKView) {
         
         // Set up scene physics
@@ -33,9 +33,32 @@ class GameScene: BaseSKScene {
         
         if let node = scene?.childNode(withName: "Mob") { entities.append(MobEntity(withNode: node)) }
     }
+
+    // MARK: - Rule State
+
+    private var levelStateSnapshot: LevelStateSnapshot?
+
+    func entitySnapshotForEntity(entity: GKEntity) -> EntitySnapshot? {
+        
+        // Create a snapshot of the level's state if one does not already exist for this update cycle.
+        if levelStateSnapshot == nil { levelStateSnapshot = LevelStateSnapshot(scene: self) }
+        
+        // Find and return the entity snapshot for this entity.
+        return levelStateSnapshot!.entitySnapshots[entity]
+    }
+
+    // MARK: - Update
+    
+    override func update(delta: TimeInterval) {
+        
+        super.update(delta)
+        
+        // Get rid of the now-stale `LevelStateSnapshot` if it exists. It will be regenerated when next needed.
+        levelStateSnapshot = nil
+    }
 }
 
-// MARK: - Touch handling
+// MARK: - Touch handling -
 
 extension GameScene {
     
