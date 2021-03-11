@@ -2,11 +2,14 @@
 master
 
 ## Current Tasks
-- Allow mobs to be cleanly destroyed.
+- Allow mobs to be cleanly destroyed on contact with a bullet, update facts on mob deaths.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
 - Add rules for a demo: maintain the number of Mobs at 10 until 100 total have been spawned.
 - Check spawner performance with 250 mobs.
+
+## Questions
+- Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all.
 
 ## Next Tasks
 - Make a user-controlled entity and a mob entity or do this using components so that the behaviour can be switched for a demo attract phase.
