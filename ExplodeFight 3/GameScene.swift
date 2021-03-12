@@ -16,35 +16,37 @@ class GameScene: BaseSKScene {
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
     private let joystick = TouchJoystick()
-    private var spawner: Spawner?
+    private var level: Level?
 
+    private var rulesComponent: RulesComponent? { entity?.component(ofType: RulesComponent.self) }
+    
     override func didMove(to view: SKView) {
         
         // Set up scene physics
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+        
+        // Create initial level
+        level = Level(scene: self)
 
-        // Setup entities
-        if let node = scene?.childNode(withName: "Player") {
-            
-            let playerEntity = PlayerEntity(withNode: node)
-            playerEntity.addComponent(PlayerControlComponent(joystick: joystick))
+        // MARK: TODO: Temp (Move this to Level, levels might have different rules to one another.)
+        
+        // Set up rules
+        if let ruleSystem = rulesComponent?.ruleSystem {
 
-            entities.append(playerEntity)
+            ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue < 10"), assertingFact: "updateCountIsLow" as NSObject, grade: 0.7))
+            ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue == 7"), retractingFact: "updateCountIsLow" as NSObject, grade: 0.3))
         }
+
+        // Reset the rules component's update count.
+        rulesComponent?.updateCount = 0
+
+    }
+    
+    override func update(delta: TimeInterval) {
         
-        if let node = scene?.childNode(withName: "Mob") { entities.append(MobEntity(withNode: node)) }
+        level?.update(delta: delta)
         
-        // Setup spawner
-        spawner = Spawner(scene: self)
-        
-        (1...10).forEach { _ in
-            
-            if let bar = spawner?.spawn(name: "Mob") {
-                
-                addChild(bar)
-                entities.append(MobEntity(withNode: bar))
-            }
-        }
+        super.update(delta: delta)
     }
 }
 

@@ -9,7 +9,7 @@ master
 - Check spawner performance with 250 mobs.
 
 ## Questions
-- Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all.
+- Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ## Next Tasks
 - Make a user-controlled entity and a mob entity or do this using components so that the behaviour can be switched for a demo attract phase.
