@@ -5,6 +5,7 @@ master
 - Allow mobs to be cleanly destroyed on contact with a bullet, update facts on mob deaths.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
+- Spawner preload and kill only those nodes which contain entities functionality.
 - Add rules for a demo: maintain the number of Mobs at 10 until 100 total have been spawned.
 - Check spawner performance with 250 mobs.
 
@@ -58,8 +59,10 @@ Robotron & crystal quest crossover with retro influences and references to some 
 - Shoggoth - eyes fall off on damage and can be picked up. Rather like the dumpfers in cq.
 - Zapstar - a tribute to Minter
 
-### Level names
-- The Mountains of madness - shoggoth level
+### Level/enemy/chieve ideas
+- The Mountains of madness - shoggoth-heavy level
+- Weirding module
+- Do-gooder project
 
 ### Achievements
 - Tekeli-li - collect 5 shoggoth eyes in a level.

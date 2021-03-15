@@ -23,8 +23,9 @@ class GameScene: BaseSKScene {
     override func didMove(to view: SKView) {
         
         // Set up scene physics
-        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
-        
+        physicsWorld.contactDelegate = self
+        physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+
         // Create initial level
         level = Level(scene: self)
 
@@ -50,6 +51,20 @@ class GameScene: BaseSKScene {
     }
 }
 
+// MARK: - Contact handling -
+
+extension GameScene: SKPhysicsContactDelegate {
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        print("contact began")
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        
+        print("contact ended")
+    }
+}
 // MARK: - Touch handling -
 
 extension GameScene {
