@@ -57,12 +57,14 @@ extension GameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        print("contact began between sprites \(contact.bodyA.node) and \(contact.bodyB.node)")
+        (contact.bodyA.node?.entity as? ContactNotifiable)?.contactWithEntityDidBegin(contact.bodyB.node?.entity ?? GKEntity())
+        (contact.bodyB.node?.entity as? ContactNotifiable)?.contactWithEntityDidBegin(contact.bodyA.node?.entity ?? GKEntity())
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
         
-        print("contact ended")
+        (contact.bodyA.node?.entity as? ContactNotifiable)?.contactWithEntityDidEnd(contact.bodyB.node?.entity ?? GKEntity())
+        (contact.bodyB.node?.entity as? ContactNotifiable)?.contactWithEntityDidEnd(contact.bodyA.node?.entity ?? GKEntity())
     }
 }
 // MARK: - Touch handling -

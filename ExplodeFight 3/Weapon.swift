@@ -36,7 +36,7 @@ class NodeCannon: Weapon {
         //bullet.physicsBody = nil
         bullet.physicsBody?.velocity = direction * 1024
         
-        let firePos = CGPoint(x: 42, y: 0)
+        let firePos = CGPoint(x: 64, y: 0)
         bullet.position = scene.convert(firePos, from: emitNode)
         
         scene.addChild(bullet)
@@ -80,7 +80,12 @@ class RoundBullet: SKShapeNode, NodeBullet {
         strokeColor = .blue
         
         // TODO: Need physics for collision?
-        physicsBody = SKPhysicsBody(circleOfRadius: radius)
+        physicsBody = {
+            let body = SKPhysicsBody(circleOfRadius: radius)
+            body.categoryBitMask = 0b0100
+            
+            return body
+        }()
     }
     
     func fire(completion: ((NodeBullet) -> Void)? = nil) {

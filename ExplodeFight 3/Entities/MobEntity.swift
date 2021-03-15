@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class MobEntity: GKEntity {
+class MobEntity: GKEntity, ContactNotifiable {
     
     var moveComponent: MoveComponent? { component(ofType: MoveComponent.self) }
 
@@ -23,6 +23,23 @@ class MobEntity: GKEntity {
         addComponent(GKSKNodeComponent(node: node))
         addComponent(MoveComponent(maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
     }
-
+    
     required init?(coder: NSCoder) { fatalError() }
+
+    func contactWithEntityDidBegin(_ entity: GKEntity){
+        
+        print("Halp I \(self) was hitted!")
+    }
+    
+    func contactWithEntityDidEnd(_ entity: GKEntity){
+        
+        print("Halp I was unhitted!")
+    }
+}
+
+protocol ContactNotifiable {
+
+    func contactWithEntityDidBegin(_ entity: GKEntity)
+    
+    func contactWithEntityDidEnd(_ entity: GKEntity)
 }
