@@ -57,7 +57,7 @@ extension GameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        print("contact began")
+        print("contact began between sprites \(contact.bodyA.node) and \(contact.bodyB.node)")
     }
     
     func didEnd(_ contact: SKPhysicsContact) {

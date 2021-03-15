@@ -36,7 +36,7 @@ class NodeCannon: Weapon {
         //bullet.physicsBody = nil
         bullet.physicsBody?.velocity = direction * 1024
         
-        let firePos = CGPoint(x: 34, y: 0)
+        let firePos = CGPoint(x: 42, y: 0)
         bullet.position = scene.convert(firePos, from: emitNode)
         
         scene.addChild(bullet)

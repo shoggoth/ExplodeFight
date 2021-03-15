@@ -63,6 +63,7 @@ Robotron & crystal quest crossover with retro influences and references to some 
 - The Mountains of madness - shoggoth-heavy level
 - Weirding module
 - Do-gooder project
+- Friendship ended with Mudasir
 
 ### Achievements
 - Tekeli-li - collect 5 shoggoth eyes in a level.
