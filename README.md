@@ -2,6 +2,8 @@
 exp/spawner
 
 ## Current Tasks
+- Simplify the spawner to create and destroy one kind of sprite node.
+- Extend the simple spawner to provide the sort of multiple spawn functionality we have now 'MultiSpawner', call it maybe.
 
 ### DONE
 - Abstract the factory component from the spawn node so that it can be used independantly of the scene.

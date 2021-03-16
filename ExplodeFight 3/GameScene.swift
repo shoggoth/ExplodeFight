@@ -38,11 +38,11 @@ class GameScene: BaseSKScene {
         if tap.state == .ended { spawnNode?.spawner?.kill(nodesWithName: "Robot") }
     }
     
-    override func update(delta: TimeInterval) {
+    override func update(deltaTime: TimeInterval) {
         
-        super.update(delta: delta)
+        super.update(deltaTime: deltaTime)
         
-        spawnNode?.spawner?.update(delta: delta)
+        spawnNode?.spawner?.update(deltaTime: deltaTime)
     }
 }
 
