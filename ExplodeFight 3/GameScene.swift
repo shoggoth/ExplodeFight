@@ -52,11 +52,11 @@ class GameScene: BaseSKScene {
         self.entity?.component(ofType: RulesComponent.self)?.updateCount = 0
     }
     
-    override func update(delta: TimeInterval) {
+    override func update(deltaTime: TimeInterval) {
         
-        super.update(delta: delta)
+        super.update(deltaTime: deltaTime)
         
-        spawnNode?.spawner?.update(delta: delta)
+        spawnNode?.spawner?.update(deltaTime: deltaTime)
     }
 }
 
