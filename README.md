@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- Rework spawners on branch __exp/spawner__.
 - Allow mobs to be cleanly destroyed on contact with a bullet, update facts on mob deaths.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
