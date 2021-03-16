@@ -12,6 +12,8 @@ class MobEntity: GKEntity, ContactNotifiable {
     
     var moveComponent: MoveComponent? { component(ofType: MoveComponent.self) }
 
+    private var health = 1.0
+    
     init(withNode node: SKNode) {
         
         super.init()
@@ -26,7 +28,16 @@ class MobEntity: GKEntity, ContactNotifiable {
     
     required init?(coder: NSCoder) { fatalError() }
 
+    override func update(deltaTime delta: TimeInterval) {
+        
+        super.update(deltaTime: delta)
+
+        if health < 0.0 { print("I am deaded XD") }
+    }
+    
     func contactWithEntityDidBegin(_ entity: GKEntity){
+        
+        health = health - 0.7
         
         print("Halp I \(self) was hitted!")
     }
