@@ -21,10 +21,5 @@ class SplashScene : BaseSKScene {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + timeUntilNextPhase) { view.load(sceneWithFileName: GameViewController.config.initialSceneName, transition: transition) }
     }
-    
-    override func update(delta: TimeInterval) {
-        
-        super.update(delta: delta)
-    }
 }
 

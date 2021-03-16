@@ -12,7 +12,7 @@ import SpriteKitAddons
 class Level {
     
     private let scene: BaseSKScene
-    private let spawner: Spawner
+    private let spawner: SceneSpawner
     private var spawnTicker: PeriodicTimer
     private var killTicker: PeriodicTimer
 
@@ -21,7 +21,7 @@ class Level {
         self.scene = scene
         
         // Setup spawner
-        spawner = Spawner(scene: scene)
+        spawner = SceneSpawner(scene: scene)
         spawnTicker = PeriodicTimer(tickInterval: 1.0)
         killTicker = PeriodicTimer(tickInterval: 10.0)
 
@@ -29,16 +29,16 @@ class Level {
         setup()
     }
     
-    func update(delta: TimeInterval) {
+    func update(deltaTime: TimeInterval) {
         
-        spawner.update(delta: delta)
+        spawner.update(deltaTime: deltaTime)
         
-        killTicker = killTicker.tick(deltaTime: delta) {
+        killTicker = killTicker.tick(deltaTime: deltaTime) {
             
             spawner.kill()
         }
         
-        spawnTicker = spawnTicker.tick(deltaTime: delta) {
+        spawnTicker = spawnTicker.tick(deltaTime: deltaTime) {
             
             scene.addChild(spawner.spawn(name: "Mob") { node in
                 

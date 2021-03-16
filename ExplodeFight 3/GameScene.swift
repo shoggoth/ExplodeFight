@@ -43,11 +43,11 @@ class GameScene: BaseSKScene {
 
     }
     
-    override func update(delta: TimeInterval) {
+    override func update(deltaTime: TimeInterval) {
         
-        level?.update(delta: delta)
+        level?.update(deltaTime: deltaTime)
         
-        super.update(delta: delta)
+        super.update(deltaTime: deltaTime)
     }
 }
 

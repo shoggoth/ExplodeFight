@@ -47,11 +47,11 @@ class AttractScene: BaseSKScene {
         DispatchQueue.main.async { self.view?.load(sceneWithFileName: "GameScene", transition: transition) }
     }
 
-    override func update(delta: TimeInterval) {
+    override func update(deltaTime: TimeInterval) {
         
-        stateMachine.update(deltaTime: delta)
+        stateMachine.update(deltaTime: deltaTime)
         
-        super.update(delta: delta)
+        super.update(deltaTime: deltaTime)
     }
 }
 
