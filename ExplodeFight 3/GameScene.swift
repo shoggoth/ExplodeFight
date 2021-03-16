@@ -41,11 +41,11 @@ class GameScene: BaseSKScene {
         spawnNode?.spawner?.kill(recycle: false)
     }
     
-    override func update(delta: TimeInterval) {
+    override func update(deltaTime: TimeInterval) {
         
-        super.update(delta: delta)
+        super.update(deltaTime: deltaTime)
         
-        spawnNode?.spawner?.update(delta: delta)
+        spawnNode?.spawner?.update(deltaTime: deltaTime)
     }
 }
 
