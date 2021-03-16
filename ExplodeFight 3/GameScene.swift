@@ -20,11 +20,6 @@ class GameScene: BaseSKScene {
         // The scene will handle physics contacts itself.
         physicsWorld.contactDelegate = self
     }
-    
-    override func update(delta: TimeInterval) {
-        
-        super.update(delta: delta)
-    }
 }
 
 extension GameScene: SKPhysicsContactDelegate {

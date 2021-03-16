@@ -24,11 +24,6 @@ class SplashScene : BaseSKScene {
             self.view?.load(sceneWithFileName: "GameScene", transition: transition)
         }
     }
-    
-    override func update(delta: TimeInterval) {
-        
-        super.update(delta: delta)
-    }
 }
 
 // MARK: - Configuration
