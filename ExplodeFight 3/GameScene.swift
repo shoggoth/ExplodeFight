@@ -44,11 +44,6 @@ class GameScene: BaseSKScene {
             }
         }
     }
-    
-    override func update(delta: TimeInterval) {
-        
-        super.update(delta: delta)
-    }
 }
 
 public class DebugComponent: GKComponent {
