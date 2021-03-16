@@ -13,7 +13,7 @@ import GameControls
 
 class GameScene: BaseSKScene {
     
-    private lazy var spawner = { Spawner(scene: SKScene(fileNamed: "Spawn")!) }()
+    private lazy var spawner = { SceneSpawner(scene: SKScene(fileNamed: "Spawn")!) }()
 
     override func didMove(to view: SKView) {
         
@@ -38,17 +38,17 @@ class GameScene: BaseSKScene {
         if tap.state == .ended { spawner.kill(nodesWithName: "Robot") }
     }
     
-    override func update(delta: TimeInterval) {
+    override func update(deltaTime: TimeInterval) {
         
-        super.update(delta: delta)
+        super.update(deltaTime: deltaTime)
         
-        spawner.update(delta: delta)
+        spawner.update(deltaTime: deltaTime)
     }
 }
 
 // MARK: - Spawn without entity
 
-extension Spawner {
+extension SceneSpawner {
     
     func spawnMultiRobots(on node: SKNode, count: Int = 25) {
         
