@@ -23,8 +23,8 @@ class SplashScene : BaseSKScene {
         }
     }
     
-    override func update(delta: TimeInterval) {
+    override func update(deltaTime: TimeInterval) {
         
-        super.update(delta: delta)
+        super.update(deltaTime: deltaTime)
     }
 }

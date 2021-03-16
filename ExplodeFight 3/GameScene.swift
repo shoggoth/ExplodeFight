@@ -39,12 +39,12 @@ class GameScene: BaseSKScene {
         spawnNode?.spawner?.kill()
     }
     
-    override func update(delta: TimeInterval) {
+    override func update(deltaTime: TimeInterval) {
         
-        super.update(delta: delta)
+        super.update(deltaTime: deltaTime)
         
-        spawnNode?.spawner?.update(delta: delta)
-        trackEntity?.update(deltaTime: delta)
+        spawnNode?.spawner?.update(deltaTime: deltaTime)
+        trackEntity?.update(deltaTime: deltaTime)
     }
 }
 
