@@ -43,11 +43,6 @@ class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
         joystick.joyFunctions = absoluteFunctions
         joystick.joyFunctions = windowFunctions
     }
-    
-    override func update(delta: TimeInterval) {
-        
-        super.update(delta: delta)
-    }
 
     // MARK: Temp
     
