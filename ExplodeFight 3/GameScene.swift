@@ -40,20 +40,9 @@ class GameScene: BaseSKScene {
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
-        if let node = spawner?.spawn(completion: { node in
-            
-            let entity = GKEntity()
-            
-            //entity.addComponent(GKSKNodeComponent(node: node))
-            entity.addComponent(DebugComponent())
-            
-            return entity
-        }) {
-            
-            node.physicsBody = SKPhysicsBody(circleOfRadius: 16)
-            addChild(node)
-        }
-        
+        spawnerMethodOne()
+        spawnerMethodTwo()
+
         spawnNode?.spawnMultiRobots()
     }
     
@@ -84,6 +73,41 @@ class GameScene: BaseSKScene {
     }
 }
 
+extension GameScene {
+    
+    func spawnerMethodOne() {
+        
+        if let node = spawner?.spawn(completion: { node in
+            
+            let entity = GKEntity()
+            
+            //entity.addComponent(GKSKNodeComponent(node: node))
+            entity.addComponent(DebugComponent())
+            
+            return entity
+        }) {
+            
+            node.physicsBody = SKPhysicsBody(circleOfRadius: 16)
+            addChild(node)
+        }
+    }
+    
+    func spawnerMethodTwo() {
+        
+        spawner?.spawn { node in
+            
+            let entity = GKEntity()
+            
+            //entity.addComponent(GKSKNodeComponent(node: node))
+            entity.addComponent(DebugComponent())
+            
+            node.physicsBody = SKPhysicsBody(circleOfRadius: 16)
+            self.addChild(node)
+
+            return entity
+        }
+    }
+}
 // MARK: - Spawn robots -
 
 extension SpawnSKNode {
