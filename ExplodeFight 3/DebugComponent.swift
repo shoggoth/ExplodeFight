@@ -18,21 +18,23 @@ public class DebugComponent: GKComponent {
     
     // MARK: Update
     
-    public override func update(deltaTime seconds: TimeInterval) {
+    public override func update(deltaTime: TimeInterval) {
         
-        super.update(deltaTime: seconds)
+        super.update(deltaTime: deltaTime)
         
-        if dumpTiming { print("\(self) update at \(seconds)s") }
+        if dumpTiming { print("\(self) update at \(deltaTime)s") }
     }
     
     public override func didAddToEntity() {
         
-        print("Component \(self.identifier) \(self) added to entity \(String(describing: entity))")
-        print("Sprite component \(String(describing: entity?.spriteComponent))")
+        print("DebugComponent '\(self.identifier)' (\(self)) added to entity: \(String(describing: entity))")
+        print("Sprite component: \(String(describing: entity?.spriteComponent))")
     }
     
     public override func willRemoveFromEntity() {
         
         print("Component \(self) will remove from entity \(String(describing: entity))")
     }
+    
+    public override class var supportsSecureCoding: Bool { return true }
 }
