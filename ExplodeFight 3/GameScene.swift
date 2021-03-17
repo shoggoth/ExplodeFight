@@ -25,17 +25,6 @@ class GameScene: BaseSKScene {
 
         // Set up scene physics
         self.physicsBody = SKPhysicsBody (edgeLoopFrom: self.frame)
-        
-        // Scene node
-        if let sceneNode = scene?.childNode(withName: "Original") {
-            
-            if let entity = sceneNode.entity, let i = entities.firstIndex(of: entity) {
-                
-                entities.remove(at: i)
-            }
-            
-            //sceneNode.removeFromParent()
-        }
     }
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
