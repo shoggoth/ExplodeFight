@@ -33,11 +33,6 @@ class GameScene: BaseSKScene {
         spawner?.autoAddSpriteComponent = true
     }
     
-    func removeSceneNode() {
-        
-        if let entity = cloneNode?.entity, let i = entities.firstIndex(of: entity) { entities.remove(at: i) }
-    }
-    
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
         spawnOne()
@@ -47,14 +42,17 @@ class GameScene: BaseSKScene {
         
         if tap.state == .began {
             
-            removeSceneNode()
-            
+            // Remove entity of the clone source node.
+            if let entity = cloneNode?.entity, let i = entities.firstIndex(of: entity) { entities.remove(at: i) }
+
             spawner?.kill()
         }
         
         else if tap.state == .ended {
             
+            // Remove clone source node.
             cloneNode?.removeFromParent()
+            cloneNode = nil
         }
     }
     
@@ -82,7 +80,6 @@ extension GameScene {
             return entity
         }) {
             node.position = CGPoint.zero
-            node.physicsBody = SKPhysicsBody(circleOfRadius: 16)
             spawnNode?.addChild(node)
         }
     }

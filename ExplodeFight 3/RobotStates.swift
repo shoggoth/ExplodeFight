@@ -9,6 +9,80 @@
 import GameplayKit
 import SpriteKitAddons
 
+class LiveState: GKState {
+    
+    private var countdownTimer: CountdownTimer?
+    
+    override func didEnter(from previousState: GKState?) {
+        
+        countdownTimer = CountdownTimer(countDownTime: 1.0)
+        
+        if previousState == nil { print("I gonna live forevah!!") } else { print("I live agaain!! \(previousState)") }
+    }
+    
+    override func update(deltaTime: TimeInterval) {
+        
+        super.update(deltaTime: deltaTime)
+        
+        countdownTimer = countdownTimer?.tick(deltaTime: deltaTime) { stateMachine?.enter(ExplodeState.self) }
+    }
+}
+
+class ExplodeState: GKState {
+    
+    private var countdownTimer: CountdownTimer?
+    
+    override func didEnter(from previousState: GKState?) {
+        
+        countdownTimer = CountdownTimer(countDownTime: 2.0)
+        print("Am gonna EXPOLDE!! \(previousState)")
+    }
+    
+    override func update(deltaTime: TimeInterval) {
+        
+        super.update(deltaTime: deltaTime)
+        
+        countdownTimer = countdownTimer?.tick(deltaTime: deltaTime) { stateMachine?.enter(DieState.self) }
+    }
+}
+
+class DieState: GKState {
+    
+    private var countdownTimer: CountdownTimer?
+    
+    override func didEnter(from previousState: GKState?) {
+        
+        countdownTimer = CountdownTimer(countDownTime: 3.0)
+        print("Ugh! Lad! He ghot mi!! \(previousState)")
+    }
+    
+    override func update(deltaTime: TimeInterval) {
+        
+        super.update(deltaTime: deltaTime)
+        
+        countdownTimer = countdownTimer?.tick(deltaTime: deltaTime) { stateMachine?.enter(LiveState.self) }
+    }
+}
+
+class DebugState: GKState {
+    
+    private var name: String
+    
+    // MARK: Initializers
+    
+    required init(name: String) {
+        
+        self.name = name
+    }
+    
+    override func update(deltaTime: TimeInterval) {
+        
+        super.update(deltaTime: deltaTime)
+        
+        print("Debuggin' \(name)")
+    }
+}
+
 /*extension RobotEntity {
 
 //class RobotState: GKState {
@@ -84,49 +158,3 @@ class PhysicsState: GKState {
     }
 }*/
 
-class LiveState: GKState {
-    
-    private var ct: CountdownTimer?
-    
-    override func didEnter(from previousState: GKState?) {
-        
-        ct = CountdownTimer(countDownTime: 3.0)
-        print("I gonna live forevah!! \(previousState)")
-    }
-    
-    override func update(deltaTime: TimeInterval) {
-        
-        super.update(deltaTime: deltaTime)
-        
-        ct = ct?.tick(deltaTime: deltaTime) { print("Ecxpired") }
-    }
-}
-
-class ExplodeState: GKState {
-    
-}
-
-class DieState: GKState {
-    
-}
-
-class DebugState: GKState {
-    
-    private var name: String
-    
-    // MARK: Initializers
-    
-    required init(name: String) {
-        
-        self.name = name
-    }
-    
-    override func update(deltaTime: TimeInterval) {
-        
-        super.update(deltaTime: deltaTime)
-        
-        print("Debuggin' \(name)")
-    }
-}
-
-//}
