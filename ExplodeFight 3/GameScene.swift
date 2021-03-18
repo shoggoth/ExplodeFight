@@ -13,8 +13,8 @@ import GameControls
 
 class GameScene: BaseSKScene {
     
-    private lazy var sceneNode = { self.childNode(withName: "Original") }()
-    private lazy var spawnNode = { self.childNode(withName: "//Spawner_0") as? SpawnSKNode }()
+    private lazy var cloneNode = { self.childNode(withName: "Original") }()
+    private lazy var spawnNode = { self.childNode(withName: "Spawner_0") }()
     
     private var spawner: Spawner?
     
@@ -29,21 +29,18 @@ class GameScene: BaseSKScene {
         // Set up scene physics
         self.physicsBody = SKPhysicsBody (edgeLoopFrom: self.frame)
         
-        spawner = Spawner(node: sceneNode!)
-        //spawner?.autoAddSpriteComponent = true
+        spawner = Spawner(node: cloneNode!)
+        spawner?.autoAddSpriteComponent = true
     }
     
     func removeSceneNode() {
         
-        if let entity = sceneNode?.entity, let i = entities.firstIndex(of: entity) { entities.remove(at: i) }
+        if let entity = cloneNode?.entity, let i = entities.firstIndex(of: entity) { entities.remove(at: i) }
     }
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
-        spawnerMethodOne()
-        spawnerMethodTwo()
-
-        spawnNode?.spawnMultiRobots()
+        spawnOne()
     }
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
@@ -52,15 +49,12 @@ class GameScene: BaseSKScene {
             
             removeSceneNode()
             
-            spawnNode?.spawner?.kill(nodesWithName: "RobotAnim")
             spawner?.kill()
         }
         
         else if tap.state == .ended {
             
-            sceneNode?.removeFromParent()
-            
-            spawnNode?.spawner?.kill(nodesWithName: "Robot")
+            cloneNode?.removeFromParent()
         }
     }
     
@@ -69,68 +63,27 @@ class GameScene: BaseSKScene {
         super.update(deltaTime: deltaTime)
         
         spawner?.update(deltaTime: deltaTime)
-        spawnNode?.spawner?.update(deltaTime: deltaTime)
     }
 }
 
+// MARK: - Spawn robots -
+
 extension GameScene {
     
-    func spawnerMethodOne() {
+    func spawnOne() {
         
         if let node = spawner?.spawn(completion: { node in
             
             let entity = GKEntity()
             
-            //entity.addComponent(GKSKNodeComponent(node: node))
             entity.addComponent(DebugComponent())
-            
+            entity.addComponent(AIComponent(states: [LiveState(), ExplodeState(), DieState(), DebugState(name: "Anon")]))
+
             return entity
         }) {
-            
+            node.position = CGPoint.zero
             node.physicsBody = SKPhysicsBody(circleOfRadius: 16)
-            addChild(node)
-        }
-    }
-    
-    func spawnerMethodTwo() {
-        
-        spawner?.spawn { node in
-            
-            let entity = GKEntity()
-            
-            //entity.addComponent(GKSKNodeComponent(node: node))
-            entity.addComponent(DebugComponent())
-            
-            node.physicsBody = SKPhysicsBody(circleOfRadius: 16)
-            self.addChild(node)
-
-            return entity
-        }
-    }
-}
-// MARK: - Spawn robots -
-
-extension SpawnSKNode {
-    
-    func spawnMultiRobots(count: Int = 25) {
-        
-        (0..<count).forEach { _ in spawn(name: "Robot") { newNode in
-            
-            newNode.position = CGPoint(x: CGFloat(arc4random() % 100) - 50, y: CGFloat(arc4random() % 200) - 100)
-            newNode.run(SKAction.repeatForever(SKAction(named: "Pulse")!))
-            newNode.isPaused = false
-            
-            return nil
-        }
-        }
-        
-        (0..<count).forEach { _ in spawn(name: "RobotAnim") { newNode in
-            
-            newNode.position = CGPoint(x: CGFloat(arc4random() % 200) - 100, y: CGFloat(arc4random() % 100) - 50)
-            newNode.isPaused = false
-            
-            return nil
-        }
+            spawnNode?.addChild(node)
         }
     }
 }
