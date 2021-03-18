@@ -13,8 +13,8 @@ class Level {
     
     private let scene: BaseSKScene
     private let spawner: SceneSpawner
-    private var spawnTicker: PeriodicTimer
-    private var killTicker: PeriodicTimer
+    private var spawnTicker: PeriodicTimer?
+    private var killTicker: PeriodicTimer?
 
     init(scene: BaseSKScene) {
         
@@ -33,12 +33,12 @@ class Level {
         
         spawner.update(deltaTime: deltaTime)
         
-        killTicker = killTicker.tick(deltaTime: deltaTime) {
+        killTicker = killTicker?.tick(deltaTime: deltaTime) {
             
             spawner.kill()
         }
         
-        spawnTicker = spawnTicker.tick(deltaTime: deltaTime) {
+        spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) {
             
             scene.addChild(spawner.spawn(name: "Mob") { node in
                 
