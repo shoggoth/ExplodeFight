@@ -10,11 +10,7 @@ import GameplayKit
 
 class AIComponent: GKComponent {
     
-    // MARK: Properties
-    
     let stateMachine: GKStateMachine
-    
-    // MARK: Initializers
     
     init(states: [GKState]) {
         
@@ -25,13 +21,13 @@ class AIComponent: GKComponent {
     }
     
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
-    // MARK: GKComponent Life Cycle
 
-    override func update(deltaTime seconds: TimeInterval) {
+    override func update(deltaTime: TimeInterval) {
         
-        super.update(deltaTime: seconds)
+        super.update(deltaTime: deltaTime)
 
-        stateMachine.update(deltaTime: seconds)
+        stateMachine.update(deltaTime: deltaTime)
     }
+    
+    public override class var supportsSecureCoding: Bool { return true }
 }

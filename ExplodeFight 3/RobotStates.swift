@@ -30,12 +30,17 @@ class LiveState: GKState {
 
 class ExplodeState: GKState {
     
+    private var explodeFunc: (() -> Void)?
     private var countdownTimer: CountdownTimer?
     
+    init(completion: (() -> Void)? = nil) { explodeFunc = completion }
+
     override func didEnter(from previousState: GKState?) {
         
         countdownTimer = CountdownTimer(countDownTime: 2.0)
+        
         print("Am gonna EXPOLDE!! \(String(describing: previousState))")
+        explodeFunc?()
     }
     
     override func update(deltaTime: TimeInterval) {
@@ -49,13 +54,9 @@ class ExplodeState: GKState {
 class DieState: GKState {
     
     private var dieFunc: (() -> Void)?
-    
     private var countdownTimer: CountdownTimer?
     
-    init(completion: (() -> Void)?) {
-        
-    dieFunc = completion
-    }
+    init(completion: (() -> Void)? = nil) { dieFunc = completion }
     
     override func didEnter(from previousState: GKState?) {
         

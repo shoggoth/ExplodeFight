@@ -75,7 +75,7 @@ extension GameScene {
             let entity = GKEntity()
             
             entity.addComponent(DebugComponent())
-            entity.addComponent(AIComponent(states: [LiveState(), ExplodeState(), DieState { self.spawner?.kill(node: node) }, DebugState(name: "Anon")]))
+            entity.addComponent(AIComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .white }, DieState { self.spawner?.kill(node: node, recycle: true) }, DebugState(name: "Anon")]))
 
             return entity
         }) {
