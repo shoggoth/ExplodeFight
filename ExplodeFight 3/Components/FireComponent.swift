@@ -13,10 +13,12 @@ class FireComponent: GKComponent {
     
     @GKInspectable var weaponType = 1
     
-    private var fireTicker = PeriodicTimer(tickInterval: 1.0)
+    private var fireTicker: PeriodicTimer?
     private var weapon: Weapon? = nil
     
     override func didAddToEntity() {
+        
+        fireTicker = PeriodicTimer(tickInterval: 1.0)
         
         print("Weapon type = \(weaponType)")
         
@@ -61,7 +63,7 @@ class FireComponent: GKComponent {
         
         guard let weapon = weapon, let sourceNode = entity?.spriteComponent?.node else { return }
         
-        fireTicker = fireTicker.tick(deltaTime: seconds) { weapon.fire(direction: CGVector(angle: sourceNode.zRotation + (pi * 0.5))) }
+        fireTicker = fireTicker?.tick(deltaTime: seconds) { weapon.fire(direction: CGVector(angle: sourceNode.zRotation + (pi * 0.5))) }
     }
     
     override class var supportsSecureCoding: Bool { return true }
