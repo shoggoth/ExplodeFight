@@ -29,14 +29,12 @@ class AttractScene: BaseSKScene {
         let findSourceNode = { name in self.modeScene?.orphanedChildNode(withName: name) }
         
         stateMachine = GKStateMachine(states: [
+            ShowExplanation(sourceNode: findSourceNode("ExplanationRoot")!, destinationNode: self),
             ShowEnemies(sourceNode: findSourceNode("EnemiesRoot")!, destinationNode: self),
             ShowHiScores(sourceNode: findSourceNode("HiScoreRoot")!, destinationNode: self),
             ShowPlayDemo(sourceNode: findSourceNode("OffsetRoot/PlayDemoRoot")!, destinationNode: self)
         ])
-        stateMachine.enter(ShowHiScores.self)
-        
-        // TODO: remove this
-        tilemapbits()
+        stateMachine.enter(ShowExplanation.self)
     }
     
     @objc func start(_ tap: UITapGestureRecognizer) {
@@ -55,48 +53,17 @@ class AttractScene: BaseSKScene {
     }
 }
 
-// MARK: -
+// MARK: - State Machine States -
 
-extension AttractScene {
+private class ShowExplanation: AttractState {
     
-    private func tilemapbits() {
+    override func didEnter(from previousState: GKState?) {
         
-        guard let parentNode = scene?.childNode(withName: "ProgrTMRoot") else { return }
+        super.didEnter(from: previousState)
         
-        // Procedural tilemap
-        let mapper = CharacterTileSetMap(alphabet: "ABCEFGH".map { String($0) } + ["D", "W", "6", "7", "2", "0", "_plus", "_star", "_comma"], defaultSize: CGSize(width: 32, height: 32))
-        let tileMap = SKTileMapNode(tileSet: mapper.tileSet, columns: 32, rows: 4, tileSize: mapper.tileSet.defaultTileSize)
-        
-        // Add it to the scene
-        parentNode.addChild(tileMap)
-        
-        makeTileMap(on: tileMap, mapper: mapper)
-    }
-    
-    private func makeTileMap(on tileMap: SKTileMapNode, mapper: CharacterTileSetMap) {
-        
-        tileMap.fill(with: mapper.tiles[" "])
-        mapper.print(key: "A", to: tileMap, at: CGPoint(x: 1, y: 1))
-        mapper.print(key: "B", to: tileMap, at: CGPoint(x: 12, y: 2))
-        mapper.print(key: "C", to: tileMap, at: CGPoint(x: 15, y: 3))
-        mapper.print(key: "D", to: tileMap, at: CGPoint(x: 2, y: 3))
-        mapper.print(key: "_star", to: tileMap, at: CGPoint(x: 7, y: 3))
-        mapper.print(key: "_comma", to: tileMap, at: CGPoint(x: 8, y: 3))
-        
-        mapper.print(key: "2", to: tileMap, at: CGPoint(x: 29, y: 2))
-        mapper.print(keys: ["7", "2", "6", "0"], to: tileMap, at: CGPoint(x: 31, y: 2))
-        mapper.print(keys: "CABBAGE DEAD FACE".map { String($0) }, to: tileMap, at: CGPoint(x: 0, y: 0))
-        
-        tileMap.run(SKAction.sequence([SKAction.wait(forDuration: 3.0),
-                                       SKAction.run { mapper.print(key: "_plus", to: tileMap, at: CGPoint(x: 3, y: 3)) },
-                                       SKAction.wait(forDuration: 3.0),
-                                       SKAction.run { mapper.print(keys: "DEAD CABBAGE".map { String($0) }, to: tileMap, at: CGPoint(x: 18, y: 0)) },
-                                       SKAction.wait(forDuration: 100.0),
-                                       SKAction.removeFromParent()]))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) { self.stateMachine?.enter(ShowHiScores.self) }
     }
 }
-
-// MARK: - State Machine States -
 
 private class ShowEnemies: AttractState {
     
@@ -104,7 +71,7 @@ private class ShowEnemies: AttractState {
         
         super.didEnter(from: previousState)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { self.stateMachine?.enter(ShowHiScores.self) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { self.stateMachine?.enter(ShowExplanation.self) }
     }
 }
 
