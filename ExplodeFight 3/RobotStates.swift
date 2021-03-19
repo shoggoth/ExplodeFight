@@ -17,7 +17,7 @@ class LiveState: GKState {
         
         countdownTimer = CountdownTimer(countDownTime: 1.0)
         
-        if previousState == nil { print("I gonna live forevah!!") } else { print("I live agaain!! \(previousState)") }
+        if previousState == nil { print("I gonna live forevah!!") } else { print("I live agaain!! \(String(describing: previousState))") }
     }
     
     override func update(deltaTime: TimeInterval) {
@@ -35,7 +35,7 @@ class ExplodeState: GKState {
     override func didEnter(from previousState: GKState?) {
         
         countdownTimer = CountdownTimer(countDownTime: 2.0)
-        print("Am gonna EXPOLDE!! \(previousState)")
+        print("Am gonna EXPOLDE!! \(String(describing: previousState))")
     }
     
     override func update(deltaTime: TimeInterval) {
@@ -48,12 +48,21 @@ class ExplodeState: GKState {
 
 class DieState: GKState {
     
+    private var dieFunc: (() -> Void)?
+    
     private var countdownTimer: CountdownTimer?
+    
+    init(completion: (() -> Void)?) {
+        
+    dieFunc = completion
+    }
     
     override func didEnter(from previousState: GKState?) {
         
         countdownTimer = CountdownTimer(countDownTime: 3.0)
-        print("Ugh! Lad! He ghot mi!! \(previousState)")
+        
+        print("Ugh! Lad! He ghot mi!! \(String(describing: previousState))")
+        dieFunc?()
     }
     
     override func update(deltaTime: TimeInterval) {
