@@ -2,7 +2,6 @@
 master
 
 ## Current Tasks
-- Rework spawners on branch __exp/spawner__.
 - Allow mobs to be cleanly destroyed on contact with a bullet, update facts on mob deaths.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
@@ -21,6 +20,8 @@ master
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 
 ### Completed Tasks
+- Lifecyccle state machine with deaths on __exp/deadstate__.
+- Rework spawners on branch __exp/spawner__.
 - Decide if we need to calculate the distances like the DemoBots does, leave it as a callable function outside the init for now. (moved to BaseSKScene).
 - SKLabelNode replacement with sprite or tilemap optimisations.
 - Make move, fire and possibly render components.
