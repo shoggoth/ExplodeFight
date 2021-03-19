@@ -15,9 +15,11 @@ class GameScene: BaseSKScene {
     
     private lazy var cloneNode = { self.childNode(withName: "Original") }()
     private lazy var spawnNode = { self.childNode(withName: "Spawner_0") }()
-    
-    private var spawner: Spawner?
-    
+    private lazy var animNode =  { self.childNode(withName: "Spawner_1") }()
+
+    private var intSpawner: Spawner?
+    private var extSpawner: Spawner?
+
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
@@ -29,8 +31,14 @@ class GameScene: BaseSKScene {
         // Set up scene physics
         self.physicsBody = SKPhysicsBody (edgeLoopFrom: self.frame)
         
-        spawner = Spawner(node: cloneNode!)
-        spawner?.autoAddSpriteComponent = true
+        intSpawner = Spawner(node: cloneNode!)
+        intSpawner?.autoAddSpriteComponent = true
+        
+        if let extNode = SKScene(fileNamed: "Spawn")?.childNode(withName: "ExternalScene") {
+            
+            extSpawner = Spawner(node: extNode)
+            extSpawner?.autoAddSpriteComponent = true
+        }
     }
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
@@ -45,7 +53,8 @@ class GameScene: BaseSKScene {
             // Remove entity of the clone source node.
             if let entity = cloneNode?.entity, let i = entities.firstIndex(of: entity) { entities.remove(at: i) }
 
-            spawner?.kill()
+            intSpawner?.kill()
+            extSpawner?.kill()
         }
         
         else if tap.state == .ended {
@@ -60,7 +69,8 @@ class GameScene: BaseSKScene {
         
         super.update(deltaTime: deltaTime)
         
-        spawner?.update(deltaTime: deltaTime)
+        intSpawner?.update(deltaTime: deltaTime)
+        extSpawner?.update(deltaTime: deltaTime)
     }
 }
 
@@ -70,17 +80,30 @@ extension GameScene {
     
     func spawnOne() {
         
-        if let node = spawner?.spawn(completion: { node in
+        if let node = intSpawner?.spawn(completion: { node in
             
             let entity = GKEntity()
             
             entity.addComponent(DebugComponent())
-            entity.addComponent(AIComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .white }, DieState { self.spawner?.kill(node: node, recycle: true) }, DebugState(name: "Anon")]))
+            entity.addComponent(AIComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .white }, DieState { self.intSpawner?.kill(node: node, recycle: true) }, DebugState(name: "Anon")]))
 
             return entity
         }) {
             node.position = CGPoint.zero
             spawnNode?.addChild(node)
+        }
+        
+        if let node = extSpawner?.spawn(completion: { node in
+            
+            let entity = GKEntity()
+            
+            entity.addComponent(DebugComponent())
+            entity.addComponent(AIComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .red }, DieState { self.extSpawner?.kill(node: node, recycle: true) }, DebugState(name: "Anon")]))
+
+            return entity
+        }) {
+            node.position = CGPoint.zero
+            animNode?.addChild(node)
         }
     }
 }
