@@ -38,9 +38,7 @@ class GameScene: BaseSKScene {
             ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue == 7"), retractingFact: "updateCountIsLow" as NSObject, grade: 0.3))
         }
 
-        // Reset the rules component's update count.
         rulesComponent?.updateCount = 0
-
     }
     
     override func update(deltaTime: TimeInterval) {

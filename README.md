@@ -55,14 +55,15 @@ https://kenney.nl - Free game assets
 https://developer.apple.com/library/archive/documentation/General/Conceptual/GameplayKit_Guide/StateMachine.html - State machine info  
 
 ### Story
-Robotron & crystal quest crossover with retro influences and references to some of the older games on the commodore and the SNES.
+Robotron & crystal quest crossover with retro influences and references to some of the older games on the commodore and the SNES.  
+Decided to save the Lovecraft related content for another game coming in the future.
 
 ### Monster Animals
-- Shoggoth - eyes fall off on damage and can be picked up. Rather like the dumpfers in cq.
+- (tba) Shoggoth - eyes fall off on damage and can be picked up. Rather like the dumpfers in cq.
 - Zapstar - a tribute to Minter
 
 ### Level/enemy/chieve ideas
-- The Mountains of madness - shoggoth-heavy level
+- Stay awhile... stay forever
 - Weirding module
 - Do-gooder project
 - Friendship ended with Mudasir
