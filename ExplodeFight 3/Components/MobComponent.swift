@@ -41,7 +41,7 @@ class LiveState: GKState {
     
     override func didEnter(from previousState: GKState?) {
         
-        countdownTimer = CountdownTimer(countDownTime: 1.0)
+        countdownTimer = CountdownTimer(countDownTime: 30.0)
         
         if previousState == nil { print("I gonna live forevah!!") } else { print("I live agaain!! \(String(describing: previousState))") }
     }
