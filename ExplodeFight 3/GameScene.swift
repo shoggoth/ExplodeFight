@@ -17,8 +17,6 @@ class GameScene: BaseSKScene {
     
     private let joystick = TouchJoystick()
     private var level: Level?
-
-    private var rulesComponent: RulesComponent? { entity?.component(ofType: RulesComponent.self) }
     
     override func didMove(to view: SKView) {
         
@@ -28,17 +26,6 @@ class GameScene: BaseSKScene {
 
         // Create initial level
         level = Level(scene: self)
-
-        // MARK: TODO: Temp (Move this to Level, levels might have different rules to one another.)
-        
-        // Set up rules
-        if let ruleSystem = rulesComponent?.ruleSystem {
-
-            ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue < 10"), assertingFact: "updateCountIsLow" as NSObject, grade: 0.7))
-            ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue == 7"), retractingFact: "updateCountIsLow" as NSObject, grade: 0.3))
-        }
-
-        rulesComponent?.updateCount = 0
     }
     
     override func update(deltaTime: TimeInterval) {

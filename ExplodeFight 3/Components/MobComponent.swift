@@ -11,10 +11,91 @@ import SpriteKitAddons
 
 class MobComponent: GKComponent {
     
-    override func update(deltaTime seconds: TimeInterval) {
+    let stateMachine: GKStateMachine
+    
+    init(states: [GKState]) {
         
-        super.update(deltaTime: seconds)
+        stateMachine = GKStateMachine(states: states)
+        if let firstState = states.first { stateMachine.enter(type(of: firstState)) }
+        
+        super.init()
     }
     
-    override class var supportsSecureCoding: Bool { return true }
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    override func update(deltaTime: TimeInterval) {
+        
+        super.update(deltaTime: deltaTime)
+
+        stateMachine.update(deltaTime: deltaTime)
+    }
+    
+    public override class var supportsSecureCoding: Bool { return true }
+}
+
+// MARK: - Lifecycle states -
+
+class LiveState: GKState {
+    
+    private var countdownTimer: CountdownTimer?
+    
+    override func didEnter(from previousState: GKState?) {
+        
+        countdownTimer = CountdownTimer(countDownTime: 1.0)
+        
+        if previousState == nil { print("I gonna live forevah!!") } else { print("I live agaain!! \(String(describing: previousState))") }
+    }
+    
+    override func update(deltaTime: TimeInterval) {
+        
+        super.update(deltaTime: deltaTime)
+        
+        countdownTimer = countdownTimer?.tick(deltaTime: deltaTime) { stateMachine?.enter(ExplodeState.self) }
+    }
+}
+
+class ExplodeState: GKState {
+    
+    private var explodeFunc: (() -> Void)?
+    private var countdownTimer: CountdownTimer?
+    
+    init(completion: (() -> Void)? = nil) { explodeFunc = completion }
+
+    override func didEnter(from previousState: GKState?) {
+        
+        countdownTimer = CountdownTimer(countDownTime: 2.0)
+        
+        print("Am gonna EXPOLDE!! \(String(describing: previousState))")
+        explodeFunc?()
+    }
+    
+    override func update(deltaTime: TimeInterval) {
+        
+        super.update(deltaTime: deltaTime)
+        
+        countdownTimer = countdownTimer?.tick(deltaTime: deltaTime) { stateMachine?.enter(DieState.self) }
+    }
+}
+
+class DieState: GKState {
+    
+    private var dieFunc: (() -> Void)?
+    private var countdownTimer: CountdownTimer?
+    
+    init(completion: (() -> Void)? = nil) { dieFunc = completion }
+    
+    override func didEnter(from previousState: GKState?) {
+        
+        countdownTimer = CountdownTimer(countDownTime: 3.0)
+        
+        print("Ugh! Lad! He ghot mi!! \(String(describing: previousState))")
+        dieFunc?()
+    }
+    
+    override func update(deltaTime: TimeInterval) {
+        
+        super.update(deltaTime: deltaTime)
+        
+        countdownTimer = countdownTimer?.tick(deltaTime: deltaTime) { stateMachine?.enter(LiveState.self) }
+    }
 }

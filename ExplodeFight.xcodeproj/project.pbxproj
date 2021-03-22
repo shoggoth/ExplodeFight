@@ -24,6 +24,7 @@
 		FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF49711325B5E1DE0083C36B /* AttractModes.sks */; };
 		FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */; };
 		FF49713725B72FB30083C36B /* MobComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49713625B72FB30083C36B /* MobComponent.swift */; };
+		FF4E81B52608A0EB006B1050 /* DebugComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4E81B42608A0EB006B1050 /* DebugComponent.swift */; };
 		FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB4C25B08F1900B09BD8 /* Configuration.swift */; };
 		FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF88FB4E25B0943E00B09BD8 /* Game.plist */; };
 		FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */; };
@@ -76,6 +77,7 @@
 		FF49711325B5E1DE0083C36B /* AttractModes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttractModes.sks; sourceTree = "<group>"; };
 		FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlComponent.swift; sourceTree = "<group>"; };
 		FF49713625B72FB30083C36B /* MobComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobComponent.swift; sourceTree = "<group>"; };
+		FF4E81B42608A0EB006B1050 /* DebugComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugComponent.swift; sourceTree = "<group>"; };
 		FF88FB4C25B08F1900B09BD8 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		FF88FB4E25B0943E00B09BD8 /* Game.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Game.plist; sourceTree = "<group>"; };
 		FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractScene.swift; sourceTree = "<group>"; };
@@ -158,11 +160,12 @@
 		FF49712B25B72CA70083C36B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FF49713625B72FB30083C36B /* MobComponent.swift */,
 				FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */,
 				FFE0186225C2E81A0051984F /* MoveComponent.swift */,
-				FF49713625B72FB30083C36B /* MobComponent.swift */,
 				FFE0186625CACFAD0051984F /* FireComponent.swift */,
 				FF3EB5A925FB79200073D402 /* RulesComponent.swift */,
+				FF4E81B42608A0EB006B1050 /* DebugComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFE0186525C958840051984F /* MobEntity.swift in Sources */,
+				FF4E81B52608A0EB006B1050 /* DebugComponent.swift in Sources */,
 				FF080697256BD29700F2EBA7 /* GameScene.swift in Sources */,
 				FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */,
 				FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */,

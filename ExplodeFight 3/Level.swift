@@ -9,6 +9,16 @@
 import GameplayKit
 import SpriteKitAddons
 
+class NewLevel {
+    
+    private let scene: BaseSKScene
+
+    init(scene: BaseSKScene) {
+        
+        self.scene = scene
+    }
+}
+
 class Level {
     
     private let scene: BaseSKScene
@@ -64,11 +74,25 @@ class Level {
         
         (1...10).forEach { _ in
             
-            if let bar = spawner.spawn(name: "Mob") {
+            if let node = spawner.spawn(name: "Mob") {
                 
-                scene.addChild(bar)
-                scene.entities.append(MobEntity(withNode: bar))
+                let mobEntity = MobEntity(withNode: node)
+                
+                scene.addChild(node)
+                scene.entities.append(MobEntity(withNode: node))
             }
         }
     }
 }
+
+// MARK: TODO: Temp (Move this to Level, levels might have different rules to one another.)
+
+/* Set up rules
+if let ruleSystem = rulesComponent?.ruleSystem {
+
+    ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue < 10"), assertingFact: "updateCountIsLow" as NSObject, grade: 0.7))
+    ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue == 7"), retractingFact: "updateCountIsLow" as NSObject, grade: 0.3))
+}
+
+rulesComponent?.updateCount = 0
+ */

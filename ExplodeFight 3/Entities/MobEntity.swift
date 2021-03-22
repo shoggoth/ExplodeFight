@@ -24,6 +24,7 @@ class MobEntity: GKEntity, ContactNotifiable {
         node.entity = self
         addComponent(GKSKNodeComponent(node: node))
         addComponent(MoveComponent(maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
+        addComponent(MobComponent(states: []))
     }
     
     required init?(coder: NSCoder) { fatalError() }
