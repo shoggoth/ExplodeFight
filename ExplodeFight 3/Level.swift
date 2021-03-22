@@ -9,17 +9,52 @@
 import GameplayKit
 import SpriteKitAddons
 
-class NewLevel {
+class Level {
     
-    private let scene: BaseSKScene
+    private let scene: GameScene
+    private let mobSpawner: SceneSpawner
 
-    init(scene: BaseSKScene) {
+    init(scene: GameScene) {
         
         self.scene = scene
+        
+        // Setup spawner
+        mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
+        
+        // Setup Player
+        if let node = scene.childNode(withName: "Player") {
+            
+            let playerEntity = PlayerEntity(withNode: node)
+            
+            playerEntity.addComponent(PlayerControlComponent(joystick: scene.joystick))
+
+            scene.entities.append(playerEntity)
+        }
+        
+        // Temp
+        (1...10).forEach { _ in
+            
+            let _ = mobSpawner.spawn(name: "Mob") { node in
+                
+                let mobEntity = MobEntity(withNode: node)
+                
+                mobEntity.addComponent(MobComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .red }, DieState { self.mobSpawner.kill() }, DebugState(name: "Anon")]))
+                mobEntity.addComponent(DebugComponent())
+
+                scene.addChild(node)
+                
+                return mobEntity
+            }
+        }
+    }
+    
+    func update(deltaTime: TimeInterval) {
+
+        mobSpawner.update(deltaTime: deltaTime)
     }
 }
 
-class Level {
+class OldLevel {
     
     private let scene: BaseSKScene
     private let spawner: SceneSpawner
@@ -79,7 +114,7 @@ class Level {
                 let mobEntity = MobEntity(withNode: node)
                 
                 scene.addChild(node)
-                scene.entities.append(MobEntity(withNode: node))
+                scene.entities.append(mobEntity)
             }
         }
     }

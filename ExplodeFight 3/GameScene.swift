@@ -15,8 +15,8 @@ class GameScene: BaseSKScene {
     
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
-    private let joystick = TouchJoystick()
-    private var level: Level?
+    let joystick = TouchJoystick()
+    var level: Level?
     
     override func didMove(to view: SKView) {
         

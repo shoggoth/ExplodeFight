@@ -21,10 +21,8 @@ class MobEntity: GKEntity, ContactNotifiable {
         node.zRotation = CGFloat(Float.random(in: 0.0 ... Float.pi * 2.0))
 
         // Entity setup
-        node.entity = self
         addComponent(GKSKNodeComponent(node: node))
         addComponent(MoveComponent(maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
-        addComponent(MobComponent(states: []))
     }
     
     required init?(coder: NSCoder) { fatalError() }
