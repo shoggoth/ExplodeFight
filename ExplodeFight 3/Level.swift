@@ -39,7 +39,7 @@ class Level {
                 let mobEntity = MobEntity(withNode: node)
                 
                 mobEntity.addComponent(MobComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .white }, DieState { self.mobSpawner.spawner(named: "Mob")?.kill(node: node) }, DebugState(name: "Anon")]))
-                mobEntity.addComponent(DebugComponent())
+                //mobEntity.addComponent(DebugComponent())
 
                 scene.addChild(node)
                 

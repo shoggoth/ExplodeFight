@@ -33,8 +33,6 @@ class MobEntity: GKEntity, ContactNotifiable {
 
         if health < 0.0 {
             
-            // TODO: This just stops explod state being set every update
-            health = 10000000
             component(ofType: MobComponent.self)?.stateMachine.enter(ExplodeState.self)
         }
     }
@@ -42,13 +40,10 @@ class MobEntity: GKEntity, ContactNotifiable {
     func contactWithEntityDidBegin(_ entity: GKEntity){
         
         health = health - 0.7
-        
-        print("Halp I \(self) was hitted!")
     }
     
     func contactWithEntityDidEnd(_ entity: GKEntity){
         
-        print("Halp I was unhitted!")
     }
 }
 
