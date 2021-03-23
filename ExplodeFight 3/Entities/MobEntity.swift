@@ -19,6 +19,7 @@ class MobEntity: GKEntity, ContactNotifiable {
         super.init()
         
         node.zRotation = CGFloat(Float.random(in: 0.0 ... Float.pi * 2.0))
+        node.isPaused = false
 
         // Entity setup
         addComponent(GKSKNodeComponent(node: node))
