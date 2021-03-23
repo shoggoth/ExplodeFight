@@ -32,13 +32,13 @@ class Level {
         }
         
         // Temp
-        (1...10).forEach { _ in
+        (1...20).forEach { _ in
             
             let _ = mobSpawner.spawn(name: "Mob") { node in
                 
                 let mobEntity = MobEntity(withNode: node)
                 
-                mobEntity.addComponent(MobComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .red }, DieState { self.mobSpawner.kill() }, DebugState(name: "Anon")]))
+                mobEntity.addComponent(MobComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .white }, DieState { self.mobSpawner.spawner(named: "Mob")?.kill(node: node) }, DebugState(name: "Anon")]))
                 mobEntity.addComponent(DebugComponent())
 
                 scene.addChild(node)
