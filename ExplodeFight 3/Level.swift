@@ -32,7 +32,7 @@ class Level {
         }
         
         // Temp
-        (1...20).forEach { _ in
+        (1...10).forEach { _ in
             
             let _ = mobSpawner.spawn(name: "Mob") { node in
                 
