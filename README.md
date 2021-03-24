@@ -7,7 +7,6 @@ master
 - Spawned entities have to be counted in the snapshot.
 - Spawner preload and kill only those nodes which contain entities functionality.
 - Add rules for a demo: maintain the number of Mobs at 10 until 100 total have been spawned.
-- Check spawner performance with 250 mobs.
 
 ## Questions
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
@@ -20,7 +19,8 @@ master
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 
 ### Completed Tasks
-- Lifecyccle state machine with deaths on __exp/deadstate__.
+- Check spawner performance with 250 mobs.
+- Lifecycle state machine with deaths on __exp/deadstate__.
 - Rework spawners on branch __exp/spawner__.
 - Decide if we need to calculate the distances like the DemoBots does, leave it as a callable function outside the init for now. (moved to BaseSKScene).
 - SKLabelNode replacement with sprite or tilemap optimisations.

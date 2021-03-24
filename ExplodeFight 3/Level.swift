@@ -14,6 +14,8 @@ class Level {
     private let scene: GameScene
     private let mobSpawner: SceneSpawner
 
+    private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 0.1)
+
     init(scene: GameScene) {
         
         self.scene = scene
@@ -32,90 +34,28 @@ class Level {
         }
         
         // Temp
-        (1...10).forEach { _ in
-            
-            let _ = mobSpawner.spawn(name: "Mob") { node in
-                
-                let mobEntity = MobEntity(withNode: node)
-                
-                mobEntity.addComponent(MobComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .white }, DieState { self.mobSpawner.spawner(named: "Mob")?.kill(node: node) }, DebugState(name: "Anon")]))
-                //mobEntity.addComponent(DebugComponent())
-
-                scene.addChild(node)
-                
-                return mobEntity
-            }
-        }
+        (1...10).forEach { _ in spawnTemp() }
     }
     
     func update(deltaTime: TimeInterval) {
 
         mobSpawner.update(deltaTime: deltaTime)
-    }
-}
-
-class OldLevel {
-    
-    private let scene: BaseSKScene
-    private let spawner: SceneSpawner
-    private var spawnTicker: PeriodicTimer?
-    private var killTicker: PeriodicTimer?
-
-    init(scene: BaseSKScene) {
         
-        self.scene = scene
-        
-        // Setup spawner
-        spawner = SceneSpawner(scene: scene)
-        spawnTicker = PeriodicTimer(tickInterval: 1.0)
-        killTicker = PeriodicTimer(tickInterval: 10.0)
-
-        // TODO: Temp
-        setup()
+        spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) { spawnTemp() }
     }
     
-    func update(deltaTime: TimeInterval) {
+    func spawnTemp() {
         
-        spawner.update(deltaTime: deltaTime)
-        
-        killTicker = killTicker?.tick(deltaTime: deltaTime) {
+        let _ = mobSpawner.spawn(name: "Mob") { node in
             
-            spawner.kill()
-        }
-        
-        spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) {
+            let mobEntity = MobEntity(withNode: node)
             
-            scene.addChild(spawner.spawn(name: "Mob") { node in
-                
-                node.position = CGPoint.zero
-                
-                return MobEntity(withNode: node)
-            }!)
-        }
-    }
-    
-    private func setup() {
-        
-        // Setup entities
-        if let node = scene.childNode(withName: "Player") {
+            mobEntity.addComponent(MobComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .white }, DieState { self.mobSpawner.spawner(named: "Mob")?.kill(node: node) }, DebugState(name: "Anon")]))
+            //mobEntity.addComponent(DebugComponent())
             
-            let playerEntity = PlayerEntity(withNode: node)
-            //playerEntity.addComponent(PlayerControlComponent(joystick: joystick))
-
-            scene.entities.append(playerEntity)
-        }
-        
-        if let node = scene.childNode(withName: "Mob") { scene.entities.append(MobEntity(withNode: node)) }
-        
-        (1...10).forEach { _ in
+            self.scene.addChild(node)
             
-            if let node = spawner.spawn(name: "Mob") {
-                
-                let mobEntity = MobEntity(withNode: node)
-                
-                scene.addChild(node)
-                scene.entities.append(mobEntity)
-            }
+            return mobEntity
         }
     }
 }
