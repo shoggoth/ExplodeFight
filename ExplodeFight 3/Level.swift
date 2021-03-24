@@ -27,7 +27,7 @@ class Level {
         
         // Setup level rules
         ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue < 10"), assertingFact: "mobCountIsLow" as NSObject, grade: 1.0))
-        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue < 99"), assertingFact: "mobCountIsLow" as NSObject, grade: 0.5))
+        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue < 99"), assertingFact: "mobCountIsLow" as NSObject, grade: 0.6))
         ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue == 0"), assertingFact: "allMobsDestroyed" as NSObject, grade: 1.0))
 
         // Setup Player
@@ -65,7 +65,10 @@ class Level {
             
             let mobEntity = MobEntity(withNode: node)
             
-            mobEntity.addComponent(MobComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .white }, DieState { self.mobSpawner.spawner(named: "Mob")?.kill(node: node) }, DebugState(name: "Anon")]))
+            node.position = CGPoint.zero
+            (node as? SKSpriteNode)?.color = .cyan
+            
+            mobEntity.addComponent(MobComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .white }, DieState { self.mobSpawner.spawner(named: "Mob")?.kill(node: node, recycle: true) }, DebugState(name: "Anon")]))
             //mobEntity.addComponent(DebugComponent())
             
             self.scene.addChild(node)
