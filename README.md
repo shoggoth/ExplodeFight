@@ -2,11 +2,9 @@
 master
 
 ## Current Tasks
-- Allow mobs to be cleanly destroyed on contact with a bullet, update facts on mob deaths.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
 - Spawner preload and kill only those nodes which contain entities functionality.
-- Add rules for a demo: maintain the number of Mobs at 10 until 100 total have been spawned.
 
 ## Questions
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
@@ -19,6 +17,8 @@ master
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 
 ### Completed Tasks
+- Add rules for a demo: maintain the number of Mobs at 10 until 100 total have been spawned.
+- Allow mobs to be cleanly destroyed on contact with a bullet, update facts on mob deaths.
 - Check spawner performance with 250 mobs.
 - Lifecycle state machine with deaths on __exp/deadstate__.
 - Rework spawners on branch __exp/spawner__.
