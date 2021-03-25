@@ -27,7 +27,6 @@ class Level {
         
         // Setup level rules
         ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue < 10"), assertingFact: "mobCountIsLow" as NSObject, grade: 1.0))
-        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue < 99"), assertingFact: "mobCountIsLow" as NSObject, grade: 0.6))
         ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue == 0"), assertingFact: "allMobsDestroyed" as NSObject, grade: 1.0))
 
         // Setup Player
@@ -53,7 +52,7 @@ class Level {
         ruleSystem.evaluate()
         
         // TODO: Move this elsewhere
-        if ruleSystem.grade(forFact: "mobCountIsLow" as NSObject) > 0.5 {
+        if ruleSystem.grade(forFact: "mobCountIsLow" as NSObject) >= 1.0 {
                         
             spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) { spawnTemp() }
         }
