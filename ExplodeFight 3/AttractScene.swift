@@ -59,7 +59,7 @@ class AttractScene: BaseSKScene {
 
 private class ShowExplanation: AttractState {
     
-    private let nodeNames = ["Text_1", "Text_2"]
+    private let nodeNames = ["Text_1", "Text_2", "Text_3"]
     private let revealTime = 3.0
     private let fadeTime = 0.1
 

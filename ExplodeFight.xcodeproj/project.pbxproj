@@ -26,6 +26,7 @@
 		FF49713725B72FB30083C36B /* MobComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49713625B72FB30083C36B /* MobComponent.swift */; };
 		FF4E81B52608A0EB006B1050 /* DebugComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4E81B42608A0EB006B1050 /* DebugComponent.swift */; };
 		FF4E81B92608EF1C006B1050 /* Mobs.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF4E81B82608EF1C006B1050 /* Mobs.sks */; };
+		FF5D7E19260CCBD300F1956E /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */; };
 		FF8391E5260B3AF40032D8EA /* StarField.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF8391E4260B3AF30032D8EA /* StarField.sks */; };
 		FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB4C25B08F1900B09BD8 /* Configuration.swift */; };
 		FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF88FB4E25B0943E00B09BD8 /* Game.plist */; };
@@ -82,6 +83,7 @@
 		FF49713625B72FB30083C36B /* MobComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobComponent.swift; sourceTree = "<group>"; };
 		FF4E81B42608A0EB006B1050 /* DebugComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugComponent.swift; sourceTree = "<group>"; };
 		FF4E81B82608EF1C006B1050 /* Mobs.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mobs.sks; sourceTree = "<group>"; };
+		FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AttractLogo.fsh; sourceTree = "<group>"; };
 		FF8391E4260B3AF30032D8EA /* StarField.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StarField.sks; sourceTree = "<group>"; };
 		FF88FB4C25B08F1900B09BD8 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		FF88FB4E25B0943E00B09BD8 /* Game.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Game.plist; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		FF3F969C25F259A600AF63B9 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */,
 				FFF47C33260B432300BB2930 /* attractOverlay.fsh */,
 				FF3F969D25F259CD00AF63B9 /* charMap.fsh */,
 			);
@@ -291,6 +294,7 @@
 			files = (
 				FFF47C34260B432300BB2930 /* attractOverlay.fsh in Resources */,
 				FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */,
+				FF5D7E19260CCBD300F1956E /* AttractLogo.fsh in Resources */,
 				FF88FB5325B1F38300B09BD8 /* AttractScene.sks in Resources */,
 				FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */,
 				FF3F969E25F259CD00AF63B9 /* charMap.fsh in Resources */,
