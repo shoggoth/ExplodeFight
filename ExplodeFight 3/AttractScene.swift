@@ -14,6 +14,8 @@ class AttractScene: BaseSKScene {
     
     lazy var modeScene : SKScene? = { SKScene(fileNamed: "AttractModes") }()
     
+    override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
+
     private var stateMachine: GKStateMachine!
 
     override func didMove(to view: SKView) {
@@ -57,11 +59,30 @@ class AttractScene: BaseSKScene {
 
 private class ShowExplanation: AttractState {
     
+    private let nodeNames = ["Text_1", "Text_2"]
+    private let revealTime = 3.0
+    private let fadeTime = 0.1
+
     override func didEnter(from previousState: GKState?) {
         
         super.didEnter(from: previousState)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) { self.stateMachine?.enter(ShowHiScores.self) }
+        nodeNames.enumerated().forEach {
+            
+            if let node = src.childNode(withName: $0.1) {
+                
+                node.alpha = 1.0
+                node.run(SKAction.sequence([SKAction.wait(forDuration: revealTime * Double(nodeNames.count)), SKAction.fadeOut(withDuration: fadeTime)]))
+            }
+            
+            if let node = src.childNode(withName: "\($0.1)/Revealer") {
+                
+                node.position.x = 0
+                node.run(SKAction.sequence([SKAction.wait(forDuration: Double($0.0) * revealTime), SKAction.move(by: CGVector(dx: 1024, dy: 0), duration: revealTime)]))
+            }
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + revealTime * Double(nodeNames.count) + fadeTime) { self.stateMachine?.enter(ShowHiScores.self) }
     }
 }
 
