@@ -27,6 +27,7 @@
 		FF4E81B52608A0EB006B1050 /* DebugComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4E81B42608A0EB006B1050 /* DebugComponent.swift */; };
 		FF4E81B92608EF1C006B1050 /* Mobs.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF4E81B82608EF1C006B1050 /* Mobs.sks */; };
 		FF5D7E19260CCBD300F1956E /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */; };
+		FF67F26B260CE957008D4517 /* Explode.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF67F26A260CE7CA008D4517 /* Explode.caf */; };
 		FF8391E5260B3AF40032D8EA /* StarField.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF8391E4260B3AF30032D8EA /* StarField.sks */; };
 		FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB4C25B08F1900B09BD8 /* Configuration.swift */; };
 		FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF88FB4E25B0943E00B09BD8 /* Game.plist */; };
@@ -84,6 +85,7 @@
 		FF4E81B42608A0EB006B1050 /* DebugComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugComponent.swift; sourceTree = "<group>"; };
 		FF4E81B82608EF1C006B1050 /* Mobs.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mobs.sks; sourceTree = "<group>"; };
 		FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AttractLogo.fsh; sourceTree = "<group>"; };
+		FF67F26A260CE7CA008D4517 /* Explode.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Explode.caf; sourceTree = "<group>"; };
 		FF8391E4260B3AF30032D8EA /* StarField.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StarField.sks; sourceTree = "<group>"; };
 		FF88FB4C25B08F1900B09BD8 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		FF88FB4E25B0943E00B09BD8 /* Game.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Game.plist; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				FF3F96A725F6394200AF63B9 /* Fonts */,
 				FF3F969C25F259A600AF63B9 /* Shaders */,
 				FF3F969B25F2591700AF63B9 /* TexAtlas */,
+				FF67F261260CE4F9008D4517 /* Sound */,
 				FFC222D8256FC71800CFA23F /* iOS */,
 			);
 			path = "ExplodeFight 3";
@@ -180,6 +183,14 @@
 				FF4E81B42608A0EB006B1050 /* DebugComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		FF67F261260CE4F9008D4517 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				FF67F26A260CE7CA008D4517 /* Explode.caf */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 		FF9364BF2384017300E4B867 = {
@@ -299,6 +310,7 @@
 				FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */,
 				FF3F969E25F259CD00AF63B9 /* charMap.fsh in Resources */,
 				FF8391E5260B3AF40032D8EA /* StarField.sks in Resources */,
+				FF67F26B260CE957008D4517 /* Explode.caf in Resources */,
 				FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */,
 				FF4E81B92608EF1C006B1050 /* Mobs.sks in Resources */,
 				FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */,
@@ -367,7 +379,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5F9CYF5K3F;
 				INFOPLIST_FILE = "ExplodeFight 3/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -389,7 +401,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5F9CYF5K3F;
 				INFOPLIST_FILE = "ExplodeFight 3/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

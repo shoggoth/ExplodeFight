@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- Find out why the explosion sound is getting called twice as often as it should be.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
 - Spawner preload and kill only those nodes which contain entities functionality.

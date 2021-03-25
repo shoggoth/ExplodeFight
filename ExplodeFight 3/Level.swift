@@ -67,7 +67,16 @@ class Level {
             node.position = CGPoint.zero
             (node as? SKSpriteNode)?.color = .cyan
             
-            mobEntity.addComponent(MobComponent(states: [LiveState(), ExplodeState { (node as? SKSpriteNode)?.color = .white }, DieState { self.mobSpawner.spawner(named: "Mob")?.kill(node: node, recycle: true) }, DebugState(name: "Anon")]))
+            mobEntity.addComponent(MobComponent(states: [
+                                                    LiveState(),
+                                                    ExplodeState {
+                                                        self.scene.run(SKAction.playSoundFileNamed("Explode.caf", waitForCompletion: false))
+                                                        (node as? SKSpriteNode)?.color = .white
+                                                        print("exploding")
+                                                    },
+                                                    DieState { self.mobSpawner.spawner(named: "Mob")?.kill(node: node, recycle: true) },
+                                                    DebugState(name: "Anon")]))
+            
             //mobEntity.addComponent(DebugComponent())
             
             self.scene.addChild(node)

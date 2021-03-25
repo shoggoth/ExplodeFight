@@ -39,6 +39,11 @@ class LiveState: GKState {
     
     private var countdownTimer: CountdownTimer?
     
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+        
+        return stateClass is DieState.Type || stateClass is ExplodeState.Type
+    }
+    
     override func didEnter(from previousState: GKState?) {
         
         countdownTimer = CountdownTimer(countDownTime: 30.0)
@@ -68,7 +73,7 @@ class ExplodeState: GKState {
     
     override func didEnter(from previousState: GKState?) {
         
-        countdownTimer = CountdownTimer(countDownTime: 2.0)
+        countdownTimer = CountdownTimer(countDownTime: 0.2)
         
         explodeFunc?()
     }
@@ -84,21 +89,12 @@ class ExplodeState: GKState {
 class DieState: GKState {
     
     private var dieFunc: (() -> Void)?
-    private var countdownTimer: CountdownTimer?
     
     init(completion: (() -> Void)? = nil) { dieFunc = completion }
     
     override func didEnter(from previousState: GKState?) {
         
-        countdownTimer = CountdownTimer(countDownTime: 3.0)
         
         dieFunc?()
-    }
-    
-    override func update(deltaTime: TimeInterval) {
-        
-        super.update(deltaTime: deltaTime)
-        
-        countdownTimer = countdownTimer?.tick(deltaTime: deltaTime) { stateMachine?.enter(LiveState.self) }
     }
 }
