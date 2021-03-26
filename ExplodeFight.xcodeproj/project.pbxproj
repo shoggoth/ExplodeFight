@@ -16,7 +16,6 @@
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
 		FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21CD6425EE503900873CD3 /* Weapon.swift */; };
 		FF3EB5AA25FB79200073D402 /* RulesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EB5A925FB79200073D402 /* RulesComponent.swift */; };
-		FF3EB5AC25FB796A0073D402 /* MobStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EB5AB25FB796A0073D402 /* MobStates.swift */; };
 		FF3EB5AE25FB99F80073D402 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EB5AD25FB99F80073D402 /* Level.swift */; };
 		FF3F969A25F258F800AF63B9 /* Charset32.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FF3F969925F258F800AF63B9 /* Charset32.atlas */; };
 		FF3F969E25F259CD00AF63B9 /* charMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF3F969D25F259CD00AF63B9 /* charMap.fsh */; };
@@ -336,7 +335,6 @@
 				FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */,
 				FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */,
 				FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */,
-				FF3EB5AC25FB796A0073D402 /* MobStates.swift in Sources */,
 				FF3EB5AA25FB79200073D402 /* RulesComponent.swift in Sources */,
 				FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */,
 				FF95A5202579303800954B50 /* SplashScene.swift in Sources */,

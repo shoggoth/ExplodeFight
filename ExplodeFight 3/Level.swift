@@ -69,13 +69,11 @@ class Level {
                                                     ExplodeState {
                                                         self.scene.run(self.explodeAction)
                                                         (node as? SKSpriteNode)?.color = .white
-                                                        print("exploding")
                                                     },
                                                     DieState {
                                                         (node as? SKSpriteNode)?.color = .yellow
                                                         self.mobSpawner.spawner(named: "Mob")?.kill(node: node, recycle: true)
-                                                    },
-                                                    DebugState(name: "Anon")]))
+                                                    }]))
             
             //mobEntity.addComponent(DebugComponent())
             

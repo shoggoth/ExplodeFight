@@ -29,8 +29,6 @@ class MobComponent: GKComponent {
 
         stateMachine.update(deltaTime: deltaTime)
     }
-    
-    public override class var supportsSecureCoding: Bool { return true }
 }
 
 // MARK: - Lifecycle states -
@@ -44,8 +42,6 @@ class LiveState: GKState {
     override func didEnter(from previousState: GKState?) {
         
         countdownTimer = CountdownTimer(countDownTime: 30.0)
-        
-        if previousState == nil { print("I gonna live forevah!!") } else { print("I live agaain!! \(String(describing: previousState))") }
     }
     
     override func update(deltaTime: TimeInterval) {
@@ -67,7 +63,6 @@ class ExplodeState: GKState {
     
     override func didEnter(from previousState: GKState?) {
         
-        if previousState == nil { print("previousState == nil") } else { print("previousState == \(String(describing: previousState))") }
         countdownTimer = CountdownTimer(countDownTime: 0.2)
         
         explodeFunc?()
