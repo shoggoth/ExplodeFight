@@ -2,7 +2,6 @@
 master
 
 ## Current Tasks
-- Find out why the explosion sound is getting called twice as often as it should be.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
 - Spawner preload and kill only those nodes which contain entities functionality.
@@ -18,6 +17,8 @@ master
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 
 ### Completed Tasks
+- Sound manager
+- Find out why the explosion sound is getting called twice as often as it should be.
 - Add rules for a demo: maintain the number of Mobs at 10 until 100 total have been spawned.
 - Allow mobs to be cleanly destroyed on contact with a bullet, update facts on mob deaths.
 - Check spawner performance with 250 mobs.
@@ -57,11 +58,9 @@ https://developer.apple.com/library/archive/documentation/General/Conceptual/Gam
 
 ### Story
 Robotron & crystal quest crossover with retro influences and references to some of the older games on the commodore and the SNES.  
-Decided to save the Lovecraft related content for another game coming in the future.
 
 ### Monster Animals
-- (tba) Shoggoth - eyes fall off on damage and can be picked up. Rather like the dumpfers in cq.
-- Zapstar - a tribute to Minter
+- Zapstar - a tribute to Laser Zone
 
 ### Level/enemy/chieve ideas
 - Stay awhile... stay forever
@@ -70,4 +69,4 @@ Decided to save the Lovecraft related content for another game coming in the fut
 - Friendship ended with Mudasir
 
 ### Achievements
-- Tekeli-li - collect 5 shoggoth eyes in a level.
+- Early adopter - play a pre-release version of the game (for testing also).

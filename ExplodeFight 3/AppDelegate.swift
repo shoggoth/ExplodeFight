@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import SpriteKit
 import AVFoundation
 
 @main class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    static var soundManager = SoundManager(soundActions: ["Explode" : SKAction.playSoundFileNamed("Explode.caf", waitForCompletion: false)])
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)

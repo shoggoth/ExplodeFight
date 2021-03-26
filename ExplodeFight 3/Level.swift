@@ -15,13 +15,14 @@ class Level {
     private let mobSpawner: SceneSpawner
     private let ruleSystem: GKRuleSystem = GKRuleSystem()
 
-    private var explodeAction = SKAction.playSoundFileNamed("Explode.caf", waitForCompletion: false)
-
     private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 3.0)
 
     init(scene: GameScene) {
         
         self.scene = scene
+        
+        // Global setup
+        AppDelegate.soundManager.playNode = scene
         
         // Setup spawner
         mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
@@ -67,7 +68,7 @@ class Level {
             mobEntity.addComponent(MobComponent(states: [
                                                     LiveState(),
                                                     ExplodeState {
-                                                        self.scene.run(self.explodeAction)
+                                                        AppDelegate.soundManager.playSound(name: "Explode")
                                                         (node as? SKSpriteNode)?.color = .white
                                                     },
                                                     DieState {
