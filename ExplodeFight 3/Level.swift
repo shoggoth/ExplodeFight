@@ -13,9 +13,8 @@ class Level {
     
     private let scene: GameScene
     private let mobSpawner: SceneSpawner
-    private let ruleSystem: GKRuleSystem = GKRuleSystem()
-
-    private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 3.0)
+    
+    private var spawnRoot: SKNode { scene.childNode(withName: "SpawnRoot")! }
 
     init(scene: GameScene) {
         
@@ -27,10 +26,6 @@ class Level {
         // Setup spawner
         mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
         
-        // Setup level rules
-        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue < 10"), assertingFact: "mobCountIsLow" as NSObject, grade: 1.0))
-        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue == 0"), assertingFact: "allMobsDestroyed" as NSObject, grade: 1.0))
-
         // Setup Player
         if let node = scene.childNode(withName: "Player") {
             
@@ -40,30 +35,23 @@ class Level {
 
             scene.entities.append(playerEntity)
         }
+        
+        spawnMob()
     }
     
     func update(deltaTime: TimeInterval) {
 
         mobSpawner.update(deltaTime: deltaTime)
-        
-        ruleSystem.reset()
-        ruleSystem.state["mobCount"] = mobSpawner.activeCount
-        ruleSystem.evaluate()
-        
-        // TODO: Move this elsewhere
-        if ruleSystem.grade(forFact: "mobCountIsLow" as NSObject) >= 1.0 {
-                        
-            spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) { spawnTemp() }
-        }
     }
     
-    func spawnTemp() {
+    func spawnMob() {
         
         let _ = mobSpawner.spawn(name: "Mob") { node in
             
             let mobEntity = MobEntity(withNode: node)
             
             node.position = CGPoint.zero
+            node.isPaused = false
             
             mobEntity.addComponent(MobComponent(states: [
                                                     LiveState(),
@@ -78,7 +66,7 @@ class Level {
             
             //mobEntity.addComponent(DebugComponent())
             
-            self.scene.addChild(node)
+            self.spawnRoot.addChild(node)
             
             return mobEntity
         }
