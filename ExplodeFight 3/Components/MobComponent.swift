@@ -39,16 +39,13 @@ class LiveState: GKState {
     
     private var countdownTimer: CountdownTimer?
     
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        
-        return stateClass is DieState.Type || stateClass is ExplodeState.Type
-    }
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type || stateClass is ExplodeState.Type }
     
     override func didEnter(from previousState: GKState?) {
         
         countdownTimer = CountdownTimer(countDownTime: 30.0)
         
-        //if previousState == nil { print("I gonna live forevah!!") } else { print("I live agaain!! \(String(describing: previousState))") }
+        if previousState == nil { print("I gonna live forevah!!") } else { print("I live agaain!! \(String(describing: previousState))") }
     }
     
     override func update(deltaTime: TimeInterval) {
@@ -66,13 +63,11 @@ class ExplodeState: GKState {
     
     init(completion: (() -> Void)? = nil) { explodeFunc = completion }
 
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        
-        return stateClass is DieState.Type
-    }
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type }
     
     override func didEnter(from previousState: GKState?) {
         
+        if previousState == nil { print("previousState == nil") } else { print("previousState == \(String(describing: previousState))") }
         countdownTimer = CountdownTimer(countDownTime: 0.2)
         
         explodeFunc?()
@@ -92,8 +87,9 @@ class DieState: GKState {
     
     init(completion: (() -> Void)? = nil) { dieFunc = completion }
     
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is LiveState.Type }
+    
     override func didEnter(from previousState: GKState?) {
-        
         
         dieFunc?()
     }

@@ -15,8 +15,9 @@ class Level {
     private let mobSpawner: SceneSpawner
     private let ruleSystem: GKRuleSystem = GKRuleSystem()
 
+    private var explodeAction = SKAction.playSoundFileNamed("Explode.caf", waitForCompletion: false)
 
-    private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 0.1)
+    private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 3.0)
 
     init(scene: GameScene) {
         
@@ -38,9 +39,6 @@ class Level {
 
             scene.entities.append(playerEntity)
         }
-        
-        // Temp
-        (1...10).forEach { _ in spawnTemp() }
     }
     
     func update(deltaTime: TimeInterval) {
@@ -65,16 +63,18 @@ class Level {
             let mobEntity = MobEntity(withNode: node)
             
             node.position = CGPoint.zero
-            (node as? SKSpriteNode)?.color = .cyan
             
             mobEntity.addComponent(MobComponent(states: [
                                                     LiveState(),
                                                     ExplodeState {
-                                                        self.scene.run(SKAction.playSoundFileNamed("Explode.caf", waitForCompletion: false))
+                                                        self.scene.run(self.explodeAction)
                                                         (node as? SKSpriteNode)?.color = .white
                                                         print("exploding")
                                                     },
-                                                    DieState { self.mobSpawner.spawner(named: "Mob")?.kill(node: node, recycle: true) },
+                                                    DieState {
+                                                        (node as? SKSpriteNode)?.color = .yellow
+                                                        self.mobSpawner.spawner(named: "Mob")?.kill(node: node, recycle: true)
+                                                    },
                                                     DebugState(name: "Anon")]))
             
             //mobEntity.addComponent(DebugComponent())
