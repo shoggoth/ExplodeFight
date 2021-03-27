@@ -35,8 +35,6 @@ class Level {
 
             scene.entities.append(playerEntity)
         }
-        
-        spawnMob()
     }
     
     func update(deltaTime: TimeInterval) {
@@ -64,7 +62,7 @@ class Level {
                                                         self.mobSpawner.spawner(named: "Mob")?.kill(node: node, recycle: true)
                                                     }]))
             
-            //mobEntity.addComponent(DebugComponent())
+            mobEntity.addComponent(DebugComponent())
             
             self.spawnRoot.addChild(node)
             

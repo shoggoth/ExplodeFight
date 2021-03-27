@@ -36,6 +36,19 @@ class GameScene: BaseSKScene {
     }
 }
 
+extension GameScene: ButtonSKSpriteNodeResponder {
+    
+    func buttonTriggered(button: ButtonSKSpriteNode) {
+        
+        switch button.name {
+        case "spawnButton":
+            level?.spawnMob()
+        default:
+            fatalError("Button wut?")
+        }
+    }
+}
+
 // MARK: - Contact handling -
 
 extension GameScene: SKPhysicsContactDelegate {
