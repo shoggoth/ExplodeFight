@@ -39,7 +39,7 @@ class MobEntity: GKEntity, ContactNotifiable {
     
     func contactWithEntityDidBegin(_ entity: GKEntity){
         
-        health = health - 0.7
+        health = health - 1.2
     }
     
     func contactWithEntityDidEnd(_ entity: GKEntity){
