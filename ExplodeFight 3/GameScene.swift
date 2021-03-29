@@ -42,16 +42,21 @@ extension GameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        (contact.bodyA.node?.entity as? ContactNotifiable)?.contactWithEntityDidBegin(contact.bodyB.node?.entity ?? GKEntity())
-        (contact.bodyB.node?.entity as? ContactNotifiable)?.contactWithEntityDidBegin(contact.bodyA.node?.entity ?? GKEntity())
+        guard let a = contact.bodyA.node?.entity, let b = contact.bodyB.node?.entity else { return }
+        
+        (a as? ContactNotifiable)?.contactWithEntityDidBegin(b)
+        (b as? ContactNotifiable)?.contactWithEntityDidBegin(a)
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
         
-        (contact.bodyA.node?.entity as? ContactNotifiable)?.contactWithEntityDidEnd(contact.bodyB.node?.entity ?? GKEntity())
-        (contact.bodyB.node?.entity as? ContactNotifiable)?.contactWithEntityDidEnd(contact.bodyA.node?.entity ?? GKEntity())
+        guard let a = contact.bodyA.node?.entity, let b = contact.bodyB.node?.entity else { return }
+        
+        (a as? ContactNotifiable)?.contactWithEntityDidEnd(b)
+        (b as? ContactNotifiable)?.contactWithEntityDidEnd(a)
     }
 }
+
 // MARK: - Touch handling -
 
 extension GameScene {
