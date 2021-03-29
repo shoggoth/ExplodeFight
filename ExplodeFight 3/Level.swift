@@ -56,6 +56,7 @@ class Level {
                                                     ExplodeState {
                                                         AppDelegate.soundManager.playSound(name: "Explode")
                                                         (node as? SKSpriteNode)?.color = .white
+                                                        node.childNode(withName: "DirectionIndicator")?.run(SKAction.moveTo(x: 32, duration: 0.2))
                                                     },
                                                     DieState {
                                                         (node as? SKSpriteNode)?.color = .yellow
