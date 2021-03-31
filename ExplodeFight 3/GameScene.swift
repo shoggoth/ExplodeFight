@@ -11,66 +11,36 @@ import SpriteKitAddons
 import GameplayKit
 import GameControls
 
-class GameScene: BaseSKScene {
+struct ExplodeShader {
     
-    override func didMove(to view: SKView) {
- 
-        let texOffsetAttributeName = "a_texOffset"
-        let animationAttributeName = "a_animation"
-        let texOffsetShader = SKShader(fileNamed: "texOffset.fsh")
-        texOffsetShader.attributes = [SKAttribute(name: texOffsetAttributeName, type: .vectorFloat2), SKAttribute(name: animationAttributeName, type: .float)]
+    let explodeAttributeName = "a_explodeAmount"
+    let explodeShader: SKShader
+    
+    init(shaderName: String) {
         
-        let customAction = SKAction.customAction(withDuration: 2.0) { node, t in
+        explodeShader = SKShader(fileNamed: "explode.fsh")
+        explodeShader.attributes = [SKAttribute(name: explodeAttributeName, type: .float)]
+    }
+    
+    func explode(node: SKSpriteNode, duration: TimeInterval) {
+        
+        node.shader = explodeShader
+        
+        let customAction = SKAction.customAction(withDuration: duration) { node, t in
             
-            if let node = node as? SKSpriteNode {
-                
-                node.setValue(SKAttributeValue(float: Float(t * 0.5)), forAttribute: animationAttributeName)
-            }
+            (node as? SKSpriteNode)?.setValue(SKAttributeValue(float: Float(t) / Float(duration)), forAttribute: explodeAttributeName)
         }
         
-        [("texOffsetNode", vector_float2(0.0, 0.5)), ("texOffsetNode2", vector_float2(0.5, 0.0))].forEach { name, tc in
-            
-            if let node = childNode(withName: name) as? SKSpriteNode {
-                
-                node.shader = texOffsetShader
-                node.setValue(SKAttributeValue(vectorFloat2: tc), forAttribute: texOffsetAttributeName)
-                node.setValue(SKAttributeValue(float: 0), forAttribute: animationAttributeName)
-                
-                node.run(.repeatForever(.sequence([
-                    .wait(forDuration: 1.0),
-                    customAction,
-                    customAction.reversed()
-                ])))
-            }
-        }
+        node.run(.repeatForever(.sequence([customAction, customAction.reversed()])))
     }
 }
 
-public class DebugComponent: GKComponent {
+class GameScene: BaseSKScene {
     
-    @GKInspectable var identifier: String = "Anonymous"
+    let explodeShader = ExplodeShader(shaderName: "explode.fsh")
     
-    public override class var supportsSecureCoding: Bool { true }
-    
-    deinit { print(" \(self.identifier) \(self) deinits") }
-    
-    // MARK: Update
-    
-    public override func update(deltaTime seconds: TimeInterval) {
+    override func didMove(to view: SKView) {
         
-        super.update(deltaTime: seconds)
-        
-        print("\(self) update at \(seconds)s")
-    }
-    
-    public override func didAddToEntity() {
-        
-        print("Component \(self.identifier) \(self) added to entity \(String(describing: entity))")
-        //print("Sprite component \(String(describing: spriteComponent))")
-    }
-    
-    public override func willRemoveFromEntity() {
-        
-        print("Component \(self) will remove from entity \(String(describing: entity))")
+        if let node = childNode(withName: "pixelShatter_0") as? SKSpriteNode { explodeShader.explode(node: node, duration: 5) }
     }
 }

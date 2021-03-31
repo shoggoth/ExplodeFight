@@ -27,6 +27,8 @@
 		FFC222E8257003B400CFA23F /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; };
 		FFC222E9257003B400CFA23F /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFD684AB25769EC30089842A /* pixelShatter.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFD684AA25769EC30089842A /* pixelShatter.fsh */; };
+		FFEFE8E8261252FA00AF6DA7 /* explode.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFEFE8E7261252FA00AF6DA7 /* explode.fsh */; };
+		FFEFE90A2613221F00AF6DA7 /* ScratchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFEFE9092613221F00AF6DA7 /* ScratchScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +69,8 @@
 		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFD684AA25769EC30089842A /* pixelShatter.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = pixelShatter.fsh; sourceTree = "<group>"; };
+		FFEFE8E7261252FA00AF6DA7 /* explode.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = explode.fsh; sourceTree = "<group>"; };
+		FFEFE9092613221F00AF6DA7 /* ScratchScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ScratchScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,9 +91,11 @@
 			children = (
 				FF080696256BD29700F2EBA7 /* GameScene.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
+				FFEFE9092613221F00AF6DA7 /* ScratchScene.sks */,
 				FF080694256BD29700F2EBA7 /* Actions.sks */,
 				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
 				FF3E025225765A310074FCC2 /* Textures.xcassets */,
+				FFEFE8E7261252FA00AF6DA7 /* explode.fsh */,
 				FF266223257515130082D4E0 /* hotPink.fsh */,
 				FF3E025F257676D50074FCC2 /* distance.fsh */,
 				FF3E025B25765D210074FCC2 /* shield.fsh */,
@@ -210,8 +216,10 @@
 				FF3E025E25766F890074FCC2 /* shield2.fsh in Resources */,
 				FF2662262575152B0082D4E0 /* vortexSprite.fsh in Resources */,
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,
+				FFEFE8E8261252FA00AF6DA7 /* explode.fsh in Resources */,
 				FFBDFE72257686D900FD33EA /* texOffset.fsh in Resources */,
 				FF3E0260257676D50074FCC2 /* distance.fsh in Resources */,
+				FFEFE90A2613221F00AF6DA7 /* ScratchScene.sks in Resources */,
 				FF080695256BD29700F2EBA7 /* Actions.sks in Resources */,
 				FF3E025C25765D210074FCC2 /* shield.fsh in Resources */,
 			);

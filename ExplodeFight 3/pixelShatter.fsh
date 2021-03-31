@@ -1,7 +1,7 @@
 
 void main() {
 
-    float a_split_count = 5.0;
+    float a_split_count = 25.0;
     
     vec2  st = v_tex_coord;
     float sc = 1.0 / a_split_count;
