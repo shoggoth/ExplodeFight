@@ -28,10 +28,11 @@ struct ExplodeShader {
         
         let customAction = SKAction.customAction(withDuration: duration) { node, t in
             
-            (node as? SKSpriteNode)?.setValue(SKAttributeValue(float: Float(t) / Float(duration)), forAttribute: explodeAttributeName)
+            (node as? SKSpriteNode)?.setValue(SKAttributeValue(float: Float(t) * 0.125), forAttribute: explodeAttributeName)
         }
         
-        node.run(.repeatForever(.sequence([customAction, customAction.reversed()])))
+        //node.run(.repeatForever(.sequence([customAction, customAction.reversed()])))
+        node.run(.repeatForever(.group([customAction, SKAction.scaleX(to: 4.0, duration: duration)])))
     }
 }
 
@@ -42,5 +43,6 @@ class GameScene: BaseSKScene {
     override func didMove(to view: SKView) {
         
         if let node = childNode(withName: "pixelShatter_0") as? SKSpriteNode { explodeShader.explode(node: node, duration: 5) }
+        if let node = childNode(withName: "pixelShatter_2") as? SKSpriteNode { explodeShader.explode(node: node, duration: 5) }
     }
 }
