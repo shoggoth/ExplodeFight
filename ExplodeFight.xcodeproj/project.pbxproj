@@ -68,6 +68,7 @@
 		FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FFD29E9A2615D870002846EA /* explodeArchive1.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = explodeArchive1.fsh; sourceTree = "<group>"; };
 		FFD684AA25769EC30089842A /* pixelShatter.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = pixelShatter.fsh; sourceTree = "<group>"; };
 		FFEFE8E7261252FA00AF6DA7 /* explode.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = explode.fsh; sourceTree = "<group>"; };
 		FFEFE9092613221F00AF6DA7 /* ScratchScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ScratchScene.sks; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 				FF2662252575152B0082D4E0 /* vortexSprite.fsh */,
 				FFBDFE71257686D900FD33EA /* texOffset.fsh */,
 				FFD684AA25769EC30089842A /* pixelShatter.fsh */,
+				FFD29E9A2615D870002846EA /* explodeArchive1.fsh */,
 				FFC222D8256FC71800CFA23F /* iOS */,
 			);
 			path = "ExplodeFight 3";
