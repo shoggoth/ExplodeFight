@@ -1,10 +1,12 @@
 # Explode Fight III
-branch exp/shaders
+branch exp/shatter
 
 ## Current Tasks
-- Look into creating a pixel shatter and other explosion shaders, being aware of the game's name and all that.
+- Verify that other scale factors work alright in the scratch.
+- Change the attribute so that things work in the GameScene.
 
 ### DONE
+- Look into creating a pixel shatter and other explosion shaders, being aware of the game's name and all that.
 - Add a shader and a component to test that the editor is working
 - Contrast shield with gradient texturte and shield with angle compute. Is the second version less pixellated.
 - Find out how to animate shader parameters in the sprite via an SKAction
