@@ -13,6 +13,7 @@ class Level {
     
     private let scene: GameScene
     private let mobSpawner: SceneSpawner
+    private let explodeShader = ExplodeShader(shaderName: "explode.fsh")
     private let ruleSystem: GKRuleSystem = GKRuleSystem()
 
     private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 3.0)
@@ -59,21 +60,33 @@ class Level {
     
     func spawnTemp() {
         
-        let _ = mobSpawner.spawn(name: "Mob") { node in
+        let mobName = "Ship"
+        
+        let _ = mobSpawner.spawn(name: mobName) { node in
             
             let mobEntity = MobEntity(withNode: node)
             
             node.position = CGPoint.zero
-            
+
             mobEntity.addComponent(MobComponent(states: [
                                                     LiveState(),
                                                     ExplodeState {
                                                         AppDelegate.soundManager.playSound(name: "Explode")
-                                                        (node as? SKSpriteNode)?.color = .white
+                                                        
+                                                        if let node = node as? SKSpriteNode {
+                                                            
+                                                            node.color = .white
+                                                            self.explodeShader.explode(node: node, toScale: vector_float2(2, 1), withSplits: vector_float2(2, 1), duration: 3)
+                                                        }
                                                     },
                                                     DieState {
-                                                        (node as? SKSpriteNode)?.color = .yellow
-                                                        self.mobSpawner.spawner(named: "Mob")?.kill(node: node, recycle: true)
+                                                        if let node = node as? SKSpriteNode {
+                                                            
+                                                            node.shader = nil
+                                                            node.color = .yellow
+                                                        }
+                                                        
+                                                        self.mobSpawner.spawner(named: mobName)?.kill(node: node, recycle: true)
                                                     }]))
             
             //mobEntity.addComponent(DebugComponent())

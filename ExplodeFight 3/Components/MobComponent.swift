@@ -41,7 +41,7 @@ class LiveState: GKState {
     
     override func didEnter(from previousState: GKState?) {
         
-        countdownTimer = CountdownTimer(countDownTime: 30.0)
+        countdownTimer = CountdownTimer(countDownTime: 6.0)
     }
     
     override func update(deltaTime: TimeInterval) {
@@ -63,7 +63,7 @@ class ExplodeState: GKState {
     
     override func didEnter(from previousState: GKState?) {
         
-        countdownTimer = CountdownTimer(countDownTime: 0.2)
+        countdownTimer = CountdownTimer(countDownTime: 3.0)
         
         explodeFunc?()
     }

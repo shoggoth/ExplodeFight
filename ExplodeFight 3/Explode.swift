@@ -16,7 +16,7 @@ struct ExplodeShader {
     
     init(shaderName: String) {
         
-        explodeShader = SKShader(fileNamed: "explode.fsh")
+        explodeShader = SKShader(fileNamed: shaderName)
         explodeShader.attributes = [SKAttribute(name: splitsAttributeName, type: .vectorFloat2),SKAttribute(name: explodeAttributeName, type: .vectorFloat2)]
     }
     
