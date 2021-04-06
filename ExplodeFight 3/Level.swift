@@ -76,7 +76,8 @@ class Level {
                                                         if let node = node as? SKSpriteNode {
                                                             
                                                             node.color = .white
-                                                            self.explodeShader.explode(node: node, toScale: vector_float2(2, 1), withSplits: vector_float2(2, 1), duration: 3)
+                                                            self.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 3)
+                                                            node.isPaused = false
                                                         }
                                                     },
                                                     DieState {
@@ -84,6 +85,8 @@ class Level {
                                                             
                                                             node.shader = nil
                                                             node.color = .yellow
+                                                            node.xScale = 1.0
+                                                            node.yScale = 1.0
                                                         }
                                                         
                                                         self.mobSpawner.spawner(named: mobName)?.kill(node: node, recycle: true)
@@ -92,7 +95,7 @@ class Level {
             //mobEntity.addComponent(DebugComponent())
             
             self.scene.addChild(node)
-            
+
             return mobEntity
         }
     }
