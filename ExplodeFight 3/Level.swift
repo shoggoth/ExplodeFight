@@ -67,18 +67,17 @@ class Level {
             let mobEntity = MobEntity(withNode: node)
             
             node.position = CGPoint.zero
+            node.isPaused = false
 
             mobEntity.addComponent(MobComponent(states: [
                                                     LiveState(),
                                                     ExplodeState {
-                                                        AppDelegate.soundManager.playSound(name: "Explode")
-                                                        
                                                         if let node = node as? SKSpriteNode {
                                                             
-                                                            node.color = .white
-                                                            self.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 3)
-                                                            node.isPaused = false
+                                                            self.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
                                                         }
+                                                        
+                                                        AppDelegate.soundManager.playSound(name: "Explode")
                                                     },
                                                     DieState {
                                                         if let node = node as? SKSpriteNode {
