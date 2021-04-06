@@ -19,7 +19,7 @@ struct ExplodeShader {
     
     init(shaderName: String) {
         
-        explodeShader = SKShader(fileNamed: "explode.fsh")
+        explodeShader = SKShader(fileNamed: shaderName)
         explodeShader.attributes = [SKAttribute(name: splitsAttributeName, type: .vectorFloat2),SKAttribute(name: explodeAttributeName, type: .vectorFloat2)]
     }
     
@@ -51,5 +51,7 @@ class GameScene: BaseSKScene {
         if let node = childNode(withName: "pixelShatter_X") as? SKSpriteNode { explodeShader.explode(node: node, toScale: vector_float2(2, 1), withSplits: vector_float2(2, 1), duration: 3.1765) }
         if let node = childNode(withName: "pixelShatter_Y") as? SKSpriteNode { explodeShader.explode(node: node, toScale: vector_float2(1, 2), withSplits: vector_float2(1, 2), duration: 7.5432) }
         if let node = childNode(withName: "pixelShatter_XY") as? SKSpriteNode { explodeShader.explode(node: node, toScale: vector_float2(3, 3), withSplits: vector_float2(7, 5), duration: 2.564) }
+        
+        if let node = childNode(withName: "ship") as? SKSpriteNode { explodeShader.explode(node: node, toScale: vector_float2(3, 3), withSplits: vector_float2(7, 5), duration: 30) }
     }
 }
