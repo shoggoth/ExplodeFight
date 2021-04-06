@@ -2,9 +2,9 @@
 void main() {
     
     const vec2 ef = a_explodeAmount;                                    // Explode scale factor.
-    
+    const vec2 ns = a_numberOfSplits;                                   // Number of splits.
+
     const vec2 tc = v_tex_coord * ef;
-    const vec2 ns = vec2(5, 5);                                         // Number of splits.
     const vec2 tw = vec2(1.0 / (ns.x + 1), 1.0 / (ns.y + 1));           // Textured band width.
     const vec2 sw = vec2((ef.x - 1.0) / ns.x, (ef.y - 1.0) / ns.y);     // Spacing band width.
 
