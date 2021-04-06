@@ -2,9 +2,10 @@
 branch exp/shatter
 
 ## Current Tasks
-- Change the attribute and animation so that things work in the GameScene.
 
 ### DONE
+- Test with alpha
+- Change the attribute and animation so that things work in the GameScene.
 - Verify that other scale factors work alright in the scratch.
 - Look into creating a pixel shatter and other explosion shaders, being aware of the game's name and all that.
 - Add a shader and a component to test that the editor is working
