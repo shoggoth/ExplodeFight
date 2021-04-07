@@ -35,13 +35,18 @@ class MobComponent: GKComponent {
 
 class LiveState: GKState {
     
+    private var liveFunc: (() -> Void)?
     private var countdownTimer: CountdownTimer?
     
+    init(completion: (() -> Void)? = nil) { liveFunc = completion }
+
     override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type || stateClass is ExplodeState.Type }
     
     override func didEnter(from previousState: GKState?) {
         
         countdownTimer = CountdownTimer(countDownTime: 6.0)
+        
+        liveFunc?()
     }
     
     override func update(deltaTime: TimeInterval) {

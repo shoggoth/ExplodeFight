@@ -66,11 +66,20 @@ class Level {
             
             let mobEntity = MobEntity(withNode: node)
             
-            node.position = CGPoint.zero
-            node.isPaused = false
-
             mobEntity.addComponent(MobComponent(states: [
-                                                    LiveState(),
+                                                    LiveState {
+                                                        if let node = node as? SKSpriteNode {
+                                                            
+                                                            if node.name == mobName { node.name = UUID().uuidString }
+                                                            print("node = \(node)")
+                                                            
+                                                            node.position = CGPoint.zero
+                                                            node.isPaused = false
+                                                            node.shader = nil
+                                                            node.xScale = 1.0
+                                                            node.yScale = 1.0
+                                                        }
+                                                    },
                                                     ExplodeState {
                                                         if let node = node as? SKSpriteNode {
                                                             
@@ -80,14 +89,6 @@ class Level {
                                                         AppDelegate.soundManager.playSound(name: "Explode")
                                                     },
                                                     DieState {
-                                                        if let node = node as? SKSpriteNode {
-                                                            
-                                                            node.shader = nil
-                                                            node.color = .yellow
-                                                            node.xScale = 1.0
-                                                            node.yScale = 1.0
-                                                        }
-                                                        
                                                         self.mobSpawner.spawner(named: mobName)?.kill(node: node, recycle: true)
                                                     }]))
             
