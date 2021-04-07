@@ -26,8 +26,12 @@ class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
             { touch in fireSIndicator.position = touch.location(in: self) }
         ]
         
-        let moveWindowFunc = TouchJoystick.WindowFunction(windowSize: CGSize(width: 80, height: 80), deadZoneR2: 10)
-        let fireWindowFunc = TouchJoystick.WindowFunction(windowSize: CGSize(width: 80, height: 80))
+        //let moveWindowFunc = TouchJoystick.WindowFunction(clippingType: .rectangular(CGSize(width: 80, height: 80)), deadZoneR2: 10)
+        //let fireWindowFunc = TouchJoystick.WindowFunction(clippingType: .rectangular(CGSize(width: 80, height: 80)))
+        //let moveWindowFunc = TouchJoystick.WindowFunction(clippingType: .square(80), deadZoneR2: 10)
+        //let fireWindowFunc = TouchJoystick.WindowFunction(clippingType: .square(80))
+        let moveWindowFunc = TouchJoystick.WindowFunction(clippingType: .circular(80), deadZoneR2: 10)
+        let fireWindowFunc = TouchJoystick.WindowFunction(clippingType: .circular(80))
 
         let windowFunctions: [TouchJoystick.TouchFunction] = [
             { touch in
