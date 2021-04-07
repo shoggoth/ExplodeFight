@@ -16,12 +16,14 @@ class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
     
     override func didMove(to view: SKView) {
         
-        guard let moveIndicator = self.childNode(withName: "//joystickBoundsLeft/indicator") else { return }
-        guard let fireIndicator = self.childNode(withName: "//joystickBoundsRight/indicator") else { return }
-        
+        guard let moveSIndicator = self.childNode(withName: "//joystickBoundsLeft/indicator") else { return }
+        guard let fireSIndicator = self.childNode(withName: "//joystickBoundsRight/indicator") else { return }
+        guard let moveCIndicator = self.childNode(withName: "//joystickCircLeft/indicator") else { return }
+        guard let fireCIndicator = self.childNode(withName: "//joystickCircRight/indicator") else { return }
+
         let absoluteFunctions: [TouchJoystick.TouchFunction] = [
-            { touch in moveIndicator.position = touch.location(in: self) },
-            { touch in fireIndicator.position = touch.location(in: self) }
+            { touch in moveSIndicator.position = touch.location(in: self) },
+            { touch in fireSIndicator.position = touch.location(in: self) }
         ]
         
         let moveWindowFunc = TouchJoystick.WindowFunction(windowSize: CGSize(width: 80, height: 80), deadZoneR2: 10)
@@ -31,12 +33,13 @@ class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
             { touch in
                 
                 moveWindowFunc.handleTouch(touch: touch)
-                moveIndicator.position = CGPoint(vector: moveWindowFunc.windowVector)
+                moveSIndicator.position = CGPoint(vector: moveWindowFunc.windowVector)
+                moveCIndicator.position = CGPoint(vector: moveWindowFunc.windowVector)
             },
             { touch in
                 
                 fireWindowFunc.handleTouch(touch: touch)
-                fireIndicator.position = CGPoint(vector: fireWindowFunc.windowVector)
+                fireSIndicator.position = CGPoint(vector: fireWindowFunc.windowVector)
             }
         ]
 
