@@ -33,52 +33,18 @@ class MobComponent: GKComponent {
 
 // MARK: - Lifecycle states -
 
-class LiveState: GKState {
+class LiveState: CountdownState {
     
-    private var liveFunc: (() -> Void)?
-    private var countdownTimer: CountdownTimer?
-    
-    init(completion: (() -> Void)? = nil) { liveFunc = completion }
+    init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(ExplodeState.self) }) }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type || stateClass is ExplodeState.Type }
-    
-    override func didEnter(from previousState: GKState?) {
-        
-        countdownTimer = CountdownTimer(countDownTime: 6.0)
-        
-        liveFunc?()
-    }
-    
-    override func update(deltaTime: TimeInterval) {
-        
-        super.update(deltaTime: deltaTime)
-        
-        countdownTimer = countdownTimer?.tick(deltaTime: deltaTime) { stateMachine?.enter(ExplodeState.self) }
-    }
 }
 
-class ExplodeState: GKState {
+class ExplodeState: CountdownState {
     
-    private var explodeFunc: (() -> Void)?
-    private var countdownTimer: CountdownTimer?
-    
-    init(completion: (() -> Void)? = nil) { explodeFunc = completion }
+    init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(DieState.self) }) }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type }
-    
-    override func didEnter(from previousState: GKState?) {
-        
-        countdownTimer = CountdownTimer(countDownTime: 3.0)
-        
-        explodeFunc?()
-    }
-    
-    override func update(deltaTime: TimeInterval) {
-        
-        super.update(deltaTime: deltaTime)
-        
-        countdownTimer = countdownTimer?.tick(deltaTime: deltaTime) { stateMachine?.enter(DieState.self) }
-    }
 }
 
 class DieState: GKState {
@@ -87,10 +53,34 @@ class DieState: GKState {
     
     init(completion: (() -> Void)? = nil) { dieFunc = completion }
     
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is LiveState.Type }
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool { false }
+    
+    override func didEnter(from previousState: GKState?) { dieFunc?() }
+}
+
+// MARK: -
+
+class CountdownState: GKState {
+    
+    private var enterFunc: (() -> CountdownTimer?)?
+    private var exitFunc: ((GKStateMachine?) -> Void)?
+    private var countdownTimer: CountdownTimer?
+    
+    init(enter: (() -> CountdownTimer?)? = nil, exit: ((GKStateMachine?) -> Void)? = nil) {
+        
+        enterFunc = enter
+        exitFunc  = exit
+    }
     
     override func didEnter(from previousState: GKState?) {
         
-        dieFunc?()
+        countdownTimer = enterFunc?()
+    }
+    
+    override func update(deltaTime: TimeInterval) {
+        
+        super.update(deltaTime: deltaTime)
+        
+        countdownTimer = countdownTimer?.tick(deltaTime: deltaTime) { exitFunc?(stateMachine) }
     }
 }

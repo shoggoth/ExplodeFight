@@ -16,7 +16,7 @@ class Level {
     private let explodeShader = ExplodeShader(shaderName: "explode.fsh")
     private let ruleSystem: GKRuleSystem = GKRuleSystem()
 
-    private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 3.0)
+    private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 0.7)
 
     init(scene: GameScene) {
         
@@ -70,15 +70,14 @@ class Level {
                                                     LiveState {
                                                         if let node = node as? SKSpriteNode {
                                                             
-                                                            if node.name == mobName { node.name = UUID().uuidString }
-                                                            print("node = \(node)")
-                                                            
                                                             node.position = CGPoint.zero
                                                             node.isPaused = false
                                                             node.shader = nil
                                                             node.xScale = 1.0
                                                             node.yScale = 1.0
                                                         }
+                                                        
+                                                        return CountdownTimer(countDownTime: 3.0)
                                                     },
                                                     ExplodeState {
                                                         if let node = node as? SKSpriteNode {
@@ -86,7 +85,9 @@ class Level {
                                                             self.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
                                                         }
                                                         
-                                                        AppDelegate.soundManager.playSound(name: "Explode")
+                                                        //AppDelegate.soundManager.playSound(name: "Explode")
+                                                        
+                                                        return CountdownTimer(countDownTime: 1.0)
                                                     },
                                                     DieState {
                                                         self.mobSpawner.spawner(named: mobName)?.kill(node: node, recycle: true)

@@ -10,6 +10,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ## Next Tasks
+- Address the shader compile delay on the first explosion.
 - Make a user-controlled entity and a mob entity or do this using components so that the behaviour can be switched for a demo attract phase.
 - Think about how contact can be handled without subclassing an entity.
 - Make placeholder sprites for the player and an enemy.
