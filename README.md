@@ -5,6 +5,7 @@ branch exp/shaders
 - Look into creating a pixel shatter and other explosion shaders, being aware of the game's name and all that.
 
 ### DONE
+- Make Mandelbrot shader for possible Screaming Mandy.
 - Add a shader and a component to test that the editor is working
 - Contrast shield with gradient texturte and shield with angle compute. Is the second version less pixellated.
 - Find out how to animate shader parameters in the sprite via an SKAction

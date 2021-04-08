@@ -20,6 +20,7 @@
 		FF3E025C25765D210074FCC2 /* shield.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF3E025B25765D210074FCC2 /* shield.fsh */; };
 		FF3E025E25766F890074FCC2 /* shield2.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF3E025D25766F890074FCC2 /* shield2.fsh */; };
 		FF3E0260257676D50074FCC2 /* distance.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF3E025F257676D50074FCC2 /* distance.fsh */; };
+		FFA0F468261EF6F70009EDDC /* Mandelbrot.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFA0F467261EF6F60009EDDC /* Mandelbrot.fsh */; };
 		FFBDFE72257686D900FD33EA /* texOffset.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFBDFE71257686D900FD33EA /* texOffset.fsh */; };
 		FFC222A8256EB9D400CFA23F /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; };
 		FFC222A9256EB9D400CFA23F /* GameControls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -60,6 +61,7 @@
 		FF3E025B25765D210074FCC2 /* shield.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shield.fsh; sourceTree = "<group>"; };
 		FF3E025D25766F890074FCC2 /* shield2.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shield2.fsh; sourceTree = "<group>"; };
 		FF3E025F257676D50074FCC2 /* distance.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = distance.fsh; sourceTree = "<group>"; };
+		FFA0F467261EF6F60009EDDC /* Mandelbrot.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Mandelbrot.fsh; path = ../../Developer/Shaders/Sprite/Mandelbrot.fsh; sourceTree = "<group>"; };
 		FFBDFE71257686D900FD33EA /* texOffset.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = texOffset.fsh; sourceTree = "<group>"; };
 		FFC222A7256EB9D400CFA23F /* GameControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC222DA256FCD4100CFA23F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				FF080694256BD29700F2EBA7 /* Actions.sks */,
 				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
 				FF3E025225765A310074FCC2 /* Textures.xcassets */,
+				FFA0F467261EF6F60009EDDC /* Mandelbrot.fsh */,
 				FF266223257515130082D4E0 /* hotPink.fsh */,
 				FF3E025F257676D50074FCC2 /* distance.fsh */,
 				FF3E025B25765D210074FCC2 /* shield.fsh */,
@@ -204,6 +207,7 @@
 				FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */,
 				FF3E025325765A310074FCC2 /* Textures.xcassets in Resources */,
 				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
+				FFA0F468261EF6F70009EDDC /* Mandelbrot.fsh in Resources */,
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
 				FFD684AB25769EC30089842A /* pixelShatter.fsh in Resources */,
 				FF266224257515130082D4E0 /* hotPink.fsh in Resources */,
