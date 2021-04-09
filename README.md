@@ -2,10 +2,10 @@
 exp/joystick
 
 ## Current Tasks
-- Make the joystick circular
 - Quantise to n directions
 
 ### DONE
+- Make the joystick circular
 - Finish the touch joystick controls and add them to the framework.
 - Devise some functions and add demo code for them.
 

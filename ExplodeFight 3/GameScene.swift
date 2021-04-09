@@ -44,6 +44,7 @@ class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
                 
                 fireWindowFunc.handleTouch(touch: touch)
                 fireSIndicator.position = CGPoint(vector: fireWindowFunc.windowVector)
+                fireCIndicator.position = CGPoint(vector: fireWindowFunc.windowVector)
             }
         ]
 
