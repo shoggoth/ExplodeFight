@@ -38,7 +38,7 @@ class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
                 
                 moveWindowFunc.handleTouch(touch: touch)
                 moveSIndicator.position = CGPoint(vector: moveWindowFunc.windowVector)
-                moveCIndicator.position = CGPoint(vector: moveWindowFunc.windowVector)
+                moveCIndicator.position = CGPoint(vector: moveWindowFunc.windowVector.snapped(to: pi * 0.25))
             },
             { touch in
                 
