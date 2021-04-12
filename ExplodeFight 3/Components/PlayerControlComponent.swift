@@ -36,7 +36,7 @@ class PlayerControlComponent: GKComponent {
         // TODO: Load from the configuration or defaults.
         let moveWindowFunc = TouchJoystick.WindowFunction(clippingType: .square(40), deadZoneR2: 4)
         let fireWindowFunc = TouchJoystick.WindowFunction(clippingType: .square(40))
-        
+
         joystick.joyFunctions = [
             { touch in
                 
@@ -46,7 +46,7 @@ class PlayerControlComponent: GKComponent {
             { touch in
                 
                 fireWindowFunc.handleTouch(touch: touch)
-                self.fireVector = fireWindowFunc.windowVector
+                self.fireVector = fireWindowFunc.windowVector.snapped(to: .pi * 0.25)
             }
         ]
     }
