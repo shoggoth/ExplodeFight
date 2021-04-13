@@ -101,18 +101,3 @@ class Level {
         }
     }
 }
-
-// MARK: TODO: Temp (Move this to Level, levels might have different rules to one another.)
-
-/* Set up rules
-if let ruleSystem = rulesComponent?.ruleSystem {
-
-    ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue < 10"), assertingFact: "updateCountIsLow" as NSObject, grade: 0.7))
-    ruleSystem.add(GKRule(predicate: NSPredicate(format: "$updateCount.intValue == 7"), retractingFact: "updateCountIsLow" as NSObject, grade: 0.3))
-}
- 
- print("State \(ruleSystem.state)")
- print("Facts \(ruleSystem.facts) \(ruleSystem.grade(forFact: "mobCountIsLow" as NSObject))")
-
-rulesComponent?.updateCount = 0
- */

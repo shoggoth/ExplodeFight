@@ -20,8 +20,9 @@ class PlayerControlComponent: GKComponent {
     private let joystick: TouchJoystick
     private let playerControlAgent = GKAgent2D()
     
-    private let trackBehavior: GKBehavior
-    private let stopBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 0), weight: 100)
+    private let trackBehaviour: GKBehavior
+    private let moveBehaviour: GKBehavior
+    private let stopBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 0), weight: 1.0)
 
     private var moveVector: CGVector = .zero
     private var fireVector: CGVector = .zero
@@ -29,7 +30,8 @@ class PlayerControlComponent: GKComponent {
     init(joystick: TouchJoystick) {
         
         self.joystick = joystick
-        self.trackBehavior = GKBehavior(goal: GKGoal(toSeekAgent: playerControlAgent), weight: 100)
+        self.trackBehaviour = GKBehavior(goal: GKGoal(toSeekAgent: playerControlAgent), weight: 1.0)
+        self.moveBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 2000), weight: 1.0)
 
         super.init()
         
@@ -55,19 +57,9 @@ class PlayerControlComponent: GKComponent {
     
     override func update(deltaTime seconds: TimeInterval) {
         
-        if let agent = entity?.agent {
+        if let node = entity?.spriteComponent?.node {
             
-            if moveVector.lengthSquared() == 0 {
-                
-                agent.behavior = stopBehaviour
-            
-            } else {
-                let trackVector = agent.position + vector_float2(x: Float(moveVector.dx), y: Float(moveVector.dy))
-                
-                playerControlAgent.position = trackVector
-                
-                agent.behavior = trackBehavior
-            }
+            node.zRotation = moveVector.angle
         }
         
         super.update(deltaTime: seconds)
