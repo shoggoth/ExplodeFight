@@ -55,10 +55,26 @@ class PlayerControlComponent: GKComponent {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
+    override func didAddToEntity() {
+        
+        if let agent = entity?.agent {
+            
+            agent.maxSpeed = 100
+            agent.maxAcceleration = 10
+            agent.radius = 8
+            agent.mass = 1
+        }
+    }
+
     override func update(deltaTime seconds: TimeInterval) {
         
-        if let node = entity?.spriteComponent?.node {
+        if let agent = entity?.agent {
             
+            agent.behavior = moveBehaviour
+        }
+        
+        if let node = entity?.spriteComponent?.node {
+
             node.zRotation = moveVector.angle
         }
         
