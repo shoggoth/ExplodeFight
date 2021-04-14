@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>initialSceneName</key>
-	<string>AttractScene</string>
+	<string>GameScene</string>
 </dict>
 </plist>
