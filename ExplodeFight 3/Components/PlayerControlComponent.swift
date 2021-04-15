@@ -31,7 +31,7 @@ class PlayerControlComponent: GKComponent {
         
         self.joystick = joystick
         self.trackBehaviour = GKBehavior(goal: GKGoal(toSeekAgent: playerControlAgent), weight: 1.0)
-        self.moveBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 2000), weight: 1.0)
+        self.moveBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 500), weight: 1.0)
 
         super.init()
         
@@ -59,10 +59,10 @@ class PlayerControlComponent: GKComponent {
         
         if let agent = entity?.agent {
             
-            agent.maxSpeed = 100
+            agent.maxSpeed = 500
             agent.maxAcceleration = 10
             agent.radius = 8
-            agent.mass = 1
+            agent.mass = 0.1
         }
     }
 
