@@ -9,8 +9,6 @@
 import GameplayKit
 
 class MobEntity: GKEntity, ContactNotifiable {
-    
-    var moveComponent: MoveComponent? { component(ofType: MoveComponent.self) }
 
     private var health = 1.0
     
@@ -22,7 +20,8 @@ class MobEntity: GKEntity, ContactNotifiable {
 
         // Entity setup
         addComponent(GKSKNodeComponent(node: node))
-        addComponent(MoveComponent(maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
+        addComponent(GKAgent2D())
+        //addComponent(MoveComponent(maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
     }
     
     required init?(coder: NSCoder) { fatalError() }

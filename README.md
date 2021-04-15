@@ -2,7 +2,7 @@
 master
 
 ## Current Tasks
-- User control via GKAgent (movement and shooting)
+- User control via GKAgent (movement and shooting).. Rejig Mob and Player movement components, possibly remove the subclasses of GKAgent2D
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
 - Spawner preload and kill only those nodes which contain entities functionality.

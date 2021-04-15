@@ -62,6 +62,22 @@ class PlayerControlComponent: GKComponent {
             node.zRotation = moveVector.angle
         }
         
+        if let agent = entity?.agent {
+            
+            if moveVector.lengthSquared() == 0 {
+                
+                agent.behavior = stopBehaviour
+            
+            } else {
+                let trackVector = agent.position + vector_float2(x: Float(moveVector.dx), y: Float(moveVector.dy))
+                
+                playerControlAgent.position = trackVector
+                
+                agent.behavior = trackBehaviour
+            }
+        }
+
+        
         super.update(deltaTime: seconds)
     }
     
