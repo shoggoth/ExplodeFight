@@ -17,11 +17,17 @@ class PlayerEntity: GKEntity {
         node.zRotation = CGFloat(Float.random(in: 0.0 ... Float.pi * 2.0))
 
         // Entity setup
-        node.entity = self
         addComponent(GKSKNodeComponent(node: node))
-        addComponent(GKAgent2D())
         
-        agent?.delegate = self.spriteComponent
+        let agent = GKAgent2D()
+        agent.maxSpeed = 600
+        agent.maxAcceleration = 20
+        agent.radius = 20
+        agent.mass = Float(node.physicsBody?.mass ?? 1)
+        
+        agent.behavior = GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * agent.maxSpeed), weight: 10.0)
+        agent.delegate = spriteComponent
+        addComponent(agent)
     }
 
     required init?(coder: NSCoder) { fatalError() }

@@ -103,7 +103,6 @@
 		FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		FFE0186225C2E81A0051984F /* MoveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveComponent.swift; sourceTree = "<group>"; };
 		FFE0186425C958840051984F /* MobEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobEntity.swift; sourceTree = "<group>"; };
 		FFE0186625CACFAD0051984F /* FireComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireComponent.swift; sourceTree = "<group>"; };
 		FFF47C33260B432300BB2930 /* attractOverlay.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attractOverlay.fsh; sourceTree = "<group>"; };
@@ -183,7 +182,6 @@
 			children = (
 				FF49713625B72FB30083C36B /* MobComponent.swift */,
 				FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */,
-				FFE0186225C2E81A0051984F /* MoveComponent.swift */,
 				FFE0186625CACFAD0051984F /* FireComponent.swift */,
 				FF3EB5A925FB79200073D402 /* RulesComponent.swift */,
 				FF4E81B42608A0EB006B1050 /* DebugComponent.swift */,
