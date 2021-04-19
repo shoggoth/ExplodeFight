@@ -22,7 +22,7 @@ class PlayerControlComponent: GKComponent {
     
     private let trackBehaviour: GKBehavior
     private let moveBehaviour: GKBehavior
-    private let stopBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 0), weight: 1.0)
+    private let stopBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 0), weight: 10.0)
 
     private var moveVector: CGVector = .zero
     private var fireVector: CGVector = .zero
@@ -30,8 +30,8 @@ class PlayerControlComponent: GKComponent {
     init(joystick: TouchJoystick) {
         
         self.joystick = joystick
-        self.trackBehaviour = GKBehavior(goal: GKGoal(toSeekAgent: playerControlAgent), weight: 1.0)
-        self.moveBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 2000), weight: 1.0)
+        self.trackBehaviour = GKBehavior(goal: GKGoal(toSeekAgent: playerControlAgent), weight: 100.0)
+        self.moveBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 2000), weight: 100.0)
 
         super.init()
         
@@ -57,29 +57,33 @@ class PlayerControlComponent: GKComponent {
     
     override func update(deltaTime seconds: TimeInterval) {
         
-        if let node = entity?.spriteComponent?.node {
-            
-            node.zRotation = moveVector.angle
-        }
+        moveUpdate()
         
-        if let agent = entity?.agent {
+        super.update(deltaTime: seconds)
+    }
+    
+    override class var supportsSecureCoding: Bool { return true }
+    
+    // MARK: Updates
+    
+    private func moveUpdate() {
+    
+        guard let entity = entity else { return }
+        
+        if let agent = entity.agent {
             
             if moveVector.lengthSquared() == 0 {
                 
                 agent.behavior = stopBehaviour
             
             } else {
-                let trackVector = agent.position + vector_float2(x: Float(moveVector.dx), y: Float(moveVector.dy))
                 
+                entity.spriteComponent?.node.zRotation = moveVector.angle
+
+                let trackVector = agent.position + moveVector.simd
                 playerControlAgent.position = trackVector
-                
                 agent.behavior = trackBehaviour
             }
         }
-
-        
-        super.update(deltaTime: seconds)
     }
-    
-    override class var supportsSecureCoding: Bool { return true }
 }

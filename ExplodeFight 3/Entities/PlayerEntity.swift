@@ -13,8 +13,6 @@ class PlayerEntity: GKEntity {
     init(withNode node: SKNode) {
         
         super.init()
-        
-        node.zRotation = CGFloat(Float.random(in: 0.0 ... Float.pi * 2.0))
 
         // Entity setup
         addComponent(GKSKNodeComponent(node: node))
@@ -25,7 +23,6 @@ class PlayerEntity: GKEntity {
         agent.radius = 20
         agent.mass = Float(node.physicsBody?.mass ?? 1)
         
-        agent.behavior = GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * agent.maxSpeed), weight: 10.0)
         agent.delegate = spriteComponent
         addComponent(agent)
     }
