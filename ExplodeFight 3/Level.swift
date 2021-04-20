@@ -38,7 +38,7 @@ class Level {
             let playerEntity = MobEntity()
             
             playerEntity.addComponent(GKSKNodeComponent(node: node))
-            playerEntity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20))
+            playerEntity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
             playerEntity.addComponent(PlayerControlComponent(joystick: scene.joystick))
 
             scene.entities.append(playerEntity)
@@ -69,7 +69,7 @@ class Level {
             let mobEntity = MobEntity()
             
             mobEntity.addComponent(GKSKNodeComponent(node: node))
-            mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
+            mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
 
             let livestate = LiveState {
                 
