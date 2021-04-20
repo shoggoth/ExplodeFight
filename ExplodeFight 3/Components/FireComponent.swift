@@ -14,6 +14,8 @@ class FireComponent: GKComponent {
     @GKInspectable var weaponType = 1
     @GKInspectable var fireRate = 1.0
 
+    var fireVector = CGVector.zero
+    
     private var fireTicker: PeriodicTimer!
     private var weapon: Weapon? = nil
     
@@ -60,9 +62,9 @@ class FireComponent: GKComponent {
     
     override func update(deltaTime seconds: TimeInterval) {
         
-        guard let weapon = weapon, let sourceNode = entity?.spriteComponent?.node else { return }
+        guard let weapon = weapon, fireVector.lengthSquared() > 0 else { return }
         
-        fireTicker = fireTicker.tick(deltaTime: seconds) { weapon.fire(direction: CGVector(angle: sourceNode.zRotation)) }
+        fireTicker = fireTicker.tick(deltaTime: seconds) { weapon.fire(direction: fireVector) }
     }
     
     override class var supportsSecureCoding: Bool { return true }

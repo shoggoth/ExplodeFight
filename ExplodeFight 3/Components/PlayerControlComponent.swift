@@ -54,6 +54,7 @@ class PlayerControlComponent: GKComponent {
     override func update(deltaTime seconds: TimeInterval) {
         
         moveUpdate()
+        fireUpdate()
         
         super.update(deltaTime: seconds)
     }
@@ -74,9 +75,14 @@ class PlayerControlComponent: GKComponent {
             
             } else {
                 
-                entity.spriteComponent?.node.zRotation = moveVector.angle                
+                entity.spriteComponent?.node.zRotation = moveVector.angle
                 agent.behavior = moveBehaviour
             }
         }
+    }
+    
+    private func fireUpdate() {
+
+        entity?.component(ofType: EF3.FireComponent.self)?.fireVector = fireVector.normalized()
     }
 }

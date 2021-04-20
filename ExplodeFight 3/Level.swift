@@ -33,15 +33,10 @@ class Level {
         ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue == 0"), assertingFact: "allMobsDestroyed" as NSObject, grade: 1.0))
 
         // Setup Player
-        if let node = scene.childNode(withName: "Player") {
+        if let node = scene.childNode(withName: "Player"), let entity = node.entity {
             
-            let playerEntity = MobEntity()
-            
-            playerEntity.addComponent(GKSKNodeComponent(node: node))
-            playerEntity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
-            playerEntity.addComponent(PlayerControlComponent(joystick: scene.joystick))
-
-            scene.entities.append(playerEntity)
+            entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
+            entity.addComponent(PlayerControlComponent(joystick: scene.joystick))
         }
     }
     
