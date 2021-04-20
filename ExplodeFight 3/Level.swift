@@ -37,18 +37,11 @@ class Level {
             
             let playerEntity = MobEntity()
             
-            playerEntity.addComponent(PlayerControlComponent(joystick: scene.joystick))
-            
             playerEntity.addComponent(GKSKNodeComponent(node: node))
-            let agent = GKAgent2D()
-            agent.maxSpeed = 600
-            agent.maxAcceleration = 20
-            agent.radius = 20
-            agent.mass = Float(node.physicsBody?.mass ?? 1)
+            playerEntity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20))
+            playerEntity.agent?.delegate = playerEntity.spriteComponent
             
-            agent.behavior = GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * agent.maxSpeed), weight: 100.0)
-            agent.delegate = playerEntity.spriteComponent
-            playerEntity.addComponent(agent)
+            playerEntity.addComponent(PlayerControlComponent(joystick: scene.joystick))
 
             scene.entities.append(playerEntity)
         }
@@ -78,45 +71,39 @@ class Level {
             let mobEntity = MobEntity()
             
             mobEntity.addComponent(GKSKNodeComponent(node: node))
-            let agent = GKAgent2D()
-            agent.maxSpeed = 600
-            agent.maxAcceleration = 20
-            agent.radius = 20
-            agent.mass = Float(node.physicsBody?.mass ?? 1)
-            
-            agent.behavior = GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * agent.maxSpeed), weight: 100.0)
-            agent.delegate = mobEntity.spriteComponent
-            mobEntity.addComponent(agent)
+            mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
+            mobEntity.agent?.delegate = mobEntity.spriteComponent
 
-            mobEntity.addComponent(MobComponent(states: [
-                                                    LiveState {
-                                                        if let node = node as? SKSpriteNode {
-                                                            
-                                                            node.zRotation = CGFloat(Float.random(in: 0.0 ... Float.pi * 2.0))
-                                                            node.position = CGPoint.zero
-                                                            node.isPaused = false
-                                                            node.shader = nil
-                                                            node.xScale = 1.0
-                                                            node.yScale = 1.0
-                                                        }
-                                                        
-                                                        return CountdownTimer(countDownTime: 3.0)
-                                                    },
-                                                    ExplodeState {
-                                                        if let node = node as? SKSpriteNode {
-                                                            
-                                                            self.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
-                                                        }
-                                                        
-                                                        //AppDelegate.soundManager.playSound(name: "Explode")
-                                                        
-                                                        return CountdownTimer(countDownTime: 1.0)
-                                                    },
-                                                    DieState {
-                                                        self.mobSpawner.spawner(named: mobName)?.kill(node: node, recycle: true)
-                                                    }]))
+            let livestate = LiveState {
+                
+                if let node = node as? SKSpriteNode {
+                    
+                    node.zRotation = CGFloat(Float.random(in: 0.0 ... Float.pi * 2.0))
+                    node.position = CGPoint.zero
+                    node.isPaused = false
+                    node.shader = nil
+                    node.xScale = 1.0
+                    node.yScale = 1.0
+                }
+                
+                return CountdownTimer(countDownTime: 3.0)
+            }
             
-            //mobEntity.addComponent(DebugComponent())
+            let explodeState = ExplodeState {
+                
+                if let node = node as? SKSpriteNode {
+                    
+                    self.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
+                }
+                
+                //AppDelegate.soundManager.playSound(name: "Explode")
+                
+                return CountdownTimer(countDownTime: 1.0)
+            }
+            
+            let dieState = DieState { self.mobSpawner.spawner(named: mobName)?.kill(node: node, recycle: true) }
+            
+            mobEntity.addComponent(MobComponent(states: [livestate, explodeState, dieState]))
             
             self.scene.addChild(node)
 

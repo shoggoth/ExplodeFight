@@ -7,6 +7,7 @@
 //
 
 import GameplayKit
+import SpriteKitAddons
 
 class MobEntity: GKEntity, ContactNotifiable {
 

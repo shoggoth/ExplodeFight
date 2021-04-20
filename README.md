@@ -2,7 +2,6 @@
 master
 
 ## Current Tasks
-- User control via GKAgent (movement and shooting).. Rejig Mob and Player movement components, possibly remove the subclasses of GKAgent2D
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
 - Spawner preload and kill only those nodes which contain entities functionality.
@@ -19,6 +18,7 @@ master
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 
 ### Completed Tasks
+- User control via GKAgent (movement and shooting). Rejig Mob and Player movement components, possibly remove the subclasses of GKAgent2D
 - Sound manager
 - Find out why the explosion sound is getting called twice as often as it should be.
 - Add rules for a demo: maintain the number of Mobs at 10 until 100 total have been spawned.
