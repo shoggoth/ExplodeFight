@@ -18,10 +18,8 @@ protocol MoveFireVectors {
 class PlayerControlComponent: GKComponent {
     
     private let joystick: TouchJoystick
-    private let playerControlAgent = GKAgent2D()
     
-    private let trackBehaviour: GKBehavior
-    private let moveBehaviour: GKBehavior
+    private let moveBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 2000), weight: 100.0)
     private let stopBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 0), weight: 10.0)
 
     private var moveVector: CGVector = .zero
@@ -30,8 +28,6 @@ class PlayerControlComponent: GKComponent {
     init(joystick: TouchJoystick) {
         
         self.joystick = joystick
-        self.trackBehaviour = GKBehavior(goal: GKGoal(toSeekAgent: playerControlAgent), weight: 100.0)
-        self.moveBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 2000), weight: 100.0)
 
         super.init()
         
@@ -78,11 +74,8 @@ class PlayerControlComponent: GKComponent {
             
             } else {
                 
-                entity.spriteComponent?.node.zRotation = moveVector.angle
-
-                let trackVector = agent.position + moveVector.simd
-                playerControlAgent.position = trackVector
-                agent.behavior = trackBehaviour
+                entity.spriteComponent?.node.zRotation = moveVector.angle                
+                agent.behavior = moveBehaviour
             }
         }
     }
