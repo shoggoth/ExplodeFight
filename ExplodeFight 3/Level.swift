@@ -16,7 +16,7 @@ class Level {
     private let explodeShader = ExplodeShader(shaderName: "explode.fsh")
     private let ruleSystem: GKRuleSystem = GKRuleSystem()
 
-    private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 0.7)
+    private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 1.7)
 
     init(scene: GameScene) {
         
@@ -77,19 +77,19 @@ class Level {
                     
                     node.zRotation = CGFloat(Float.random(in: 0.0 ... Float.pi * 2.0))
                     node.position = CGPoint.zero
-                    node.isPaused = false
                     node.shader = nil
                     node.xScale = 1.0
                     node.yScale = 1.0
                 }
                 
-                return CountdownTimer(countDownTime: 3.0)
+                return CountdownTimer(countDownTime: 30.0)
             }
             
             let explodeState = ExplodeState {
                 
                 if let node = node as? SKSpriteNode {
                     
+                    node.isPaused = false
                     self.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
                 }
                 

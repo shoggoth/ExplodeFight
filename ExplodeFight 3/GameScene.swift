@@ -57,6 +57,13 @@ extension GameScene: SKPhysicsContactDelegate {
     }
 }
 
+protocol ContactNotifiable {
+
+    func contactWithEntityDidBegin(_ entity: GKEntity)
+    
+    func contactWithEntityDidEnd(_ entity: GKEntity)
+}
+
 // MARK: - Touch handling -
 
 extension GameScene {

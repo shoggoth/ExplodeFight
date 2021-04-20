@@ -32,10 +32,3 @@ class MobEntity: GKEntity, ContactNotifiable {
         
     }
 }
-
-protocol ContactNotifiable {
-
-    func contactWithEntityDidBegin(_ entity: GKEntity)
-    
-    func contactWithEntityDidEnd(_ entity: GKEntity)
-}
