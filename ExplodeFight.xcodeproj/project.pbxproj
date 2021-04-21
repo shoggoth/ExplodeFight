@@ -46,8 +46,20 @@
 		FFE2CA522630257200189FBA /* MobStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EB5AB25FB796A0073D402 /* MobStates.swift */; };
 		FFE2CA5426302BEF00189FBA /* PlayerStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CA5326302BEF00189FBA /* PlayerStates.swift */; };
 		FFE2CA682630327500189FBA /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CA672630327500189FBA /* Score.swift */; };
+		FFE2CA80263036F400189FBA /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CA7F263036F400189FBA /* Tests.swift */; };
+		FFE2CA88263037ED00189FBA /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CA672630327500189FBA /* Score.swift */; };
 		FFF47C34260B432300BB2930 /* attractOverlay.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFF47C33260B432300BB2930 /* attractOverlay.fsh */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FFE2CA82263036F400189FBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF9364C02384017300E4B867 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF08068D256BD29700F2EBA7;
+			remoteInfo = EF3;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		FFC222AA256EB9D400CFA23F /* Embed Frameworks */ = {
@@ -106,6 +118,9 @@
 		FFE0186625CACFAD0051984F /* FireComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireComponent.swift; sourceTree = "<group>"; };
 		FFE2CA5326302BEF00189FBA /* PlayerStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStates.swift; sourceTree = "<group>"; };
 		FFE2CA672630327500189FBA /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		FFE2CA7D263036F400189FBA /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFE2CA7F263036F400189FBA /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		FFE2CA81263036F400189FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFF47C33260B432300BB2930 /* attractOverlay.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attractOverlay.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +131,13 @@
 			files = (
 				FFC222A8256EB9D400CFA23F /* GameControls.framework in Frameworks */,
 				FFC222E8257003B400CFA23F /* SpriteKitAddons.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFE2CA7A263036F400189FBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +228,7 @@
 				FFC6773E256A8FB20011CE34 /* README.md */,
 				FF08068F256BD29700F2EBA7 /* ExplodeFight 3 */,
 				FFC6773D256A8F560011CE34 /* Design */,
+				FFE2CA7E263036F400189FBA /* Tests */,
 				FF9364C92384017300E4B867 /* Products */,
 				FFC222A6256EB9D400CFA23F /* Frameworks */,
 			);
@@ -215,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				FF08068E256BD29700F2EBA7 /* EF3.app */,
+				FFE2CA7D263036F400189FBA /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,6 +274,15 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		FFE2CA7E263036F400189FBA /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FFE2CA7F263036F400189FBA /* Tests.swift */,
+				FFE2CA81263036F400189FBA /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -271,18 +304,40 @@
 			productReference = FF08068E256BD29700F2EBA7 /* EF3.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FFE2CA7C263036F400189FBA /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFE2CA86263036F500189FBA /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				FFE2CA79263036F400189FBA /* Sources */,
+				FFE2CA7A263036F400189FBA /* Frameworks */,
+				FFE2CA7B263036F400189FBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFE2CA83263036F400189FBA /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = FFE2CA7D263036F400189FBA /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		FF9364C02384017300E4B867 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Dogstar Industries Ltd.";
 				TargetAttributes = {
 					FF08068D256BD29700F2EBA7 = {
 						CreatedOnToolsVersion = 12.2;
+					};
+					FFE2CA7C263036F400189FBA = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = FF08068D256BD29700F2EBA7;
 					};
 				};
 			};
@@ -300,6 +355,7 @@
 			projectRoot = "";
 			targets = (
 				FF08068D256BD29700F2EBA7 /* EF3 */,
+				FFE2CA7C263036F400189FBA /* Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -327,6 +383,13 @@
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,
 				FF080695256BD29700F2EBA7 /* Actions.sks in Resources */,
 				FF3F96AA25F63B4A00AF63B9 /* Robotron.TTF in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFE2CA7B263036F400189FBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +421,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFE2CA79263036F400189FBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFE2CA88263037ED00189FBA /* Score.swift in Sources */,
+				FFE2CA80263036F400189FBA /* Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FFE2CA83263036F400189FBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF08068D256BD29700F2EBA7 /* EF3 */;
+			targetProxy = FFE2CA82263036F400189FBA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FF08069A256BD29700F2EBA7 /* Main.storyboard */ = {
@@ -540,6 +620,48 @@
 			};
 			name = Release;
 		};
+		FFE2CA84263036F500189FBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5F9CYF5K3F;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.dogstar.test.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EF3.app/EF3";
+			};
+			name = Debug;
+		};
+		FFE2CA85263036F500189FBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5F9CYF5K3F;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.dogstar.test.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EF3.app/EF3";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -557,6 +679,15 @@
 			buildConfigurations = (
 				FF9364E92384017600E4B867 /* Debug */,
 				FF9364EA2384017600E4B867 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFE2CA86263036F500189FBA /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFE2CA84263036F500189FBA /* Debug */,
+				FFE2CA85263036F500189FBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

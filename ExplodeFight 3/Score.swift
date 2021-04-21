@@ -15,10 +15,12 @@ struct Score {
     let dis: Int
     let acc: Int
     
-    func updateLabel(label: SKLabelNode) -> Score {
+    func add(add: Int) -> Score { return Score(dis: dis, acc: dis + add) }
+    
+    func tick() -> Score {
         
-        let newScore = Score(dis: 10, acc: 20)
+        let add = acc > 2 ? acc / 2 : acc
         
-        return newScore
+        return Score(dis: dis + add, acc: acc - add)
     }
 }
