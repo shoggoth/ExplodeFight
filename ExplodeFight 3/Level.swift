@@ -16,6 +16,7 @@ class Level {
     private let explodeShader = ExplodeShader(shaderName: "explode.fsh")
     private let ruleSystem: GKRuleSystem = GKRuleSystem()
 
+    private var score = Score(dis: 0, acc: 0)
     private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 1.7)
 
     init(scene: GameScene) {
@@ -42,7 +43,11 @@ class Level {
     
     func update(deltaTime: TimeInterval) {
 
+        // Do updates
         mobSpawner.update(deltaTime: deltaTime)
+        
+        score = score.tick()
+        (scene.childNode(withName: "Camera/Score") as? SKLabelNode)? .text = "SCORE: \(score.tick().dis)"
         
         ruleSystem.reset()
         ruleSystem.state["mobCount"] = mobSpawner.activeCount
@@ -93,7 +98,11 @@ class Level {
                 return CountdownTimer(countDownTime: 1.0)
             }
             
-            let dieState = MobState.DieState { self.mobSpawner.spawner(named: mobName)?.kill(node: node, recycle: true) }
+            let dieState = MobState.DieState {
+                
+                self.score = self.score.add(add: 100)
+                self.mobSpawner.spawner(named: mobName)?.kill(node: node, recycle: true)
+            }
             
             mobEntity.addComponent(MobComponent(states: [livestate, explodeState, dieState]))
             

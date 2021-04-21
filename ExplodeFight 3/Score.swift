@@ -15,7 +15,7 @@ struct Score {
     let dis: Int
     let acc: Int
     
-    func add(add: Int) -> Score { return Score(dis: dis, acc: dis + add) }
+    func add(add: Int) -> Score { return Score(dis: dis, acc: acc + add) }
     
     func tick() -> Score {
         
