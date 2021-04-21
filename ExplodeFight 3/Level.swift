@@ -47,7 +47,7 @@ class Level {
         mobSpawner.update(deltaTime: deltaTime)
         
         score = score.tick()
-        (scene.childNode(withName: "Camera/Score") as? SKLabelNode)? .text = "SCORE: \(score.tick().dis)"
+        (scene.childNode(withName: "Camera/Score") as? SKLabelNode)? .text = "SCORE: \(score.dis)"
         
         ruleSystem.reset()
         ruleSystem.state["mobCount"] = mobSpawner.activeCount

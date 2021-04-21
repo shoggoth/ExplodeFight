@@ -36,6 +36,16 @@ class GameScene: BaseSKScene {
     }
 }
 
+// MARK: - Button press handling -
+
+extension GameScene: ButtonSKSpriteNodeResponder {
+    
+    func buttonTriggered(button: ButtonSKSpriteNode) {
+        
+        print("Paused \(button.name)")
+    }
+}
+
 // MARK: - Contact handling -
 
 extension GameScene: SKPhysicsContactDelegate {
