@@ -2,22 +2,24 @@
 master
 
 ## Current Tasks
-- Add a Level class and allow snapshots to be calculated so that rules can be implemented.
-- Spawned entities have to be counted in the snapshot.
-- Spawner preload and kill only those nodes which contain entities functionality.
+- Make scoring work
+- Have the scoring count up
 
 ## Questions
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ## Next Tasks
 - Address the shader compile delay on the first explosion.
-- Make a user-controlled entity and a mob entity or do this using components so that the behaviour can be switched for a demo attract phase.
-- Think about how contact can be handled without subclassing an entity.
-- Make placeholder sprites for the player and an enemy.
+- Add a Level class and allow snapshots to be calculated so that rules can be implemented.
+- Spawned entities have to be counted in the snapshot.
+- Spawner preload and kill only those nodes which contain entities functionality.
 - Start adding mob experiments on the mob/ branches.
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 
 ### Completed Tasks
+- Make placeholder sprites for the player and an enemy.
+- Think about how contact can be handled without subclassing an entity.
+- Make a user-controlled entity and a mob entity or do this using components so that the behaviour can be switched for a demo attract phase.
 - User control via GKAgent (movement and shooting). Rejig Mob and Player movement components, possibly remove the subclasses of GKAgent2D
 - Sound manager
 - Find out why the explosion sound is getting called twice as often as it should be.

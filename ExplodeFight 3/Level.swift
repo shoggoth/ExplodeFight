@@ -61,12 +61,12 @@ class Level {
         
         let _ = mobSpawner.spawn(name: mobName) { node in
             
-            let mobEntity = MobEntity()
+            let mobEntity = GKEntity()
             
             mobEntity.addComponent(GKSKNodeComponent(node: node))
             mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
 
-            let livestate = LiveState {
+            let livestate = MobState.LiveState {
                 
                 if let node = node as? SKSpriteNode {
                     
@@ -80,7 +80,7 @@ class Level {
                 return CountdownTimer(countDownTime: 30.0)
             }
             
-            let explodeState = ExplodeState {
+            let explodeState = MobState.ExplodeState {
                 
                 if let node = node as? SKSpriteNode {
                     
@@ -93,7 +93,7 @@ class Level {
                 return CountdownTimer(countDownTime: 1.0)
             }
             
-            let dieState = DieState { self.mobSpawner.spawner(named: mobName)?.kill(node: node, recycle: true) }
+            let dieState = MobState.DieState { self.mobSpawner.spawner(named: mobName)?.kill(node: node, recycle: true) }
             
             mobEntity.addComponent(MobComponent(states: [livestate, explodeState, dieState]))
             

@@ -9,7 +9,7 @@
 import GameplayKit
 import SpriteKitAddons
 
-class MobComponent: GKComponent {
+class MobComponent: GKComponent, NodeContact {
     
     let stateMachine: GKStateMachine
     
@@ -29,58 +29,40 @@ class MobComponent: GKComponent {
 
         stateMachine.update(deltaTime: deltaTime)
     }
-}
-
-// MARK: - Lifecycle states -
-
-class LiveState: CountdownState {
     
-    init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(ExplodeState.self) }) }
-
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type || stateClass is ExplodeState.Type }
-}
-
-class ExplodeState: CountdownState {
+    // MARK: Contact handling
     
-    init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(DieState.self) }) }
-
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type }
-}
-
-class DieState: GKState {
+    func contactWithNodeDidBegin(_ node: SKNode) {
+        
+        print("MC Contact begins: \(self) with \(node)")
+        stateMachine.enter(MobState.ExplodeState.self)
+    }
     
-    private var dieFunc: (() -> Void)?
-    
-    init(completion: (() -> Void)? = nil) { dieFunc = completion }
-    
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool { false }
-    
-    override func didEnter(from previousState: GKState?) { dieFunc?() }
+    func contactWithNodeDidEnd(_ node: SKNode) {
+        
+        print("MC Contact ends: \(self) with \(node)")
+    }
 }
 
 // MARK: -
 
-class CountdownState: GKState {
+protocol NodeContact {
+
+    func contactWithNodeDidBegin(_ node: SKNode)
     
-    private var enterFunc: (() -> CountdownTimer?)?
-    private var exitFunc: ((GKStateMachine?) -> Void)?
-    private var countdownTimer: CountdownTimer?
+    func contactWithNodeDidEnd(_ node: SKNode)
+}
+
+extension SKNode: NodeContact {
     
-    init(enter: (() -> CountdownTimer?)? = nil, exit: ((GKStateMachine?) -> Void)? = nil) {
+    func contactWithNodeDidBegin(_ node: SKNode) {
         
-        enterFunc = enter
-        exitFunc  = exit
+        entity?.component(ofType: MobComponent.self)?.contactWithNodeDidBegin(node)
     }
     
-    override func didEnter(from previousState: GKState?) {
+    func contactWithNodeDidEnd(_ node: SKNode) {
         
-        countdownTimer = enterFunc?()
-    }
-    
-    override func update(deltaTime: TimeInterval) {
-        
-        super.update(deltaTime: deltaTime)
-        
-        countdownTimer = countdownTimer?.tick(deltaTime: deltaTime) { exitFunc?(stateMachine) }
+        entity?.component(ofType: MobComponent.self)?.contactWithNodeDidEnd(node)
     }
 }
+

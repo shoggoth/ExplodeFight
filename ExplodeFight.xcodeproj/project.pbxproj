@@ -42,8 +42,9 @@
 		FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC222D9256FCD4100CFA23F /* LaunchScreen.storyboard */; };
 		FFC222E8257003B400CFA23F /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; };
 		FFC222E9257003B400CFA23F /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FFE0186525C958840051984F /* MobEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186425C958840051984F /* MobEntity.swift */; };
 		FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186625CACFAD0051984F /* FireComponent.swift */; };
+		FFE2CA522630257200189FBA /* MobStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EB5AB25FB796A0073D402 /* MobStates.swift */; };
+		FFE2CA5426302BEF00189FBA /* PlayerStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CA5326302BEF00189FBA /* PlayerStates.swift */; };
 		FFF47C34260B432300BB2930 /* attractOverlay.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFF47C33260B432300BB2930 /* attractOverlay.fsh */; };
 /* End PBXBuildFile section */
 
@@ -101,8 +102,8 @@
 		FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		FFE0186425C958840051984F /* MobEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobEntity.swift; sourceTree = "<group>"; };
 		FFE0186625CACFAD0051984F /* FireComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireComponent.swift; sourceTree = "<group>"; };
+		FFE2CA5326302BEF00189FBA /* PlayerStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStates.swift; sourceTree = "<group>"; };
 		FFF47C33260B432300BB2930 /* attractOverlay.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attractOverlay.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,8 +129,8 @@
 				FF3EB5AD25FB99F80073D402 /* Level.swift */,
 				FF21CD6425EE503900873CD3 /* Weapon.swift */,
 				FFA0F45B261CA1380009EDDC /* Explode.swift */,
-				FFB527AA25C1CB8400B584C7 /* Entities */,
 				FF49712B25B72CA70083C36B /* Components */,
+				FFB527AA25C1CB8400B584C7 /* States */,
 				FF95A51F2579303800954B50 /* SplashScene.swift */,
 				FF95A51D25792F9B00954B50 /* SplashScene.sks */,
 				FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */,
@@ -215,13 +216,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FFB527AA25C1CB8400B584C7 /* Entities */ = {
+		FFB527AA25C1CB8400B584C7 /* States */ = {
 			isa = PBXGroup;
 			children = (
-				FFE0186425C958840051984F /* MobEntity.swift */,
 				FF3EB5AB25FB796A0073D402 /* MobStates.swift */,
+				FFE2CA5326302BEF00189FBA /* PlayerStates.swift */,
 			);
-			path = Entities;
+			path = States;
 			sourceTree = "<group>";
 		};
 		FFC222A6256EB9D400CFA23F /* Frameworks */ = {
@@ -333,7 +334,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFE0186525C958840051984F /* MobEntity.swift in Sources */,
 				FFA0F45C261CA1380009EDDC /* Explode.swift in Sources */,
 				FF4E81B52608A0EB006B1050 /* DebugComponent.swift in Sources */,
 				FF080697256BD29700F2EBA7 /* GameScene.swift in Sources */,
@@ -341,9 +341,11 @@
 				FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */,
 				FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */,
 				FF3EB5AA25FB79200073D402 /* RulesComponent.swift in Sources */,
+				FFE2CA522630257200189FBA /* MobStates.swift in Sources */,
 				FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */,
 				FF95A5202579303800954B50 /* SplashScene.swift in Sources */,
 				FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */,
+				FFE2CA5426302BEF00189FBA /* PlayerStates.swift in Sources */,
 				FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */,
 				FF49713725B72FB30083C36B /* MobComponent.swift in Sources */,
 				FF3EB5AE25FB99F80073D402 /* Level.swift in Sources */,
