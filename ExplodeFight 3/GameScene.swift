@@ -43,7 +43,6 @@ extension GameScene: ButtonSKSpriteNodeResponder {
     func buttonTriggered(button: ButtonSKSpriteNode) {
         
         isPaused = !isPaused
-        //print("Paused \(button.name)")
     }
 }
 
