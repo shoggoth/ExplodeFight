@@ -45,6 +45,7 @@
 		FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186625CACFAD0051984F /* FireComponent.swift */; };
 		FFE2CA522630257200189FBA /* MobStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EB5AB25FB796A0073D402 /* MobStates.swift */; };
 		FFE2CA5426302BEF00189FBA /* PlayerStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CA5326302BEF00189FBA /* PlayerStates.swift */; };
+		FFE2CA682630327500189FBA /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CA672630327500189FBA /* Score.swift */; };
 		FFF47C34260B432300BB2930 /* attractOverlay.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFF47C33260B432300BB2930 /* attractOverlay.fsh */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFE0186625CACFAD0051984F /* FireComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireComponent.swift; sourceTree = "<group>"; };
 		FFE2CA5326302BEF00189FBA /* PlayerStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStates.swift; sourceTree = "<group>"; };
+		FFE2CA672630327500189FBA /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		FFF47C33260B432300BB2930 /* attractOverlay.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attractOverlay.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
 				FF4E81B82608EF1C006B1050 /* Mobs.sks */,
 				FF3EB5AD25FB99F80073D402 /* Level.swift */,
+				FFE2CA672630327500189FBA /* Score.swift */,
 				FF21CD6425EE503900873CD3 /* Weapon.swift */,
 				FFA0F45B261CA1380009EDDC /* Explode.swift */,
 				FF49712B25B72CA70083C36B /* Components */,
@@ -350,6 +353,7 @@
 				FF49713725B72FB30083C36B /* MobComponent.swift in Sources */,
 				FF3EB5AE25FB99F80073D402 /* Level.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
+				FFE2CA682630327500189FBA /* Score.swift in Sources */,
 				FF33B289260DF951000E92EE /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

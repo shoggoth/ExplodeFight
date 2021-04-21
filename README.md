@@ -2,13 +2,13 @@
 master
 
 ## Current Tasks
-- Make scoring work
-- Have the scoring count up
+- Make scoring work and have the scoring count up
 
 ## Questions
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ## Next Tasks
+- Make pausing work
 - Address the shader compile delay on the first explosion.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
