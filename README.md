@@ -2,21 +2,23 @@
 master
 
 ## Current Tasks
-- Make pausing work
+- Spawn pattern protocol and enum.
+- Start adding mob experiments on the mob/ branches.
+- Address the shader compile delay on the first explosion.
+- Add rules for end level and interstial scene / overlay.
 
 ## Questions
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ## Next Tasks
-- Make scoring work and have the scoring count up
-- Address the shader compile delay on the first explosion.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
 - Spawner preload and kill only those nodes which contain entities functionality.
-- Start adding mob experiments on the mob/ branches.
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 
 ### Completed Tasks
+- Make scoring work and have the scoring count up
+- Make pausing work
 - Make placeholder sprites for the player and an enemy.
 - Think about how contact can be handled without subclassing an entity.
 - Make a user-controlled entity and a mob entity or do this using components so that the behaviour can be switched for a demo attract phase.
@@ -65,6 +67,7 @@ Robotron & crystal quest crossover with retro influences and references to some 
 
 ### Monster Animals
 - Zapstar - a tribute to Laser Zone
+- DZ - Digital Zombie
 
 ### Level/enemy/chieve ideas
 - Stay awhile... stay forever

@@ -46,8 +46,11 @@ class Level {
         // Do updates
         mobSpawner.update(deltaTime: deltaTime)
         
-        score = score.tick()
-        (scene.childNode(withName: "Camera/Score") as? SKLabelNode)? .text = "SCORE: \(score.dis)"
+        if score.acc > 0 {
+            
+            score = score.tick()
+            (scene.childNode(withName: "Camera/Score") as? SKLabelNode)? .text = "SCORE: \(score.dis)"
+        }
         
         ruleSystem.reset()
         ruleSystem.state["mobCount"] = mobSpawner.activeCount
@@ -56,13 +59,20 @@ class Level {
         // TODO: Move this elsewhere
         if ruleSystem.grade(forFact: "mobCountIsLow" as NSObject) >= 1.0 {
                         
-            spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) { spawnTemp() }
+            spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) {
+                
+                spawn(mobName: "Ship")
+                spawn(mobName: "Mob")
+            }
         }
     }
+}
+
+// MARK: - Temp -
+
+extension Level {
     
-    func spawnTemp() {
-        
-        let mobName = "Ship"
+    func spawn(mobName: String) {
         
         let _ = mobSpawner.spawn(name: mobName) { node in
             
