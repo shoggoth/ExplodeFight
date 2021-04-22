@@ -3,18 +3,20 @@ master
 
 ## Current Tasks
 - Spawn pattern protocol and enum.
+- Add online high score table and chieve example.
 - Start adding mob experiments on the mob/ branches.
 - Address the shader compile delay on the first explosion.
 - Add rules for end level and interstial scene / overlay.
 
-## Questions
-- Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
-
 ## Next Tasks
+- Add and remove physics properties on recycle and explode.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
 - Spawned entities have to be counted in the snapshot.
 - Spawner preload and kill only those nodes which contain entities functionality.
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
+
+## Questions
+- Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
 - Make scoring work and have the scoring count up
