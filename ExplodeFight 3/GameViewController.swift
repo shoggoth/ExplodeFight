@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 import SpriteKitAddons
 import GameplayKit
+import GameKit
 
 class GameViewController: UIViewController {
 
@@ -30,6 +31,8 @@ class GameViewController: UIViewController {
         // Register for notifications
         NotificationCenter.default.addObserver(self, selector: #selector(updateActiveStatus(withNotification:)), name: UIApplication.didBecomeActiveNotification,  object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateActiveStatus(withNotification:)), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        authenticateLocalPlayer()
         
         #if DEBUG
         view.showsFPS = true
@@ -63,4 +66,27 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool { return true }
     
     override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge { return .all }
+}
+
+extension GameViewController: GKGameCenterControllerDelegate {
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        
+        print("Finish")
+
+    }
+    
+    func authenticateLocalPlayer() {
+        
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.local
+        
+        localPlayer.authenticateHandler = { vc, error in
+            
+            if let vc = vc {
+                self.present(vc, animated: true) { print("Presented") }
+            } else {
+                print("Are you Local \(vc) \(error)")
+            }
+        }
+    }
 }
