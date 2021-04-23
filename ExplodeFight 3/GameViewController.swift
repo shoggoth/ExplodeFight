@@ -32,7 +32,9 @@ class GameViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateActiveStatus(withNotification:)), name: UIApplication.didBecomeActiveNotification,  object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateActiveStatus(withNotification:)), name: UIApplication.willResignActiveNotification, object: nil)
         
+        // GameKit
         authenticateLocalPlayer()
+        loadHiScore()
         
         #if DEBUG
         view.showsFPS = true
@@ -72,8 +74,7 @@ extension GameViewController: GKGameCenterControllerDelegate {
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         
-        print("Finish")
-
+        gameCenterViewController.dismiss(animated: true)
     }
     
     func authenticateLocalPlayer() {
@@ -82,11 +83,27 @@ extension GameViewController: GKGameCenterControllerDelegate {
         
         localPlayer.authenticateHandler = { vc, error in
             
-            if let vc = vc {
-                self.present(vc, animated: true) { print("Presented") }
-            } else {
-                print("Are you Local \(vc) \(error)")
+            if let vc = vc { self.present(vc, animated: true) { print("Presented") }}
+            
+            if localPlayer.isAuthenticated {
+                
+                print("Auth \(localPlayer.alias) \(localPlayer.displayName)")
+
+                localPlayer.loadDefaultLeaderboardIdentifier() { id, error in
+                    
+                    print("Board id \(id) \(error)")
+               }
             }
+        }
+    }
+    
+    func loadHiScore() {
+        
+        GKLeaderboard.loadLeaderboards { leaderboards, error in
+            
+            print("Loaded boards \(leaderboards)")
+            
+            leaderboards?.forEach { board in print("Found a board \(board.identifier) scores \(board.scores)") }
         }
     }
 }
