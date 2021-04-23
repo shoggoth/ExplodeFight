@@ -92,9 +92,13 @@ extension GameViewController: GKGameCenterControllerDelegate {
                     
                     if let id = boardIdentifier {
                         
+                        let board = GKLeaderboard()
+                        board.identifier = id
+                        board.loadScores() { scores, error in print("Scores: \(scores)") }
+
                         let score = GKScore(leaderboardIdentifier: id)
                         
-                        score.value = 100
+                        score.value = 1001
                         GKScore.report([score]) { error in print("Score submit \(error)") }
                     }
 
@@ -102,7 +106,7 @@ extension GameViewController: GKGameCenterControllerDelegate {
                         
                         leaderboards?.forEach { board in
                             
-                            print("Found a board \(board.identifier) scores \(board.scores)")
+                            print("Found a board \(board.identifier) scores \(board.scores) \(board.localPlayerScore)")
                         }
                     }
                 }
