@@ -34,7 +34,6 @@ class GameViewController: UIViewController {
         
         // GameKit
         authenticateLocalPlayer()
-        loadHiScore()
         
         #if DEBUG
         view.showsFPS = true
@@ -83,27 +82,31 @@ extension GameViewController: GKGameCenterControllerDelegate {
         
         localPlayer.authenticateHandler = { vc, error in
             
-            if let vc = vc { self.present(vc, animated: true) { print("Presented") }}
+            if let vc = vc { self.present(vc, animated: true) }
             
             if localPlayer.isAuthenticated {
                 
                 print("Auth \(localPlayer.alias) \(localPlayer.displayName)")
 
-                localPlayer.loadDefaultLeaderboardIdentifier() { id, error in
+                localPlayer.loadDefaultLeaderboardIdentifier() { boardIdentifier, error in
                     
-                    print("Board id \(id) \(error)")
-               }
+                    if let id = boardIdentifier {
+                        
+                        let score = GKScore(leaderboardIdentifier: id)
+                        
+                        score.value = 100
+                        GKScore.report([score]) { error in print("Score submit \(error)") }
+                    }
+
+                    GKLeaderboard.loadLeaderboards { leaderboards, error in
+                        
+                        leaderboards?.forEach { board in
+                            
+                            print("Found a board \(board.identifier) scores \(board.scores)")
+                        }
+                    }
+                }
             }
-        }
-    }
-    
-    func loadHiScore() {
-        
-        GKLeaderboard.loadLeaderboards { leaderboards, error in
-            
-            print("Loaded boards \(leaderboards)")
-            
-            leaderboards?.forEach { board in print("Found a board \(board.identifier) scores \(board.scores)") }
         }
     }
 }
