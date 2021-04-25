@@ -69,6 +69,7 @@ Robotron & crystal quest crossover with retro influences and references to some 
 
 ### Monster Animals
 - Zapstar - a tribute to Laser Zone
+- GreyFace
 - DZ - Digital Zombie
 
 ### Level/enemy/chieve ideas
@@ -76,6 +77,8 @@ Robotron & crystal quest crossover with retro influences and references to some 
 - Weirding module
 - Do-gooder project
 - Friendship ended with Mudasir
+- Discordian recipe items
+- An open letter to Jochen Mass
 
 ### Achievements
 - Early adopter - play a pre-release version of the game (for testing also).
