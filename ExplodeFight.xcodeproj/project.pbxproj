@@ -21,6 +21,7 @@
 		FF3F969A25F258F800AF63B9 /* Charset32.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FF3F969925F258F800AF63B9 /* Charset32.atlas */; };
 		FF3F969E25F259CD00AF63B9 /* charMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF3F969D25F259CD00AF63B9 /* charMap.fsh */; };
 		FF3F96AA25F63B4A00AF63B9 /* Robotron.TTF in Resources */ = {isa = PBXBuildFile; fileRef = FF3F96A825F6394300AF63B9 /* Robotron.TTF */; };
+		FF42737F2631B80B00A1FA34 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF42737E2631B80B00A1FA34 /* GameKit.framework */; };
 		FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF49711325B5E1DE0083C36B /* AttractModes.sks */; };
 		FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */; };
 		FF49713725B72FB30083C36B /* MobComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49713625B72FB30083C36B /* MobComponent.swift */; };
@@ -94,6 +95,7 @@
 		FF3F969925F258F800AF63B9 /* Charset32.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Charset32.atlas; sourceTree = "<group>"; };
 		FF3F969D25F259CD00AF63B9 /* charMap.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = charMap.fsh; sourceTree = "<group>"; };
 		FF3F96A825F6394300AF63B9 /* Robotron.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = Robotron.TTF; sourceTree = "<group>"; };
+		FF42737E2631B80B00A1FA34 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		FF49711325B5E1DE0083C36B /* AttractModes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttractModes.sks; sourceTree = "<group>"; };
 		FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlComponent.swift; sourceTree = "<group>"; };
 		FF49713625B72FB30083C36B /* MobComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobComponent.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF42737F2631B80B00A1FA34 /* GameKit.framework in Frameworks */,
 				FFC222A8256EB9D400CFA23F /* GameControls.framework in Frameworks */,
 				FFC222E8257003B400CFA23F /* SpriteKitAddons.framework in Frameworks */,
 			);
@@ -255,6 +258,7 @@
 		FFC222A6256EB9D400CFA23F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF42737E2631B80B00A1FA34 /* GameKit.framework */,
 				FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */,
 				FFC222A7256EB9D400CFA23F /* GameControls.framework */,
 			);
