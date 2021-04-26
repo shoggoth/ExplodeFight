@@ -12,7 +12,7 @@ import GameplayKit
 
 class AttractScene: BaseSKScene {
     
-    lazy var modeScene : SKScene? = { SKScene(fileNamed: "AttractModes") }()
+    lazy var modeScene: SKScene? = { SKScene(fileNamed: "AttractModes") }()
     
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
 
@@ -55,90 +55,110 @@ class AttractScene: BaseSKScene {
     }
 }
 
-// MARK: - State Machine States -
+// MARK: - States -
 
-private class ShowExplanation: AttractState {
+private class ShowExplanation: CountdownState {
     
-    private let nodeNames = ["Text_1", "Text_2", "Text_3"]
-    private let revealTime = 3.0
-    private let fadeTime = 0.1
-
-    override func didEnter(from previousState: GKState?) {
-        
-        super.didEnter(from: previousState)
-        
-        nodeNames.enumerated().forEach {
-            
-            if let node = src.childNode(withName: $0.1) {
-                
-                node.alpha = 1.0
-                node.run(SKAction.sequence([SKAction.wait(forDuration: revealTime * Double(nodeNames.count)), SKAction.fadeOut(withDuration: fadeTime)]))
-            }
-            
-            if let node = src.childNode(withName: "\($0.1)/Revealer") {
-                
-                node.position.x = 0
-                node.run(SKAction.sequence([SKAction.wait(forDuration: Double($0.0) * revealTime), SKAction.move(by: CGVector(dx: 1024, dy: 0), duration: revealTime)]))
-            }
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + revealTime * Double(nodeNames.count) + fadeTime) { self.stateMachine?.enter(ShowHiScores.self) }
-    }
-}
-
-private class ShowEnemies: AttractState {
-    
-    override func didEnter(from previousState: GKState?) {
-        
-        super.didEnter(from: previousState)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { self.stateMachine?.enter(ShowExplanation.self) }
-    }
-}
-
-private class ShowHiScores: AttractState {
-    
-    override func didEnter(from previousState: GKState?) {
-        
-        super.didEnter(from: previousState)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { self.stateMachine?.enter(ShowPlayDemo.self) }
-    }
-}
-
-private class ShowPlayDemo: AttractState {
-    
-    override func didEnter(from previousState: GKState?) {
-        
-        super.didEnter(from: previousState)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { self.stateMachine?.enter(ShowEnemies.self) }
-    }
-}
-
-// MARK: -
-
-private class AttractState: GKState {
-
-    let src: SKNode
-    let dst: SKNode
-
     init(sourceNode: SKNode, destinationNode: SKNode) {
         
-        self.src = sourceNode
-        self.dst = destinationNode
+        super.init(enter: {
+            
+            destinationNode.addChild(sourceNode)
+            sourceNode.isPaused = false
+
+            let nodeNames = ["Text_1", "Text_2", "Text_3"]
+            let revealTime = 2.3
+            let fadeTime = 0.23
+            
+            nodeNames.enumerated().forEach {
+                
+                if let node = sourceNode.childNode(withName: $0.1) {
+                    
+                    node.removeAllActions()
+                    node.alpha = 1.0
+                    node.run(SKAction.sequence([SKAction.wait(forDuration: revealTime * Double(nodeNames.count)), SKAction.fadeOut(withDuration: fadeTime)]))
+                }
+                
+                if let node = sourceNode.childNode(withName: "\($0.1)/Revealer") {
+                    
+                    node.position.x = 0
+                    node.run(SKAction.sequence([SKAction.wait(forDuration: Double($0.0) * revealTime), SKAction.move(by: CGVector(dx: 1024, dy: 0), duration: revealTime)]))
+                }
+            }
+
+            return CountdownTimer(countDownTime: revealTime * Double(nodeNames.count) + fadeTime)
+        },
         
-        super.init()
+        exit: { stateMachine in
+            
+            sourceNode.removeFromParent()
+            stateMachine?.enter(ShowHiScores.self) }
+        )
     }
+}
+
+private class ShowHiScores: CountdownState {
     
-    override func didEnter(from previousState: GKState?) {
+    init(sourceNode: SKNode, destinationNode: SKNode) {
         
-        dst.addChild(src)
-        src.isPaused = false
+        super.init(enter: {
+            
+            destinationNode.addChild(sourceNode)
+            
+            ScoreManager.loadHiScores() { _, scores in
+                
+                print("Scores: \(scores)")
+                
+                sourceNode.isPaused = false
+            }
+            
+            return CountdownTimer(countDownTime: 5.0)
+        },
+        
+        exit: { stateMachine in
+            
+            sourceNode.removeFromParent()
+            stateMachine?.enter(ShowEnemies.self) }
+        )
     }
+}
+
+private class ShowEnemies: CountdownState {
     
-    override func willExit(to nextState: GKState) {
+    init(sourceNode: SKNode, destinationNode: SKNode) {
         
-        src.removeFromParent()
+        super.init(enter: {
+            
+            destinationNode.addChild(sourceNode)
+            sourceNode.isPaused = false
+
+            return CountdownTimer(countDownTime: 3.0)
+        },
+        
+        exit: { stateMachine in
+            
+            sourceNode.removeFromParent()
+            stateMachine?.enter(ShowPlayDemo.self) }
+        )
+    }
+}
+
+private class ShowPlayDemo: CountdownState {
+    
+    init(sourceNode: SKNode, destinationNode: SKNode) {
+        
+        super.init(enter: {
+            
+            destinationNode.addChild(sourceNode)
+            sourceNode.isPaused = false
+
+            return CountdownTimer(countDownTime: 3.0)
+        },
+        
+        exit: { stateMachine in
+            
+            sourceNode.removeFromParent()
+            stateMachine?.enter(ShowExplanation.self) }
+        )
     }
 }
