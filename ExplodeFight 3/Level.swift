@@ -49,7 +49,9 @@ class Level {
         if score.acc > 0 {
             
             score = score.tick()
-            (scene.childNode(withName: "Camera/Score") as? SKLabelNode)? .text = "SCORE: \(score.dis)"
+            (scene.childNode(withName: "Camera/Score") as? SKLabelNode)?.text = "SCORE: \(score.dis)"
+            
+            // ScoreManager.updateChieve(id: "millionaire", percent: 100)
         }
         
         ruleSystem.reset()
@@ -103,7 +105,7 @@ extension Level {
                     self.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
                 }
                 
-                //AppDelegate.soundManager.playSound(name: "Explode")
+                AppDelegate.soundManager.playSound(name: "Explode")
                 
                 return CountdownTimer(countDownTime: 1.0)
             }

@@ -82,8 +82,8 @@ extension GameViewController: GKGameCenterControllerDelegate {
             
             if let vc = vc { self.present(vc, animated: true) }
             
-            // Load Hi Scores
-            //ScoreManager.loadHiScores()
+            // TODO: This is temp
+            ScoreManager.loadChieves()
         }
     }
 }

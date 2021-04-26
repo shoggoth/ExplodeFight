@@ -2,8 +2,8 @@
 master
 
 ## Current Tasks
+- Alter weapon firing source position
 - Spawn pattern protocol and enum.
-- Add online high score table and chieve example.
 - Start adding mob experiments on the mob/ branches.
 - Address the shader compile delay on the first explosion.
 - Add rules for end level and interstial scene / overlay.
@@ -19,6 +19,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
+- Add online high score table and chieve example.
 - Make scoring work and have the scoring count up
 - Make pausing work
 - Make placeholder sprites for the player and an enemy.

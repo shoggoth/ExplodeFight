@@ -51,6 +51,28 @@ struct ScoreManager {
         }
     }
     
+    static func loadChieves() {
+        
+        if localPlayer.isAuthenticated {
+            
+            //GKAchievement.resetAchievements()
+            GKAchievement.loadAchievements() { chieves, error in
+                
+                print(chieves)
+            }
+        }
+    }
+    
+    static func updateChieve(id: String, percent: Double) {
+        
+        let achievement = GKAchievement(identifier: id)
+        achievement.showsCompletionBanner = true
+        achievement.percentComplete = percent
+
+        GKAchievement.report([achievement]) { error in print(error) }
+
+    }
+    
     static func submitHiScore(boardIdentifier: String, score: Score) {
         
         let gks = GKScore(leaderboardIdentifier: boardIdentifier)

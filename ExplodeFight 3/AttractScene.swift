@@ -53,112 +53,113 @@ class AttractScene: BaseSKScene {
         
         super.update(deltaTime: deltaTime)
     }
-}
-
-// MARK: - States -
-
-private class ShowExplanation: CountdownState {
     
-    init(sourceNode: SKNode, destinationNode: SKNode) {
-        
-        super.init(enter: {
-            
-            destinationNode.addChild(sourceNode)
-            sourceNode.isPaused = false
+    // MARK: - States -
 
-            let nodeNames = ["Text_1", "Text_2", "Text_3"]
-            let revealTime = 2.3
-            let fadeTime = 0.23
-            
-            nodeNames.enumerated().forEach {
-                
-                if let node = sourceNode.childNode(withName: $0.1) {
-                    
-                    node.removeAllActions()
-                    node.alpha = 1.0
-                    node.run(SKAction.sequence([SKAction.wait(forDuration: revealTime * Double(nodeNames.count)), SKAction.fadeOut(withDuration: fadeTime)]))
-                }
-                
-                if let node = sourceNode.childNode(withName: "\($0.1)/Revealer") {
-                    
-                    node.position.x = 0
-                    node.run(SKAction.sequence([SKAction.wait(forDuration: Double($0.0) * revealTime), SKAction.move(by: CGVector(dx: 1024, dy: 0), duration: revealTime)]))
-                }
-            }
-
-            return CountdownTimer(countDownTime: revealTime * Double(nodeNames.count) + fadeTime)
-        },
+    private class ShowExplanation: CountdownState {
         
-        exit: { stateMachine in
+        init(sourceNode: SKNode, destinationNode: SKNode) {
             
-            sourceNode.removeFromParent()
-            stateMachine?.enter(ShowHiScores.self) }
-        )
-    }
-}
-
-private class ShowHiScores: CountdownState {
-    
-    init(sourceNode: SKNode, destinationNode: SKNode) {
-        
-        super.init(enter: {
-            
-            destinationNode.addChild(sourceNode)
-            
-            ScoreManager.loadHiScores() { _, scores in
+            super.init(enter: {
                 
-                print("Scores: \(scores)")
-                
+                destinationNode.addChild(sourceNode)
                 sourceNode.isPaused = false
-            }
+
+                let nodeNames = ["Text_1", "Text_2", "Text_3"]
+                let revealTime = 2.3
+                let fadeTime = 0.23
+                
+                nodeNames.enumerated().forEach {
+                    
+                    if let node = sourceNode.childNode(withName: $0.1) {
+                        
+                        node.removeAllActions()
+                        node.alpha = 1.0
+                        node.run(SKAction.sequence([SKAction.wait(forDuration: revealTime * Double(nodeNames.count)), SKAction.fadeOut(withDuration: fadeTime)]))
+                    }
+                    
+                    if let node = sourceNode.childNode(withName: "\($0.1)/Revealer") {
+                        
+                        node.position.x = 0
+                        node.run(SKAction.sequence([SKAction.wait(forDuration: Double($0.0) * revealTime), SKAction.move(by: CGVector(dx: 1024, dy: 0), duration: revealTime)]))
+                    }
+                }
+
+                return CountdownTimer(countDownTime: revealTime * Double(nodeNames.count) + fadeTime)
+            },
             
-            return CountdownTimer(countDownTime: 5.0)
-        },
+            exit: { stateMachine in
+                
+                sourceNode.removeFromParent()
+                stateMachine?.enter(ShowHiScores.self) }
+            )
+        }
+    }
+
+    private class ShowHiScores: CountdownState {
         
-        exit: { stateMachine in
+        init(sourceNode: SKNode, destinationNode: SKNode) {
             
-            sourceNode.removeFromParent()
-            stateMachine?.enter(ShowEnemies.self) }
-        )
+            super.init(enter: {
+                
+                destinationNode.addChild(sourceNode)
+                
+                ScoreManager.loadHiScores() { _, scores in
+                    
+                    print("Scores: \(scores)")
+                    
+                    sourceNode.isPaused = false
+                }
+                
+                return CountdownTimer(countDownTime: 5.0)
+            },
+            
+            exit: { stateMachine in
+                
+                sourceNode.removeFromParent()
+                stateMachine?.enter(ShowEnemies.self) }
+            )
+        }
+    }
+
+    private class ShowEnemies: CountdownState {
+        
+        init(sourceNode: SKNode, destinationNode: SKNode) {
+            
+            super.init(enter: {
+                
+                destinationNode.addChild(sourceNode)
+                sourceNode.isPaused = false
+
+                return CountdownTimer(countDownTime: 3.0)
+            },
+            
+            exit: { stateMachine in
+                
+                sourceNode.removeFromParent()
+                stateMachine?.enter(ShowPlayDemo.self) }
+            )
+        }
+    }
+
+    private class ShowPlayDemo: CountdownState {
+        
+        init(sourceNode: SKNode, destinationNode: SKNode) {
+            
+            super.init(enter: {
+                
+                destinationNode.addChild(sourceNode)
+                sourceNode.isPaused = false
+
+                return CountdownTimer(countDownTime: 3.0)
+            },
+            
+            exit: { stateMachine in
+                
+                sourceNode.removeFromParent()
+                stateMachine?.enter(ShowExplanation.self) }
+            )
+        }
     }
 }
 
-private class ShowEnemies: CountdownState {
-    
-    init(sourceNode: SKNode, destinationNode: SKNode) {
-        
-        super.init(enter: {
-            
-            destinationNode.addChild(sourceNode)
-            sourceNode.isPaused = false
-
-            return CountdownTimer(countDownTime: 3.0)
-        },
-        
-        exit: { stateMachine in
-            
-            sourceNode.removeFromParent()
-            stateMachine?.enter(ShowPlayDemo.self) }
-        )
-    }
-}
-
-private class ShowPlayDemo: CountdownState {
-    
-    init(sourceNode: SKNode, destinationNode: SKNode) {
-        
-        super.init(enter: {
-            
-            destinationNode.addChild(sourceNode)
-            sourceNode.isPaused = false
-
-            return CountdownTimer(countDownTime: 3.0)
-        },
-        
-        exit: { stateMachine in
-            
-            sourceNode.removeFromParent()
-            stateMachine?.enter(ShowExplanation.self) }
-        )
-    }
-}
