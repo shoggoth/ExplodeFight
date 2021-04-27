@@ -33,11 +33,12 @@ class NodeCannon: Weapon {
               let scene = emitNode.scene,
               let bullet = magazine?.popLast() else { return }
         
-        //bullet.physicsBody = nil
-        bullet.physicsBody?.velocity = direction * 1024
         
-        let firePos = CGPoint(x: 64, y: 0)
-        bullet.position = scene.convert(firePos, from: emitNode)
+        let firePos = direction * 64
+        let fireVel = direction * 1024
+        
+        bullet.physicsBody?.velocity = fireVel
+        bullet.position = scene.convert(CGPoint.zero, from: emitNode) + firePos
         
         scene.addChild(bullet)
 
