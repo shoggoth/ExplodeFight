@@ -9,22 +9,16 @@
 import GameplayKit
 import SpriteKitAddons
 
-class Level {
+struct Level {
     
     private let scene: GameScene
     private let mobSpawner: SceneSpawner
     private let explodeShader = ExplodeShader(shaderName: "explode.fsh")
     private let ruleSystem: GKRuleSystem = GKRuleSystem()
 
-    private var score = Score(dis: 0, acc: 0)
-    private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 1.7)
-
     init(scene: GameScene) {
         
         self.scene = scene
-        
-        // Global setup
-        AppDelegate.soundManager.playNode = scene
         
         // Setup spawner
         mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
@@ -46,14 +40,6 @@ class Level {
         // Do updates
         mobSpawner.update(deltaTime: deltaTime)
         
-        if score.acc > 0 {
-            
-            score = score.tick()
-            (scene.childNode(withName: "Camera/Score") as? SKLabelNode)?.text = "SCORE: \(score.dis)"
-            
-            // ScoreManager.updateChieve(id: "millionaire", percent: 100)
-        }
-        
         ruleSystem.reset()
         ruleSystem.state["mobCount"] = mobSpawner.activeCount
         ruleSystem.evaluate()
@@ -61,7 +47,7 @@ class Level {
         // TODO: Move this elsewhere
         if ruleSystem.grade(forFact: "mobCountIsLow" as NSObject) >= 1.0 {
                         
-            spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) {
+            scene.spawnTicker = scene.spawnTicker?.tick(deltaTime: deltaTime) {
                 
                 spawn(mobName: "Ship")
                 spawn(mobName: "Mob")
@@ -112,7 +98,7 @@ extension Level {
             
             let dieState = MobState.DieState {
                 
-                self.score = self.score.add(add: 100)
+                scene.score = scene.score.add(add: 100)
                 self.mobSpawner.spawner(named: mobName)?.kill(node: node, recycle: true)
             }
             

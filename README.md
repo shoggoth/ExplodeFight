@@ -2,9 +2,9 @@
 master
 
 ## Current Tasks
-- Spawn pattern protocol and enum.
-- Address the shader compile delay on the first explosion.
 - Add rules for end level and interstial scene / overlay.
+- Spawn pattern protocol and enum (in playground: Developer).
+- Address the shader compile delay on the first explosion.
 
 ## Next Tasks
 - Start adding mob experiments on the mob/ branches.

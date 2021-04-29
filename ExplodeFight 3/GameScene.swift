@@ -15,11 +15,17 @@ class GameScene: BaseSKScene {
     
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
+    var score = Score(dis: 0, acc: 0)
+    var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 1.7)
     let joystick = TouchJoystick()
-    var level: Level?
+    
+    private var level: Level?
     
     override func didMove(to view: SKView) {
         
+        // Global setup
+        AppDelegate.soundManager.playNode = self
+
         // Set up scene physics
         physicsWorld.contactDelegate = self
         physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
@@ -32,6 +38,15 @@ class GameScene: BaseSKScene {
         
         level?.update(deltaTime: deltaTime)
         
+        if score.acc > 0 {
+            
+            score = score.tick()
+            (childNode(withName: "Camera/Score") as? SKLabelNode)?.text = "SCORE: \(score.dis)"
+            
+            // ScoreManager.updateChieve(id: "millionaire", percent: 100)
+        }
+        
+
         super.update(deltaTime: deltaTime)
     }
 }
