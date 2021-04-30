@@ -16,9 +16,11 @@ class GameScene: BaseSKScene {
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
     var score = Score(dis: 0, acc: 0)
-    var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 1.7)
-    let joystick = TouchJoystick()
     
+    var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 1.7)
+    let mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
+
+    private let joystick = TouchJoystick()
     private var level: Level?
     
     override func didMove(to view: SKView) {
@@ -30,13 +32,21 @@ class GameScene: BaseSKScene {
         physicsWorld.contactDelegate = self
         physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
 
+        // Setup Player
+        if let node = childNode(withName: "Player"), let entity = node.entity {
+            
+            entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
+            entity.addComponent(PlayerControlComponent(joystick: joystick))
+        }
+
         // Create initial level
-        level = Level(scene: self)
+        level = Level()
     }
     
     override func update(deltaTime: TimeInterval) {
         
-        level?.update(deltaTime: deltaTime)
+        mobSpawner.update(deltaTime: deltaTime)
+        level?.update(deltaTime: deltaTime, scene: self)
         
         if score.acc > 0 {
             
@@ -48,6 +58,11 @@ class GameScene: BaseSKScene {
         
 
         super.update(deltaTime: deltaTime)
+    }
+    
+    func addScore(score s: Int64) {
+        
+        score = score.add(add: s)
     }
 }
 

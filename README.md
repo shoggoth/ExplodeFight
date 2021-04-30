@@ -3,6 +3,7 @@ master
 
 ## Current Tasks
 - Add rules for end level and interstial scene / overlay.
+- Add mob info protocol for use with spawning.
 - Spawn pattern protocol and enum (in playground: Developer).
 - Address the shader compile delay on the first explosion.
 

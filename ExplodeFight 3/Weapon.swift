@@ -78,7 +78,7 @@ class RoundBullet: SKShapeNode, NodeBullet {
         path = CGPath(ellipseIn: CGRect(origin: CGPoint(x: -radius, y: -radius), size: CGSize(width: diameter, height: diameter)), transform: nil)
         lineWidth = radius * 0.25
         //glowWidth = radius * 0.125
-        strokeColor = .blue
+        strokeColor = .white
         
         // TODO: Need physics for collision?
         physicsBody = {
