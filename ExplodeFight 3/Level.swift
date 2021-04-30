@@ -35,6 +35,8 @@ struct Level {
                 scene.spawn(name: "Ship")
                 scene.spawn(name: "Mob")
                 scene.spawn(name: "Mob")
+                scene.spawn(name: "Robot")
+                scene.spawn(name: "Robot")
             }
         }
     }

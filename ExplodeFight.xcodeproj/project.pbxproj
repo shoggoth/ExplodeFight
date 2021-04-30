@@ -16,6 +16,7 @@
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
 		FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21CD6425EE503900873CD3 /* Weapon.swift */; };
 		FF2C03D2263C12B500EDC46C /* Mob.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C03D1263C12B500EDC46C /* Mob.swift */; };
+		FF2C03D4263C4D0900EDC46C /* RobotAnim.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FF2C03D3263C4D0900EDC46C /* RobotAnim.atlas */; };
 		FF33B289260DF951000E92EE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF33B288260DF951000E92EE /* SoundManager.swift */; };
 		FF3EB5AA25FB79200073D402 /* RulesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EB5A925FB79200073D402 /* RulesComponent.swift */; };
 		FF3EB5AE25FB99F80073D402 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EB5AD25FB99F80073D402 /* Level.swift */; };
@@ -90,6 +91,7 @@
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF21CD6425EE503900873CD3 /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		FF2C03D1263C12B500EDC46C /* Mob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mob.swift; sourceTree = "<group>"; };
+		FF2C03D3263C4D0900EDC46C /* RobotAnim.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = RobotAnim.atlas; sourceTree = "<group>"; };
 		FF33B288260DF951000E92EE /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		FF3EB5A925FB79200073D402 /* RulesComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesComponent.swift; sourceTree = "<group>"; };
 		FF3EB5AB25FB796A0073D402 /* MobStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobStates.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		FF3F969B25F2591700AF63B9 /* TexAtlas */ = {
 			isa = PBXGroup;
 			children = (
+				FF2C03D3263C4D0900EDC46C /* RobotAnim.atlas */,
 				FF3F969925F258F800AF63B9 /* Charset32.atlas */,
 			);
 			path = TexAtlas;
@@ -372,6 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF2C03D4263C4D0900EDC46C /* RobotAnim.atlas in Resources */,
 				FFF47C34260B432300BB2930 /* attractOverlay.fsh in Resources */,
 				FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */,
 				FF5D7E19260CCBD300F1956E /* AttractLogo.fsh in Resources */,
