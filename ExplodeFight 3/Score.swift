@@ -18,11 +18,14 @@ struct Score {
     
     func add(add: Int64) -> Score { return Score(dis: dis, acc: acc + add) }
     
-    func tick() -> Score {
+    func tick(displayBlock:((Int64) -> Void)? = nil) -> Score {
         
         let add = acc > 2 ? acc / 2 : acc
+        let new = dis + add
         
-        return Score(dis: dis + add, acc: acc - add)
+        displayBlock?(new)
+        
+        return Score(dis: new, acc: acc - add)
     }
 }
 

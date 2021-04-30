@@ -21,8 +21,6 @@ struct Level {
     }
     
     func update(deltaTime: TimeInterval, scene: GameScene) {
-
-        // Do updates
         
         ruleSystem.reset()
         ruleSystem.state["mobCount"] = scene.mobSpawner.activeCount
@@ -33,8 +31,10 @@ struct Level {
                         
             scene.spawnTicker = scene.spawnTicker?.tick(deltaTime: deltaTime) {
                 
-                Mob.spawn(mobName: "Ship", scene: scene, spawner: scene.mobSpawner)
-                Mob.spawn(mobName: "Mob", scene: scene, spawner: scene.mobSpawner)
+                scene.spawn(name: "Ship")
+                scene.spawn(name: "Ship")
+                scene.spawn(name: "Mob")
+                scene.spawn(name: "Mob")
             }
         }
     }

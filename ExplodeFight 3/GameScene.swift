@@ -15,7 +15,8 @@ class GameScene: BaseSKScene {
     
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
-    var score = Score(dis: 0, acc: 0)
+    private var score = Score(dis: 0, acc: 0)
+    private var scoreLabel: SKLabelNode?
     
     var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 1.7)
     let mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
@@ -32,6 +33,9 @@ class GameScene: BaseSKScene {
         physicsWorld.contactDelegate = self
         physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
 
+        // Setup HUD
+        scoreLabel = (self.childNode(withName: "Camera/Score") as? SKLabelNode)
+        
         // Setup Player
         if let node = childNode(withName: "Player"), let entity = node.entity {
             
@@ -50,14 +54,18 @@ class GameScene: BaseSKScene {
         
         if score.acc > 0 {
             
-            score = score.tick()
-            (childNode(withName: "Camera/Score") as? SKLabelNode)?.text = "SCORE: \(score.dis)"
+            score = score.tick() { displayScore in self.scoreLabel?.text = "SCORE: \(displayScore)" }
             
             // ScoreManager.updateChieve(id: "millionaire", percent: 100)
         }
         
 
         super.update(deltaTime: deltaTime)
+    }
+    
+    func spawn(name: String) {
+        
+        if let node = mobSpawner.spawner(named: name)?.spawn(scene: self) { addChild(node) }
     }
     
     func addScore(score s: Int64) {

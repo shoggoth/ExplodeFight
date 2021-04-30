@@ -11,11 +11,17 @@ import SpriteKitAddons
 
 struct Mob {
     
+    let maxSpeed: Float
+    let pointValue: Int64
+}
+
+extension Spawner {
+    
     static let explodeShader = ExplodeShader(shaderName: "explode.fsh")
 
-    static func spawn(mobName: String, scene: GameScene, spawner: SceneSpawner) {
+    func spawn(scene: GameScene) -> SKNode? {
         
-        let _ = spawner.spawn(name: mobName) { node in
+        spawn() { node in
             
             let mobEntity = GKEntity()
             
@@ -41,7 +47,7 @@ struct Mob {
                 if let node = node as? SKSpriteNode {
                     
                     node.isPaused = false
-                    Mob.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
+                    Spawner.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
                 }
                 
                 AppDelegate.soundManager.playSound(name: "Explode")
@@ -52,12 +58,10 @@ struct Mob {
             let dieState = MobState.DieState {
                 
                 scene.addScore(score: 100)
-                spawner.spawner(named: mobName)?.kill(node: node, recycle: true)
+                self.kill(node: node, recycle: true)
             }
             
             mobEntity.addComponent(MobComponent(states: [livestate, explodeState, dieState]))
-            
-            scene.addChild(node)
 
             return mobEntity
         }
