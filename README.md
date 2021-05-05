@@ -72,6 +72,7 @@ Robotron & crystal quest crossover with retro influences and references to some 
 ### Monster Animals
 - Zapstar - a tribute to Laser Zone
 - GreyFace
+- Yip-Yap
 - DZ - Digital Zombie
 
 ### Level/enemy/chieve ideas
