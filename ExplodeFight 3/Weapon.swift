@@ -17,7 +17,6 @@ protocol Weapon {
 protocol NodeBullet: SKNode {
     
     func fire(completion: ((NodeBullet) -> Void)?)
-    func reset()
 }
 
 // MARK: - Weapons -
@@ -42,11 +41,7 @@ class NodeCannon: Weapon {
         
         scene.addChild(bullet)
 
-        bullet.fire { b in
-            
-            b.reset()
-            self.magazine?.insert(b, at: 0)
-        }
+        bullet.fire { b in b.reset { _ in self.magazine?.insert(b, at: 0) }}
     }
 }
 
@@ -94,14 +89,7 @@ class RoundBullet: SKShapeNode, NodeBullet {
         // TODO: Use an action for the movement here abd allow the fire method to be switched between that and one propelled by physics velocity.
         //run(SKAction.playSoundFileNamed("blast.caf", waitForCompletion: false))
         run(SKAction.repeatForever(SKAction.rotate(byAngle: pi, duration: 1)))
-        run(SKAction.sequence([SKAction.wait(forDuration: 0.75), SKAction.fadeOut(withDuration: 0.25), SKAction.removeFromParent(), SKAction.run { self.reset(); completion?(self) }]))
-    }
-    
-    func reset() {
-        
-        removeAllActions()
-        
-        alpha = 1
+        run(SKAction.sequence([SKAction.wait(forDuration: 0.75), SKAction.fadeOut(withDuration: 0.25), SKAction.removeFromParent(), SKAction.run { self.reset { _ in completion?(self) }}]))
     }
 }
 

@@ -34,13 +34,13 @@ class MobComponent: GKComponent, NodeContact {
     
     func contactWithNodeDidBegin(_ node: SKNode) {
         
-        print("MC Contact begins: \(self) with \(node)")
+        //print("MC Contact begins: \(self) with \(node)")
         stateMachine.enter(MobState.ExplodeState.self)
     }
     
     func contactWithNodeDidEnd(_ node: SKNode) {
         
-        print("MC Contact ends: \(self) with \(node)")
+        //print("MC Contact ends: \(self) with \(node)")
     }
 }
 

@@ -2,7 +2,8 @@
 master
 
 ## Current Tasks
-- Add rules for end level and interstial scene / overlay.
+- Address texture atlas and explosion shader oddities.
+- Look at irregularities with spawning and recycling with animations and scaling.
 - Add mob info protocol for use with spawning.
 - Spawn pattern protocol and enum (in playground: Developer).
 - Address the shader compile delay on the first explosion.
@@ -19,6 +20,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
+- Add rules for end level and interstial scene / overlay.
 - Alter weapon firing source position
 - Add online high score table and chieve example.
 - Make scoring work and have the scoring count up

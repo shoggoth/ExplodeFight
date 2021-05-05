@@ -44,7 +44,7 @@ class GameScene: BaseSKScene {
         }
 
         // Create initial level
-        level = Level()
+        loadNextLevel()
     }
     
     override func update(deltaTime: TimeInterval) {
@@ -59,8 +59,31 @@ class GameScene: BaseSKScene {
             // ScoreManager.updateChieve(id: "millionaire", percent: 100)
         }
         
-
         super.update(deltaTime: deltaTime)
+    }
+    
+    func loadNextLevel() {
+        
+        level = StateDrivenLevel(name: "Test level", states: [
+            StateDrivenLevel.PlayState() {
+                
+                self.level?.teardown(scene: self)
+                print("Playing...")
+                return CountdownTimer(countDownTime: 5.0)
+            },
+            StateDrivenLevel.CountState() {
+                
+                print("Count...")
+                return CountdownTimer(countDownTime: 1.0)
+            },
+            StateDrivenLevel.EndedState() { [self] in
+                
+                print("Ended...")
+                mobSpawner.kill()
+                loadNextLevel()
+            }
+        ])
+        level?.setup(scene: self)
     }
     
     func spawn(name: String) {
