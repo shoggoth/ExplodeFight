@@ -23,6 +23,8 @@ extension Spawner {
         
         spawn() { node in
             
+            node.removeAction(forKey: "Explode_PixelShatter")
+
             let mobEntity = GKEntity()
             
             mobEntity.addComponent(GKSKNodeComponent(node: node))
@@ -30,13 +32,13 @@ extension Spawner {
 
             let livestate = MobState.LiveState {
                 
-                if let node = node as? SKSpriteNode {
+                node.reset { _ in
                     
                     node.zRotation = CGFloat(Float.random(in: 0.0 ... Float.pi * 2.0))
-                    node.position = CGPoint.zero
-                    node.shader = nil
-                    node.xScale = 1.0
-                    node.yScale = 1.0
+                    node.position  = CGPoint.zero
+                    node.isPaused = false
+                    
+                    (node as? SKSpriteNode)?.shader = nil
                 }
                 
                 return CountdownTimer(countDownTime: 30.0)
@@ -46,7 +48,7 @@ extension Spawner {
                 
                 if let node = node as? SKSpriteNode {
                     
-                    node.isPaused = false
+                    node.removeAllActions()
                     Spawner.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
                 }
                 
