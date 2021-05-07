@@ -106,7 +106,7 @@ class AttractScene: BaseSKScene {
                 
                 ScoreManager.loadHiScores() { _, scores in
                     
-                    print("Scores: \(scores)")
+                    print("Scores: \(String(describing: scores))")
                     
                     sourceNode.isPaused = false
                 }

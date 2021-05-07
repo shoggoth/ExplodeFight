@@ -61,7 +61,7 @@ struct ScoreManager {
             //GKAchievement.resetAchievements()
             GKAchievement.loadAchievements() { chieves, error in
                 
-                print(chieves)
+                print(chieves as Any)
             }
         }
     }
@@ -72,8 +72,7 @@ struct ScoreManager {
         achievement.showsCompletionBanner = true
         achievement.percentComplete = percent
 
-        GKAchievement.report([achievement]) { error in print(error) }
-
+        GKAchievement.report([achievement]) { error in print(error as Any) }
     }
     
     static func submitHiScore(boardIdentifier: String, score: Score) {

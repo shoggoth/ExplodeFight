@@ -45,6 +45,7 @@
 		FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC222D9256FCD4100CFA23F /* LaunchScreen.storyboard */; };
 		FFC222E8257003B400CFA23F /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; };
 		FFC222E9257003B400CFA23F /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFC67E41264545AE003926E9 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC67E40264545AE003926E9 /* Wave.swift */; };
 		FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186625CACFAD0051984F /* FireComponent.swift */; };
 		FFE2CA522630257200189FBA /* MobStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EB5AB25FB796A0073D402 /* MobStates.swift */; };
 		FFE2CA5426302BEF00189FBA /* PlayerStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CA5326302BEF00189FBA /* PlayerStates.swift */; };
@@ -121,6 +122,7 @@
 		FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FFC67E40264545AE003926E9 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		FFE0186625CACFAD0051984F /* FireComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireComponent.swift; sourceTree = "<group>"; };
 		FFE2CA5326302BEF00189FBA /* PlayerStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStates.swift; sourceTree = "<group>"; };
 		FFE2CA672630327500189FBA /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				FF3EB5AD25FB99F80073D402 /* Level.swift */,
 				FFE2CA672630327500189FBA /* Score.swift */,
 				FF21CD6425EE503900873CD3 /* Weapon.swift */,
+				FFC67E40264545AE003926E9 /* Wave.swift */,
 				FFA0F45B261CA1380009EDDC /* Explode.swift */,
 				FF49712B25B72CA70083C36B /* Components */,
 				FFB527AA25C1CB8400B584C7 /* States */,
@@ -427,6 +430,7 @@
 				FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */,
 				FF49713725B72FB30083C36B /* MobComponent.swift in Sources */,
 				FF3EB5AE25FB99F80073D402 /* Level.swift in Sources */,
+				FFC67E41264545AE003926E9 /* Wave.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
 				FFE2CA682630327500189FBA /* Score.swift in Sources */,
 				FF33B289260DF951000E92EE /* SoundManager.swift in Sources */,
