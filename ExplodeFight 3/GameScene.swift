@@ -27,7 +27,7 @@ class GameScene: BaseSKScene {
     override func didMove(to view: SKView) {
         
         // Global setup
-        AppDelegate.soundManager.playNode = self
+        Global.soundManager.playNode = self
 
         // Set up scene physics
         physicsWorld.contactDelegate = self
@@ -88,7 +88,8 @@ class GameScene: BaseSKScene {
     
     func spawn(name: String) {
         
-        if let node = mobSpawner.spawner(named: name)?.spawn(scene: self) { addChild(node) }
+        let mobDesc = Mob(name: name, maxSpeed: 600, pointValue: 100)
+        if let node = mobSpawner.spawner(named: mobDesc.name)?.spawn(desc: mobDesc, scene: self) { addChild(node) }
     }
     
     func addScore(score s: Int64) {

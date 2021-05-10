@@ -11,24 +11,21 @@ import SpriteKitAddons
 
 struct Mob {
     
+    let name: String
     let maxSpeed: Float
     let pointValue: Int64
 }
 
 extension Spawner {
     
-    static let explodeShader = ExplodeShader(shaderName: "explode.fsh")
-
-    func spawn(scene: GameScene) -> SKNode? {
+    func spawn(desc: Mob, scene: GameScene) -> SKNode? {
         
         spawn() { node in
             
-            node.removeAction(forKey: "Explode_PixelShatter")
-
             let mobEntity = GKEntity()
             
             mobEntity.addComponent(GKSKNodeComponent(node: node))
-            mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
+            mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: desc.maxSpeed, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
 
             let livestate = MobState.LiveState {
                 
@@ -38,6 +35,7 @@ extension Spawner {
                     node.position  = CGPoint.zero
                     node.isPaused = false
                     
+                    node.removeAction(forKey: "Explode_PixelShatter")
                     (node as? SKSpriteNode)?.shader = nil
                 }
                 
@@ -49,17 +47,17 @@ extension Spawner {
                 if let node = node as? SKSpriteNode {
                     
                     node.removeAllActions()
-                    Spawner.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
+                    Global.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
                 }
                 
-                AppDelegate.soundManager.playSound(name: "Explode")
+                Global.soundManager.playSound(name: "Explode")
                 
                 return CountdownTimer(countDownTime: 1.0)
             }
             
             let dieState = MobState.DieState {
                 
-                scene.addScore(score: 100)
+                scene.addScore(score: desc.pointValue)
                 self.kill(node: node, recycle: true)
             }
             

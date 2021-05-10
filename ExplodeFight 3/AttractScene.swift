@@ -22,9 +22,6 @@ class AttractScene: BaseSKScene {
         
         super.didMove(to: view)
         
-        // TODO: Could an SKAction be used to make this transition?
-        // DispatchQueue.main.asyncAfter(deadline: .now() + timeUntilNextPhase) { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName, transition: transition) }
-        
         // Set up user control
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(start)))
         
