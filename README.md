@@ -2,13 +2,12 @@
 master
 
 ## Current Tasks
-- Address texture atlas and explosion shader oddities.
 - Look at irregularities with spawning and recycling with animations and scaling.
 - Add mob info protocol for use with spawning.
 - Spawn pattern protocol and enum (in playground: Developer).
-- Address the shader compile delay on the first explosion.
 
 ## Next Tasks
+- Address the shader compile delay on the first explosion.
 - Start adding mob experiments on the mob/ branches.
 - Add and remove physics properties on recycle and explode.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
@@ -20,6 +19,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
+- Address texture atlas and explosion shader oddities.
 - Add rules for end level and interstial scene / overlay.
 - Alter weapon firing source position
 - Add online high score table and chieve example.
