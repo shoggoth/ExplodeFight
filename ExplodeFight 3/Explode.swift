@@ -12,17 +12,17 @@ struct ExplodeShader {
     
     let splitsAttributeName = "a_numberOfSplits"
     let explodeAttributeName = "a_explodeAmount"
-    let explodeShader: SKShader
+    let shader: SKShader
     
     init(shaderName: String) {
         
-        explodeShader = SKShader(fileNamed: shaderName)
-        explodeShader.attributes = [SKAttribute(name: splitsAttributeName, type: .vectorFloat2),SKAttribute(name: explodeAttributeName, type: .vectorFloat2)]
+        shader = SKShader(fileNamed: shaderName)
+        shader.attributes = [SKAttribute(name: splitsAttributeName, type: .vectorFloat2),SKAttribute(name: explodeAttributeName, type: .vectorFloat2)]
     }
     
     func explode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval) {
         
-        node.shader = explodeShader
+        node.shader = shader
         
         node.setValue(SKAttributeValue(vectorFloat2: withSplits), forAttribute: splitsAttributeName)
 

@@ -25,6 +25,13 @@ class AttractScene: BaseSKScene {
         // Set up user control
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(start)))
         
+        // Force explode shader load
+        if let explodeNode = childNode(withName: "DummyExplode") as? SKSpriteNode {
+            
+            Global.explodeShader.explode(node: explodeNode, toScale: vector_float2(1, 1), withSplits: vector_float2(1, 1), duration: 0)
+        }
+        
+        // Set up state phases
         let findSourceNode = { name in self.modeScene?.orphanedChildNode(withName: name) }
         
         stateMachine = GKStateMachine(states: [
