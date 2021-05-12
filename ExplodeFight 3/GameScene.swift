@@ -69,7 +69,7 @@ class GameScene: BaseSKScene {
                 
                 self.level?.teardown(scene: self)
                 print("Playing...")
-                return CountdownTimer(countDownTime: 5.0)
+                return CountdownTimer(countDownTime: 15.0)
             },
             StateDrivenLevel.CountState() {
                 
@@ -88,8 +88,22 @@ class GameScene: BaseSKScene {
     
     func spawn(name: String) {
         
-        let mobDesc = Mob(name: name, maxSpeed: 600, pointValue: 100)
-        if let node = mobSpawner.spawner(named: mobDesc.name)?.spawn(desc: mobDesc, scene: self) { addChild(node) }
+        if let spawner = mobSpawner.spawner(named: name) {
+
+            let mobDesc = Mob(name: name, maxSpeed: 600, pointValue: 100)
+
+            if let newNode = spawner.spawn(completion: { node in
+                
+                let mobEntity = GKEntity()
+                
+                mobEntity.addComponent(GKSKNodeComponent(node: node))
+                mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: mobDesc.maxSpeed, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
+                mobEntity.addComponent(MobComponent(states: mobDesc.makeStates(node: node, scene: self, spawner: spawner)))
+                
+                return mobEntity
+            
+            }) { addChild(newNode) }
+        }
     }
     
     func addScore(score s: Int64) {

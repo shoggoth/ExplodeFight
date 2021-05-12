@@ -11,7 +11,7 @@ import SpriteKitAddons
 
 struct PlayerState {
     
-    class LiveState: CountdownState {
+    class ResetState: CountdownState {
         
         init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(ExplodeState.self) }) }
         

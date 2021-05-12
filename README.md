@@ -7,11 +7,10 @@ master
 - Spawn pattern protocol and enum (in playground: Developer).
 
 ## Next Tasks
-- Address the shader compile delay on the first explosion.
+- Create a warpable sprite.
 - Start adding mob experiments on the mob/ branches.
 - Add and remove physics properties on recycle and explode.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
-- Spawned entities have to be counted in the snapshot.
 - Spawner preload and kill only those nodes which contain entities functionality.
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 
@@ -19,6 +18,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
+- Address the shader compile delay on the first explosion.
 - Address texture atlas and explosion shader oddities.
 - Add rules for end level and interstial scene / overlay.
 - Alter weapon firing source position
