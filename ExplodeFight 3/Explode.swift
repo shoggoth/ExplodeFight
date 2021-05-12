@@ -8,6 +8,24 @@
 
 import SpriteKit
 
+struct ParticleExploder {
+    
+    let emitter: SKEmitterNode
+    
+    init(fileName: String) {
+        
+        emitter = SKEmitterNode(fileNamed: fileName)!
+        emitter.removeFromParent()
+    }
+    
+    func explode(node: SKSpriteNode, duration: TimeInterval) {
+        
+        node.addChild(emitter.copy() as! SKNode)
+    }
+}
+
+//MARK: -
+
 struct ExplodeShader {
     
     let splitsAttributeName = "a_numberOfSplits"

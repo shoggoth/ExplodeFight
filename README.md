@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- Explode with particle sytem instead of the pixel shatter and make the particle exploder use the spawner mechanism.
 - Look at irregularities with spawning and recycling with animations and scaling.
 - Add mob info protocol for use with spawning.
 - Spawn pattern protocol and enum (in playground: Developer).

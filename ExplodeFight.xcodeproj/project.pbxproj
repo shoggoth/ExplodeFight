@@ -53,6 +53,8 @@
 		FFE2CA80263036F400189FBA /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CA7F263036F400189FBA /* Tests.swift */; };
 		FFE2CA88263037ED00189FBA /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CA672630327500189FBA /* Score.swift */; };
 		FFF2E58A2649724A0060FE45 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2E5892649724A0060FE45 /* Global.swift */; };
+		FFF2E58E264BE6F60060FE45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF2E58C264BE6F60060FE45 /* Assets.xcassets */; };
+		FFF2E58F264BE6F60060FE45 /* Explode0.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFF2E58D264BE6F60060FE45 /* Explode0.sks */; };
 		FFF47C34260B432300BB2930 /* attractOverlay.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFF47C33260B432300BB2930 /* attractOverlay.fsh */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +133,8 @@
 		FFE2CA7F263036F400189FBA /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		FFE2CA81263036F400189FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFF2E5892649724A0060FE45 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		FFF2E58C264BE6F60060FE45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FFF2E58D264BE6F60060FE45 /* Explode0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explode0.sks; sourceTree = "<group>"; };
 		FFF47C33260B432300BB2930 /* attractOverlay.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attractOverlay.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,7 +172,6 @@
 				FF21CD6425EE503900873CD3 /* Weapon.swift */,
 				FFC67E40264545AE003926E9 /* Wave.swift */,
 				FFA0F45B261CA1380009EDDC /* Explode.swift */,
-				FFF2E5892649724A0060FE45 /* Global.swift */,
 				FF49712B25B72CA70083C36B /* Components */,
 				FFB527AA25C1CB8400B584C7 /* States */,
 				FF95A51F2579303800954B50 /* SplashScene.swift */,
@@ -176,10 +179,11 @@
 				FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */,
 				FF88FB5225B1F38300B09BD8 /* AttractScene.sks */,
 				FF49711325B5E1DE0083C36B /* AttractModes.sks */,
-				FF8391E4260B3AF30032D8EA /* StarField.sks */,
-				FF080694256BD29700F2EBA7 /* Actions.sks */,
 				FF88FB4C25B08F1900B09BD8 /* Configuration.swift */,
+				FFF2E5892649724A0060FE45 /* Global.swift */,
+				FF080694256BD29700F2EBA7 /* Actions.sks */,
 				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
+				FFF2E58B264BE6570060FE45 /* Particle Systems */,
 				FF3F96A725F6394200AF63B9 /* Fonts */,
 				FF3F969C25F259A600AF63B9 /* Shaders */,
 				FF3F969B25F2591700AF63B9 /* TexAtlas */,
@@ -299,6 +303,16 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		FFF2E58B264BE6570060FE45 /* Particle Systems */ = {
+			isa = PBXGroup;
+			children = (
+				FFF2E58C264BE6F60060FE45 /* Assets.xcassets */,
+				FF8391E4260B3AF30032D8EA /* StarField.sks */,
+				FFF2E58D264BE6F60060FE45 /* Explode0.sks */,
+			);
+			path = "Particle Systems";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -382,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFF47C34260B432300BB2930 /* attractOverlay.fsh in Resources */,
+				FFF2E58F264BE6F60060FE45 /* Explode0.sks in Resources */,
 				FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */,
 				FF5D7E19260CCBD300F1956E /* AttractLogo.fsh in Resources */,
 				FF88FB5325B1F38300B09BD8 /* AttractScene.sks in Resources */,
@@ -395,6 +410,7 @@
 				FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */,
 				FFA0F45E261CA1490009EDDC /* explode.fsh in Resources */,
 				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
+				FFF2E58E264BE6F60060FE45 /* Assets.xcassets in Resources */,
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
 				FF3F969A25F258F800AF63B9 /* Charset32.atlas in Resources */,
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,

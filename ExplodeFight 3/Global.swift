@@ -12,4 +12,5 @@ struct Global {
     
     static var soundManager = SoundManager(soundActions: ["Explode" : SKAction.playSoundFileNamed("Explode.caf", waitForCompletion: false)])
     static var explodeShader = ExplodeShader(shaderName: "explode.fsh")
+    static var particleExploder = ParticleExploder(fileName: "Explode0.sks")
 }
