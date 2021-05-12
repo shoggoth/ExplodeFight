@@ -7,20 +7,30 @@
 //
 
 import SpriteKit
+import SpriteKitAddons
 
 struct ParticleExploder {
     
-    let emitter: SKEmitterNode
+    private let spawner: Spawner
     
     init(fileName: String) {
         
-        emitter = SKEmitterNode(fileNamed: fileName)!
+        let emitter = SKEmitterNode(fileNamed: fileName)!
+        
+        spawner = Spawner(node: emitter)
         emitter.removeFromParent()
     }
     
     func explode(node: SKSpriteNode, duration: TimeInterval) {
         
-        node.addChild(emitter.copy() as! SKNode)
+        print("active: \(spawner.activeCount)")
+
+        if let particleSystem = spawner.spawn() {
+            
+            node.addChild(particleSystem)
+            
+            particleSystem.run(.sequence([SKAction.wait(forDuration: duration), SKAction(named: "ZoomFadeOut")!, SKAction.customAction(withDuration: 0) { node, _ in spawner.kill(node: node) }]))
+        }
     }
 }
 
