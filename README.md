@@ -2,7 +2,6 @@
 master
 
 ## Current Tasks
-- Look at irregularities with spawning and recycling with animations and scaling.
 - Add mob info protocol for use with spawning.
 - Spawn pattern protocol and enum (in playground: Developer).
 
@@ -18,6 +17,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
+- Look at irregularities with spawning and recycling with animations and scaling.
 - Explode with particle sytem instead of the pixel shatter and make the particle exploder use the spawner mechanism.
 - Address the shader compile delay on the first explosion.
 - Address texture atlas and explosion shader oddities.

@@ -20,9 +20,7 @@ protocol Level {
     func teardown(scene: GameScene)
 }
 
-private let interstitialScene = SKScene(fileNamed: "Interstitial")
-private let getReadyNode = { interstitialScene?.orphanedChildNode(withName: "GetReady/Root") }()
-private let getReadyAction = SKAction.sequence([SKAction.customAction(withDuration: 0) { node, _ in node.reset() }, SKAction.wait(forDuration: 1.0), SKAction(named: "ZoomFadeOut")!, SKAction.removeFromParent()])
+// MARK: -
 
 struct StateDrivenLevel: Level {
     
@@ -30,6 +28,8 @@ struct StateDrivenLevel: Level {
     
     private let stateMachine: GKStateMachine
     private let ruleSystem = GKRuleSystem()
+    
+    private let getReadyNode = { SKScene(fileNamed: "Interstitial")?.orphanedChildNode(withName: "GetReady/Root") }()
     
     init(name: String, states: [GKState]) {
         
@@ -48,7 +48,7 @@ struct StateDrivenLevel: Level {
         if let node = getReadyNode {
             
             scene.addChild(node)
-            node.run(getReadyAction)
+            node.run(.sequence([SKAction.customAction(withDuration: 0) { node, _ in node.reset() }, SKAction.wait(forDuration: 1.0), SKAction(named: "ZoomFadeOut")!, SKAction.removeFromParent()]))
             node.isPaused = false
         }
     }
