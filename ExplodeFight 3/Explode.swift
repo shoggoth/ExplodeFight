@@ -23,8 +23,6 @@ struct ParticleExploder {
     
     func explode(node: SKSpriteNode, duration: TimeInterval) {
         
-        print("active: \(spawner.activeCount)")
-
         if let particleSystem = spawner.spawn() {
             
             node.addChild(particleSystem)

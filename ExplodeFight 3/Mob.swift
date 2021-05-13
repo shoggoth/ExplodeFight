@@ -18,9 +18,7 @@ struct Mob {
     let rotation = CGFloat(Float.random(in: 0.0 ... Float.pi * 2.0))
     
     func makeStates(node: SKNode, scene: GameScene, spawner: Spawner) -> [GKState] {
-        
-        node.name = "\(name) \(UUID().uuidString)"
-        
+                
         let resetState = MobState.ResetState {
             
             node.reset { _ in
@@ -55,7 +53,7 @@ struct Mob {
             scene.addScore(score: pointValue)
             spawner.kill(node: node, recycle: true)
         }
-        
+
         return [resetState, explodeState, dieState]
     }
 }

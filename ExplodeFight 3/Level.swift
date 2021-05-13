@@ -17,6 +17,7 @@ protocol Level {
     // Functionality
     func setup(scene: GameScene)
     func update(deltaTime: TimeInterval, scene: GameScene)
+    func postamble(scene: GameScene)
     func teardown(scene: GameScene)
 }
 
@@ -29,8 +30,10 @@ struct StateDrivenLevel: Level {
     private let stateMachine: GKStateMachine
     private let ruleSystem = GKRuleSystem()
     
+    // TODO: Optimisation available
     private let getReadyNode = { SKScene(fileNamed: "Interstitial")?.orphanedChildNode(withName: "GetReady/Root") }()
-    
+    private let postambleNode = { SKScene(fileNamed: "Interstitial")?.orphanedChildNode(withName: "Bonus/Root") }()
+
     init(name: String, states: [GKState]) {
         
         self.name = name
@@ -78,6 +81,16 @@ struct StateDrivenLevel: Level {
         }
     }
     
+    func postamble(scene: GameScene) {
+        
+        if let node = postambleNode {
+            
+            scene.addChild(node)
+            node.run(.sequence([SKAction.customAction(withDuration: 0) { node, _ in node.reset() }, SKAction.wait(forDuration: 1.0), SKAction(named: "ZoomFadeOut")!, SKAction.removeFromParent()]))
+            node.isPaused = false
+        }
+    }
+    
     func teardown(scene: GameScene) {
         
         print("Tearing down level in \(scene)")
@@ -114,5 +127,34 @@ extension StateDrivenLevel {
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { false }
         
         override func didEnter(from previousState: GKState?) { endFunc?() }
+    }
+}
+
+extension GameScene {
+    
+    func loadNextLevel() {
+        
+        level = StateDrivenLevel(name: "Test level", states: [
+            
+            StateDrivenLevel.PlayState() {
+                
+                self.level?.teardown(scene: self)
+
+                return CountdownTimer(countDownTime: 15.0)
+            },
+            StateDrivenLevel.CountState() {
+                
+                self.level?.postamble(scene: self)
+                
+                return CountdownTimer(countDownTime: 1.0)
+            },
+            StateDrivenLevel.EndedState() { [self] in
+                
+                mobSpawner.kill()
+                loadNextLevel()
+            }
+        ])
+        
+        level?.setup(scene: self)
     }
 }

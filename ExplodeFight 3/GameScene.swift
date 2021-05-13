@@ -13,6 +13,8 @@ import GameControls
 
 class GameScene: BaseSKScene {
     
+    var level: Level?
+
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
     private var score = Score(dis: 0, acc: 0)
@@ -22,7 +24,6 @@ class GameScene: BaseSKScene {
     let mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
 
     private let joystick = TouchJoystick()
-    private var level: Level?
     
     override func didMove(to view: SKView) {
         
@@ -60,30 +61,6 @@ class GameScene: BaseSKScene {
         }
         
         super.update(deltaTime: deltaTime)
-    }
-    
-    func loadNextLevel() {
-        
-        level = StateDrivenLevel(name: "Test level", states: [
-            StateDrivenLevel.PlayState() {
-                
-                self.level?.teardown(scene: self)
-                print("Playing...")
-                return CountdownTimer(countDownTime: 15.0)
-            },
-            StateDrivenLevel.CountState() {
-                
-                print("Count...")
-                return CountdownTimer(countDownTime: 1.0)
-            },
-            StateDrivenLevel.EndedState() { [self] in
-                
-                print("Ended...")
-                mobSpawner.kill()
-                loadNextLevel()
-            }
-        ])
-        level?.setup(scene: self)
     }
     
     func spawn(name: String) {
