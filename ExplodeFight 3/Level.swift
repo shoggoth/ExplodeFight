@@ -83,10 +83,17 @@ struct StateDrivenLevel: Level {
     
     func postamble(scene: GameScene) {
         
+        scene.addScore(score: 31337)
+        
         if let node = postambleNode {
             
             scene.addChild(node)
-            node.run(.sequence([SKAction.customAction(withDuration: 0) { node, _ in node.reset() }, SKAction.wait(forDuration: 1.0), SKAction(named: "ZoomFadeOut")!, SKAction.removeFromParent()]))
+            node.reset()
+            
+            node.run(.sequence([SKAction.wait(forDuration: 10.0),
+                                SKAction(named: "ZoomFadeOut")!,
+                                SKAction.removeFromParent(),
+                                SKAction.customAction(withDuration: 0) { _, _ in stateMachine.enter(EndedState.self) }]))
             node.isPaused = false
         }
     }
@@ -111,11 +118,15 @@ extension StateDrivenLevel {
         }
     }
     
-    class CountState: CountdownState {
+    class CountState: GKState {
         
-        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(EndedState.self) }) }
+        private var countFunc: (() -> Void)?
         
+        init(completion: (() -> Void)? = nil) { countFunc = completion }
+
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is EndedState.Type }
+        
+        override func didEnter(from previousState: GKState?) { countFunc?() }
     }
     
     class EndedState: GKState {
@@ -127,34 +138,5 @@ extension StateDrivenLevel {
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { false }
         
         override func didEnter(from previousState: GKState?) { endFunc?() }
-    }
-}
-
-extension GameScene {
-    
-    func loadNextLevel() {
-        
-        level = StateDrivenLevel(name: "Test level", states: [
-            
-            StateDrivenLevel.PlayState() {
-                
-                self.level?.teardown(scene: self)
-
-                return CountdownTimer(countDownTime: 15.0)
-            },
-            StateDrivenLevel.CountState() {
-                
-                self.level?.postamble(scene: self)
-                
-                return CountdownTimer(countDownTime: 1.0)
-            },
-            StateDrivenLevel.EndedState() { [self] in
-                
-                mobSpawner.kill()
-                loadNextLevel()
-            }
-        ])
-        
-        level?.setup(scene: self)
     }
 }

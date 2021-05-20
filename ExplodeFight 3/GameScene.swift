@@ -63,6 +63,30 @@ class GameScene: BaseSKScene {
         super.update(deltaTime: deltaTime)
     }
     
+    func loadNextLevel() {
+        
+        level = StateDrivenLevel(name: "Test level", states: [
+            
+            StateDrivenLevel.PlayState() {
+                
+                self.level?.teardown(scene: self)
+
+                return CountdownTimer(countDownTime: 15.0)
+            },
+            StateDrivenLevel.CountState() {
+                
+                self.level?.postamble(scene: self)
+            },
+            StateDrivenLevel.EndedState() { [self] in
+                
+                mobSpawner.kill()
+                loadNextLevel()
+            }
+        ])
+        
+        level?.setup(scene: self)
+    }
+
     func spawn(name: String) {
         
         if let spawner = mobSpawner.spawner(named: name) {
