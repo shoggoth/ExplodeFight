@@ -63,6 +63,11 @@ class GameScene: BaseSKScene {
         super.update(deltaTime: deltaTime)
     }
     
+    func updateRules(ruleSystem: GKRuleSystem) {
+        
+        ruleSystem.state["mobCount"] = mobSpawner.activeCount
+    }
+    
     func loadNextLevel() {
         
         level = StateDrivenLevel(name: "Test level", states: [

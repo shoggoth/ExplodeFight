@@ -14,6 +14,9 @@ protocol Level {
     // Description
     var name: String { get }
     
+    // Properties
+    var ruleSystem: GKRuleSystem { get }
+    
     // Functionality
     func setup(scene: GameScene)
     func update(deltaTime: TimeInterval, scene: GameScene)
@@ -26,13 +29,14 @@ protocol Level {
 struct StateDrivenLevel: Level {
     
     let name: String
-    
+
+    internal let ruleSystem = GKRuleSystem()
+
     private let stateMachine: GKStateMachine
-    private let ruleSystem = GKRuleSystem()
-    
-    // TODO: Optimisation available
-    private let getReadyNode = { SKScene(fileNamed: "Interstitial")?.orphanedChildNode(withName: "GetReady/Root") }()
-    private let postambleNode = { SKScene(fileNamed: "Interstitial")?.orphanedChildNode(withName: "Bonus/Root") }()
+
+    private static let interScene = { SKScene(fileNamed: "Interstitial") }()
+    private let getReadyNode = { interScene?.orphanedChildNode(withName: "GetReady/Root") }()
+    private let postambleNode = { interScene?.orphanedChildNode(withName: "Bonus/Root") }()
 
     init(name: String, states: [GKState]) {
         
@@ -61,22 +65,24 @@ struct StateDrivenLevel: Level {
         stateMachine.update(deltaTime: deltaTime)
         
         ruleSystem.reset()
-        ruleSystem.state["mobCount"] = scene.mobSpawner.activeCount
+        scene.updateRules(ruleSystem: ruleSystem)
         ruleSystem.evaluate()
         
         // TODO: Move this elsewhere
-        if ruleSystem.grade(forFact: "mobCountIsLow" as NSObject) >= 1.0 {
+        if ruleSystem.grade(forFact: "mobCountIsLow" as NSObjectProtocol) >= 1.0 {
             
             scene.spawnTicker = scene.spawnTicker?.tick(deltaTime: deltaTime) {
                 
                 func wave(s: String) {
                     
-                    let f: (CGPoint) -> Void = { p in print("\(s) \(p)") }
+                    let f: (CGPoint) -> Void = { p in scene.spawn(name: s) }
                     PointPattern.circle(divs: 4).trace(size: 1, with: f)
                 }
 
-                scene.spawn(name: "Ship")
-                scene.spawn(name: "Ship")
+                wave(s: "Ship")
+                
+//                scene.spawn(name: "Ship")
+//                scene.spawn(name: "Ship")
                 scene.spawn(name: "Mob")
                 scene.spawn(name: "Mob")
                 scene.spawn(name: "AniMob")
