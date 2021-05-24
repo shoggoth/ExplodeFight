@@ -67,49 +67,9 @@ struct StateDrivenLevel: Level {
         
         mobSpawner.update(deltaTime: deltaTime)
 
-        // TODO: Move this elsewhere
-        if ruleSystem.grade(forFact: "mobCountIsLow" as NSObjectProtocol) >= 1.0 {
-            
-            spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) {
-                
-                func wave(s: String) {
-                    
-                    let f: (CGPoint) -> Void = { p in
-                        
-                        if let spawner = mobSpawner.spawner(named: s) {
-
-                            let mobDesc = Mob(name: s, maxSpeed: 600, pointValue: 100)
-
-                            let entitySetup: (SKNode) -> GKEntity = { node in
-                                
-                                let mobEntity = GKEntity()
-                                
-                                mobEntity.addComponent(GKSKNodeComponent(node: node))
-                                mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: mobDesc.maxSpeed, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
-                                mobEntity.addComponent(MobComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
-                                
-                                return mobEntity
-                            
-                            }
-                            
-                            if let newNode = spawner.spawn(completion: { node in
-                                
-                                return entitySetup(node)
-                            
-                            }) {
-                                newNode.position = p
-                                newNode.zRotation = CGVector(point: p).angle
-                                scene.addChild(newNode)
-                            }
-                        }
-                    }
-                    
-                    PointPattern.circle(divs: 8).trace(size: 64, with: f)
-                }
-
-                wave(s: ["Ship", "Mob", "AniMob", "Robot"][Int.random(in: 0...3)])
-            }
-        }
+        if ruleSystem.grade(forFact: "levelIsOver" as NSObjectProtocol) >= 1.0 { stateMachine.enter(BonusState.self) }
+        
+        tempSpawnUpdate(deltaTime: deltaTime, scene: scene)
     }
     
     func postamble(scene: GameScene) {
@@ -166,5 +126,56 @@ extension StateDrivenLevel {
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { false }
         
         override func didEnter(from previousState: GKState?) { endFunc?() }
+    }
+}
+
+extension StateDrivenLevel {
+    
+    func tempSpawnUpdate(deltaTime: TimeInterval, scene: GameScene) {
+        
+        // TODO: Move this elsewhere
+        if ruleSystem.grade(forFact: "mobCountIsLow" as NSObjectProtocol) >= 1.0 {
+            
+            spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) {
+                
+                func wave(s: String) {
+                    
+                    let f: (CGPoint) -> Void = { p in
+                        
+                        if let spawner = mobSpawner.spawner(named: s) {
+
+                            let mobDesc = Mob(name: s, maxSpeed: 600, pointValue: 100)
+
+                            let entitySetup: (SKNode) -> GKEntity = { node in
+                                
+                                let mobEntity = GKEntity()
+                                
+                                mobEntity.addComponent(GKSKNodeComponent(node: node))
+                                mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: mobDesc.maxSpeed, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
+                                mobEntity.addComponent(MobComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
+                                
+                                return mobEntity
+                            
+                            }
+                            
+                            if let newNode = spawner.spawn(completion: { node in
+                                
+                                return entitySetup(node)
+                            
+                            }) {
+                                newNode.position = p
+                                newNode.zRotation = CGVector(point: p).angle
+                                scene.addChild(newNode)
+                            }
+                        }
+                    }
+                    
+                    PointPattern.circle(divs: 8).trace(size: 64, with: f)
+                }
+
+                wave(s: ["Ship", "Mob", "AniMob", "Robot"][Int.random(in: 0...3)])
+            }
+        }
+
     }
 }
