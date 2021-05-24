@@ -31,12 +31,9 @@ struct StateDrivenLevel: Level {
     let name: String
 
     internal let ruleSystem = GKRuleSystem()
-
     private let stateMachine: GKStateMachine
-
-    private static let interScene = { SKScene(fileNamed: "Interstitial") }()
-    private let getReadyNode = { interScene?.orphanedChildNode(withName: "GetReady/Root") }()
-    private let postambleNode = { interScene?.orphanedChildNode(withName: "Bonus/Root") }()
+    
+    private let mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
 
     init(name: String, states: [GKState]) {
         
@@ -46,13 +43,13 @@ struct StateDrivenLevel: Level {
         if let firstState = states.first { stateMachine.enter(type(of: firstState)) }
         
         // Setup level rules
-        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue < 10"), assertingFact: "mobCountIsLow" as NSObject, grade: 1.0))
+        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue < 100"), assertingFact: "mobCountIsLow" as NSObject, grade: 1.0))
         ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue == 0"), assertingFact: "allMobsDestroyed" as NSObject, grade: 1.0))
     }
     
     func setup(scene: GameScene) {
         
-        if let node = getReadyNode {
+        if let node = GameScene.getReadyNode {
             
             scene.addChild(node)
             node.run(.sequence([SKAction.customAction(withDuration: 0) { node, _ in node.reset() }, SKAction.wait(forDuration: 1.0), SKAction(named: "ZoomFadeOut")!, SKAction.removeFromParent()]))
@@ -65,30 +62,78 @@ struct StateDrivenLevel: Level {
         stateMachine.update(deltaTime: deltaTime)
         
         ruleSystem.reset()
-        scene.updateRules(ruleSystem: ruleSystem)
+        ruleSystem.state["mobCount"] = mobSpawner.activeCount
         ruleSystem.evaluate()
         
+        mobSpawner.update(deltaTime: deltaTime)
+
         // TODO: Move this elsewhere
         if ruleSystem.grade(forFact: "mobCountIsLow" as NSObjectProtocol) >= 1.0 {
             
-            scene.spawnTicker = scene.spawnTicker?.tick(deltaTime: deltaTime) {
+            spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) {
+                
+                func spawn(name: String) {
+                    
+                    if let spawner = mobSpawner.spawner(named: name) {
+
+                        let mobDesc = Mob(name: name, maxSpeed: 600, pointValue: 100)
+
+                        let entitySetup: (SKNode) -> GKEntity = { node in
+                            
+                            let mobEntity = GKEntity()
+                            
+                            mobEntity.addComponent(GKSKNodeComponent(node: node))
+                            mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: mobDesc.maxSpeed, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
+                            mobEntity.addComponent(MobComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
+                            
+                            return mobEntity
+                        
+                        }
+                        
+                        if let newNode = spawner.spawn(completion: { node in
+                            
+                            return entitySetup(node)
+                        
+                        }) { scene.addChild(newNode) }
+                    }
+                }
                 
                 func wave(s: String) {
                     
-                    let f: (CGPoint) -> Void = { p in scene.spawn(name: s) }
-                    PointPattern.circle(divs: 4).trace(size: 1, with: f)
+                    let f: (CGPoint) -> Void = { p in
+                        
+                        if let spawner = mobSpawner.spawner(named: s) {
+
+                            let mobDesc = Mob(name: s, maxSpeed: 600, pointValue: 100)
+
+                            let entitySetup: (SKNode) -> GKEntity = { node in
+                                
+                                let mobEntity = GKEntity()
+                                
+                                mobEntity.addComponent(GKSKNodeComponent(node: node))
+                                mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: mobDesc.maxSpeed, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
+                                mobEntity.addComponent(MobComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
+                                
+                                return mobEntity
+                            
+                            }
+                            
+                            if let newNode = spawner.spawn(completion: { node in
+                                
+                                return entitySetup(node)
+                            
+                            }) {
+                                newNode.position = p
+                                newNode.zRotation = CGVector(point: p).angle
+                                scene.addChild(newNode)
+                            }
+                        }
+                    }
+                    
+                    PointPattern.circle(divs: 8).trace(size: 64, with: f)
                 }
 
-                wave(s: "Ship")
-                
-//                scene.spawn(name: "Ship")
-//                scene.spawn(name: "Ship")
-                scene.spawn(name: "Mob")
-                scene.spawn(name: "Mob")
-                scene.spawn(name: "AniMob")
-                scene.spawn(name: "AniMob")
-                scene.spawn(name: "Robot")
-                scene.spawn(name: "Robot")
+                wave(s: ["Ship", "Mob", "AniMob", "Robot"][Int.random(in: 0...3)])
             }
         }
     }
@@ -97,7 +142,7 @@ struct StateDrivenLevel: Level {
         
         scene.addScore(score: 31337)
         
-        if let node = postambleNode {
+        if let node = GameScene.postambleNode {
             
             scene.addChild(node)
             node.reset()
@@ -112,9 +157,12 @@ struct StateDrivenLevel: Level {
     
     func teardown(scene: GameScene) {
         
+        mobSpawner.kill()
         print("Tearing down level in \(scene)")
     }
 }
+
+private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 1.7)
 
 extension StateDrivenLevel {
     

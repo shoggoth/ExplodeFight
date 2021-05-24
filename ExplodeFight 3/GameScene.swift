@@ -15,13 +15,14 @@ class GameScene: BaseSKScene {
     
     var level: Level?
 
+    private static let interScene = { SKScene(fileNamed: "Interstitial") }()
+    static let getReadyNode = { interScene?.orphanedChildNode(withName: "GetReady/Root") }()
+    static let postambleNode = { interScene?.orphanedChildNode(withName: "Bonus/Root") }()
+
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
     private var score = Score(dis: 0, acc: 0)
     private var scoreLabel: SKLabelNode?
-    
-    var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 1.7)
-    let mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
 
     private let joystick = TouchJoystick()
     
@@ -50,7 +51,6 @@ class GameScene: BaseSKScene {
     
     override func update(deltaTime: TimeInterval) {
         
-        mobSpawner.update(deltaTime: deltaTime)
         level?.update(deltaTime: deltaTime, scene: self)
         
         if score.acc > 0 {
@@ -61,11 +61,6 @@ class GameScene: BaseSKScene {
         }
         
         super.update(deltaTime: deltaTime)
-    }
-    
-    func updateRules(ruleSystem: GKRuleSystem) {
-        
-        ruleSystem.state["mobCount"] = mobSpawner.activeCount
     }
     
     func loadNextLevel() {
@@ -84,32 +79,11 @@ class GameScene: BaseSKScene {
             },
             StateDrivenLevel.EndedState() { [self] in
                 
-                mobSpawner.kill()
                 loadNextLevel()
             }
         ])
         
         level?.setup(scene: self)
-    }
-
-    func spawn(name: String) {
-        
-        if let spawner = mobSpawner.spawner(named: name) {
-
-            let mobDesc = Mob(name: name, maxSpeed: 600, pointValue: 100)
-
-            if let newNode = spawner.spawn(completion: { node in
-                
-                let mobEntity = GKEntity()
-                
-                mobEntity.addComponent(GKSKNodeComponent(node: node))
-                mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: mobDesc.maxSpeed, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
-                mobEntity.addComponent(MobComponent(states: mobDesc.makeStates(node: node, scene: self, spawner: spawner)))
-                
-                return mobEntity
-            
-            }) { addChild(newNode) }
-        }
     }
     
     func addScore(score s: Int64) {
