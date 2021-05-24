@@ -69,6 +69,12 @@ struct StateDrivenLevel: Level {
             
             scene.spawnTicker = scene.spawnTicker?.tick(deltaTime: deltaTime) {
                 
+                func wave(s: String) {
+                    
+                    let f: (CGPoint) -> Void = { p in print("\(s) \(p)") }
+                    PointPattern.circle(divs: 4).trace(size: 1, with: f)
+                }
+
                 scene.spawn(name: "Ship")
                 scene.spawn(name: "Ship")
                 scene.spawn(name: "Mob")
