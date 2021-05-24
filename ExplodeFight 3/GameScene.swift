@@ -73,14 +73,8 @@ class GameScene: BaseSKScene {
 
                 return CountdownTimer(countDownTime: 15.0)
             },
-            StateDrivenLevel.CountState() {
-                
-                self.level?.postamble(scene: self)
-            },
-            StateDrivenLevel.EndedState() { [self] in
-                
-                loadNextLevel()
-            }
+            StateDrivenLevel.BonusState() { self.level?.postamble(scene: self) },
+            StateDrivenLevel.EndedState() { self.loadNextLevel() }
         ])
         
         level?.setup(scene: self)

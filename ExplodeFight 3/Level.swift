@@ -72,32 +72,6 @@ struct StateDrivenLevel: Level {
             
             spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) {
                 
-                func spawn(name: String) {
-                    
-                    if let spawner = mobSpawner.spawner(named: name) {
-
-                        let mobDesc = Mob(name: name, maxSpeed: 600, pointValue: 100)
-
-                        let entitySetup: (SKNode) -> GKEntity = { node in
-                            
-                            let mobEntity = GKEntity()
-                            
-                            mobEntity.addComponent(GKSKNodeComponent(node: node))
-                            mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: mobDesc.maxSpeed, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
-                            mobEntity.addComponent(MobComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
-                            
-                            return mobEntity
-                        
-                        }
-                        
-                        if let newNode = spawner.spawn(completion: { node in
-                            
-                            return entitySetup(node)
-                        
-                        }) { scene.addChild(newNode) }
-                    }
-                }
-                
                 func wave(s: String) {
                     
                     let f: (CGPoint) -> Void = { p in
@@ -150,7 +124,7 @@ struct StateDrivenLevel: Level {
             node.run(.sequence([SKAction.wait(forDuration: 10.0),
                                 SKAction(named: "ZoomFadeOut")!,
                                 SKAction.removeFromParent(),
-                                SKAction.customAction(withDuration: 0) { _, _ in stateMachine.enter(EndedState.self) }]))
+                                SKAction.customAction(withDuration: 0) { _,_ in stateMachine.enter(EndedState.self) }]))
             node.isPaused = false
         }
     }
@@ -158,7 +132,6 @@ struct StateDrivenLevel: Level {
     func teardown(scene: GameScene) {
         
         mobSpawner.kill()
-        print("Tearing down level in \(scene)")
     }
 }
 
@@ -168,17 +141,12 @@ extension StateDrivenLevel {
     
     class PlayState: CountdownState {
         
-        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(CountState.self) }) }
+        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(BonusState.self) }) }
         
-        override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is EndedState.Type || stateClass is CountState.Type }
-        
-        override func update(deltaTime: TimeInterval) {
-            
-            super.update(deltaTime: deltaTime)
-        }
+        override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is EndedState.Type || stateClass is BonusState.Type }
     }
     
-    class CountState: GKState {
+    class BonusState: GKState {
         
         private var countFunc: (() -> Void)?
         
