@@ -69,25 +69,27 @@ class AttractScene: BaseSKScene {
                 destinationNode.addChild(sourceNode)
                 sourceNode.isPaused = false
 
-                let nodeNames = ["Text_1", "Text_2", "Text_3"]
+                let nodeNames = ["Text_0", "Text_1", "Text_2", "Text_2.5", "Text_3"]
                 let revealTime = 2.3
                 let fadeTime = 0.23
                 
-                nodeNames.enumerated().forEach {
-                    
-                    if let node = sourceNode.childNode(withName: $0.1) {
-                        
-                        node.removeAllActions()
-                        node.alpha = 1.0
-                        node.run(SKAction.sequence([SKAction.wait(forDuration: revealTime * Double(nodeNames.count)), SKAction.fadeOut(withDuration: fadeTime)]))
-                    }
-                    
-                    if let node = sourceNode.childNode(withName: "\($0.1)/Revealer") {
-                        
-                        node.position.x = 0
-                        node.run(SKAction.sequence([SKAction.wait(forDuration: Double($0.0) * revealTime), SKAction.move(by: CGVector(dx: 1024, dy: 0), duration: revealTime)]))
-                    }
-                }
+                sourceNode.addChild(makeRevealer(text: nodeNames))
+//
+//                nodeNames.enumerated().forEach {
+//
+//                    if let node = sourceNode.childNode(withName: $0.1) {
+//
+//                        node.removeAllActions()
+//                        node.alpha = 1.0
+//                        node.run(SKAction.sequence([SKAction.wait(forDuration: revealTime * Double(nodeNames.count)), SKAction.fadeOut(withDuration: fadeTime)]))
+//                    }
+//
+//                    if let node = sourceNode.childNode(withName: "\($0.1)/Revealer") {
+//
+//                        node.position.x = 0
+//                        node.run(SKAction.sequence([SKAction.wait(forDuration: Double($0.0) * revealTime), SKAction.move(by: CGVector(dx: 1024, dy: 0), duration: revealTime)]))
+//                    }
+//                }
 
                 return CountdownTimer(countDownTime: revealTime * Double(nodeNames.count) + fadeTime)
             },
