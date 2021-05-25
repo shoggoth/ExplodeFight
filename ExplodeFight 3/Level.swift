@@ -52,14 +52,19 @@ class Level {
             node.isPaused = false
             
             mobEntity.addComponent(MobComponent(states: [
-                                                    LiveState(),
+                                                    LiveState(warpNode: node as! SKSpriteNode),
                                                     ExplodeState {
                                                         AppDelegate.soundManager.playSound(name: "Explode")
-                                                        (node as? SKSpriteNode)?.color = .white
-                                                        node.childNode(withName: "DirectionIndicator")?.run(SKAction.moveTo(x: 32, duration: 0.2))
+                                                        if let node = node.childNode(withName: "Recycled") as? SKSpriteNode {
+                                                            node.color = .white
+                                                            node.run(SKAction.moveBy(x: 0, y: 8, duration: 0.2))
+                                                        }
                                                     },
                                                     DieState {
-                                                        (node as? SKSpriteNode)?.color = .yellow
+                                                        if let node = node.childNode(withName: "Recycled") as? SKSpriteNode {
+                                                            node.color = .red
+                                                            node.run(SKAction.moveBy(x: 0, y: -8, duration: 0.2))
+                                                        }
                                                         self.mobSpawner.spawner(named: "Mob")?.kill(node: node, recycle: true)
                                                     }]))
             
