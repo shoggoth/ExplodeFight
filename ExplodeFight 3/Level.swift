@@ -31,7 +31,7 @@ struct StateDrivenLevel: Level {
     let name: String
 
     internal let ruleSystem = GKRuleSystem()
-    private let stateMachine: GKStateMachine
+    private  let stateMachine: GKStateMachine
     
     private let mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
 

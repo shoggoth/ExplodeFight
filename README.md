@@ -2,11 +2,10 @@
 master
 
 ## Current Tasks
-- Make the reveal text a little more generic
+- Create a warpable sprite.
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 
 ## Next Tasks
-- Create a warpable sprite.
 - Start adding mob experiments on the mob/ branches.
 - Add and remove physics properties on recycle and explode.
 - Spawner preload and kill only those nodes which contain entities functionality.
@@ -16,6 +15,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
+- Make the reveal text a little more generic
 - Spawn pattern protocol and enum (in playground: Developer).
 - See if we can do without the GKScene loading.
 - Add a Level class and allow snapshots to be calculated so that rules can be implemented.
