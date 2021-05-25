@@ -1,5 +1,5 @@
 //
-//  Revealer.swift
+//  TextEffects.swift
 //  EF3
 //
 //  Created by Richard Henry on 25/05/2021.
@@ -8,16 +8,12 @@
 
 import SpriteKit
 
-func makeRevealer(text: [String]) -> SKNode {
-
-    // Temp
-    let revealTime = 2.3
-    let fadeTime = 0.23
+func makeRevealer(text: [String], rt: Double, ft: Double) -> SKNode {
 
     let size = CGFloat(24)
     
     let rootNode = SKNode()
-    rootNode.run(SKAction.sequence([SKAction.wait(forDuration: revealTime * Double(text.count)), SKAction.fadeOut(withDuration: fadeTime)]))
+    rootNode.run(SKAction.sequence([SKAction.wait(forDuration: rt * Double(text.count)), SKAction.fadeOut(withDuration: ft)]))
     
     text.enumerated().forEach { i, s in
         
@@ -29,10 +25,10 @@ func makeRevealer(text: [String]) -> SKNode {
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .baseline
         
-        let revealer = SKSpriteNode(color: .red, size: CGSize(width: 1024, height: size))
+        let revealer = SKSpriteNode(color: .black, size: CGSize(width: 1024, height: size))
         revealer.zPosition = 1
         revealer.position = CGPoint(x: 0, y: 0.4 * size)
-        revealer.run(SKAction.sequence([SKAction.wait(forDuration: Double(i) * revealTime), SKAction.move(by: CGVector(dx: 1024, dy: 0), duration: revealTime)]))
+        revealer.run(SKAction.sequence([SKAction.wait(forDuration: Double(i) * rt), SKAction.move(by: CGVector(dx: 1024, dy: 0), duration: rt)]))
         
         label.addChild(revealer)
         rootNode.addChild(label)

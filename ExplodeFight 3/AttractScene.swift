@@ -67,31 +67,18 @@ class AttractScene: BaseSKScene {
             super.init(enter: {
                 
                 destinationNode.addChild(sourceNode)
-                sourceNode.isPaused = false
 
-                let nodeNames = ["Text_0", "Text_1", "Text_2", "Text_2.5", "Text_3"]
+                let textStrings = ["this is Going to be a twin stick shooter for the ios",
+                                   "inspired by robotron 2084 and crystal quest",
+                                   "created by rich henry at dogstar industries ltd.",
+                                   "thank you everyone for your valuable feedback."]
                 let revealTime = 2.3
                 let fadeTime = 0.23
                 
-                sourceNode.addChild(makeRevealer(text: nodeNames))
-//
-//                nodeNames.enumerated().forEach {
-//
-//                    if let node = sourceNode.childNode(withName: $0.1) {
-//
-//                        node.removeAllActions()
-//                        node.alpha = 1.0
-//                        node.run(SKAction.sequence([SKAction.wait(forDuration: revealTime * Double(nodeNames.count)), SKAction.fadeOut(withDuration: fadeTime)]))
-//                    }
-//
-//                    if let node = sourceNode.childNode(withName: "\($0.1)/Revealer") {
-//
-//                        node.position.x = 0
-//                        node.run(SKAction.sequence([SKAction.wait(forDuration: Double($0.0) * revealTime), SKAction.move(by: CGVector(dx: 1024, dy: 0), duration: revealTime)]))
-//                    }
-//                }
+                sourceNode.addChild(makeRevealer(text: textStrings, rt: revealTime, ft: fadeTime))
+                sourceNode.isPaused = false
 
-                return CountdownTimer(countDownTime: revealTime * Double(nodeNames.count) + fadeTime)
+                return CountdownTimer(countDownTime: revealTime * Double(textStrings.count) + fadeTime)
             },
             
             exit: { stateMachine in
