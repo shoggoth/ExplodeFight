@@ -2,7 +2,8 @@
 master
 
 ## Current Tasks
-- Create a warpable sprite.
+- Use the warp sprite to implement the pixel shatter explode as it doesn't seem to alter the physics bounds like a scale does and can be made non-linear.
+- Game over and hi score
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 
 ## Next Tasks
@@ -15,6 +16,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
+- Create a warpable sprite. __mob/warp__
 - Make the reveal text a little more generic
 - Spawn pattern protocol and enum (in playground: Developer).
 - See if we can do without the GKScene loading.
