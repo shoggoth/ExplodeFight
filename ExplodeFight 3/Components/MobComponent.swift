@@ -46,17 +46,20 @@ class LiveState: GKState {
         let warpGeometryGridNoWarp = SKWarpGeometryGrid(columns: 2, rows: 2)
         
         let sourcePositions: [SIMD2<Float>] = [
-            SIMD2<Float>(0, 1),   SIMD2<Float>(0.5, 1),   SIMD2<Float>(1, 1),
+            SIMD2<Float>(0, 0),   SIMD2<Float>(0.5, 0),   SIMD2<Float>(1, 0),
             SIMD2<Float>(0, 0.5), SIMD2<Float>(0.5, 0.5), SIMD2<Float>(1, 0.5),
-            SIMD2<Float>(0, 0),   SIMD2<Float>(0.5, 0),   SIMD2<Float>(1, 0)
+            SIMD2<Float>(0, 1),   SIMD2<Float>(0.5, 1),   SIMD2<Float>(1, 1)
         ]
         let destinationPositions: [SIMD2<Float>] = [
-            SIMD2<Float>(-0.25, 1.5), SIMD2<Float>(0.5, 1.75), SIMD2<Float>(1.25, 1.5),
-            SIMD2<Float>(0.25, 0.5),   SIMD2<Float>(0.5, 0.5),   SIMD2<Float>(0.75, 0.5),
-            SIMD2<Float>(-0.25, -0.5),  SIMD2<Float>(0.5, -0.75),  SIMD2<Float>(1.25, -0.5)
+            SIMD2<Float>(-0.5, 0),   SIMD2<Float>(0.5, 0),   SIMD2<Float>(1.5, 0),
+            SIMD2<Float>(0.4, 0.5), SIMD2<Float>(0.5, 0.5), SIMD2<Float>(0.6, 0.5),
+            SIMD2<Float>(-0.5, 1),   SIMD2<Float>(0.5, 1),   SIMD2<Float>(1.5, 1)
         ]
-        let warpGeometryGrid = SKWarpGeometryGrid(columns: 2, rows: 2, sourcePositions: sourcePositions, destinationPositions: sourcePositions)
+        let warpGeometryGrid = SKWarpGeometryGrid(columns: 2, rows: 2, sourcePositions: sourcePositions, destinationPositions: destinationPositions)
         
+        if Bool.random() { node.shader = SKShader(fileNamed: "attractOverlay.fsh") }
+        
+        node.removeAllActions()
         node.warpGeometry = warpGeometryGridNoWarp
         node.run(SKAction.warp(to: warpGeometryGrid, duration: 2.0)!)
     }
