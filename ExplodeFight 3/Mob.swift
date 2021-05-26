@@ -25,7 +25,7 @@ struct Mob {
             node.reset { _ in
                 
                 node.zRotation = rotation
-                node.position  = CGPoint.zero
+                node.position  = position
                 node.isPaused = false
                 
                 // In case the explode action is still running...
