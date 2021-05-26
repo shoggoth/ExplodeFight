@@ -73,11 +73,11 @@ struct WarpExploder {
     let explodeAttributeName = "a_explodeAmount"
     let shader: SKShader
 
-    private let warpGeometryGridNoWarp = SKWarpGeometryGrid(columns: 2, rows: 2)
-    let sourcePositions: [SIMD2<Float>] = [
-        SIMD2<Float>(0, 0),   SIMD2<Float>(0.5, 0),   SIMD2<Float>(1, 0),
-        SIMD2<Float>(0, 0.5), SIMD2<Float>(0.5, 0.5), SIMD2<Float>(1, 0.5),
-        SIMD2<Float>(0, 1),   SIMD2<Float>(0.5, 1),   SIMD2<Float>(1, 1)
+    private static let bulgeOffset = Float(0.25)
+    private let warpGeometryGridNoWarp = SKWarpGeometryGrid(columns: 3, rows: 1)
+    private let sourcePositions: [SIMD2<Float>] = [
+        SIMD2<Float>(0, 0), SIMD2<Float>(0.5 - bulgeOffset, 0), SIMD2<Float>(0.5 + bulgeOffset, 0),  SIMD2<Float>(1, 0),
+        SIMD2<Float>(0, 1), SIMD2<Float>(0.5 - bulgeOffset, 1), SIMD2<Float>(0.5 + bulgeOffset, 1),  SIMD2<Float>(1, 1)
     ]
 
     init(shaderName: String) {
@@ -102,12 +102,13 @@ struct WarpExploder {
             (node as? SKSpriteNode)?.setValue(SKAttributeValue(vectorFloat2: vector_float2(x, y)), forAttribute: explodeAttributeName)
         }
         
+        let bo = WarpExploder.bulgeOffset * toScale.x
+        let xo = toScale.x * 0.5
         let destinationPositions: [SIMD2<Float>] = [
-            SIMD2<Float>(-0.5, 0),   SIMD2<Float>(0.5, 0),   SIMD2<Float>(1.5, 0),
-            SIMD2<Float>(0.4, 0.5), SIMD2<Float>(0.5, 0.5), SIMD2<Float>(0.6, 0.5),
-            SIMD2<Float>(-0.5, 1),   SIMD2<Float>(0.5, 1),   SIMD2<Float>(1.5, 1)
+            SIMD2<Float>(-xo, 0), SIMD2<Float>((0.5 - bo), -bo), SIMD2<Float>((0.5 + bo), -bo),  SIMD2<Float>(1 + xo, 0),
+            SIMD2<Float>(-xo, 1), SIMD2<Float>((0.5 - bo), 1), SIMD2<Float>((0.5 + bo), 1),  SIMD2<Float>(1 + xo, 1)
         ]
-        let warpGeometryGrid = SKWarpGeometryGrid(columns: 2, rows: 2, sourcePositions: sourcePositions, destinationPositions: destinationPositions)
+        let warpGeometryGrid = SKWarpGeometryGrid(columns: 3, rows: 1, sourcePositions: sourcePositions, destinationPositions: destinationPositions)
 
         node.warpGeometry = warpGeometryGridNoWarp
         node.run(.group([customAction, SKAction.warp(to: warpGeometryGrid, duration: 2.0)!]), withKey: "Explode_PixelShatter")
