@@ -28,7 +28,11 @@ struct Mob {
                 node.isPaused = false
                 
                 node.removeAction(forKey: "Explode_PixelShatter")
-                (node as? SKSpriteNode)?.shader = nil
+                
+                if let node = node as? SKSpriteNode {
+                    node.shader = nil
+                    node.warpGeometry = nil
+                }
             }
             
             return CountdownTimer(countDownTime: 30.0)
@@ -40,7 +44,8 @@ struct Mob {
                 
                 node.removeAllActions()
                 //Global.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
-                Global.particleExploder.explode(node: node, duration: 1.0)
+                //Global.particleExploder.explode(node: node, duration: 1.0)
+                Global.warpExploder.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
             }
             
             Global.soundManager.playSound(name: "Explode")
