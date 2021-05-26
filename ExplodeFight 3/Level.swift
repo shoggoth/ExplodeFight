@@ -144,7 +144,7 @@ extension StateDrivenLevel {
                         
                         if let spawner = mobSpawner.spawner(named: s) {
 
-                            let mobDesc = Mob(name: s, maxSpeed: 600, pointValue: 100)
+                            let mobDesc = Mob(name: s, maxSpeed: 600, pointValue: 100, position: p, rotation: CGVector(point: p).angle)
 
                             let entitySetup: (SKNode) -> GKEntity = { node in
                                 
@@ -155,18 +155,13 @@ extension StateDrivenLevel {
                                 mobEntity.addComponent(MobComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
                                 
                                 return mobEntity
-                            
                             }
                             
                             if let newNode = spawner.spawn(completion: { node in
                                 
                                 return entitySetup(node)
                             
-                            }) {
-                                newNode.position = p
-                                newNode.zRotation = CGVector(point: p).angle
-                                scene.addChild(newNode)
-                            }
+                            }) { scene.addChild(newNode) }
                         }
                     }
                     
