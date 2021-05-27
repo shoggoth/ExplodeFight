@@ -9,7 +9,7 @@
 import GameplayKit
 import SpriteKitAddons
 
-class MobComponent: GKComponent, NodeContact {
+class MobComponent: GKComponent {
     
     let stateMachine: GKStateMachine
     
@@ -29,40 +29,4 @@ class MobComponent: GKComponent, NodeContact {
 
         stateMachine.update(deltaTime: deltaTime)
     }
-    
-    // MARK: Contact handling
-    
-    func contactWithNodeDidBegin(_ node: SKNode) {
-        
-        //print("MC Contact begins: \(self) with \(node)")
-        stateMachine.enter(MobState.ExplodeState.self)
-    }
-    
-    func contactWithNodeDidEnd(_ node: SKNode) {
-        
-        //print("MC Contact ends: \(self) with \(node)")
-    }
 }
-
-// MARK: -
-
-protocol NodeContact {
-
-    func contactWithNodeDidBegin(_ node: SKNode)
-    
-    func contactWithNodeDidEnd(_ node: SKNode)
-}
-
-extension SKNode: NodeContact {
-    
-    func contactWithNodeDidBegin(_ node: SKNode) {
-        
-        entity?.component(ofType: MobComponent.self)?.contactWithNodeDidBegin(node)
-    }
-    
-    func contactWithNodeDidEnd(_ node: SKNode) {
-        
-        entity?.component(ofType: MobComponent.self)?.contactWithNodeDidEnd(node)
-    }
-}
-
