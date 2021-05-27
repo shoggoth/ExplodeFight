@@ -2,20 +2,21 @@
 master
 
 ## Current Tasks
-- Use the warp sprite to implement the pixel shatter explode as it doesn't seem to alter the physics bounds like a scale does and can be made non-linear.
 - Game over and hi score
+- Pickups and level end postamble
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 
 ## Next Tasks
 - Start adding mob experiments on the mob/ branches.
 - Add and remove physics properties on recycle and explode.
-- Spawner preload and kill only those nodes which contain entities functionality.
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
+- (Obsolete?) Use the warp sprite to implement the pixel shatter explode as it doesn't seem to alter the physics bounds like a scale does and can be made non-linear.
 
 ## Questions
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
+- Spawner preload and kill only those nodes which contain entities functionality.
 - Create a warpable sprite. __mob/warp__
 - Make the reveal text a little more generic
 - Spawn pattern protocol and enum (in playground: Developer).
