@@ -18,6 +18,7 @@ class GameScene: BaseSKScene {
     private static let interScene = { SKScene(fileNamed: "Interstitial") }()
     static let getReadyNode = { interScene?.orphanedChildNode(withName: "GetReady/Root") }()
     static let postambleNode = { interScene?.orphanedChildNode(withName: "Bonus/Root") }()
+    static let gameOverNode = { interScene?.orphanedChildNode(withName: "GameOver/Root") }()
 
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
@@ -43,7 +44,7 @@ class GameScene: BaseSKScene {
             
             entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
             entity.addComponent(PlayerControlComponent(joystick: joystick))
-            entity.addComponent(ContactComponent { node in print("Player contact begin with node \(node)") })
+            entity.addComponent(ContactComponent { node in if node.name == "Ship" { self.gameOver() }})
         }
 
         // Create initial level
@@ -62,6 +63,19 @@ class GameScene: BaseSKScene {
         }
         
         super.update(deltaTime: deltaTime)
+    }
+    
+    func gameOver() {
+        
+        //level?.teardown(scene: self)
+        level = nil
+        if let node = GameScene.gameOverNode {
+            
+            node.reset() { _ in
+                node.run(.sequence([SKAction.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, SKAction.removeFromParent()]))
+                node.isPaused = false
+            }
+        }
     }
     
     func loadNextLevel() {
