@@ -48,6 +48,7 @@
 		FFC222E8257003B400CFA23F /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; };
 		FFC222E9257003B400CFA23F /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFC67E41264545AE003926E9 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC67E40264545AE003926E9 /* Wave.swift */; };
+		FFD759092660FB4500F1889C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD759082660FB4500F1889C /* Player.swift */; };
 		FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186625CACFAD0051984F /* FireComponent.swift */; };
 		FFE2CA522630257200189FBA /* MobStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EB5AB25FB796A0073D402 /* MobStates.swift */; };
 		FFE2CA5426302BEF00189FBA /* PlayerStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CA5326302BEF00189FBA /* PlayerStates.swift */; };
@@ -130,6 +131,7 @@
 		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFC67E40264545AE003926E9 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
+		FFD759082660FB4500F1889C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		FFE0186625CACFAD0051984F /* FireComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireComponent.swift; sourceTree = "<group>"; };
 		FFE2CA5326302BEF00189FBA /* PlayerStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStates.swift; sourceTree = "<group>"; };
 		FFE2CA672630327500189FBA /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				FF080696256BD29700F2EBA7 /* GameScene.swift */,
+				FFD759082660FB4500F1889C /* Player.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
 				FF783439264292070063F453 /* Interstitial.sks */,
 				FF4E81B82608EF1C006B1050 /* Mobs.sks */,
@@ -443,6 +446,7 @@
 				FF4E81B52608A0EB006B1050 /* DebugComponent.swift in Sources */,
 				FF080697256BD29700F2EBA7 /* GameScene.swift in Sources */,
 				FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */,
+				FFD759092660FB4500F1889C /* Player.swift in Sources */,
 				FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */,
 				FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */,
 				FF3EB5AA25FB79200073D402 /* RulesComponent.swift in Sources */,

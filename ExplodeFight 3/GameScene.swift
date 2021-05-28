@@ -43,7 +43,7 @@ class GameScene: BaseSKScene {
             
             entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
             entity.addComponent(PlayerControlComponent(joystick: joystick))
-            entity.addComponent(ContactComponent { node in print("Player contact begin with mnode \(node)") })
+            entity.addComponent(ContactComponent { node in print("Player contact begin with node \(node)") })
         }
 
         // Create initial level
