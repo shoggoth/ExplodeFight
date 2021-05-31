@@ -87,6 +87,7 @@ class GameScene: BaseSKScene {
                 node.isPaused = false
             }
             
+            childNode(withName: "MobRoot")?.run(.fadeOut(withDuration: 1))
             addChild(node)
         }
     }

@@ -162,7 +162,7 @@ extension StateDrivenLevel {
                                 
                                 return entitySetup(node)
                             
-                            }) { scene.addChild(newNode) }
+                            }) { scene.childNode(withName: "MobRoot")?.addChild(newNode) }
                         }
                     }
                     
