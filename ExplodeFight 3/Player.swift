@@ -20,7 +20,7 @@ struct Player {
     let position: CGPoint
     let rotation: CGFloat
     
-    func makeStates(node: SKNode, scene: GameScene, spawner: Spawner) -> [GKState] {
+    func makeStates(node: SKNode, scene: GameScene) -> [GKState] {
         
         let resetState = MobState.ResetState {
             
@@ -60,8 +60,7 @@ struct Player {
         
         let dieState = MobState.DieState {
             
-            scene.addScore(score: pointValue)
-            spawner.kill(node: node, recycle: true)
+            scene.gameOver()
         }
         
         return [resetState, explodeState, dieState]

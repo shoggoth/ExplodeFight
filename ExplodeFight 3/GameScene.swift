@@ -42,9 +42,12 @@ class GameScene: BaseSKScene {
         // Setup Player
         if let node = childNode(withName: "Player"), let entity = node.entity {
             
+            let playerDesc = Player(name: "Player", maxSpeed: 600, pointValue: 100, position: node.position, rotation: node.zRotation)
+
             entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
             entity.addComponent(PlayerControlComponent(joystick: joystick))
-            entity.addComponent(ContactComponent { node in if node.name == "Ship" { self.gameOver() }})
+            entity.addComponent(StateComponent(states: playerDesc.makeStates(node: node, scene: self)))
+            //entity.addComponent(ContactComponent { node in if node.name == "Ship" { self.gameOver() }})
         }
 
         // Create initial level
@@ -67,14 +70,17 @@ class GameScene: BaseSKScene {
     
     func gameOver() {
         
-        //level?.teardown(scene: self)
+        let oldLevel = level
         level = nil
+        
         if let node = GameScene.gameOverNode {
             
             node.reset() { _ in
-                node.run(.sequence([SKAction.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, SKAction.removeFromParent()]))
+                node.run(.sequence([SKAction.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, SKAction.removeFromParent(), .customAction(withDuration: 0) { _,_ in oldLevel?.teardown(scene: self) }]))
                 node.isPaused = false
             }
+            
+            addChild(node)
         }
     }
     

@@ -152,8 +152,8 @@ extension StateDrivenLevel {
                                 
                                 mobEntity.addComponent(GKSKNodeComponent(node: node))
                                 mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: mobDesc.maxSpeed, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
-                                mobEntity.addComponent(MobComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
-                                mobEntity.addComponent(ContactComponent { _ in node.entity?.component(ofType: MobComponent.self)?.stateMachine.enter(MobState.ExplodeState.self) })
+                                mobEntity.addComponent(StateComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
+                                mobEntity.addComponent(ContactComponent { _ in node.entity?.component(ofType: StateComponent.self)?.stateMachine.enter(MobState.ExplodeState.self) })
                                 
                                 return mobEntity
                             }

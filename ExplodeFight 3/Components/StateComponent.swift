@@ -1,5 +1,5 @@
 //
-//  MobComponent.swift
+//  StateComponent.swift
 //  EF3
 //
 //  Created by Richard Henry on 19/01/2021.
@@ -9,7 +9,7 @@
 import GameplayKit
 import SpriteKitAddons
 
-class MobComponent: GKComponent {
+class StateComponent: GKComponent {
     
     let stateMachine: GKStateMachine
     

@@ -27,7 +27,7 @@
 		FF42737F2631B80B00A1FA34 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF42737E2631B80B00A1FA34 /* GameKit.framework */; };
 		FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF49711325B5E1DE0083C36B /* AttractModes.sks */; };
 		FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */; };
-		FF49713725B72FB30083C36B /* MobComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49713625B72FB30083C36B /* MobComponent.swift */; };
+		FF49713725B72FB30083C36B /* StateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49713625B72FB30083C36B /* StateComponent.swift */; };
 		FF4E81B52608A0EB006B1050 /* DebugComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4E81B42608A0EB006B1050 /* DebugComponent.swift */; };
 		FF4E81B92608EF1C006B1050 /* Mobs.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF4E81B82608EF1C006B1050 /* Mobs.sks */; };
 		FF5D7E19260CCBD300F1956E /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */; };
@@ -110,7 +110,7 @@
 		FF42737E2631B80B00A1FA34 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		FF49711325B5E1DE0083C36B /* AttractModes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttractModes.sks; sourceTree = "<group>"; };
 		FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlComponent.swift; sourceTree = "<group>"; };
-		FF49713625B72FB30083C36B /* MobComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobComponent.swift; sourceTree = "<group>"; };
+		FF49713625B72FB30083C36B /* StateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateComponent.swift; sourceTree = "<group>"; };
 		FF4E81B42608A0EB006B1050 /* DebugComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugComponent.swift; sourceTree = "<group>"; };
 		FF4E81B82608EF1C006B1050 /* Mobs.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mobs.sks; sourceTree = "<group>"; };
 		FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AttractLogo.fsh; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 		FF49712B25B72CA70083C36B /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				FF49713625B72FB30083C36B /* MobComponent.swift */,
+				FF49713625B72FB30083C36B /* StateComponent.swift */,
 				FF29B158265FA6F7000B4353 /* ContactComponent.swift */,
 				FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */,
 				FFE0186625CACFAD0051984F /* FireComponent.swift */,
@@ -458,7 +458,7 @@
 				FFE2CA5426302BEF00189FBA /* PlayerStates.swift in Sources */,
 				FF29B157265CF197000B4353 /* TextEffects.swift in Sources */,
 				FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */,
-				FF49713725B72FB30083C36B /* MobComponent.swift in Sources */,
+				FF49713725B72FB30083C36B /* StateComponent.swift in Sources */,
 				FF3EB5AE25FB99F80073D402 /* Level.swift in Sources */,
 				FFC67E41264545AE003926E9 /* Wave.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
