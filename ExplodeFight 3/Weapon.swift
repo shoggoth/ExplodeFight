@@ -87,9 +87,9 @@ class RoundBullet: SKShapeNode, NodeBullet {
     func fire(completion: ((NodeBullet) -> Void)? = nil) {
 
         // TODO: Use an action for the movement here abd allow the fire method to be switched between that and one propelled by physics velocity.
-        //run(SKAction.playSoundFileNamed("blast.caf", waitForCompletion: false))
-        run(SKAction.repeatForever(SKAction.rotate(byAngle: pi, duration: 1)))
-        run(SKAction.sequence([SKAction.wait(forDuration: 0.75), SKAction.fadeOut(withDuration: 0.25), SKAction.removeFromParent(), SKAction.run { self.reset { _ in completion?(self) }}]))
+        //run(.playSoundFileNamed("blast.caf", waitForCompletion: false))
+        run(.repeatForever(.rotate(byAngle: pi, duration: 1)))
+        run(.sequence([.wait(forDuration: 0.75), .fadeOut(withDuration: 0.25), .removeFromParent(), .run { self.reset { _ in completion?(self) }}]))
     }
 }
 

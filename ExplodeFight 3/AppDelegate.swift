@@ -14,7 +14,7 @@ import AVFoundation
 
     var window: UIWindow?
 
-    static var soundManager = SoundManager(soundActions: ["Explode" : SKAction.playSoundFileNamed("Explode.caf", waitForCompletion: false)])
+    static var soundManager = SoundManager(soundActions: ["Explode" : .playSoundFileNamed("Explode.caf", waitForCompletion: false)])
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

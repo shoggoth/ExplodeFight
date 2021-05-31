@@ -52,7 +52,7 @@ struct StateDrivenLevel: Level {
         if let node = GameScene.getReadyNode {
             
             scene.addChild(node)
-            node.run(.sequence([SKAction.customAction(withDuration: 0) { node, _ in node.reset() }, SKAction.wait(forDuration: 1.0), SKAction(named: "ZoomFadeOut")!, SKAction.removeFromParent()]))
+            node.run(.sequence([.customAction(withDuration: 0) { node, _ in node.reset() }, .wait(forDuration: 1.0), SKAction(named: "ZoomFadeOut")!, .removeFromParent()]))
             node.isPaused = false
         }
     }
@@ -81,10 +81,10 @@ struct StateDrivenLevel: Level {
             scene.addChild(node)
             node.reset()
             
-            node.run(.sequence([SKAction.wait(forDuration: 10.0),
+            node.run(.sequence([.wait(forDuration: 10.0),
                                 SKAction(named: "ZoomFadeOut")!,
-                                SKAction.removeFromParent(),
-                                SKAction.customAction(withDuration: 0) { _,_ in stateMachine.enter(EndedState.self) }]))
+                                .removeFromParent(),
+                                .customAction(withDuration: 0) { _,_ in stateMachine.enter(EndedState.self) }]))
             node.isPaused = false
         }
     }

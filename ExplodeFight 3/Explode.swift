@@ -27,7 +27,7 @@ struct ParticleExploder {
             
             node.addChild(particleSystem)
             
-            particleSystem.run(.sequence([SKAction.wait(forDuration: duration), SKAction(named: "ZoomFadeOut")!, SKAction.customAction(withDuration: 0) { node, _ in spawner.kill(node: node) }]))
+            particleSystem.run(.sequence([.wait(forDuration: duration), SKAction(named: "ZoomFadeOut")!, .customAction(withDuration: 0) { node, _ in spawner.kill(node: node) }]))
         }
     }
 }
@@ -61,7 +61,7 @@ struct ExplodeShader {
             (node as? SKSpriteNode)?.setValue(SKAttributeValue(vectorFloat2: vector_float2(x, y)), forAttribute: explodeAttributeName)
         }
         
-        node.run(.group([customAction, SKAction.scaleX(by: CGFloat(toScale.x), y: CGFloat(toScale.y), duration: duration)]), withKey: "Explode_PixelShatter")
+        node.run(.group([customAction, .scaleX(by: CGFloat(toScale.x), y: CGFloat(toScale.y), duration: duration)]), withKey: "Explode_PixelShatter")
     }
     
     func explode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval) {
@@ -94,7 +94,7 @@ struct ExplodeShader {
         let warpGeometryGrid = SKWarpGeometryGrid(columns: 1, rows: 1, sourcePositions: sourcePositions, destinationPositions: destinationPositions)
         
         node.warpGeometry = warpGeometryGridNoWarp
-        node.run(.group([customAction, SKAction.warp(to: warpGeometryGrid, duration: 2.0)!]), withKey: "Explode_PixelShatter")
+        node.run(.group([customAction, .warp(to: warpGeometryGrid, duration: 2.0)!]), withKey: "Explode_PixelShatter")
     }
     
     func bulgeExplode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval) {
@@ -129,6 +129,6 @@ struct ExplodeShader {
         let warpGeometryGrid = SKWarpGeometryGrid(columns: 4, rows: 1, sourcePositions: sourcePositions, destinationPositions: destinationPositions)
         
         node.warpGeometry = warpGeometryGridNoWarp
-        node.run(.group([customAction, SKAction.warp(to: warpGeometryGrid, duration: 2.0)!]), withKey: "Explode_PixelShatter")
+        node.run(.group([customAction, .warp(to: warpGeometryGrid, duration: 2.0)!]), withKey: "Explode_PixelShatter")
     }
 }

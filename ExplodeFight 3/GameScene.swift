@@ -76,7 +76,14 @@ class GameScene: BaseSKScene {
         if let node = GameScene.gameOverNode {
             
             node.reset() { _ in
-                node.run(.sequence([SKAction.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, SKAction.removeFromParent(), .customAction(withDuration: 0) { _,_ in oldLevel?.teardown(scene: self) }]))
+                node.run(.sequence([.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .removeFromParent(), .customAction(withDuration: 0) { _,_ in
+                    
+                    oldLevel?.teardown(scene: self)
+                    let timeUntilNextPhase = Defaults.splashTiming.nextPhaseTime
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + timeUntilNextPhase) { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }
+
+                }]))
                 node.isPaused = false
             }
             

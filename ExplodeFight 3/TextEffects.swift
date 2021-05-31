@@ -13,7 +13,7 @@ func makeRevealer(text: [String], rt: Double, ft: Double) -> SKNode {
     let size = CGFloat(24)
     
     let rootNode = SKNode()
-    rootNode.run(SKAction.sequence([SKAction.wait(forDuration: rt * Double(text.count)), SKAction.fadeOut(withDuration: ft)]))
+    rootNode.run(.sequence([.wait(forDuration: rt * Double(text.count)), .fadeOut(withDuration: ft)]))
     
     text.enumerated().forEach { i, s in
         
@@ -28,7 +28,7 @@ func makeRevealer(text: [String], rt: Double, ft: Double) -> SKNode {
         let revealer = SKSpriteNode(color: .black, size: CGSize(width: 1024, height: size))
         revealer.zPosition = 1
         revealer.position = CGPoint(x: 0, y: 0.4 * size)
-        revealer.run(SKAction.sequence([SKAction.wait(forDuration: Double(i) * rt), SKAction.move(by: CGVector(dx: 1024, dy: 0), duration: rt)]))
+        revealer.run(.sequence([.wait(forDuration: Double(i) * rt), .move(by: CGVector(dx: 1024, dy: 0), duration: rt)]))
         
         label.addChild(revealer)
         rootNode.addChild(label)
