@@ -26,6 +26,7 @@ struct Defaults {
     
     // Hard coded
     static let splashTiming = (nextPhaseTime: 1.5, crossFadeDuration: 0.5)
+    static let gameOverTiming = 1.5
     
     // User defaults
     @UserDefault("JoystickType", defaultValue: "standard") static var joystickType: String

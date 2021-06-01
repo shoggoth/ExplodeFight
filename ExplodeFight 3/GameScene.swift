@@ -12,16 +12,14 @@ import GameplayKit
 import GameControls
 
 class GameScene: BaseSKScene {
-    
-    var level: Level?
-
-    private static let interScene = { SKScene(fileNamed: "Interstitial") }()
-    static let getReadyNode = { interScene?.orphanedChildNode(withName: "GetReady/Root") }()
-    static let postambleNode = { interScene?.orphanedChildNode(withName: "Bonus/Root") }()
-    static let gameOverNode = { interScene?.orphanedChildNode(withName: "GameOver/Root") }()
 
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
+    var level: Level?
+
+    private var men = 3
+    private var menLabel: SKLabelNode?
+
     private var score = Score(dis: 0, acc: 0)
     private var scoreLabel: SKLabelNode?
 
@@ -38,7 +36,8 @@ class GameScene: BaseSKScene {
 
         // Setup HUD
         scoreLabel = (self.childNode(withName: "Camera/Score") as? SKLabelNode)
-        
+        menLabel = (self.childNode(withName: "Camera/Men") as? SKLabelNode)
+
         // Setup Player
         if let node = childNode(withName: "Player"), let entity = node.entity {
             
@@ -68,33 +67,11 @@ class GameScene: BaseSKScene {
         super.update(deltaTime: deltaTime)
     }
     
-    func gameOver() {
-        
-        let oldLevel = level
-        level = nil
-        
-        if let node = GameScene.gameOverNode {
-            
-            node.reset() { _ in
-                node.run(.sequence([.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .removeFromParent(), .customAction(withDuration: 0) { _,_ in
-                    
-                    oldLevel?.teardown(scene: self)
-                    let timeUntilNextPhase = Defaults.splashTiming.nextPhaseTime
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + timeUntilNextPhase) { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }
+    // MARK: Level events
 
-                }]))
-                node.isPaused = false
-            }
-            
-            childNode(withName: "MobRoot")?.run(.fadeOut(withDuration: 1))
-            addChild(node)
-        }
-    }
-    
     func loadNextLevel() {
         
-        level = StateDrivenLevel(name: "Test level", states: [
+        level = StateDrivenLevel(levelNum: (level?.levelNum ?? 0) + 1, name: "Unnamed", states: [
             
             StateDrivenLevel.PlayState() {
                 
@@ -109,9 +86,44 @@ class GameScene: BaseSKScene {
         level?.setup(scene: self)
     }
     
+    // MARK: Score events
+
     func addScore(score s: Int64) {
         
         score = score.add(add: s)
+    }
+    
+    // MARK: Player events
+    
+    func playerDeath() {
+        
+        men -= 1
+        
+        self.menLabel?.text = "MEN: \(men)"
+
+        if men <= 0 { gameOver() }
+    }
+    
+    private func gameOver() {
+        
+        let oldLevel = level
+        level = nil
+        
+        if let node = Interstitial.gameOverNode {
+            
+            node.reset() { _ in
+                node.run(.sequence([.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .removeFromParent(), .customAction(withDuration: 0) { _,_ in
+                    
+                    oldLevel?.teardown(scene: self)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Defaults.gameOverTiming) { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }
+
+                }]))
+                node.isPaused = false
+            }
+            
+            childNode(withName: "MobRoot")?.run(.fadeOut(withDuration: 1))
+            addChild(node)
+        }
     }
 }
 

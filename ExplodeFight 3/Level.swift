@@ -12,6 +12,7 @@ import SpriteKitAddons
 protocol Level {
     
     // Description
+    var levelNum: Int { get }
     var name: String { get }
     
     // Properties
@@ -28,6 +29,7 @@ protocol Level {
 
 struct StateDrivenLevel: Level {
     
+    let levelNum: Int
     let name: String
 
     internal let ruleSystem = GKRuleSystem()
@@ -35,9 +37,10 @@ struct StateDrivenLevel: Level {
     
     private let mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
 
-    init(name: String, states: [GKState]) {
+    init(levelNum: Int, name: String, states: [GKState]) {
         
-        self.name = name
+        self.levelNum = levelNum
+        self.name = "Level \(levelNum) - \(name)"
         
         stateMachine = GKStateMachine(states: states)
         if let firstState = states.first { stateMachine.enter(type(of: firstState)) }
@@ -49,10 +52,12 @@ struct StateDrivenLevel: Level {
     
     func setup(scene: GameScene) {
         
-        if let node = GameScene.getReadyNode {
+        if let node = Interstitial.getReadyNode {
+            
+            (node as? SKLabelNode)?.text = name
             
             scene.addChild(node)
-            node.run(.sequence([.customAction(withDuration: 0) { node, _ in node.reset() }, .wait(forDuration: 1.0), SKAction(named: "ZoomFadeOut")!, .removeFromParent()]))
+            node.run(.sequence([.customAction(withDuration: 0) { node, _ in node.reset() }, .wait(forDuration: 2.3), SKAction(named: "ZoomFadeOut")!, .removeFromParent()]))
             node.isPaused = false
         }
     }
@@ -76,7 +81,7 @@ struct StateDrivenLevel: Level {
         
         scene.addScore(score: 31337)
         
-        if let node = GameScene.postambleNode {
+        if let node = Interstitial.postambleNode {
             
             scene.addChild(node)
             node.reset()
@@ -172,6 +177,5 @@ extension StateDrivenLevel {
                 wave(s: ["Ship", "Mob", "AniMob", "Robot"][Int.random(in: 0...3)])
             }
         }
-
     }
 }

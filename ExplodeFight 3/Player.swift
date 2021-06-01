@@ -60,7 +60,7 @@ struct Player {
         
         let dieState = MobState.DieState {
             
-            scene.gameOver()
+            scene.playerDeath()
         }
         
         return [resetState, explodeState, dieState]
