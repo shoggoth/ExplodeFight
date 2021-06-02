@@ -25,14 +25,9 @@ struct PlayerState {
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type }
     }
     
-    class DieState: GKState {
+    class DieState: CountdownState {
         
-        private var dieFunc: (() -> Void)?
+        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(ResetState.self) }) }
         
-        init(completion: (() -> Void)? = nil) { dieFunc = completion }
-        
-        override func isValidNextState(_ stateClass: AnyClass) -> Bool { false }
-        
-        override func didEnter(from previousState: GKState?) { dieFunc?() }
-    }
+        override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is ResetState.Type }    }
 }

@@ -22,7 +22,7 @@ struct Player {
     
     func makeStates(node: SKNode, scene: GameScene) -> [GKState] {
         
-        let resetState = MobState.ResetState {
+        let resetState = PlayerState.ResetState {
             
             node.reset { _ in
                 
@@ -42,7 +42,7 @@ struct Player {
             return CountdownTimer(countDownTime: 30.0)
         }
         
-        let explodeState = MobState.ExplodeState {
+        let explodeState = PlayerState.ExplodeState {
             
             if let node = node as? SKSpriteNode {
                 
@@ -58,9 +58,11 @@ struct Player {
             return CountdownTimer(countDownTime: 1.0)
         }
         
-        let dieState = MobState.DieState {
+        let dieState = PlayerState.DieState {
             
             scene.playerDeath()
+            
+            return CountdownTimer(countDownTime: 4.0)
         }
         
         return [resetState, explodeState, dieState]

@@ -37,6 +37,7 @@ class GameScene: BaseSKScene {
         // Setup HUD
         scoreLabel = (self.childNode(withName: "Camera/Score") as? SKLabelNode)
         menLabel = (self.childNode(withName: "Camera/Men") as? SKLabelNode)
+        menLabel?.text = "MEN: \(men)"
 
         // Setup Player
         if let node = childNode(withName: "Player"), let entity = node.entity {
@@ -98,7 +99,6 @@ class GameScene: BaseSKScene {
     func playerDeath() {
         
         men -= 1
-        
         self.menLabel?.text = "MEN: \(men)"
 
         if men <= 0 { gameOver() }
@@ -107,6 +107,7 @@ class GameScene: BaseSKScene {
     private func gameOver() {
         
         let oldLevel = level
+        level?.teardown(scene: self)
         level = nil
         
         if let node = Interstitial.gameOverNode {
