@@ -17,6 +17,9 @@ class GameScene: BaseSKScene {
     
     var level: Level?
 
+    var mobRootNode: SKNode? { childNode(withName: "MobRoot") }
+    var interstitialRootNode: SKNode? { childNode(withName: "ISRoot") }
+    
     private var men = 3
     private var menLabel: SKLabelNode?
 
@@ -48,6 +51,7 @@ class GameScene: BaseSKScene {
             entity.addComponent(PlayerControlComponent(joystick: joystick))
             entity.addComponent(StateComponent(states: playerDesc.makeStates(node: node, scene: self)))
             //entity.addComponent(ContactComponent { node in if node.name == "Ship" { self.gameOver() }})
+            entity.addComponent(DebugComponent())
         }
 
         // Create initial level
@@ -122,8 +126,9 @@ class GameScene: BaseSKScene {
                 node.isPaused = false
             }
             
-            childNode(withName: "MobRoot")?.run(.fadeOut(withDuration: 1))
-            addChild(node)
+            childNode(withName: "Player")?.removeFromParent()
+            mobRootNode?.run(.fadeOut(withDuration: 1))
+            interstitialRootNode?.addChild(node)
         }
     }
 }

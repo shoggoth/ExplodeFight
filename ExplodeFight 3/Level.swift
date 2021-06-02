@@ -56,7 +56,7 @@ struct StateDrivenLevel: Level {
             
             (node as? SKLabelNode)?.text = name
             
-            scene.addChild(node)
+            scene.interstitialRootNode?.addChild(node)
             node.run(.sequence([.customAction(withDuration: 0) { node, _ in node.reset() }, .wait(forDuration: 2.3), SKAction(named: "ZoomFadeOut")!, .removeFromParent()]))
             node.isPaused = false
         }
@@ -83,7 +83,7 @@ struct StateDrivenLevel: Level {
         
         if let node = Interstitial.postambleNode {
             
-            scene.addChild(node)
+            scene.interstitialRootNode?.addChild(node)
             node.reset()
             
             node.run(.sequence([.wait(forDuration: 10.0),
@@ -96,6 +96,7 @@ struct StateDrivenLevel: Level {
     
     func teardown(scene: GameScene) {
         
+        scene.interstitialRootNode?.removeAllChildren()
         mobSpawner.kill()
     }
 }
@@ -167,7 +168,7 @@ extension StateDrivenLevel {
                                 
                                 return entitySetup(node)
                             
-                            }) { scene.childNode(withName: "MobRoot")?.addChild(newNode) }
+                            }) { scene.mobRootNode?.addChild(newNode) }
                         }
                     }
                     
