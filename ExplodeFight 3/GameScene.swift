@@ -43,16 +43,7 @@ class GameScene: BaseSKScene {
         menLabel?.text = "MEN: \(men)"
 
         // Setup Player
-        if let node = childNode(withName: "Player"), let entity = node.entity {
-            
-            let playerDesc = Player(name: "Player", maxSpeed: 600, pointValue: 100, position: node.position, rotation: node.zRotation)
-
-            entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
-            entity.addComponent(PlayerControlComponent(joystick: joystick))
-            entity.addComponent(StateComponent(states: playerDesc.makeStates(node: node, scene: self)))
-            //entity.addComponent(ContactComponent { node in if node.name == "Ship" { self.gameOver() }})
-            entity.addComponent(DebugComponent())
-        }
+        createPlayer()
 
         // Create initial level
         loadNextLevel()
@@ -98,15 +89,7 @@ class GameScene: BaseSKScene {
         score = score.add(add: s)
     }
     
-    // MARK: Player events
-    
-    func playerDeath() {
-        
-        men -= 1
-        self.menLabel?.text = "MEN: \(men)"
-
-        if men <= 0 { gameOver() }
-    }
+    // MARK: Game events
     
     private func gameOver() {
         
@@ -126,10 +109,42 @@ class GameScene: BaseSKScene {
                 node.isPaused = false
             }
             
-            childNode(withName: "Player")?.removeFromParent()
+            destroyPlayer()
             mobRootNode?.run(.fadeOut(withDuration: 1))
             interstitialRootNode?.addChild(node)
         }
+    }
+}
+
+// MARK: - Player functions -
+
+extension GameScene {
+    
+    func createPlayer() {
+
+        if let node = childNode(withName: "Player"), let entity = node.entity {
+            
+            let playerDesc = Player(name: "Player", maxSpeed: 600, pointValue: 100, position: node.position, rotation: node.zRotation)
+
+            entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
+            entity.addComponent(PlayerControlComponent(joystick: joystick))
+            entity.addComponent(StateComponent(states: playerDesc.makeStates(node: node, scene: self)))
+            entity.addComponent(ContactComponent { node in if node.name == "Ship" { entity.component(ofType: StateComponent.self)?.stateMachine.enter(PlayerState.ExplodeState.self) }})
+            //entity.addComponent(DebugComponent())
+        }
+    }
+    
+    func destroyPlayer() {
+        
+        childNode(withName: "Player")?.removeFromParent()
+    }
+    
+    func playerDeath() {
+        
+        men -= 1
+        self.menLabel?.text = "MEN: \(men)"
+
+        if men <= 0 { gameOver() }
     }
 }
 
