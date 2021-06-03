@@ -2,7 +2,7 @@
 master
 
 ## Current Tasks
-- Game over, player respawn, life counter and hi score
+- Hi Score display 
 - Pickups and level end postamble
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 
@@ -20,6 +20,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
+- Game over, player respawn, life counter and hi score submit
 - Need a state machine in the GameScene to stop the gameover state being called while the animation is running still.
 - Spawner preload and kill only those nodes which contain entities functionality.
 - Create a warpable sprite. __mob/warp__

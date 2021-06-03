@@ -93,10 +93,12 @@ class GameScene: BaseSKScene {
     
     private func gameOver() {
         
+        // Level nullify
         let oldLevel = level
         level?.teardown(scene: self)
         level = nil
         
+        // Game over message and scene load action.
         if let node = Interstitial.gameOverNode {
             
             node.reset() { _ in
@@ -109,10 +111,13 @@ class GameScene: BaseSKScene {
                 node.isPaused = false
             }
             
-            destroyPlayer()
             mobRootNode?.run(.fadeOut(withDuration: 1))
             interstitialRootNode?.addChild(node)
         }
+        
+        destroyPlayer()
+        
+        ScoreManager.submitHiScore(boardIdentifier: "hiScore", score: score)
     }
 }
 
