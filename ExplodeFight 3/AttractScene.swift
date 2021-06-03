@@ -97,9 +97,23 @@ class AttractScene: BaseSKScene {
                 
                 destinationNode.addChild(sourceNode)
                 
+                var yPos = CGFloat(-48)
                 ScoreManager.loadHiScores() { _, scores in
                     
-                    print("Scores: \(String(describing: scores))")
+                    scores?.forEach { score in
+                        
+                        let label = SKLabelNode(text: "\(score.player.alias) : \(score.value)")
+                        label.alpha = 1.0
+                        label.fontName = "Robotron"
+                        label.fontSize = 24
+                        label.position = CGPoint(x: 0, y: yPos)
+                        label.horizontalAlignmentMode = .center
+                        label.verticalAlignmentMode = .baseline
+
+                        sourceNode.addChild(label)
+                        
+                        yPos -= 24
+                    }
                     
                     sourceNode.isPaused = false
                 }
