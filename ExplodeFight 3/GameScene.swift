@@ -94,7 +94,6 @@ class GameScene: BaseSKScene {
     private func gameOver() {
         
         // Level nullify
-        let oldLevel = level
         level?.teardown(scene: self)
         level = nil
         
@@ -104,7 +103,6 @@ class GameScene: BaseSKScene {
             node.reset() { _ in
                 node.run(.sequence([.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .removeFromParent(), .customAction(withDuration: 0) { _,_ in
                     
-                    oldLevel?.teardown(scene: self)
                     DispatchQueue.main.asyncAfter(deadline: .now() + Defaults.gameOverTiming) { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }
 
                 }]))

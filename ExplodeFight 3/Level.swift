@@ -56,7 +56,9 @@ struct StateDrivenLevel: Level {
             
             (node as? SKLabelNode)?.text = name
             
+            if (node.parent != nil) { node.removeFromParent() }
             scene.interstitialRootNode?.addChild(node)
+            
             node.run(.sequence([.customAction(withDuration: 0) { node, _ in node.reset() }, .wait(forDuration: 2.3), SKAction(named: "ZoomFadeOut")!, .removeFromParent()]))
             node.isPaused = false
         }
@@ -83,6 +85,7 @@ struct StateDrivenLevel: Level {
         
         if let node = Interstitial.postambleNode {
             
+            if (node.parent != nil) { node.removeFromParent() }
             scene.interstitialRootNode?.addChild(node)
             node.reset()
             

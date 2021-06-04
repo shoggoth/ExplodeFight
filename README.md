@@ -2,7 +2,6 @@
 master
 
 ## Current Tasks
-- Fix interstit root node crash bug
 - Pickups and level end postamble
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 
@@ -20,6 +19,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
+- Fix interstit root node crash bug - it seems to be the level label that is causing the crash
 - Hi Score display 
 - Game over, player respawn, life counter and hi score submit
 - Need a state machine in the GameScene to stop the gameover state being called while the animation is running still.
