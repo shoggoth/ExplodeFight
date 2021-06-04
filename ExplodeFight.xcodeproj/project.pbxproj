@@ -14,6 +14,7 @@
 		FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF080698256BD29700F2EBA7 /* GameViewController.swift */; };
 		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
+		FF129B47266A56BA00683407 /* Pickups.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF129B46266A56BA00683407 /* Pickups.sks */; };
 		FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21CD6425EE503900873CD3 /* Weapon.swift */; };
 		FF29B157265CF197000B4353 /* TextEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29B156265CF197000B4353 /* TextEffects.swift */; };
 		FF29B159265FA6F7000B4353 /* ContactComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29B158265FA6F7000B4353 /* ContactComponent.swift */; };
@@ -40,7 +41,6 @@
 		FF88FB5325B1F38300B09BD8 /* AttractScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF88FB5225B1F38300B09BD8 /* AttractScene.sks */; };
 		FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF95A51D25792F9B00954B50 /* SplashScene.sks */; };
 		FF95A5202579303800954B50 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95A51F2579303800954B50 /* SplashScene.swift */; };
-		FFA03DBD26663369008FF8E2 /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA03DBC26663369008FF8E2 /* Interstitial.swift */; };
 		FFA0F45C261CA1380009EDDC /* Explode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0F45B261CA1380009EDDC /* Explode.swift */; };
 		FFA0F45E261CA1490009EDDC /* explode.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFA0F45D261CA1490009EDDC /* explode.fsh */; };
 		FFC222A8256EB9D400CFA23F /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; };
@@ -97,6 +97,7 @@
 		FF08069B256BD29700F2EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF129B46266A56BA00683407 /* Pickups.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Pickups.sks; sourceTree = "<group>"; };
 		FF21CD6425EE503900873CD3 /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		FF29B156265CF197000B4353 /* TextEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEffects.swift; sourceTree = "<group>"; };
 		FF29B158265FA6F7000B4353 /* ContactComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactComponent.swift; sourceTree = "<group>"; };
@@ -124,7 +125,6 @@
 		FF88FB5225B1F38300B09BD8 /* AttractScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttractScene.sks; sourceTree = "<group>"; };
 		FF95A51D25792F9B00954B50 /* SplashScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SplashScene.sks; sourceTree = "<group>"; };
 		FF95A51F2579303800954B50 /* SplashScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
-		FFA03DBC26663369008FF8E2 /* Interstitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interstitial.swift; sourceTree = "<group>"; };
 		FFA0F45B261CA1380009EDDC /* Explode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explode.swift; sourceTree = "<group>"; };
 		FFA0F45D261CA1490009EDDC /* explode.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = explode.fsh; sourceTree = "<group>"; };
 		FFC222A7256EB9D400CFA23F /* GameControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,8 +174,8 @@
 				FFD759082660FB4500F1889C /* Player.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
 				FF783439264292070063F453 /* Interstitial.sks */,
-				FFA03DBC26663369008FF8E2 /* Interstitial.swift */,
 				FF4E81B82608EF1C006B1050 /* Mobs.sks */,
+				FF129B46266A56BA00683407 /* Pickups.sks */,
 				FF2C03D1263C12B500EDC46C /* Mob.swift */,
 				FF3EB5AD25FB99F80073D402 /* Level.swift */,
 				FFE2CA672630327500189FBA /* Score.swift */,
@@ -420,6 +420,7 @@
 				FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */,
 				FF4E81B92608EF1C006B1050 /* Mobs.sks in Resources */,
 				FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */,
+				FF129B47266A56BA00683407 /* Pickups.sks in Resources */,
 				FFA0F45E261CA1490009EDDC /* explode.fsh in Resources */,
 				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
 				FFF2E58E264BE6F60060FE45 /* Assets.xcassets in Resources */,
@@ -466,7 +467,6 @@
 				FFC67E41264545AE003926E9 /* Wave.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
 				FFE2CA682630327500189FBA /* Score.swift in Sources */,
-				FFA03DBD26663369008FF8E2 /* Interstitial.swift in Sources */,
 				FF33B289260DF951000E92EE /* SoundManager.swift in Sources */,
 				FFF2E58A2649724A0060FE45 /* Global.swift in Sources */,
 				FF29B159265FA6F7000B4353 /* ContactComponent.swift in Sources */,

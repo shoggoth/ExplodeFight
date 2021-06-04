@@ -52,14 +52,14 @@ struct StateDrivenLevel: Level {
     
     func setup(scene: GameScene) {
         
-        if let node = Interstitial.getReadyNode {
+        if let node = scene.interScene.childNode(withName: "GetReady/Root")?.copy() as? SKNode {
             
             (node as? SKLabelNode)?.text = name
             
-            if (node.parent != nil) { node.removeFromParent() }
-            scene.interstitialRootNode?.addChild(node)
+            node.reset()
+            scene.interstitialRootNode.addChild(node)
             
-            node.run(.sequence([.customAction(withDuration: 0) { node, _ in node.reset() }, .wait(forDuration: 2.3), SKAction(named: "ZoomFadeOut")!, .removeFromParent()]))
+            node.run(.sequence([.wait(forDuration: 2.3), SKAction(named: "ZoomFadeOut")!, .removeFromParent()]))
             node.isPaused = false
         }
     }
@@ -83,12 +83,11 @@ struct StateDrivenLevel: Level {
         
         scene.addScore(score: 31337)
         
-        if let node = Interstitial.postambleNode {
-            
-            if (node.parent != nil) { node.removeFromParent() }
-            scene.interstitialRootNode?.addChild(node)
+        if let node = scene.interScene.childNode(withName: "Bonus/Root")?.copy() as? SKNode {
+
             node.reset()
-            
+            scene.interstitialRootNode.addChild(node)
+
             node.run(.sequence([.wait(forDuration: 10.0),
                                 SKAction(named: "ZoomFadeOut")!,
                                 .removeFromParent(),
@@ -99,7 +98,7 @@ struct StateDrivenLevel: Level {
     
     func teardown(scene: GameScene) {
         
-        scene.interstitialRootNode?.removeAllChildren()
+        scene.interstitialRootNode.removeAllChildren()
         mobSpawner.kill()
     }
 }
@@ -171,7 +170,7 @@ extension StateDrivenLevel {
                                 
                                 return entitySetup(node)
                             
-                            }) { scene.mobRootNode?.addChild(newNode) }
+                            }) { scene.mobRootNode.addChild(newNode) }
                         }
                     }
                     

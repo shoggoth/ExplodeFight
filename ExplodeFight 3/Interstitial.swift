@@ -11,7 +11,7 @@ import SpriteKit
 struct Interstitial {
     
     private static let interScene = { SKScene(fileNamed: "Interstitial") }()
-    static let getReadyNode = { interScene?.orphanedChildNode(withName: "GetReady/Root") }()
-    static let postambleNode = { interScene?.orphanedChildNode(withName: "Bonus/Root") }()
-    static let gameOverNode = { interScene?.orphanedChildNode(withName: "GameOver/Root") }()
+    static let getReadyNode = { interScene?.orphanedChildNode(withName: "GetReady/Root")?.copy() as? SKNode }()
+    static let postambleNode = { interScene?.orphanedChildNode(withName: "Bonus/Root")?.copy() as? SKNode }()
+    static let gameOverNode = { interScene?.orphanedChildNode(withName: "GameOver/Root")?.copy() as? SKNode }()
 }

@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- Redo game and level state machines.
 - Pickups and level end postamble
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 
@@ -10,16 +11,16 @@ master
 - Start adding mob experiments on the mob/ branches.
 - Add and remove physics properties on recycle and explode.
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
-- (Obsolete?) Use the warp sprite to implement the pixel shatter explode as it doesn't seem to alter the physics bounds like a scale does and can be made non-linear.
 
 ## Bugs
-- Interstitial root node needed so that if bonus etc is in progress when game over, it can be removed.
 
 ## Questions
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
 - Fix interstit root node crash bug - it seems to be the level label that is causing the crash
+- Interstitial root node needed so that if bonus etc is in progress when game over, it can be removed.
+- Use the warp sprite to implement the pixel shatter explode as it doesn't seem to alter the physics bounds like a scale does and can be made non-linear.
 - Hi Score display 
 - Game over, player respawn, life counter and hi score submit
 - Need a state machine in the GameScene to stop the gameover state being called while the animation is running still.

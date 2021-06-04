@@ -17,9 +17,10 @@ class GameScene: BaseSKScene {
     
     var level: Level?
 
-    var mobRootNode: SKNode? { childNode(withName: "MobRoot") }
-    var interstitialRootNode: SKNode? { childNode(withName: "ISRoot") }
-    
+    var mobRootNode: SKNode { childNode(withName: "MobRoot")! }
+    var interstitialRootNode: SKNode { childNode(withName: "ISRoot")! }
+    let interScene = { SKScene(fileNamed: "Interstitial")! }()
+
     private var men = 3
     private var menLabel: SKLabelNode?
 
@@ -73,10 +74,10 @@ class GameScene: BaseSKScene {
                 
                 self.level?.teardown(scene: self)
 
-                return CountdownTimer(countDownTime: 15.0)
+                return CountdownTimer(countDownTime: 3.0)
             },
             StateDrivenLevel.BonusState() { self.level?.postamble(scene: self) },
-            StateDrivenLevel.EndedState() { self.loadNextLevel() }
+            StateDrivenLevel.EndedState() { if self.level != nil { self.loadNextLevel() }},
         ])
         
         level?.setup(scene: self)
@@ -98,7 +99,9 @@ class GameScene: BaseSKScene {
         level = nil
         
         // Game over message and scene load action.
-        if let node = Interstitial.gameOverNode {
+        if let node = interScene.childNode(withName: "GameOver/Root")?.copy() as? SKNode {
+
+            node.removeAllChildren()
             
             node.reset() { _ in
                 node.run(.sequence([.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .removeFromParent(), .customAction(withDuration: 0) { _,_ in
@@ -109,8 +112,8 @@ class GameScene: BaseSKScene {
                 node.isPaused = false
             }
             
-            mobRootNode?.run(.fadeOut(withDuration: 1))
-            interstitialRootNode?.addChild(node)
+            mobRootNode.run(.fadeOut(withDuration: 1))
+            interstitialRootNode.addChild(node)
         }
         
         destroyPlayer()
