@@ -25,6 +25,8 @@ struct Configuration: Decodable {
 struct Defaults {
     
     // Hard coded
+    static let initialNumberofMen = 3
+
     static let splashTiming = (nextPhaseTime: 1.5, crossFadeDuration: 0.5)
     static let gameOverTiming = 1.5
     

@@ -21,7 +21,7 @@ class GameScene: BaseSKScene {
     var interstitialRootNode: SKNode { childNode(withName: "ISRoot")! }
     let interScene = { SKScene(fileNamed: "Interstitial")! }()
 
-    private var men = 3
+    private var men = Defaults.initialNumberofMen
     private var menLabel: SKLabelNode?
 
     private var score = Score(dis: 0, acc: 0)
