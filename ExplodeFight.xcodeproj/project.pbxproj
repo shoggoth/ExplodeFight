@@ -31,6 +31,7 @@
 		FF49713725B72FB30083C36B /* StateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49713625B72FB30083C36B /* StateComponent.swift */; };
 		FF4E81B52608A0EB006B1050 /* DebugComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4E81B42608A0EB006B1050 /* DebugComponent.swift */; };
 		FF4E81B92608EF1C006B1050 /* Mobs.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF4E81B82608EF1C006B1050 /* Mobs.sks */; };
+		FF59B134266BA82F00A6FDF1 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59B133266BA82F00A6FDF1 /* States.swift */; };
 		FF5D7E19260CCBD300F1956E /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */; };
 		FF67F26B260CE957008D4517 /* Explode.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF67F26A260CE7CA008D4517 /* Explode.caf */; };
 		FF78343A264292070063F453 /* Interstitial.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF783439264292070063F453 /* Interstitial.sks */; };
@@ -115,6 +116,7 @@
 		FF49713625B72FB30083C36B /* StateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateComponent.swift; sourceTree = "<group>"; };
 		FF4E81B42608A0EB006B1050 /* DebugComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugComponent.swift; sourceTree = "<group>"; };
 		FF4E81B82608EF1C006B1050 /* Mobs.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mobs.sks; sourceTree = "<group>"; };
+		FF59B133266BA82F00A6FDF1 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AttractLogo.fsh; sourceTree = "<group>"; };
 		FF67F26A260CE7CA008D4517 /* Explode.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Explode.caf; sourceTree = "<group>"; };
 		FF783439264292070063F453 /* Interstitial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Interstitial.sks; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				FFE2CA7F263036F400189FBA /* Tests.swift */,
+				FF59B133266BA82F00A6FDF1 /* States.swift */,
 				FFE2CA81263036F400189FBA /* Info.plist */,
 			);
 			path = Tests;
@@ -477,6 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF59B134266BA82F00A6FDF1 /* States.swift in Sources */,
 				FFE2CA88263037ED00189FBA /* Score.swift in Sources */,
 				FFE2CA80263036F400189FBA /* Tests.swift in Sources */,
 			);

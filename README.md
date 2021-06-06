@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- Look at reference nodes for interstitials https://stackoverflow.com/questions/36388900/add-skreferencenode-programmatically
 - Redo game and level state machines.
 - Pickups and level end postamble
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
