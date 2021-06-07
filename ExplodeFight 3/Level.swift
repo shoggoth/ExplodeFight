@@ -36,6 +36,7 @@ struct StateDrivenLevel: Level {
     private  let stateMachine: GKStateMachine
     
     private let mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
+    private let pickupSpawner = SceneSpawner(scene: SKScene(fileNamed: "Pickups")!)
 
     init(levelNum: Int, name: String, states: [GKState]) {
         
@@ -73,6 +74,7 @@ struct StateDrivenLevel: Level {
         ruleSystem.evaluate()
         
         mobSpawner.update(deltaTime: deltaTime)
+        pickupSpawner.update(deltaTime: deltaTime)
 
         if ruleSystem.grade(forFact: "levelIsOver" as NSObjectProtocol) >= 1.0 { stateMachine.enter(BonusState.self) }
         
@@ -100,6 +102,7 @@ struct StateDrivenLevel: Level {
         
         scene.interstitialRootNode.removeAllChildren()
         mobSpawner.kill()
+        pickupSpawner.kill()
     }
 }
 
@@ -178,6 +181,8 @@ extension StateDrivenLevel {
                 }
 
                 wave(s: ["Ship", "Mob", "AniMob", "Robot"][Int.random(in: 0...3)])
+                
+                if let pickupNode = pickupSpawner.spawn(name: "Tomato") { scene.mobRootNode.addChild(pickupNode) }
             }
         }
     }
