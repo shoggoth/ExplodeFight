@@ -14,11 +14,11 @@
 		FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF080698256BD29700F2EBA7 /* GameViewController.swift */; };
 		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
+		FF5F860D266E1779004E6648 /* Reference.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF5F860C266E1779004E6648 /* Reference.sks */; };
 		FF7C69A6257E7D4D004B67FE /* RobotEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C69A5257E7D4D004B67FE /* RobotEntity.swift */; };
 		FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF95A51D25792F9B00954B50 /* SplashScene.sks */; };
 		FF95A5202579303800954B50 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95A51F2579303800954B50 /* SplashScene.swift */; };
 		FF95A524257A57A300954B50 /* Robot.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF95A523257A57A300954B50 /* Robot.xcassets */; };
-		FF95A526257A582F00954B50 /* Spawn.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF95A525257A582F00954B50 /* Spawn.sks */; };
 		FFC222A8256EB9D400CFA23F /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; };
 		FFC222A9256EB9D400CFA23F /* GameControls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC222D9256FCD4100CFA23F /* LaunchScreen.storyboard */; };
@@ -52,6 +52,7 @@
 		FF08069B256BD29700F2EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF5F860C266E1779004E6648 /* Reference.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Reference.sks; sourceTree = "<group>"; };
 		FF7C69A5257E7D4D004B67FE /* RobotEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotEntity.swift; sourceTree = "<group>"; };
 		FF95A51D25792F9B00954B50 /* SplashScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SplashScene.sks; sourceTree = "<group>"; };
 		FF95A51F2579303800954B50 /* SplashScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 				FF7C69A5257E7D4D004B67FE /* RobotEntity.swift */,
 				FFDFED6D257E4C8D007004EC /* DebugComponent.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
+				FF5F860C266E1779004E6648 /* Reference.sks */,
 				FF95A525257A582F00954B50 /* Spawn.sks */,
 				FF95A51F2579303800954B50 /* SplashScene.swift */,
 				FF95A51D25792F9B00954B50 /* SplashScene.sks */,
@@ -196,10 +198,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */,
-				FF95A526257A582F00954B50 /* Spawn.sks in Resources */,
 				FF95A524257A57A300954B50 /* Robot.xcassets in Resources */,
 				FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */,
 				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
+				FF5F860D266E1779004E6648 /* Reference.sks in Resources */,
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,
 				FF080695256BD29700F2EBA7 /* Actions.sks in Resources */,

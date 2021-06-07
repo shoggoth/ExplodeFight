@@ -13,77 +13,45 @@ import GameControls
 
 class GameScene: BaseSKScene {
     
-    private lazy var spawnNode = { self.childNode(withName: "//Spawner_0") as? SpawnSKNode }()
+    private lazy var referenceNode: SKReferenceNode? = { print("foo"); return SKReferenceNode(fileNamed: "Reference") }()
 
+    var retainer: SKNode?
+    
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
         
         // Set up user control
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(spawn)))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addRef)))
         view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(clear)))
 
         // Set up scene physics
         self.physicsBody = SKPhysicsBody (edgeLoopFrom: self.frame)
     }
     
-    @objc func spawn(_ tap: UITapGestureRecognizer) {
+    @objc func addRef(_ tap: UITapGestureRecognizer) {
         
-        if trackEntity == nil { trackEntity = spawnNode?.spawnEntityRobotAndReturn() }
-        else { spawnNode?.spawnEntityRobot() }
+        if let node = referenceNode {
+            
+            node.childNode(withName: "//Origin_Root")?.isPaused = false
+            addChild(node)
+        }
+    }
+    
+    @objc func addSubNode(_ tap: UITapGestureRecognizer) {
+        
+        if let originRootNode = referenceNode?.childNode(withName: "//Origin_Root") {
+            
+            originRootNode.removeFromParent()
+            originRootNode.isPaused = false
+            retainer = originRootNode
+        }
+        
+        if let node = retainer { addChild(node) }
     }
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
         
-        trackEntity = nil
-        spawnNode?.spawner?.kill()
-    }
-    
-    override func update(deltaTime: TimeInterval) {
-        
-        super.update(deltaTime: deltaTime)
-        
-        spawnNode?.spawner?.update(deltaTime: deltaTime)
-        trackEntity?.update(deltaTime: deltaTime)
-    }
-}
-
-var trackEntity: RobotEntity?
-
-// MARK: - Spawn with entity
-
-extension SpawnSKNode {
-    
-    func spawnEntityRobot() {
-        
-        spawn(name: "RobotNoG") { robotNode in
-            
-            let robotEntity = RobotEntity(track: trackEntity?.agent)
-
-            robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
-
-            robotNode.position = CGPoint(x: (CGFloat(arc4random() % 100) - 50) * 0.0001, y: 0.0)
-
-            return robotEntity
-        }
-    }
-    
-    func spawnEntityRobotAndReturn() -> RobotEntity {
-        
-        let robotEntity = RobotEntity()
-
-        spawn(name: "RobotNoG") { robotNode in
-            
-            robotEntity.addComponent(GKSKNodeComponent(node: robotNode))
-            
-            robotNode.position = CGPoint.zero
-
-            //robotEntity.addComponent(DebugComponent())
-            //robotEntity.addComponent(DespawnNodeComponent(node: robotNode))
-            
-            return nil
-        }
-        
-        return robotEntity
+        self.removeAllChildren()
     }
 }
