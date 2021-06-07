@@ -11,52 +11,39 @@ import GameplayKit
 
 class States: XCTestCase {
 
-    let states = [BeginState()]
-    var stateMachine: GKStateMachine?
-    
-    override func setUpWithError() throws {
-        
-        // This method is called before the invocation of each test method in the class.
-        stateMachine = GKStateMachine(states: states)
-    }
-
-    override func tearDownWithError() throws {
-        
-        // This method is called after the invocation of each test method in the class.
-    }
-
-    private func enterInitialState() {
-        
-        // Enter initial state
-        if let firstState = states.first { stateMachine?.enter(type(of: firstState)) }
-    }
-    
     func testInitialState() throws {
 
-        XCTAssertNil(stateMachine?.currentState)
-        
-        enterInitialState()
+        let states = [BeginState()]
+        let stateMachine = GKStateMachine(states: states)
 
-        XCTAssertNotNil(stateMachine?.currentState)
-        XCTAssertTrue(stateMachine?.currentState is BeginState)
+        XCTAssertNil(stateMachine.currentState)
+        
+        if let firstState = states.first { stateMachine.enter(type(of: firstState)) }
+
+        XCTAssertNotNil(stateMachine.currentState)
+        XCTAssertTrue(stateMachine.currentState is BeginState)
+        
+        // Can enter the state even though it isn't in the state machine
+        XCTAssertTrue(stateMachine.canEnterState(RunLevelState.self))
     }
 
     func testValidTransitions() throws {
         
-        enterInitialState()
-
-        XCTAssertTrue(stateMachine?.canEnterState(RunLevelState.self) ?? false)
+        let states = [BeginState(), RunLevelState()]
+        let stateMachine = GKStateMachine(states: states)
         
-        stateMachine?.enter(RunLevelState.self)
-        stateMachine?.update(deltaTime: 1)
-        XCTAssertTrue(stateMachine?.currentState is RunLevelState)
+        if let firstState = states.first { stateMachine.enter(type(of: firstState)) }
+
+        XCTAssertTrue(stateMachine.canEnterState(RunLevelState.self))
+        
+        stateMachine.enter(RunLevelState.self)
+        XCTAssertTrue(stateMachine.currentState is RunLevelState)
     }
 
     func testInvalidTransitions() throws {
         
-        enterInitialState()
-
-        XCTAssertTrue(stateMachine?.currentState is BeginState)
+        let states = [BeginState()]
+        let stateMachine = GKStateMachine(states: states)
     }
 
     class GameState: GKState {
