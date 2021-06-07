@@ -2,9 +2,8 @@
 master
 
 ## Current Tasks
-- Look at reference nodes for interstitials https://stackoverflow.com/questions/36388900/add-skreferencenode-programmatically
-- Redo game and level state machines.
 - Pickups and level end postamble
+- Redo game and level state machines.
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 
 ## Next Tasks
@@ -19,6 +18,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly)
 
 ### Completed Tasks
+- Look at reference nodes for interstitials https://stackoverflow.com/questions/36388900/add-skreferencenode-programmatically
 - Fix interstit root node crash bug - it seems to be the level label that is causing the crash
 - Interstitial root node needed so that if bonus etc is in progress when game over, it can be removed.
 - Use the warp sprite to implement the pixel shatter explode as it doesn't seem to alter the physics bounds like a scale does and can be made non-linear.

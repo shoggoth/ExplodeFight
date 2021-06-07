@@ -52,7 +52,7 @@ struct StateDrivenLevel: Level {
     
     func setup(scene: GameScene) {
         
-        if let node = scene.interScene.childNode(withName: "GetReady/Root")?.copy() as? SKNode {
+        if let node = Interstitial.getReadyNode {
             
             (node as? SKLabelNode)?.text = name
             
@@ -81,14 +81,14 @@ struct StateDrivenLevel: Level {
     
     func postamble(scene: GameScene) {
         
-        scene.addScore(score: 31337)
+        scene.addScore(score: 3)
         
-        if let node = scene.interScene.childNode(withName: "Bonus/Root")?.copy() as? SKNode {
+        if let node = Interstitial.bonusNode {
 
             node.reset()
             scene.interstitialRootNode.addChild(node)
 
-            node.run(.sequence([.wait(forDuration: 10.0),
+            node.run(.sequence([.wait(forDuration: 3.0),
                                 SKAction(named: "ZoomFadeOut")!,
                                 .removeFromParent(),
                                 .customAction(withDuration: 0) { _,_ in stateMachine.enter(EndedState.self) }]))

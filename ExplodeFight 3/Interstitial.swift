@@ -10,8 +10,8 @@ import SpriteKit
 
 struct Interstitial {
     
-    private static let interScene = { SKScene(fileNamed: "Interstitial") }()
-    static let getReadyNode = { interScene?.orphanedChildNode(withName: "GetReady/Root")?.copy() as? SKNode }()
-    static let postambleNode = { interScene?.orphanedChildNode(withName: "Bonus/Root")?.copy() as? SKNode }()
-    static let gameOverNode = { interScene?.orphanedChildNode(withName: "GameOver/Root")?.copy() as? SKNode }()
+    private static var interRef = { SKReferenceNode(fileNamed: "Interstitial") }()
+    static var getReadyNode = interRef?.orphanedChildNode(withName: "//GetReady/Root")
+    static var gameOverNode = interRef?.orphanedChildNode(withName: "//GameOver/Root")
+    static var bonusNode = interRef?.orphanedChildNode(withName: "//Bonus/Root")
 }

@@ -33,6 +33,7 @@
 		FF4E81B92608EF1C006B1050 /* Mobs.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF4E81B82608EF1C006B1050 /* Mobs.sks */; };
 		FF59B134266BA82F00A6FDF1 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59B133266BA82F00A6FDF1 /* States.swift */; };
 		FF5D7E19260CCBD300F1956E /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */; };
+		FF5F860F266E310F004E6648 /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F860E266E310F004E6648 /* Interstitial.swift */; };
 		FF67F26B260CE957008D4517 /* Explode.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF67F26A260CE7CA008D4517 /* Explode.caf */; };
 		FF78343A264292070063F453 /* Interstitial.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF783439264292070063F453 /* Interstitial.sks */; };
 		FF8391E5260B3AF40032D8EA /* StarField.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF8391E4260B3AF30032D8EA /* StarField.sks */; };
@@ -118,6 +119,7 @@
 		FF4E81B82608EF1C006B1050 /* Mobs.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Mobs.sks; sourceTree = "<group>"; };
 		FF59B133266BA82F00A6FDF1 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AttractLogo.fsh; sourceTree = "<group>"; };
+		FF5F860E266E310F004E6648 /* Interstitial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interstitial.swift; sourceTree = "<group>"; };
 		FF67F26A260CE7CA008D4517 /* Explode.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Explode.caf; sourceTree = "<group>"; };
 		FF783439264292070063F453 /* Interstitial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Interstitial.sks; sourceTree = "<group>"; };
 		FF8391E4260B3AF30032D8EA /* StarField.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StarField.sks; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				FF080696256BD29700F2EBA7 /* GameScene.swift */,
 				FFD759082660FB4500F1889C /* Player.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
+				FF5F860E266E310F004E6648 /* Interstitial.swift */,
 				FF783439264292070063F453 /* Interstitial.sks */,
 				FF4E81B82608EF1C006B1050 /* Mobs.sks */,
 				FF129B46266A56BA00683407 /* Pickups.sks */,
@@ -470,6 +473,7 @@
 				FFC67E41264545AE003926E9 /* Wave.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
 				FFE2CA682630327500189FBA /* Score.swift in Sources */,
+				FF5F860F266E310F004E6648 /* Interstitial.swift in Sources */,
 				FF33B289260DF951000E92EE /* SoundManager.swift in Sources */,
 				FFF2E58A2649724A0060FE45 /* Global.swift in Sources */,
 				FF29B159265FA6F7000B4353 /* ContactComponent.swift in Sources */,

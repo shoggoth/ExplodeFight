@@ -19,8 +19,7 @@ class GameScene: BaseSKScene {
 
     var mobRootNode: SKNode { childNode(withName: "MobRoot")! }
     var interstitialRootNode: SKNode { childNode(withName: "ISRoot")! }
-    let interScene = { SKScene(fileNamed: "Interstitial")! }()
-
+    
     private var men = Defaults.initialNumberofMen
     private var menLabel: SKLabelNode?
 
@@ -99,14 +98,12 @@ class GameScene: BaseSKScene {
         level = nil
         
         // Game over message and scene load action.
-        if let node = interScene.childNode(withName: "GameOver/Root")?.copy() as? SKNode {
-
-            node.removeAllChildren()
+        if let node = Interstitial.gameOverNode {
             
             node.reset() { _ in
                 node.run(.sequence([.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .removeFromParent(), .customAction(withDuration: 0) { _,_ in
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + Defaults.gameOverTiming) { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }
+                    DispatchQueue.main.async { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }
 
                 }]))
                 node.isPaused = false
