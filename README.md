@@ -2,6 +2,8 @@
 master
 
 ## Current Tasks
+- Weapons with actions not physics
+- Enemies can shot web.
 - Pickups and level end postamble
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 
