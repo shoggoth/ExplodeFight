@@ -134,10 +134,9 @@ extension GameScene {
             entity.addComponent(StateComponent(states: playerDesc.makeStates(node: node, scene: self)))
             entity.addComponent(ContactComponent { node in
                 
-                if node.physicsBody?.categoryBitMask ?? 0 | 4 != 0 { print("Picking up") }
+                if node.physicsBody?.categoryBitMask ?? 0 | 4 != 0 { print("Player picking up something.") }
                 if node.name == "Ship" { entity.component(ofType: StateComponent.self)?.stateMachine.enter(PlayerState.ExplodeState.self) }
             })
-            //entity.addComponent(DebugComponent())
         }
     }
     

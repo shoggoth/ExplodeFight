@@ -184,7 +184,21 @@ extension StateDrivenLevel {
 
                 wave(s: ["Ship", "Mob", "AniMob", "Robot"][Int.random(in: 0...3)])
                 
-                if let pickupNode = pickupSpawner.spawn(name: "Tomato") { scene.mobRootNode.addChild(pickupNode) }
+                if let pickupNode = pickupSpawner.spawn(name: "Tomato", completion: { node in
+                    
+                    node.position = CGPoint(x: CGFloat.random(in: -200...200), y: CGFloat.random(in: -200...200))
+                    let pickupEntity = GKEntity()
+                    
+                    pickupEntity.addComponent(ContactComponent { _ in
+                        
+                        scene.addScore(score: 999)
+                        
+                        pickupSpawner.kill(node: node)
+                    })
+                    
+                    return pickupEntity
+                    
+                }) { scene.mobRootNode.addChild(pickupNode) }
             }
         }
     }
