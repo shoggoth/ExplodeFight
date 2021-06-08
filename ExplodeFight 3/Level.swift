@@ -93,8 +93,10 @@ struct StateDrivenLevel: Level {
             node.run(.sequence([.wait(forDuration: 3.0),
                                 SKAction(named: "ZoomFadeOut")!,
                                 .removeFromParent(),
-                                .customAction(withDuration: 0) { _,_ in stateMachine.enter(EndedState.self) }]))
+                                .run { stateMachine.enter(EndedState.self) }]))
             node.isPaused = false
+            
+            if let tomRoot = node.childNode(withName: "SuccessLabel") { Bonus().countUpNodeBonus(root: tomRoot) }
         }
     }
     

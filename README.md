@@ -3,11 +3,12 @@ master
 
 ## Current Tasks
 - Pickups and level end postamble
-- Redo game and level state machines.
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 
 ## Next Tasks
 - Player warp-in state
+- Redo game and level state machines
+- Make attract message different each time round.
 - Start adding mob experiments on the mob/ branches.
 - Add and remove physics properties on recycle and explode.
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.

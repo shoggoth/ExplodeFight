@@ -101,7 +101,7 @@ class GameScene: BaseSKScene {
         if let node = Interstitial.gameOverNode {
             
             node.reset() { _ in
-                node.run(.sequence([.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .removeFromParent(), .customAction(withDuration: 0) { _,_ in
+                node.run(.sequence([.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .removeFromParent(), .run {
                     
                     DispatchQueue.main.async { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }
 
@@ -132,7 +132,11 @@ extension GameScene {
             entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
             entity.addComponent(PlayerControlComponent(joystick: joystick))
             entity.addComponent(StateComponent(states: playerDesc.makeStates(node: node, scene: self)))
-            entity.addComponent(ContactComponent { node in if node.name == "Ship" { entity.component(ofType: StateComponent.self)?.stateMachine.enter(PlayerState.ExplodeState.self) }})
+            entity.addComponent(ContactComponent { node in
+                
+                if node.physicsBody?.categoryBitMask ?? 0 | 4 != 0 { print("Picking up") }
+                if node.name == "Ship" { entity.component(ofType: StateComponent.self)?.stateMachine.enter(PlayerState.ExplodeState.self) }
+            })
             //entity.addComponent(DebugComponent())
         }
     }
