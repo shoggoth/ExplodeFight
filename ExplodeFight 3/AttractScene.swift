@@ -31,6 +31,9 @@ class AttractScene: BaseSKScene {
             Global.explodeShader.explode(node: explodeNode, toScale: vector_float2(1, 1), withSplits: vector_float2(1, 1), duration: 0)
         }
         
+        // Advance starfield sim time
+        if let starField = childNode(withName: "//StarField") as? SKEmitterNode { starField.advanceSimulationTime(5) }
+
         // Set up state phases
         let findSourceNode = { name in self.modeScene?.orphanedChildNode(withName: name) }
         
