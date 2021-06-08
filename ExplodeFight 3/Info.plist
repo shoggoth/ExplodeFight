@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>PrefersOpenGL</key>
-	<false/>
 	<key>ATSApplicationFontsPath</key>
 	<string>Fonts</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -26,6 +24,8 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>PrefersOpenGL</key>
+	<false/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Robotron.TTF</string>

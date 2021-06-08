@@ -36,9 +36,11 @@ class NodeCannon: Weapon {
         let firePos = direction * 64
         let fireVel = direction * 1024
         
-        bullet.physicsBody?.velocity = fireVel
         bullet.position = scene.convert(CGPoint.zero, from: emitNode) + firePos
-        
+
+        bullet.physicsBody?.velocity = fireVel
+        //bullet.run(.move(by: fireVel, duration: 2.0))
+         
         scene.addChild(bullet)
 
         bullet.fire { b in b.reset { _ in self.magazine?.insert(b, at: 0) }}
@@ -75,7 +77,6 @@ class RoundBullet: SKShapeNode, NodeBullet {
         //glowWidth = radius * 0.125
         strokeColor = .white
         
-        // TODO: Need physics for collision?
         physicsBody = {
             let body = SKPhysicsBody(circleOfRadius: radius)
             body.categoryBitMask = 0b0100
@@ -86,10 +87,11 @@ class RoundBullet: SKShapeNode, NodeBullet {
     
     func fire(completion: ((NodeBullet) -> Void)? = nil) {
 
-        // TODO: Use an action for the movement here abd allow the fire method to be switched between that and one propelled by physics velocity.
-        //run(.playSoundFileNamed("blast.caf", waitForCompletion: false))
-        run(.repeatForever(.rotate(byAngle: pi, duration: 1)))
-        run(.sequence([.wait(forDuration: 0.75), .fadeOut(withDuration: 0.25), .removeFromParent(), .run { self.reset { _ in completion?(self) }}]))
+        // TODO: Use an action for the movement here and allow the fire method to be switched between that and one propelled by physics velocity.
+        let s = SKAction.playSoundFileNamed("Laser.caf", waitForCompletion: false)
+        let t = SKAction.repeatForever(.rotate(byAngle: pi, duration: 1))
+        let u = SKAction.sequence([.wait(forDuration: 0.75), .fadeOut(withDuration: 0.25), .removeFromParent(), .run { self.reset { _ in completion?(self) }}])
+        run(.group([s, t, u]))
     }
 }
 

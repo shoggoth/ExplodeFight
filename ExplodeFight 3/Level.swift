@@ -168,6 +168,10 @@ extension StateDrivenLevel {
                                 mobEntity.addComponent(StateComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
                                 mobEntity.addComponent(ContactComponent { _ in node.entity?.component(ofType: StateComponent.self)?.stateMachine.enter(MobState.ExplodeState.self) })
                                 
+                                let fc = FireComponent()
+                                fc.fireVector = CGVector(angle: CGFloat.random(in: 0...pi * 2.0))
+                                mobEntity.addComponent(fc)
+                                
                                 return mobEntity
                             }
                             
