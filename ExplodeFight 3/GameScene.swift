@@ -13,7 +13,8 @@ import GameControls
 
 class GameScene: BaseSKScene {
     
-    private lazy var spawnNode = { self.childNode(withName: "//Spawner_0") as? SpawnSKNode }()
+    private lazy var spawnNode = { self.childNode(withName: "//Spawner_0") as! SpawnSKNode }()
+    private lazy var rttNode = { self.childNode(withName: "//RTT_Node") as! SKSpriteNode }()
 
     override func didMove(to view: SKView) {
         
@@ -29,20 +30,33 @@ class GameScene: BaseSKScene {
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
-        spawnNode?.spawnMultiRobots()
+        spawnNode.spawnMultiRobots()
     }
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
         
-        if tap.state == .began { spawnNode?.spawner?.kill(nodesWithName: "RobotAnim") }
-        if tap.state == .ended { spawnNode?.spawner?.kill(nodesWithName: "Robot") }
+        if tap.state == .began { spawnNode.spawner?.kill(nodesWithName: "RobotAnim") }
+        if tap.state == .ended { spawnNode.spawner?.kill(nodesWithName: "Robot") }
     }
     
     override func update(deltaTime: TimeInterval) {
         
         super.update(deltaTime: deltaTime)
         
-        spawnNode?.spawner?.update(deltaTime: deltaTime)
+        spawnNode.spawner?.update(deltaTime: deltaTime)
+        
+        renderTexture(to: rttNode)
+    }
+    
+    // MARK: RTT
+    
+    func renderTexture(to node: SKSpriteNode) {
+        
+        if let texture = self.view?.texture(from: scene!) {
+            
+            //rttNode.texture = texture
+            rttNode.run(.setTexture(texture, resize: true)) // https://www.hackingwithswift.com/example-code/games/how-to-change-a-sprites-texture-using-sktexture
+        }
     }
 }
 
