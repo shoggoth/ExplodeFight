@@ -15,6 +15,7 @@
 		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
 		FF129B47266A56BA00683407 /* Pickups.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF129B46266A56BA00683407 /* Pickups.sks */; };
+		FF2096242670AF0D00B05FA2 /* Laser.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF2096232670AF0D00B05FA2 /* Laser.caf */; };
 		FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21CD6425EE503900873CD3 /* Weapon.swift */; };
 		FF29B157265CF197000B4353 /* TextEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29B156265CF197000B4353 /* TextEffects.swift */; };
 		FF29B159265FA6F7000B4353 /* ContactComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29B158265FA6F7000B4353 /* ContactComponent.swift */; };
@@ -101,6 +102,7 @@
 		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF129B46266A56BA00683407 /* Pickups.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Pickups.sks; sourceTree = "<group>"; };
+		FF2096232670AF0D00B05FA2 /* Laser.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Laser.caf; sourceTree = "<group>"; };
 		FF21CD6425EE503900873CD3 /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		FF29B156265CF197000B4353 /* TextEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEffects.swift; sourceTree = "<group>"; };
 		FF29B158265FA6F7000B4353 /* ContactComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactComponent.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				FF67F26A260CE7CA008D4517 /* Explode.caf */,
+				FF2096232670AF0D00B05FA2 /* Laser.caf */,
 				FF33B288260DF951000E92EE /* SoundManager.swift */,
 			);
 			path = Sound;
@@ -431,6 +434,7 @@
 				FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */,
 				FF129B47266A56BA00683407 /* Pickups.sks in Resources */,
 				FFA0F45E261CA1490009EDDC /* explode.fsh in Resources */,
+				FF2096242670AF0D00B05FA2 /* Laser.caf in Resources */,
 				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
 				FFF2E58E264BE6F60060FE45 /* Assets.xcassets in Resources */,
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
@@ -531,7 +535,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 5F9CYF5K3F;
 				INFOPLIST_FILE = "ExplodeFight 3/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -553,7 +557,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 5F9CYF5K3F;
 				INFOPLIST_FILE = "ExplodeFight 3/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
