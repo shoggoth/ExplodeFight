@@ -169,6 +169,8 @@ extension StateDrivenLevel {
                                 mobEntity.addComponent(ContactComponent { _ in node.entity?.component(ofType: StateComponent.self)?.stateMachine.enter(MobState.ExplodeState.self) })
                                 
                                 let fc = FireComponent()
+                                fc.weaponType = Int.random(in: 1...4)
+                                fc.fireRate = Double.random(in: 1.0...2.0)
                                 fc.fireVector = CGVector(angle: CGFloat.random(in: 0...pi * 2.0))
                                 mobEntity.addComponent(fc)
                                 
