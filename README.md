@@ -89,12 +89,6 @@ https://developer.apple.com/library/archive/documentation/General/Conceptual/Gam
 ### Story
 Robotron & crystal quest crossover with retro influences and references to some of the older games on the commodore and the SNES.
 
-### Monster Animals
-- Zapstar - a tribute to Laser Zone.
-- GreyFace.
-- Yip-Yap.
-- DZ - Digital Zombie.
-
 ### Level/enemy/chieve ideas
 - Stay awhile... stay forever.
 - Weirding module.
@@ -105,3 +99,5 @@ Robotron & crystal quest crossover with retro influences and references to some 
 
 ### Achievements
 - Early adopter - play a pre-release version of the game (for testing also).
+- Millionaire - score a million points.
+- Melon Farmer - pickup 100 melons.
