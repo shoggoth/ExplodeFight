@@ -1,7 +1,7 @@
 # Explode Fight III
 mob/base
 
-## Current Tasks
+## Mob Ideas
 
-## Completed Tasks
-- Make the indicator fly off on explode.
+## Reference
+- See Design folder for influences.
