@@ -158,6 +158,16 @@ extension StateDrivenLevel {
                         if let spawner = mobSpawner.spawner(named: s) {
 
                             let mobDesc = Mob(name: s, maxSpeed: 600, pointValue: 100, position: p, rotation: CGVector(point: p).angle)
+                            
+                            let makeRandomFireComponent = { () -> FireComponent in
+                                
+                                let fc = FireComponent()
+                                fc.weaponType = Int.random(in: 1...4)
+                                fc.fireRate = Double.random(in: 1.0...2.0)
+                                fc.fireVector = CGVector(angle: CGFloat.random(in: 0...pi * 2.0))
+                                
+                                return fc
+                            }()
 
                             let entitySetup: (SKNode) -> GKEntity = { node in
                                 
@@ -167,12 +177,7 @@ extension StateDrivenLevel {
                                 mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: mobDesc.maxSpeed, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
                                 mobEntity.addComponent(StateComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
                                 mobEntity.addComponent(ContactComponent { _ in node.entity?.component(ofType: StateComponent.self)?.stateMachine.enter(MobState.ExplodeState.self) })
-                                
-                                let fc = FireComponent()
-                                fc.weaponType = Int.random(in: 1...4)
-                                fc.fireRate = Double.random(in: 1.0...2.0)
-                                fc.fireVector = CGVector(angle: CGFloat.random(in: 0...pi * 2.0))
-                                mobEntity.addComponent(fc)
+                                mobEntity.addComponent(makeRandomFireComponent)
                                 
                                 return mobEntity
                             }
