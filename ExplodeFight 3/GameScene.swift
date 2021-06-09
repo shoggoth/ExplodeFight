@@ -15,7 +15,6 @@ class GameScene: BaseSKScene {
     
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
-    let joystick = TouchJoystick()
     var level: Level?
     
     override func didMove(to view: SKView) {
@@ -41,8 +40,10 @@ extension GameScene: ButtonSKSpriteNodeResponder {
     func buttonTriggered(button: ButtonSKSpriteNode) {
         
         switch button.name {
-        case "spawnButton":
-            level?.spawnMob()
+        case "SpawnButton":
+            level?.spawnMob(name: "Mob")
+        case "KillButton":
+            level?.killAllMobs()
         default:
             fatalError("Button wut?")
         }
@@ -68,17 +69,4 @@ extension GameScene: SKPhysicsContactDelegate {
         (a as? ContactNotifiable)?.contactWithEntityDidEnd(b)
         (b as? ContactNotifiable)?.contactWithEntityDidEnd(a)
     }
-}
-
-// MARK: - Touch handling -
-
-extension GameScene {
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesBegan(touches, with: event) }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesMoved(touches, with: event) }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesEnded(touches, with: event) }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesCancelled(touches, with: event) }
 }

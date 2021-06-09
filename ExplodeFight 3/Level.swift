@@ -25,16 +25,6 @@ class Level {
         
         // Setup spawner
         mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
-        
-        // Setup Player
-        if let node = scene.childNode(withName: "Player") {
-            
-            let playerEntity = PlayerEntity(withNode: node)
-            
-            playerEntity.addComponent(PlayerControlComponent(joystick: scene.joystick))
-
-            scene.entities.append(playerEntity)
-        }
     }
     
     func update(deltaTime: TimeInterval) {
@@ -42,25 +32,33 @@ class Level {
         mobSpawner.update(deltaTime: deltaTime)
     }
     
-    func spawnMob() {
+    func spawnMob(name: String) {
         
-        let _ = mobSpawner.spawn(name: "Mob") { node in
+        let key = "ExplodeKey"
+        
+        let _ = mobSpawner.spawn(name: name) { node in
+            
+            node.reset() { r in
+                
+                r.position = CGPoint.zero
+                r.isPaused = false
+            }
+            
+            let directionIndicator = node.childNode(withName: "DirectionIndicator")
             
             let mobEntity = MobEntity(withNode: node)
-            
-            node.position = CGPoint.zero
-            node.isPaused = false
             
             mobEntity.addComponent(MobComponent(states: [
                                                     LiveState(),
                                                     ExplodeState {
                                                         AppDelegate.soundManager.playSound(name: "Explode")
                                                         (node as? SKSpriteNode)?.color = .white
-                                                        node.childNode(withName: "DirectionIndicator")?.run(SKAction.moveTo(x: 32, duration: 0.2))
+                                                        directionIndicator?.run(SKAction.moveTo(x: 32, duration: 0.2), withKey: key)
                                                     },
                                                     DieState {
+                                                        directionIndicator?.removeAction(forKey: key)
                                                         (node as? SKSpriteNode)?.color = .yellow
-                                                        self.mobSpawner.spawner(named: "Mob")?.kill(node: node, recycle: true)
+                                                        self.mobSpawner.spawner(named: name)?.kill(node: node, recycle: true)
                                                     }]))
             
             mobEntity.addComponent(DebugComponent())
@@ -69,5 +67,10 @@ class Level {
             
             return mobEntity
         }
+    }
+    
+    func killAllMobs() {
+        
+        mobSpawner.kill(recycle: false)
     }
 }
