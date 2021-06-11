@@ -17,11 +17,15 @@ extension GameScene {
 
         let charsTexture = SKTexture(imageNamed: "5x5Charset")
         let charWidth = 1.0 / 44
-        let alphabet = " ABCD"
-        let textureDict = Dictionary(uniqueKeysWithValues: alphabet.enumerated().map { ($1, SKTexture(rect: CGRect(x: Double($0) * charWidth, y: 0, width: charWidth, height: 1), in: charsTexture)) })
-        let _ = textureDict.map { $1.filteringMode = .nearest}
-        
-        let node = SKSpriteNode(texture: textureDict["C"])
+        let textureDict = Dictionary(uniqueKeysWithValues: " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,'?!/-".enumerated().map { (index: Int, key: Character) -> (Character, SKTexture) in
+            
+            let tex = SKTexture(rect: CGRect(x: Double(index) * charWidth, y: 0, width: charWidth, height: 1), in: charsTexture)
+            tex.filteringMode = .nearest
+            
+            return (key, tex)
+        })
+
+        let node = SKSpriteNode(texture: textureDict["?"])
         node.position = parentNode.position + CGVector(dx: 0, dy: 32)
         scene.addChild(node)
         
