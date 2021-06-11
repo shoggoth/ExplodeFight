@@ -34,8 +34,8 @@ class PlayerControlComponent: GKComponent {
         super.init()
         
         // TODO: Load from the configuration or defaults.
-        let moveWindowFunc = TouchJoystick.WindowFunction(windowSize: CGSize(width: 40, height: 40), deadZoneR2: 4)
-        let fireWindowFunc = TouchJoystick.WindowFunction(windowSize: CGSize(width: 40, height: 40))
+        let moveWindowFunc = TouchJoystick.WindowFunction(clippingType: .rectangular(CGSize(width: 40, height: 40)), deadZoneR2: 4)
+        let fireWindowFunc = TouchJoystick.WindowFunction(clippingType: .rectangular(CGSize(width: 40, height: 40)))
         
         joystick.joyFunctions = [
             { touch in

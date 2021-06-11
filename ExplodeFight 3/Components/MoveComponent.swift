@@ -18,14 +18,11 @@ class MoveComponent : GKAgent2D {
         self.maxAcceleration = maxAcceleration
         self.radius = radius
         self.mass = mass
-    }
-    
-    required init?(coder: NSCoder) { fatalError() }
-
-    override func didAddToEntity() {
         
         behavior = GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * maxSpeed), weight: 100)
 
         delegate = entity?.spriteComponent
     }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 }

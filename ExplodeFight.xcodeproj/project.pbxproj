@@ -14,27 +14,15 @@
 		FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF080698256BD29700F2EBA7 /* GameViewController.swift */; };
 		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
-		FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21CD6425EE503900873CD3 /* Weapon.swift */; };
-		FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF49711325B5E1DE0083C36B /* AttractModes.sks */; };
-		FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */; };
-		FF49713725B72FB30083C36B /* MobComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF49713625B72FB30083C36B /* MobComponent.swift */; };
+		FF1FF06A267371E9005F12BD /* CharTileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1FF069267371E9005F12BD /* CharTileMap.swift */; };
 		FF6C916A25EFDD38005A82E0 /* charMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF6C916925EFDD38005A82E0 /* charMap.fsh */; };
 		FF6C917925F140B7005A82E0 /* Charset32.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FF32D68825EE6A3700DF1AFB /* Charset32.atlas */; };
-		FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB4C25B08F1900B09BD8 /* Configuration.swift */; };
 		FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF88FB4E25B0943E00B09BD8 /* Game.plist */; };
-		FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */; };
-		FF88FB5325B1F38300B09BD8 /* AttractScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF88FB5225B1F38300B09BD8 /* AttractScene.sks */; };
-		FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF95A51D25792F9B00954B50 /* SplashScene.sks */; };
-		FF95A5202579303800954B50 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95A51F2579303800954B50 /* SplashScene.swift */; };
-		FFB527AC25C1CBA900B584C7 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB527AB25C1CBA900B584C7 /* PlayerEntity.swift */; };
 		FFC222A8256EB9D400CFA23F /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; };
 		FFC222A9256EB9D400CFA23F /* GameControls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222A7256EB9D400CFA23F /* GameControls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC222D9256FCD4100CFA23F /* LaunchScreen.storyboard */; };
 		FFC222E8257003B400CFA23F /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; };
 		FFC222E9257003B400CFA23F /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FFE0186325C2E81A0051984F /* MoveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186225C2E81A0051984F /* MoveComponent.swift */; };
-		FFE0186525C958840051984F /* MobEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186425C958840051984F /* MobEntity.swift */; };
-		FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186625CACFAD0051984F /* FireComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,27 +50,14 @@
 		FF08069B256BD29700F2EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF21CD6425EE503900873CD3 /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		FF1FF069267371E9005F12BD /* CharTileMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharTileMap.swift; sourceTree = "<group>"; };
 		FF32D68825EE6A3700DF1AFB /* Charset32.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Charset32.atlas; sourceTree = "<group>"; };
-		FF49711325B5E1DE0083C36B /* AttractModes.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttractModes.sks; sourceTree = "<group>"; };
-		FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlComponent.swift; sourceTree = "<group>"; };
-		FF49713625B72FB30083C36B /* MobComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobComponent.swift; sourceTree = "<group>"; };
 		FF6C916925EFDD38005A82E0 /* charMap.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = charMap.fsh; sourceTree = "<group>"; };
-		FF88FB4C25B08F1900B09BD8 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		FF88FB4E25B0943E00B09BD8 /* Game.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Game.plist; sourceTree = "<group>"; };
-		FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractScene.swift; sourceTree = "<group>"; };
-		FF88FB5225B1F38300B09BD8 /* AttractScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttractScene.sks; sourceTree = "<group>"; };
-		FF95A51D25792F9B00954B50 /* SplashScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SplashScene.sks; sourceTree = "<group>"; };
-		FF95A51F2579303800954B50 /* SplashScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
-		FFB527AB25C1CBA900B584C7 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
 		FFC222A7256EB9D400CFA23F /* GameControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC222DA256FCD4100CFA23F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		FFE0186225C2E81A0051984F /* MoveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveComponent.swift; sourceTree = "<group>"; };
-		FFE0186425C958840051984F /* MobEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobEntity.swift; sourceTree = "<group>"; };
-		FFE0186625CACFAD0051984F /* FireComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,17 +77,9 @@
 			isa = PBXGroup;
 			children = (
 				FF080696256BD29700F2EBA7 /* GameScene.swift */,
+				FF1FF069267371E9005F12BD /* CharTileMap.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
-				FF21CD6425EE503900873CD3 /* Weapon.swift */,
-				FFB527AA25C1CB8400B584C7 /* Entities */,
-				FF49712B25B72CA70083C36B /* Components */,
-				FF95A51F2579303800954B50 /* SplashScene.swift */,
-				FF95A51D25792F9B00954B50 /* SplashScene.sks */,
-				FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */,
-				FF88FB5225B1F38300B09BD8 /* AttractScene.sks */,
-				FF49711325B5E1DE0083C36B /* AttractModes.sks */,
 				FF080694256BD29700F2EBA7 /* Actions.sks */,
-				FF88FB4C25B08F1900B09BD8 /* Configuration.swift */,
 				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
 				FF32D68A25EE6AD400DF1AFB /* Charsets */,
 				FFC222D8256FC71800CFA23F /* iOS */,
@@ -129,23 +96,11 @@
 			path = Charsets;
 			sourceTree = "<group>";
 		};
-		FF49712B25B72CA70083C36B /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */,
-				FFE0186225C2E81A0051984F /* MoveComponent.swift */,
-				FF49713625B72FB30083C36B /* MobComponent.swift */,
-				FFE0186625CACFAD0051984F /* FireComponent.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		FF9364BF2384017300E4B867 = {
 			isa = PBXGroup;
 			children = (
 				FFC6773E256A8FB20011CE34 /* README.md */,
 				FF08068F256BD29700F2EBA7 /* ExplodeFight 3 */,
-				FFC6773D256A8F560011CE34 /* Design */,
 				FF9364C92384017300E4B867 /* Products */,
 				FFC222A6256EB9D400CFA23F /* Frameworks */,
 			);
@@ -157,15 +112,6 @@
 				FF08068E256BD29700F2EBA7 /* EF3.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		FFB527AA25C1CB8400B584C7 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				FFB527AB25C1CBA900B584C7 /* PlayerEntity.swift */,
-				FFE0186425C958840051984F /* MobEntity.swift */,
-			);
-			path = Entities;
 			sourceTree = "<group>";
 		};
 		FFC222A6256EB9D400CFA23F /* Frameworks */ = {
@@ -250,10 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF6C916A25EFDD38005A82E0 /* charMap.fsh in Resources */,
-				FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */,
-				FF88FB5325B1F38300B09BD8 /* AttractScene.sks in Resources */,
 				FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */,
-				FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */,
 				FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */,
 				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
@@ -270,18 +213,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFE0186525C958840051984F /* MobEntity.swift in Sources */,
 				FF080697256BD29700F2EBA7 /* GameScene.swift in Sources */,
-				FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */,
-				FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */,
-				FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */,
-				FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */,
-				FF95A5202579303800954B50 /* SplashScene.swift in Sources */,
-				FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */,
 				FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */,
-				FFE0186325C2E81A0051984F /* MoveComponent.swift in Sources */,
-				FFB527AC25C1CBA900B584C7 /* PlayerEntity.swift in Sources */,
-				FF49713725B72FB30083C36B /* MobComponent.swift in Sources */,
+				FF1FF06A267371E9005F12BD /* CharTileMap.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
