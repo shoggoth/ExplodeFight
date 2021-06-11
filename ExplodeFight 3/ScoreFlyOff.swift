@@ -13,7 +13,7 @@ extension GameScene {
     
     func scoreflyoff() {
         
-        guard let parentNode = scene?.childNode(withName: "ShipSprite") else { return }
+        guard let parentNode = scene?.childNode(withName: "ShipSprite"), let scene = scene else { return }
 
         let charsTexture = SKTexture(imageNamed: "5x5Charset")
         let charWidth = 1.0 / 44
@@ -22,9 +22,9 @@ extension GameScene {
         let _ = textureDict.map { $1.filteringMode = .nearest}
         
         let node = SKSpriteNode(texture: textureDict["C"])
-        node.position = CGPoint(x: 0, y: 32)
-        parentNode.addChild(node)
+        node.position = parentNode.position + CGVector(dx: 0, dy: 32)
+        scene.addChild(node)
         
-        node.run(.sequence([.wait(forDuration: 1.0), SKAction(named: "FlyUp")!]))
+        node.run(.sequence([.wait(forDuration: 1.0), SKAction(named: "FlyUp")!, .removeFromParent()]))
     }
 }
