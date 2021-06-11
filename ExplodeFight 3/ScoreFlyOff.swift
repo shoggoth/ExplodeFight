@@ -19,9 +19,12 @@ extension GameScene {
         let charWidth = 1.0 / 44
         let alphabet = " ABCD"
         let textureDict = Dictionary(uniqueKeysWithValues: alphabet.enumerated().map { ($1, SKTexture(rect: CGRect(x: Double($0) * charWidth, y: 0, width: charWidth, height: 1), in: charsTexture)) })
-
+        let _ = textureDict.map { $1.filteringMode = .nearest}
+        
         let node = SKSpriteNode(texture: textureDict["C"])
         node.position = CGPoint(x: 0, y: 32)
         parentNode.addChild(node)
+        
+        node.run(.sequence([.wait(forDuration: 1.0), SKAction(named: "FlyUp")!]))
     }
 }
