@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- Score fly-off with texture from charset, possibly add this to the explode manager?.
 - Pickups and level end postamble.
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 
