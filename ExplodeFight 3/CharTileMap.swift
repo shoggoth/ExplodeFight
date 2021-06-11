@@ -1,5 +1,5 @@
 //
-//  GameScene.swift
+//  CharTileMap.swift
 //  ExplodeFight 3
 //
 //  Created by Richard Henry on 23/11/2020.
@@ -8,8 +8,6 @@
 
 import SpriteKit
 import SpriteKitAddons
-import GameplayKit
-import GameControls
 
 extension GameScene {
     

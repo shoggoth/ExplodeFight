@@ -19,5 +19,8 @@ class GameScene: BaseSKScene {
 
         // Character tile map
         tilemapbits()
+        
+        // Score flying off ship
+        scoreflyoff()
     }
 }
