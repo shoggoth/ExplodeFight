@@ -1,12 +1,8 @@
 # Explode Fight III
-exp/chartiles
+exp/scorefly
 
 ## Current Tasks
-- Teletype animation
+- Make a shader to cycle the colours in the score texture.
 
 ### DONE
-- SKAction removeFromParent after fade
-- Try with a texture atlas rather than a sprite atlas.
-- Demo shader
-- SKLabelNode replacement with sprite or tilemap optimisations.
-- Construct something that can create a generic string to tilemap mapping. Move to the framework.
+- Flyup node from linear texture.
