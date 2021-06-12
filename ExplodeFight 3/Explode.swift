@@ -132,3 +132,19 @@ struct ExplodeShader {
         node.run(.group([shaderAction, .warp(to: warpGeometryGrid, duration: 2.0)!]), withKey: "Explode_PixelShatter")
     }
 }
+
+// MARK -
+
+extension LinearTexCharSet {
+    
+    func scoreFlyup(string: String, spacing: Int, parentNode: SKNode) {
+        
+        let rootNode = makeNodeString(string: string, spacing: spacing)
+
+        rootNode.position = parentNode.position + CGVector(dx: 0, dy: 32)
+        rootNode.run(.sequence([.wait(forDuration: 1.0), SKAction(named: "ScoreFlyUp")!]))
+
+        parentNode.scene?.addChild(rootNode)
+    }
+}
+

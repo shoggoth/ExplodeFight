@@ -7,10 +7,12 @@
 //
 
 import SpriteKit
+import SpriteKitAddons
 
 struct Global {
     
     static var soundManager = SoundManager(soundActions: ["Explode" : .playSoundFileNamed("Explode.caf", waitForCompletion: false)])
     static var explodeShader = ExplodeShader(shaderName: "explode.fsh")
     static var particleExploder = ParticleExploder(fileName: "Explode0.sks")
+    static var scoreCharSet = LinearTexCharSet(texName: "5x5Charset", alphabet : " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,'?!/-")
 }
