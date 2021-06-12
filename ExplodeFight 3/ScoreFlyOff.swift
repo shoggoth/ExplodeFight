@@ -9,15 +9,15 @@
 import SpriteKit
 import SpriteKitAddons
 
-struct LinearTexCharSet {
+public struct LinearTexCharSet {
 
     let textureDict: [Character : SKTexture]
     
-    init(texName: String, charCount: CGFloat) {
+    init(texName: String, alphabet: String) {
         
         let charTexture = SKTexture(imageNamed: texName)
-        let charWidth = 1.0 / charCount
-        textureDict = Dictionary(uniqueKeysWithValues: " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,'?!/-".enumerated().map { (index: Int, key: Character) -> (Character, SKTexture) in
+        let charWidth = 1.0 / CGFloat(alphabet.count)
+        textureDict = Dictionary(uniqueKeysWithValues: alphabet.enumerated().map { (index: Int, key: Character) -> (Character, SKTexture) in
             
             let tex = SKTexture(rect: CGRect(x: CGFloat(index) * charWidth, y: 0, width: charWidth, height: 1), in: charTexture)
             tex.filteringMode = .nearest
@@ -59,7 +59,7 @@ extension GameScene {
     func scoreflyoff() {
         
         guard let parentNode = scene?.childNode(withName: "ShipSprite") else { return }
-        let node = LinearTexCharSet(texName: "5x5Charset", charCount: 44).makeNodeString(string: "WELL, WHAT CAN THIS BE?", spacing: 5)
+        let node = LinearTexCharSet(texName: "5x5Charset", alphabet : " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,'?!/-").makeNodeString(string: "WELL, WHAT CAN THIS BE?", spacing: 5)
         
         parentNode.addChild(node)
     }
@@ -68,7 +68,7 @@ extension GameScene {
         
         guard let parentNode = scene?.childNode(withName: "ShipSprite") else { return }
         
-        LinearTexCharSet(texName: "5x5Charset", charCount: 44).flyup(string: "HELLO", spacing: 5, parentNode: parentNode)
+        LinearTexCharSet(texName: "5x5Charset", alphabet : " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,'?!/-").flyup(string: "HELLO", spacing: 5, parentNode: parentNode)
     }
     
     func scoreflyoff2() {

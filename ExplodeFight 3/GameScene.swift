@@ -22,5 +22,6 @@ class GameScene: BaseSKScene {
         
         // Score flying off ship
         scoreflyoff()
+        scoreflyoff1()
     }
 }
