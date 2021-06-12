@@ -9,38 +9,6 @@
 import SpriteKit
 import SpriteKitAddons
 
-public struct LinearTexCharSet {
-
-    let textureDict: [Character : SKTexture]
-    
-    init(texName: String, alphabet: String) {
-        
-        let charTexture = SKTexture(imageNamed: texName)
-        let charWidth = 1.0 / CGFloat(alphabet.count)
-        textureDict = Dictionary(uniqueKeysWithValues: alphabet.enumerated().map { (index: Int, key: Character) -> (Character, SKTexture) in
-            
-            let tex = SKTexture(rect: CGRect(x: CGFloat(index) * charWidth, y: 0, width: charWidth, height: 1), in: charTexture)
-            tex.filteringMode = .nearest
-            
-            return (key, tex)
-        })
-    }
-    
-    func makeNodeString(string: String, spacing: Int) -> SKNode {
-        
-        let rootNode = SKNode()
-
-        string.enumerated().forEach { index, char in
-            
-            let node = SKSpriteNode(texture: textureDict[char])
-            node.position = CGPoint(x: CGFloat(spacing * index), y: 0)
-            rootNode.addChild(node)
-        }
-
-        return rootNode
-    }
-}
-
 extension LinearTexCharSet {
     
     func flyup(string: String, spacing: Int, parentNode: SKNode) {
@@ -68,7 +36,7 @@ extension GameScene {
         
         guard let parentNode = scene?.childNode(withName: "ShipSprite") else { return }
         
-        LinearTexCharSet(texName: "5x5Charset", alphabet : " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,'?!/-").flyup(string: "HELLO", spacing: 5, parentNode: parentNode)
+        LinearTexCharSet(texName: "5x5Charset", alphabet : " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,'?!/-").flyup(string: "BOLLOX!?", spacing: 5, parentNode: parentNode)
     }
     
     func scoreflyoff2() {
