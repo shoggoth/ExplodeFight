@@ -142,7 +142,7 @@ extension LinearTexCharSet {
         let rootNode = makeNodeString(string: string, spacing: spacing)
 
         rootNode.position = parentNode.position + CGVector(dx: 0, dy: 32)
-        rootNode.run(.sequence([.wait(forDuration: 1.0), SKAction(named: "ScoreFlyUp")!]))
+        rootNode.run(.sequence([.wait(forDuration: 0.1), SKAction(named: "ScoreFlyUp")!, .removeFromParent()]))
 
         parentNode.scene?.addChild(rootNode)
     }
