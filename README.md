@@ -3,6 +3,7 @@ master
 
 ## Current Tasks
 - Level snapshot and AI component.
+- Level progress rules
 - RTT pixel shatter.
 - Pickups and level end postamble.
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
