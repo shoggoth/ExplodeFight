@@ -131,6 +131,22 @@ struct ExplodeShader {
         node.warpGeometry = warpGeometryGridNoWarp
         node.run(.group([shaderAction, .warp(to: warpGeometryGrid, duration: 2.0)!]), withKey: "Explode_PixelShatter")
     }
+    
+    func rttExplode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval) {
+        
+        if let texture = node.scene?.view?.texture(from: node) {
+            
+            let rttNode = SKSpriteNode(texture: texture)
+            rttNode.position = node.position
+            rttNode.zRotation = node.zRotation
+            node.parent?.addChild(rttNode)
+            node.removeFromParent()
+            
+            explode(node: rttNode, toScale: toScale, withSplits: withSplits, duration: duration)
+            //rttNode.texture = texture
+            //rttNode.run(.setTexture(texture, resize: true)) // https://www.hackingwithswift.com/example-code/games/how-to-change-a-sprites-texture-using-sktexture
+        }
+    }
 }
 
 // MARK -
