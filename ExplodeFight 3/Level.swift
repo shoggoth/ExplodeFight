@@ -69,6 +69,8 @@ struct StateDrivenLevel: Level {
         
         stateMachine.update(deltaTime: deltaTime)
         
+        makeSnapShot(scene: scene)
+        
         ruleSystem.reset()
         ruleSystem.state["mobCount"] = mobSpawner.activeCount
         ruleSystem.evaluate()
@@ -108,7 +110,28 @@ struct StateDrivenLevel: Level {
     }
 }
 
-private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 1.7)
+// MARK: - SnapShotting
+
+extension StateDrivenLevel {
+    
+    func makeSnapShot(scene: GameScene) {
+        
+        var mobs = [GKEntity]()
+        var count = 0
+        var ships = 0
+        mobSpawner.iterateEntities { e in
+            
+            mobs.append(e)
+            count += 1
+            if e.spriteComponent?.node.name == "Ship" { ships += 1 }
+        }
+        
+        let bum = mobs.filter { $0.agent?.position.y ?? 0 >= 350 }
+        print("entity = \(count) ships = \(ships) mobs = \(bum.count)")
+    }
+}
+
+// MARK: - State
 
 extension StateDrivenLevel {
     
@@ -141,6 +164,10 @@ extension StateDrivenLevel {
         override func didEnter(from previousState: GKState?) { endFunc?() }
     }
 }
+
+// MARK: - Temp TODO: Remove this
+
+private var spawnTicker: PeriodicTimer? = PeriodicTimer(tickInterval: 1.7)
 
 extension StateDrivenLevel {
     
