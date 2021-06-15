@@ -16,6 +16,7 @@ class GameScene: BaseSKScene {
     override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
     
     var level: Level?
+    var player: SKNode?
 
     var mobRootNode: SKNode { childNode(withName: "MobRoot")! }
     var interstitialRootNode: SKNode { childNode(withName: "ISRoot")! }
@@ -124,20 +125,26 @@ class GameScene: BaseSKScene {
 extension GameScene {
     
     func createPlayer() {
-
-        if let node = childNode(withName: "Player"), let entity = node.entity {
-            
-            let playerDesc = Player(name: "Player", maxSpeed: 600, pointValue: 100, position: node.position, rotation: node.zRotation)
-
-            entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
-            entity.addComponent(PlayerControlComponent(joystick: joystick))
-            entity.addComponent(StateComponent(states: playerDesc.makeStates(node: node, scene: self)))
-            entity.addComponent(ContactComponent { node in
+        
+        player = {
+            if let node = childNode(withName: "Player"), let entity = node.entity {
                 
-                if node.physicsBody?.categoryBitMask ?? 0 | 4 != 0 { print("Player picking up something.") }
-                if node.name == "Ship" { entity.component(ofType: StateComponent.self)?.stateMachine.enter(PlayerState.ExplodeState.self) }
-            })
-        }
+                let playerDesc = Player(name: "Player", maxSpeed: 600, pointValue: 100, position: node.position, rotation: node.zRotation)
+                
+                entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
+                entity.addComponent(PlayerControlComponent(joystick: joystick))
+                entity.addComponent(StateComponent(states: playerDesc.makeStates(node: node, scene: self)))
+                entity.addComponent(ContactComponent { node in
+                    
+                    if node.physicsBody?.categoryBitMask ?? 0 | 4 != 0 { print("Player picking up something.") }
+                    if node.name == "Ship" { entity.component(ofType: StateComponent.self)?.stateMachine.enter(PlayerState.ExplodeState.self) }
+                })
+                
+                return node
+            }
+            
+            return nil
+        }()
     }
     
     func destroyPlayer() {

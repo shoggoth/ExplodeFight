@@ -47,8 +47,8 @@ struct StateDrivenLevel: Level {
         if let firstState = states.first { stateMachine.enter(type(of: firstState)) }
         
         // Setup level rules
-        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue < 100"), assertingFact: "mobCountIsLow" as NSObject, grade: 1.0))
-        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobCount.intValue == 0"), assertingFact: "allMobsDestroyed" as NSObject, grade: 1.0))
+        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$activeMobCount.intValue < 100"), assertingFact: "activeMobCountIsLow" as NSObject, grade: 1.0))
+        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$activeMobCount.intValue == 0"), assertingFact: "allMobsDestroyed" as NSObject, grade: 1.0))
     }
     
     func setup(scene: GameScene) {
@@ -72,7 +72,7 @@ struct StateDrivenLevel: Level {
         makeSnapShot(scene: scene)
         
         ruleSystem.reset()
-        ruleSystem.state["mobCount"] = mobSpawner.activeCount
+        ruleSystem.state["activeMobCount"] = mobSpawner.activeCount
         ruleSystem.evaluate()
         
         mobSpawner.update(deltaTime: deltaTime)
@@ -119,15 +119,23 @@ extension StateDrivenLevel {
         var mobs = [GKEntity]()
         var count = 0
         var ships = 0
+        var nearp = 0
+        
         mobSpawner.iterateEntities { e in
             
             mobs.append(e)
             count += 1
             if e.spriteComponent?.node.name == "Ship" { ships += 1 }
+            
+            if let ppos = scene.player?.position, let epos = e.spriteComponent?.node.position {
+                
+                
+                if abs(hypotf(Float(epos.x - ppos.x), Float(epos.y - ppos.y))) < 64 { nearp += 1 }
+            }
         }
         
         let bum = mobs.filter { $0.agent?.position.y ?? 0 >= 350 }
-        print("entity = \(count) ships = \(ships) mobs = \(bum.count)")
+        print("entity = \(count) ships = \(ships) mobs = \(bum.count) near = \(nearp)")
     }
 }
 
@@ -174,7 +182,7 @@ extension StateDrivenLevel {
     func tempSpawnUpdate(deltaTime: TimeInterval, scene: GameScene) {
         
         // TODO: Move this elsewhere
-        if ruleSystem.grade(forFact: "mobCountIsLow" as NSObjectProtocol) >= 1.0 {
+        if ruleSystem.grade(forFact: "activeMobCountIsLow" as NSObjectProtocol) >= 1.0 {
             
             spawnTicker = spawnTicker?.tick(deltaTime: deltaTime) {
                 
