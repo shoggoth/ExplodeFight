@@ -17,6 +17,7 @@ protocol Level {
     
     // Properties
     var ruleSystem: GKRuleSystem { get }
+    var snapshot: LevelSnapshot { get }
     
     // Functionality
     func setup(scene: GameScene)
@@ -33,6 +34,7 @@ struct StateDrivenLevel: Level {
     let name: String
 
     internal let ruleSystem = GKRuleSystem()
+    internal let snapshot: LevelSnapshot = LevelSnapshot()
     private  let stateMachine: GKStateMachine
     
     private let mobSpawner = SceneSpawner(scene: SKScene(fileNamed: "Mobs")!)
@@ -69,7 +71,7 @@ struct StateDrivenLevel: Level {
         
         stateMachine.update(deltaTime: deltaTime)
         
-        makeSnapShot(scene: scene)
+        updateSnapShot(scene: scene)
         
         ruleSystem.reset()
         ruleSystem.state["activeMobCount"] = mobSpawner.activeCount
@@ -112,18 +114,24 @@ struct StateDrivenLevel: Level {
 
 // MARK: - SnapShotting
 
+class LevelSnapshot {
+    
+    var mobEntities = [GKEntity]()
+}
+
 extension StateDrivenLevel {
     
-    func makeSnapShot(scene: GameScene) {
+    func updateSnapShot(scene: GameScene) {
         
-        var mobs = [GKEntity]()
         var count = 0
         var ships = 0
         var nearp = 0
         
+        snapshot.mobEntities = []
+        
         mobSpawner.iterateEntities { e in
             
-            mobs.append(e)
+            snapshot.mobEntities.append(e)
             count += 1
             if e.spriteComponent?.node.name == "Ship" { ships += 1 }
             
@@ -134,8 +142,8 @@ extension StateDrivenLevel {
             }
         }
         
-        let bum = mobs.filter { $0.agent?.position.y ?? 0 >= 350 }
-        print("entity = \(count) ships = \(ships) mobs = \(bum.count) near = \(nearp)")
+        //let bum = mobs.filter { $0.agent?.position.y ?? 0 >= 350 }
+        //print("entity = \(count) ships = \(ships) mobs = \(bum.count) near = \(nearp)")
     }
 }
 
@@ -212,6 +220,7 @@ extension StateDrivenLevel {
                                 mobEntity.addComponent(GKAgent2D(node: node, maxSpeed: mobDesc.maxSpeed, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1), behaviour: GKBehavior(goal: GKGoal(toWander: Float.random(in: -1.0 ... 1.0) * 600), weight: 100.0)))
                                 mobEntity.addComponent(StateComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
                                 mobEntity.addComponent(ContactComponent { _ in node.entity?.component(ofType: StateComponent.self)?.stateMachine.enter(MobState.ExplodeState.self) })
+                                mobEntity.addComponent(AIComponent())
                                 mobEntity.addComponent(makeRandomFireComponent)
                                 
                                 return mobEntity

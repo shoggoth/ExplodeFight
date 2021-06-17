@@ -15,6 +15,7 @@
 		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
 		FF129B47266A56BA00683407 /* Pickups.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF129B46266A56BA00683407 /* Pickups.sks */; };
+		FF1433F8267B3FA5000EE084 /* AIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1433F7267B3FA5000EE084 /* AIComponent.swift */; };
 		FF2096242670AF0D00B05FA2 /* Laser.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF2096232670AF0D00B05FA2 /* Laser.caf */; };
 		FF21CD6525EE503900873CD3 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF21CD6425EE503900873CD3 /* Weapon.swift */; };
 		FF29B157265CF197000B4353 /* TextEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF29B156265CF197000B4353 /* TextEffects.swift */; };
@@ -102,6 +103,7 @@
 		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF129B46266A56BA00683407 /* Pickups.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Pickups.sks; sourceTree = "<group>"; };
+		FF1433F7267B3FA5000EE084 /* AIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIComponent.swift; sourceTree = "<group>"; };
 		FF2096232670AF0D00B05FA2 /* Laser.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Laser.caf; sourceTree = "<group>"; };
 		FF21CD6425EE503900873CD3 /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		FF29B156265CF197000B4353 /* TextEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEffects.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 		FF49712B25B72CA70083C36B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FF1433F7267B3FA5000EE084 /* AIComponent.swift */,
 				FF49713625B72FB30083C36B /* StateComponent.swift */,
 				FF29B158265FA6F7000B4353 /* ContactComponent.swift */,
 				FF49712C25B72CF20083C36B /* PlayerControlComponent.swift */,
@@ -460,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA0F45C261CA1380009EDDC /* Explode.swift in Sources */,
+				FF1433F8267B3FA5000EE084 /* AIComponent.swift in Sources */,
 				FF4E81B52608A0EB006B1050 /* DebugComponent.swift in Sources */,
 				FF080697256BD29700F2EBA7 /* GameScene.swift in Sources */,
 				FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */,

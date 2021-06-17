@@ -11,7 +11,8 @@ import GameplayKit
 class ContactComponent: GKComponent, NodeContact {
     
     let beginFunc: ((SKNode) -> ())?
-    
+    var endFunc: ((SKNode) -> ())? = nil
+
     init(beginFunc: ((SKNode) -> ())? = nil) {
         
         self.beginFunc = beginFunc
@@ -25,13 +26,12 @@ class ContactComponent: GKComponent, NodeContact {
     
     func contactWithNodeDidBegin(_ node: SKNode) {
         
-        //print("MC Contact begins: \(self) with \(node)")
         beginFunc?(node)
     }
     
     func contactWithNodeDidEnd(_ node: SKNode) {
         
-        //print("MC Contact ends: \(self) with \(node)")
+        endFunc?(node)
     }
 }
 
