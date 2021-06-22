@@ -68,6 +68,11 @@ struct ExplodeShader {
         }
     }
 
+    func preload(node: SKSpriteNode) {
+        
+        node.shader = shader
+    }
+    
     private func scaleExplode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval) {
         
         node.shader = shader

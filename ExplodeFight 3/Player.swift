@@ -60,7 +60,7 @@ struct Player {
             
             scene.playerDeath()
             
-            return CountdownTimer(countDownTime: 4.0)
+            return CountdownTimer(countDownTime: 0.4)
         }
         
         return [resetState, explodeState, dieState]

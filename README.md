@@ -5,7 +5,7 @@ master
 - Field explode
 - Re-add player to scene after explode.
 - Level snapshot and AI component.
-- Level progress rules
+- Level progress rules.
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 - Pickups and level end postamble.
 
