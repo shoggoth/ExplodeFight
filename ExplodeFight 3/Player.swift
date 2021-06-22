@@ -48,7 +48,7 @@ struct Player {
                 
                 // TODO: Decide which explosion suits best
                 Global.particleExploder.explode(node: node, duration: 1.0)
-                Global.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
+                //Global.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
             }
             
             Global.soundManager.playSound(name: "Explode")

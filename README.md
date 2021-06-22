@@ -2,8 +2,8 @@
 master
 
 ## Current Tasks
-- RTT pixel shatter.
 - Field explode
+- Re-add player to scene after explode.
 - Level snapshot and AI component.
 - Level progress rules
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
@@ -23,6 +23,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly).
 
 ### Completed Tasks
+- RTT pixel shatter.
 - Score fly-off with texture from charset, possibly add this to the explode manager?.
 - Weapons with actions not physics.
 - Enemies can shot web.
