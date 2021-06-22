@@ -21,7 +21,29 @@ struct ExplodeShader {
         shader.attributes = [SKAttribute(name: splitsAttributeName, type: .vectorFloat2),SKAttribute(name: explodeAttributeName, type: .vectorFloat2)]
     }
     
-    func scaleExplode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval) {
+    func explode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval, bulgeOffset: Float = 0) {
+
+        let rot = node.zRotation
+        node.zRotation = 0
+
+        if let texture = node.scene?.view?.texture(from: node) {
+            
+            let rttNode = SKSpriteNode(texture: texture)
+            rttNode.position = node.position
+            rttNode.zRotation = rot
+            
+            node.parent?.addChild(rttNode)
+            node.removeFromParent()
+            
+            if bulgeOffset != 0 {
+                bulgeExplode(node: rttNode, toScale: toScale, withSplits: withSplits, duration: duration, bulgeOffset: bulgeOffset)
+            } else {
+                scaleExplode(node: rttNode, toScale: toScale, withSplits: withSplits, duration: duration)
+            }
+        }
+    }
+
+    private func scaleExplode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval) {
         
         node.shader = shader
         
@@ -39,7 +61,7 @@ struct ExplodeShader {
         node.run(.sequence([.group([shaderAction, .scaleX(by: CGFloat(toScale.x), y: CGFloat(toScale.y), duration: duration)]), .removeFromParent()]), withKey: "Explode_PixelShatter")
     }
     
-    func bulgeExplode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval, bulgeOffset: Float) {
+    private func bulgeExplode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval, bulgeOffset: Float) {
         
         let warpGeometryGridNoWarp = SKWarpGeometryGrid(columns: 4, rows: 1)
         let sourcePositions: [SIMD2<Float>] = [
@@ -71,28 +93,6 @@ struct ExplodeShader {
         
         node.warpGeometry = warpGeometryGridNoWarp
         node.run(.sequence([.group([shaderAction, .warp(to: warpGeometryGrid, duration: 2.0)!]), .removeFromParent()]), withKey: "Explode_PixelShatter")
-    }
-    
-    func explode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval, bulgeOffset: Float = 0) {
-
-        let rot = node.zRotation
-        node.zRotation = 0
-
-        if let texture = node.scene?.view?.texture(from: node) {
-            
-            let rttNode = SKSpriteNode(texture: texture)
-            rttNode.position = node.position
-            rttNode.zRotation = rot
-            
-            node.parent?.addChild(rttNode)
-            node.removeFromParent()
-            
-            if bulgeOffset != 0 {
-                bulgeExplode(node: rttNode, toScale: toScale, withSplits: withSplits, duration: duration, bulgeOffset: bulgeOffset)
-            } else {
-                scaleExplode(node: rttNode, toScale: toScale, withSplits: withSplits, duration: duration)
-            }
-        }
     }
 }
 
