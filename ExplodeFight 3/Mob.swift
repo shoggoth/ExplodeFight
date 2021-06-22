@@ -48,8 +48,9 @@ struct Mob {
                 //node.removeAllActions()
                 //Global.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
                 //Global.particleExploder.explode(node: node, duration: 1.0)
+                //Global.explodeShader.rttExplode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
+                //Global.scoreCharSet.scoreFlyup(string: "HELLO", spacing: 5, parentNode: node)
                 Global.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
-                Global.scoreCharSet.scoreFlyup(string: "HELLO", spacing: 5, parentNode: node)
             }
             
             Global.soundManager.playSound(name: "Explode")
