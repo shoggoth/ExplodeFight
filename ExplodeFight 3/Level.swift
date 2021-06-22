@@ -16,6 +16,8 @@ class Level {
     
     private var spawnRoot: SKNode { scene.childNode(withName: "SpawnRoot")! }
 
+    private let explodeShader = ExplodeShader(shaderName: "explode.fsh")
+    
     init(scene: GameScene) {
         
         self.scene = scene
@@ -54,6 +56,7 @@ class Level {
                                                         AppDelegate.soundManager.playSound(name: "Explode")
                                                         (node as? SKSpriteNode)?.color = .white
                                                         directionIndicator?.run(SKAction.moveTo(x: 32, duration: 0.2), withKey: key)
+                                                        self.explodeShader.explode(node: node as! SKSpriteNode, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
                                                     },
                                                     DieState {
                                                         directionIndicator?.removeAction(forKey: key)
@@ -67,6 +70,11 @@ class Level {
             
             return mobEntity
         }
+    }
+    
+    func explodeAllMobs() {
+        
+        mobSpawner.iterateEntities { entity in entity.component(ofType: MobComponent.self)?.stateMachine.enter(ExplodeState.self) }
     }
     
     func killAllMobs() {

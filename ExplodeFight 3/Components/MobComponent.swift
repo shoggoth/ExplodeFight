@@ -63,7 +63,7 @@ class ExplodeState: GKState {
     
     override func didEnter(from previousState: GKState?) {
         
-        countdownTimer = CountdownTimer(countDownTime: 0.2)
+        countdownTimer = CountdownTimer(countDownTime: 1.0)
         
         explodeFunc?()
     }

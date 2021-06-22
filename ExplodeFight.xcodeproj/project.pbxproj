@@ -38,6 +38,8 @@
 		FFE0186325C2E81A0051984F /* MoveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186225C2E81A0051984F /* MoveComponent.swift */; };
 		FFE0186525C958840051984F /* MobEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186425C958840051984F /* MobEntity.swift */; };
 		FFE0186725CACFAD0051984F /* FireComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0186625CACFAD0051984F /* FireComponent.swift */; };
+		FFE2CBAF2681DED900311144 /* Explode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE2CBAE2681DED900311144 /* Explode.swift */; };
+		FFE2CBB12681E01600311144 /* explode.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFE2CBB02681E01600311144 /* explode.fsh */; };
 		FFF47C34260B432300BB2930 /* attractOverlay.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFF47C33260B432300BB2930 /* attractOverlay.fsh */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +93,8 @@
 		FFE0186225C2E81A0051984F /* MoveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveComponent.swift; sourceTree = "<group>"; };
 		FFE0186425C958840051984F /* MobEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobEntity.swift; sourceTree = "<group>"; };
 		FFE0186625CACFAD0051984F /* FireComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireComponent.swift; sourceTree = "<group>"; };
+		FFE2CBAE2681DED900311144 /* Explode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explode.swift; sourceTree = "<group>"; };
+		FFE2CBB02681E01600311144 /* explode.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = explode.fsh; sourceTree = "<group>"; };
 		FFF47C33260B432300BB2930 /* attractOverlay.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attractOverlay.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +118,7 @@
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
 				FF4E81B82608EF1C006B1050 /* Mobs.sks */,
 				FF3EB5AD25FB99F80073D402 /* Level.swift */,
+				FFE2CBAE2681DED900311144 /* Explode.swift */,
 				FF21CD6425EE503900873CD3 /* Weapon.swift */,
 				FFB527AA25C1CB8400B584C7 /* Entities */,
 				FF49712B25B72CA70083C36B /* Components */,
@@ -140,6 +145,7 @@
 		FF3F969C25F259A600AF63B9 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				FFE2CBB02681E01600311144 /* explode.fsh */,
 				FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */,
 				FFF47C33260B432300BB2930 /* attractOverlay.fsh */,
 				FF3F969D25F259CD00AF63B9 /* charMap.fsh */,
@@ -300,6 +306,7 @@
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,
 				FF080695256BD29700F2EBA7 /* Actions.sks in Resources */,
 				FF3F96AA25F63B4A00AF63B9 /* Robotron.TTF in Resources */,
+				FFE2CBB12681E01600311144 /* explode.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +326,7 @@
 				FF3EB5AA25FB79200073D402 /* RulesComponent.swift in Sources */,
 				FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */,
 				FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */,
+				FFE2CBAF2681DED900311144 /* Explode.swift in Sources */,
 				FFE0186325C2E81A0051984F /* MoveComponent.swift in Sources */,
 				FFB527AC25C1CBA900B584C7 /* PlayerEntity.swift in Sources */,
 				FF49713725B72FB30083C36B /* MobComponent.swift in Sources */,

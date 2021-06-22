@@ -42,6 +42,8 @@ extension GameScene: ButtonSKSpriteNodeResponder {
         switch button.name {
         case "SpawnButton":
             level?.spawnMob(name: "Mob")
+        case "ExplodeButton":
+            level?.explodeAllMobs()
         case "KillButton":
             level?.killAllMobs()
         default:
