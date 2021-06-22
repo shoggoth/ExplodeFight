@@ -2,13 +2,14 @@
 master
 
 ## Current Tasks
+- RTT pixel shatter.
+- Field explode
 - Level snapshot and AI component.
 - Level progress rules
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 - Pickups and level end postamble.
 
 ## Next Tasks
-- RTT pixel shatter.
 - Player warp-in state.
 - Redo game and level state machines.
 - Make attract message different each time round.
