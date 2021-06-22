@@ -54,7 +54,6 @@ class Level {
                                                     LiveState(),
                                                     ExplodeState {
                                                         AppDelegate.soundManager.playSound(name: "Explode")
-                                                        (node as? SKSpriteNode)?.color = .white
                                                         directionIndicator?.run(SKAction.moveTo(x: 32, duration: 0.2), withKey: key)
                                                         self.explodeShader.explode(node: node as! SKSpriteNode, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
                                                     },
