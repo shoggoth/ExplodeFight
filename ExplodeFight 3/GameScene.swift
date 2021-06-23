@@ -25,14 +25,12 @@ class GameScene: BaseSKScene {
 
         // Set up scene physics
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
-        
-        // Spawn some robots
-        (0..<300).forEach { _ in spawnNode?.spawnRobot()}
     }
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
-        spawnField(loc: convertPoint(fromView: tap.location(in: view)))
+        spawnNode?.spawnMob(name: "Robot")
+        spawnNode?.spawnMob(name: "RobotAnim")
     }
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
@@ -47,32 +45,26 @@ class GameScene: BaseSKScene {
         
         spawnNode?.spawner?.update(deltaTime: deltaTime)
     }
-    
-    func spawnField(loc: CGPoint) {
-        
-        let shield = SKFieldNode.radialGravityField()
-        shield.position = loc
-        shield.strength = -5
-        shield.categoryBitMask = 1
-        shield.region = SKRegion(radius: 256)
-        shield.falloff = 4
-        shield.run(SKAction.sequence([.strength(to: 0, duration: 2.0), .removeFromParent()]))
-        addChild(shield)
-    }
 }
 
-// MARK: - Spawn without entity
+// MARK: - Spawn from Spawn.sks
 
 extension SpawnSKNode {
     
-    func spawnRobot() {
+    func spawnMob(name: String) {
         
-        spawn(name: "Robot") { newNode in
+        spawn(name: name) { newNode in
             
             newNode.position = CGPoint(x: CGFloat.random(in: -500...500), y: CGFloat.random(in: -300...300))
             newNode.isPaused = false
             
-            return nil
+            let entity = GKEntity()
+            let dc = DebugComponent()
+            dc.dumpTiming = false
+            
+            entity.addComponent(dc)
+            
+            return entity
         }
     }
 }
