@@ -13,8 +13,8 @@ import GameControls
 
 class GameScene: BaseSKScene {
     
-    private lazy var spawnNode = { self.childNode(withName: "//SpawnRoot") as? SpawnSKNode }()
-
+    private lazy var vehicleSpawner = SceneSpawner(scene: SKScene(fileNamed: "Spawn")!)
+    
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
@@ -29,42 +29,57 @@ class GameScene: BaseSKScene {
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
-        spawnNode?.spawnMob(name: "Robot")
-        spawnNode?.spawnMob(name: "RobotAnim")
+        spawnVehicle()
     }
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
         
-        if tap.state == .began { spawnNode?.spawner?.kill(nodesWithName: "Robot", recycle: true) }
-        if tap.state == .ended { spawnNode?.spawner?.kill(nodesWithName: "RobotAnim") }
+        if tap.state == .began { vehicleSpawner.kill(recycle: false) }
     }
     
     override func update(deltaTime: TimeInterval) {
         
         super.update(deltaTime: deltaTime)
         
-        spawnNode?.spawner?.update(deltaTime: deltaTime)
+        vehicleSpawner.update(deltaTime: deltaTime)
+    }
+    
+    func spawnVehicle() {
+        
+        if let rootNode = vehicleSpawner.spawn(name: "Vehicle") {
+            
+            rootNode.position = CGPoint(x: CGFloat.random(in: -500...500), y: CGFloat.random(in: -300...300))
+            rootNode.isPaused = false
+            
+            addChild(rootNode)
+            
+            let dpb = rootNode.childNode(withName: "Body")?.physicsBody
+            let leftAxle = rootNode.childNodePositionInScene(name: "Body/AxleLeft", scene: self, defaultPhysicsBody: dpb)!
+            let rightAxle = rootNode.childNodePositionInScene(name: "Body/AxleRight", scene: self, defaultPhysicsBody: dpb)!
+            let leftWheel = rootNode.childNodePositionInScene(name: "WheelLeft", scene: self)!
+            let rightWheel = rootNode.childNodePositionInScene(name: "WheelRight", scene: self)!
+            
+            let leftSpring = SKPhysicsJointSpring.joint(withBodyA: leftAxle.phys, bodyB: leftWheel.phys, anchorA: leftAxle.pos, anchorB: leftWheel.pos)
+            leftSpring.frequency = 3
+            leftSpring.damping = 0.2
+            let rightSpring = SKPhysicsJointSpring.joint(withBodyA: rightAxle.phys, bodyB: rightWheel.phys, anchorA: rightAxle.pos, anchorB: rightWheel.pos)
+            rightSpring.frequency = 3
+            rightSpring.damping = 0.2
+
+            self.physicsWorld.add(leftSpring)
+            self.physicsWorld.add(rightSpring)
+        }
     }
 }
 
 // MARK: - Spawn from Spawn.sks
 
-extension SpawnSKNode {
+extension SKNode {
     
-    func spawnMob(name: String) {
+    func childNodePositionInScene(name: String, scene: GameScene, defaultPhysicsBody: SKPhysicsBody? = nil) -> (node: SKNode, phys: SKPhysicsBody, pos: CGPoint)? {
         
-        spawn(name: name) { newNode in
-            
-            newNode.position = CGPoint(x: CGFloat.random(in: -500...500), y: CGFloat.random(in: -300...300))
-            newNode.isPaused = false
-            
-            let entity = GKEntity()
-            let dc = DebugComponent()
-            dc.dumpTiming = false
-            
-            entity.addComponent(dc)
-            
-            return entity
-        }
+        guard let child = childNode(withName: name), let pb = defaultPhysicsBody ?? child.physicsBody ?? self.physicsBody else { return nil }
+
+        return (child, pb, convert(child.position, to: scene))
     }
 }
