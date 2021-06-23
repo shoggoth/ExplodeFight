@@ -14,6 +14,7 @@
 		FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF080698256BD29700F2EBA7 /* GameViewController.swift */; };
 		FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF08069A256BD29700F2EBA7 /* Main.storyboard */; };
 		FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF08069D256BD29800F2EBA7 /* Assets.xcassets */; };
+		FF089D9026835EA10001DE5A /* Players.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF089D8F26835EA10001DE5A /* Players.sks */; };
 		FF129B47266A56BA00683407 /* Pickups.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF129B46266A56BA00683407 /* Pickups.sks */; };
 		FF1433F8267B3FA5000EE084 /* AIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1433F7267B3FA5000EE084 /* AIComponent.swift */; };
 		FF2096242670AF0D00B05FA2 /* Laser.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF2096232670AF0D00B05FA2 /* Laser.caf */; };
@@ -102,6 +103,7 @@
 		FF08069B256BD29700F2EBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF08069D256BD29800F2EBA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF08069F256BD29800F2EBA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF089D8F26835EA10001DE5A /* Players.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Players.sks; sourceTree = "<group>"; };
 		FF129B46266A56BA00683407 /* Pickups.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Pickups.sks; sourceTree = "<group>"; };
 		FF1433F7267B3FA5000EE084 /* AIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIComponent.swift; sourceTree = "<group>"; };
 		FF2096232670AF0D00B05FA2 /* Laser.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Laser.caf; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				FF5F860E266E310F004E6648 /* Interstitial.swift */,
 				FF783439264292070063F453 /* Interstitial.sks */,
 				FF4E81B82608EF1C006B1050 /* Mobs.sks */,
+				FF089D8F26835EA10001DE5A /* Players.sks */,
 				FF129B46266A56BA00683407 /* Pickups.sks */,
 				FF2C03D1263C12B500EDC46C /* Mob.swift */,
 				FF3EB5AD25FB99F80073D402 /* Level.swift */,
@@ -440,6 +443,7 @@
 				FF2096242670AF0D00B05FA2 /* Laser.caf in Resources */,
 				FF080693256BD29700F2EBA7 /* GameScene.sks in Resources */,
 				FFF2E58E264BE6F60060FE45 /* Assets.xcassets in Resources */,
+				FF089D9026835EA10001DE5A /* Players.sks in Resources */,
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
 				FF3F969A25F258F800AF63B9 /* Charset32.atlas in Resources */,
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,

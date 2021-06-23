@@ -9,25 +9,48 @@
 import GameplayKit
 import SpriteKitAddons
 
-// TODO: Decide if I want to use this or not
-
 struct Player {
     
-    let name: String
-    let maxSpeed: Float
-    let pointValue: Int64
+    static func createPlayer(scene: GameScene) {
+        
+        if let node = { SKScene(fileNamed: "Players")?.orphanedChildNode(withName: "Player") }() {
+            
+            node.entity = {
+                
+                let entity = GKEntity()
+                
+                entity.addComponent(GKSKNodeComponent(node: node))
+                entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
+                entity.addComponent(PlayerControlComponent(joystick: scene.joystick))
+                entity.addComponent(StateComponent(states: Player.makeStates(node: node, scene: scene)))
+                entity.addComponent(DebugComponent())
+                entity.addComponent(ContactComponent { node in
+
+                    if node.physicsBody?.categoryBitMask ?? 0 | 4 != 0 { print("Player picking up something.") }
+                    if node.name == "Ship" { entity.component(ofType: StateComponent.self)?.stateMachine.enter(PlayerState.ExplodeState.self) }
+                })
+
+                scene.entities.append(entity)
+
+                return entity
+            }()
+            
+            scene.playerRootNode.addChild(node)
+        }
+    }
     
-    let position: CGPoint
-    let rotation: CGFloat
+    static func destroyPlayer(scene: GameScene) {
+        
+        if let e = scene.playerEntity, let i = scene.entities.firstIndex(of: e) { scene.entities.remove(at: i) }
+        scene.playerRootNode.removeAllChildren()
+    }
     
-    func makeStates(node: SKNode, scene: GameScene) -> [GKState] {
+    private static func makeStates(node: SKNode, scene: GameScene) -> [GKState] {
         
         let resetState = PlayerState.ResetState {
             
             node.reset { _ in
                 
-                node.zRotation = rotation
-                node.position  = position
                 node.isPaused = false
                 
                 // In case the explode action is still running...

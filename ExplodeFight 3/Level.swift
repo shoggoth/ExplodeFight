@@ -135,7 +135,7 @@ extension StateDrivenLevel {
             count += 1
             if e.spriteComponent?.node.name == "Ship" { ships += 1 }
             
-            if let ppos = scene.player?.position, let epos = e.spriteComponent?.node.position {
+            if let ppos = scene.playerEntity?.spriteComponent?.node.position, let epos = e.spriteComponent?.node.position {
                 
                 
                 if abs(hypotf(Float(epos.x - ppos.x), Float(epos.y - ppos.y))) < 64 { nearp += 1 }

@@ -22,7 +22,7 @@ class AIComponent: GKComponent {
             
             if snapshot.mobEntities.count > 24 { stopMoving() }
             
-            if let ppos = scene.player?.position, let epos = entity?.spriteComponent?.node.position {
+            if let ppos = scene.playerEntity?.spriteComponent?.node.position, let epos = entity?.spriteComponent?.node.position {
                 
                 if abs(hypotf(Float(epos.x - ppos.x), Float(epos.y - ppos.y))) < 100 { stopMoving() }
             }
