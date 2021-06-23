@@ -27,7 +27,7 @@ class GameScene: BaseSKScene {
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         
         // Spawn some robots
-        (0..<300).forEach { _ in spawnNode?.spawnRobot() }
+        (0..<300).forEach { _ in spawnNode?.spawnRobot()}
     }
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
@@ -71,8 +71,6 @@ extension SpawnSKNode {
             
             newNode.position = CGPoint(x: CGFloat.random(in: -500...500), y: CGFloat.random(in: -300...300))
             newNode.isPaused = false
-            
-            newNode.removeAllChildren()
             
             return nil
         }
