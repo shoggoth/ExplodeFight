@@ -24,18 +24,21 @@ class GameScene: BaseSKScene {
         view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(clear)))
 
         // Set up scene physics
-        self.physicsBody = SKPhysicsBody (edgeLoopFrom: self.frame)
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+        
+        // Spawn some robots
+        (0..<300).forEach { _ in spawnNode?.spawnRobot() }
     }
     
     @objc func spawn(_ tap: UITapGestureRecognizer) {
         
-        spawnNode?.spawnMultiRobots()
+        spawnField(loc: convertPoint(fromView: tap.location(in: view)))
     }
     
     @objc func clear(_ tap: UITapGestureRecognizer) {
         
-        if tap.state == .began { spawnNode?.spawner?.kill(nodesWithName: "RobotAnim") }
-        if tap.state == .ended { spawnNode?.spawner?.kill(nodesWithName: "Robot") }
+        if tap.state == .began { spawnNode?.spawner?.kill(nodesWithName: "Robot", recycle: true) }
+        if tap.state == .ended { spawnNode?.spawner?.kill(nodesWithName: "RobotAnim") }
     }
     
     override func update(deltaTime: TimeInterval) {
@@ -44,31 +47,34 @@ class GameScene: BaseSKScene {
         
         spawnNode?.spawner?.update(deltaTime: deltaTime)
     }
+    
+    func spawnField(loc: CGPoint) {
+        
+        let shield = SKFieldNode.radialGravityField()
+        shield.position = loc
+        shield.strength = -5
+        shield.categoryBitMask = 1
+        shield.region = SKRegion(radius: 256)
+        shield.falloff = 4
+        shield.run(SKAction.sequence([.strength(to: 0, duration: 2.0), .removeFromParent()]))
+        addChild(shield)
+    }
 }
 
 // MARK: - Spawn without entity
 
 extension SpawnSKNode {
     
-    func spawnMultiRobots(count: Int = 25) {
+    func spawnRobot() {
         
-        (0..<count).forEach { _ in spawn(name: "Robot") { newNode in
+        spawn(name: "Robot") { newNode in
             
-            newNode.position = CGPoint(x: CGFloat(arc4random() % 100) - 50, y: CGFloat(arc4random() % 200) - 100)
-            newNode.run(SKAction.repeatForever(SKAction(named: "Pulse")!))
+            newNode.position = CGPoint(x: CGFloat.random(in: -500...500), y: CGFloat.random(in: -300...300))
             newNode.isPaused = false
             
-            return nil
-            }
-        }
-        
-        (0..<count).forEach { _ in spawn(name: "RobotAnim") { newNode in
-            
-            newNode.position = CGPoint(x: CGFloat(arc4random() % 200) - 100, y: CGFloat(arc4random() % 100) - 50)
-            newNode.isPaused = false
+            newNode.removeAllChildren()
             
             return nil
-            }
         }
     }
 }
