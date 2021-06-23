@@ -13,7 +13,7 @@ import GameControls
 
 class GameScene: BaseSKScene {
     
-    private lazy var spawnNode = { self.childNode(withName: "//Spawner_0") as? SpawnSKNode }()
+    private lazy var spawnNode = { self.childNode(withName: "//SpawnRoot") as? SpawnSKNode }()
 
     override func didMove(to view: SKView) {
         
