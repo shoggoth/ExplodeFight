@@ -65,9 +65,19 @@ class GameScene: BaseSKScene {
             let rightSpring = SKPhysicsJointSpring.joint(withBodyA: rightAxle.phys, bodyB: rightWheel.phys, anchorA: rightAxle.pos, anchorB: rightWheel.pos)
             rightSpring.frequency = 3
             rightSpring.damping = 0.2
-
             self.physicsWorld.add(leftSpring)
             self.physicsWorld.add(rightSpring)
+
+            let leftStrut = SKPhysicsJointSliding.joint(withBodyA: leftAxle.phys, bodyB: leftWheel.phys, anchor: leftAxle.pos, axis: .yAxis)
+            leftStrut.shouldEnableLimits = true;
+            leftStrut.lowerDistanceLimit = 5;
+            leftStrut.upperDistanceLimit = 50;
+            let rightStrut = SKPhysicsJointSliding.joint(withBodyA: rightAxle.phys, bodyB: rightWheel.phys, anchor: rightAxle.pos, axis: .yAxis)
+            rightStrut.shouldEnableLimits = true;
+            rightStrut.lowerDistanceLimit = 5;
+            rightStrut.upperDistanceLimit = 50;
+            self.physicsWorld.add(leftStrut)
+            self.physicsWorld.add(rightStrut)
         }
     }
 }
@@ -78,7 +88,7 @@ extension SKNode {
     
     func childNodePositionInScene(name: String, scene: GameScene, defaultPhysicsBody: SKPhysicsBody? = nil) -> (node: SKNode, phys: SKPhysicsBody, pos: CGPoint)? {
         
-        guard let child = childNode(withName: name), let pb = defaultPhysicsBody ?? child.physicsBody ?? self.physicsBody else { return nil }
+        guard let child = childNode(withName: name), let pb = defaultPhysicsBody ?? child.physicsBody else { return nil }
 
         return (child, pb, convert(child.position, to: scene))
     }
