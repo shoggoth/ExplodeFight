@@ -15,7 +15,7 @@ struct Player {
         
         if let node = { SKScene(fileNamed: "Players")?.orphanedChildNode(withName: "Player") }() {
             
-            node.entity = {
+            scene.playerEntity = {
                 
                 let entity = GKEntity()
                 

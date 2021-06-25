@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- GKEntity scene position extension (get from node or agent components)
 - Field explode
 - Re-add player to scene after explode.
 - Level snapshot and AI component.
