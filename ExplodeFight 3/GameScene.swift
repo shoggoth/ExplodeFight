@@ -46,6 +46,8 @@ class GameScene: BaseSKScene {
         super.update(deltaTime: deltaTime)
         
         spawnNode?.spawner?.update(deltaTime: deltaTime)
+        
+        removeOffSceneNodes()
     }
     
     func spawnField(loc: CGPoint) {
@@ -61,6 +63,16 @@ class GameScene: BaseSKScene {
     }
 }
 
+extension GameScene {
+    
+    func removeOffSceneNodes() {
+        
+        spawnNode?.children.forEach { node in
+
+            if !intersects(node) { node.run(.removeFromParent()) }
+        }
+    }
+}
 // MARK: - Spawn without entity
 
 extension SpawnSKNode {
