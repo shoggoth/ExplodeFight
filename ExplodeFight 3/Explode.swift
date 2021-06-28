@@ -47,24 +47,26 @@ struct ExplodeShader {
     }
     
     func explode(node: SKSpriteNode, toScale: vector_float2, withSplits: vector_float2, duration: TimeInterval, bulgeOffset: Float = 0) {
-
+        
+        // Replace the node with a RTT'd version if it's in-scene
+        guard let scene = node.scene, scene.intersects(node), let parent = node.parent else { return }
+        
         let rot = node.zRotation
         node.zRotation = 0
-
-        if let texture = node.scene?.view?.texture(from: node) {
-            
-            let rttNode = SKSpriteNode(texture: texture)
-            rttNode.position = node.position
-            rttNode.zRotation = rot
-            
-            node.parent?.addChild(rttNode)
-            node.removeFromParent()
-            
-            if bulgeOffset != 0 {
-                bulgeExplode(node: rttNode, toScale: toScale, withSplits: withSplits, duration: duration, bulgeOffset: bulgeOffset)
-            } else {
-                scaleExplode(node: rttNode, toScale: toScale, withSplits: withSplits, duration: duration)
-            }
+        
+        guard let texture = scene.view?.texture(from: node) else { return }
+        
+        let rttNode = SKSpriteNode(texture: texture)
+        rttNode.position = node.position
+        rttNode.zRotation = rot
+        
+        parent.addChild(rttNode)
+        node.removeFromParent()
+        
+        if bulgeOffset != 0 {
+            bulgeExplode(node: rttNode, toScale: toScale, withSplits: withSplits, duration: duration, bulgeOffset: bulgeOffset)
+        } else {
+            scaleExplode(node: rttNode, toScale: toScale, withSplits: withSplits, duration: duration)
         }
     }
 
