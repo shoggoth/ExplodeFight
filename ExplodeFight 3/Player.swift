@@ -29,6 +29,12 @@ struct Player {
                     if node.physicsBody?.categoryBitMask ?? 0 | 4 != 0 { print("Player picking up something.") }
                     if node.name == "Ship" { entity.component(ofType: StateComponent.self)?.stateMachine.enter(PlayerState.ExplodeState.self) }
                 })
+                entity.addComponent({
+                    let fc = FireComponent()
+                    fc.weaponType = Int.random(in: 1...4)
+                    fc.fireRate = 0.5
+                    return fc
+                }())
 
                 scene.entities.append(entity)
 
@@ -42,6 +48,7 @@ struct Player {
     static func destroyPlayer(scene: GameScene) {
         
         if let e = scene.playerEntity, let i = scene.entities.firstIndex(of: e) { scene.entities.remove(at: i) }
+        
         scene.playerRootNode.removeAllChildren()
     }
     
@@ -51,8 +58,11 @@ struct Player {
             
             node.reset { _ in
                 
+                node.run(.fadeIn(withDuration: 0.23))
+
                 node.isPaused = false
-                
+                node.isHidden = false
+
                 // In case the explode action is still running...
                 node.removeAction(forKey: "Explode_PixelShatter")
                 
@@ -71,6 +81,7 @@ struct Player {
                 
                 // TODO: Decide which explosion suits best
                 Global.particleExploder.explode(node: node, duration: 1.0)
+                node.run(.fadeOut(withDuration: 1.0))
                 //Global.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
             }
             
@@ -80,6 +91,9 @@ struct Player {
         }
         
         let dieState = PlayerState.DieState {
+            
+            node.isPaused = true
+            node.isHidden = true
             
             scene.playerDeath()
             
