@@ -52,6 +52,10 @@
 		FF896917268A0A2B006201E0 /* Gotcha.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF896910268A0A2B006201E0 /* Gotcha.caf */; };
 		FF896918268A0A2B006201E0 /* Bionic.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF896911268A0A2B006201E0 /* Bionic.caf */; };
 		FF896919268A0A2B006201E0 /* BogFlush.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF896912268A0A2B006201E0 /* BogFlush.caf */; };
+		FF89691E268B181D006201E0 /* Fire3.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF89691B268B181D006201E0 /* Fire3.caf */; };
+		FF89691F268B181D006201E0 /* Fire4.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF89691C268B181D006201E0 /* Fire4.caf */; };
+		FF896920268B181D006201E0 /* Fire2.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF89691D268B181D006201E0 /* Fire2.caf */; };
+		FF896922268B188F006201E0 /* BeginLevel.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF896921268B188F006201E0 /* BeginLevel.caf */; };
 		FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF95A51D25792F9B00954B50 /* SplashScene.sks */; };
 		FF95A5202579303800954B50 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95A51F2579303800954B50 /* SplashScene.swift */; };
 		FFA0F45C261CA1380009EDDC /* Explode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0F45B261CA1380009EDDC /* Explode.swift */; };
@@ -149,6 +153,10 @@
 		FF896910268A0A2B006201E0 /* Gotcha.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Gotcha.caf; sourceTree = "<group>"; };
 		FF896911268A0A2B006201E0 /* Bionic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bionic.caf; sourceTree = "<group>"; };
 		FF896912268A0A2B006201E0 /* BogFlush.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BogFlush.caf; sourceTree = "<group>"; };
+		FF89691B268B181D006201E0 /* Fire3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fire3.caf; sourceTree = "<group>"; };
+		FF89691C268B181D006201E0 /* Fire4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fire4.caf; sourceTree = "<group>"; };
+		FF89691D268B181D006201E0 /* Fire2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fire2.caf; sourceTree = "<group>"; };
+		FF896921268B188F006201E0 /* BeginLevel.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BeginLevel.caf; sourceTree = "<group>"; };
 		FF95A51D25792F9B00954B50 /* SplashScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SplashScene.sks; sourceTree = "<group>"; };
 		FF95A51F2579303800954B50 /* SplashScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
 		FFA0F45B261CA1380009EDDC /* Explode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explode.swift; sourceTree = "<group>"; };
@@ -277,11 +285,15 @@
 		FF67F261260CE4F9008D4517 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				FF896921268B188F006201E0 /* BeginLevel.caf */,
 				FF67F26A260CE7CA008D4517 /* Explode.caf */,
 				FF2096232670AF0D00B05FA2 /* Laser.caf */,
 				FF896911268A0A2B006201E0 /* Bionic.caf */,
 				FF896912268A0A2B006201E0 /* BogFlush.caf */,
 				FF89690E268A0A2A006201E0 /* Fire.caf */,
+				FF89691D268B181D006201E0 /* Fire2.caf */,
+				FF89691B268B181D006201E0 /* Fire3.caf */,
+				FF89691C268B181D006201E0 /* Fire4.caf */,
 				FF89690D268A0A2A006201E0 /* Glop.caf */,
 				FF896910268A0A2B006201E0 /* Gotcha.caf */,
 				FF89690F268A0A2B006201E0 /* Roop.caf */,
@@ -452,7 +464,9 @@
 				FFF2E58F264BE6F60060FE45 /* Explode0.sks in Resources */,
 				FF49711425B5E1DE0083C36B /* AttractModes.sks in Resources */,
 				FF5D7E19260CCBD300F1956E /* AttractLogo.fsh in Resources */,
+				FF896922268B188F006201E0 /* BeginLevel.caf in Resources */,
 				FF88FB5325B1F38300B09BD8 /* AttractScene.sks in Resources */,
+				FF89691F268B181D006201E0 /* Fire4.caf in Resources */,
 				FF896918268A0A2B006201E0 /* Bionic.caf in Resources */,
 				FF08069C256BD29700F2EBA7 /* Main.storyboard in Resources */,
 				FF896914268A0A2B006201E0 /* Glop.caf in Resources */,
@@ -472,9 +486,11 @@
 				FF896916268A0A2B006201E0 /* Roop.caf in Resources */,
 				FF089D9026835EA10001DE5A /* Players.sks in Resources */,
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
+				FF89691E268B181D006201E0 /* Fire3.caf in Resources */,
 				FF3F969A25F258F800AF63B9 /* Charset32.atlas in Resources */,
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,
 				FF080695256BD29700F2EBA7 /* Actions.sks in Resources */,
+				FF896920268B181D006201E0 /* Fire2.caf in Resources */,
 				FF896915268A0A2B006201E0 /* Fire.caf in Resources */,
 				FF3F96AA25F63B4A00AF63B9 /* Robotron.TTF in Resources */,
 			);
