@@ -49,6 +49,11 @@ class GameScene: BaseSKScene {
 
         // Create initial level
         loadNextLevel()
+        
+        // This seems to stop nodes inside the reference being paused when the scene appears.
+        // https://stackoverflow.com/questions/47615847/xcode-9-1-and-9-2-referenced-sprites-are-not-executing-actions-added-in-scen
+        isPaused = true
+        isPaused = false
     }
     
     override func update(deltaTime: TimeInterval) {
