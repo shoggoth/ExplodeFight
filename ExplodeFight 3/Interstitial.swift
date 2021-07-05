@@ -26,11 +26,19 @@ struct Interstitial {
             }
         }
         
+        root.childNode(withName: "//Bonus/Tomato")?.isHidden = true
+
         scene.addChild(root)
     }
     
     func flashupNode(named: String, action: SKAction? = nil) {
         
         root.childNode(withName: "//\(named)")?.reset() { node in node.run(action ?? showAction) }
+    }
+    
+    func countBonus() {
+        
+        if let bonusRoot = root.childNode(withName: "//Bonus/Root/SuccessLabel/Count") { Bonus(imageName: "Pickup14", spacing: 23, interval: 0.23).countUpNodeBonus(root: bonusRoot, count: 10) }
+        if let bonusRoot = root.childNode(withName: "//Bonus/Root/MenLabel/Count") { Bonus(imageName: "Pickup6", spacing: 34, interval: 0.75).countUpNodeBonus(root: bonusRoot, count: 3) }
     }
 }

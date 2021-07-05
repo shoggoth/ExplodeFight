@@ -72,9 +72,9 @@ class RoundBullet: SKShapeNode, NodeBullet {
         
         let diameter = radius * 2
         
-        path = CGPath(ellipseIn: CGRect(origin: CGPoint(x: -radius, y: -radius), size: CGSize(width: diameter, height: diameter)), transform: nil)
+        path = CGPath(ellipseIn: CGRect(origin: CGPoint(x: -radius, y: -radius), size: CGSize(width: diameter / 2, height: diameter)), transform: nil)
         lineWidth = radius * 0.25
-        //glowWidth = radius * 0.125
+        glowWidth = radius * 0.125
         strokeColor = .white
         
         physicsBody = {

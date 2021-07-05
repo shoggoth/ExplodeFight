@@ -24,7 +24,7 @@ class GameScene: BaseSKScene {
     
     lazy var interstitial = { Interstitial(scene: self) }()
 
-    private var men = Defaults.initialNumberofMen
+    private var men = Defaults.initialNumberofMen * 1000
     private var menLabel: SKLabelNode?
 
     private var score = Score(dis: 0, acc: 0)

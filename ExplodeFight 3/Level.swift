@@ -81,7 +81,7 @@ struct StateDrivenLevel: Level {
         scene.addScore(score: 3)
         
         scene.interstitial.flashupNode(named: "Bonus", action: .sequence([.unhide(), .wait(forDuration: 3.0), SKAction(named: "ZoomFadeOut")!, .hide(), .run { stateMachine.enter(EndedState.self)}]))
-        //if let tomRoot = node.childNode(withName: "SuccessLabel") { Bonus().countUpNodeBonus(root: tomRoot) }
+        scene.interstitial.countBonus()
     }
     
     func teardown(scene: GameScene) {

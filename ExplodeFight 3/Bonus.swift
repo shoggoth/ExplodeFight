@@ -10,15 +10,18 @@ import SpriteKit
 
 struct Bonus {
     
-    func countUpNodeBonus(root: SKNode) {
+    let imageName: String
+    let spacing: Int
+    let interval: TimeInterval
+    
+    func countUpNodeBonus(root: SKNode, count: Int) {
         
         var index = 1
-        let spacing = 23
         let key = "countUpNodeBonusKey"
-        let wait = SKAction.wait(forDuration: 0.23)
+        let wait = SKAction.wait(forDuration: interval)
         let block = SKAction.run {
             
-            let tomNode = SKSpriteNode(imageNamed:"Tomato")
+            let tomNode = SKSpriteNode(imageNamed: imageName)
             tomNode.position = CGPoint(x: spacing * index, y: 0)
             tomNode.setScale(2)
             root.addChild(tomNode)
@@ -28,6 +31,6 @@ struct Bonus {
         
         root.removeAction(forKey: key)
         root.removeAllChildren()
-        root.run(.repeat(.sequence([block, wait]), count: 10), withKey: key)
+        root.run(.repeat(.sequence([block, wait]), count: count), withKey: key)
     }
 }
