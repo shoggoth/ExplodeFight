@@ -9,9 +9,28 @@
 import SpriteKit
 
 struct Interstitial {
+
+    private let root: SKNode
+    private let showAction: SKAction = .sequence([.unhide(), .run { print("unhidden") }, .wait(forDuration: 2.3), SKAction(named: "ZoomFadeOut")!, .hide()])
     
-    private static var interRef = { SKReferenceNode(fileNamed: "Interstitial") }()
-    static var getReadyNode = interRef?.orphanedChildNode(withName: "//GetReady/Root")
-    static var gameOverNode = interRef?.orphanedChildNode(withName: "//GameOver/Root")
-    static var bonusNode = interRef?.orphanedChildNode(withName: "//Bonus/Root")
+    init(scene: GameScene) {
+        
+        root = SKReferenceNode(fileNamed: "Interstitial")
+        
+        ["GetReady", "GameOver", "Bonus"].forEach { name in
+            
+            root.childNode(withName: "//\(name)")?.reset() { node in
+                
+                node.isHidden = true
+                node.position = .zero
+            }
+        }
+        
+        scene.addChild(root)
+    }
+    
+    func flashupNode(named: String, action: SKAction? = nil) {
+        
+        root.childNode(withName: "//\(named)")?.reset() { node in node.run(action ?? showAction) }
+    }
 }

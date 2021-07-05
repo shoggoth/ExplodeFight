@@ -55,16 +55,7 @@ struct StateDrivenLevel: Level {
     
     func setup(scene: GameScene) {
         
-        if let node = Interstitial.getReadyNode {
-            
-            (node as? SKLabelNode)?.text = name
-            
-            node.reset()
-            scene.interstitialRootNode.addChild(node)
-            
-            node.run(.sequence([.wait(forDuration: 2.3), SKAction(named: "ZoomFadeOut")!, .removeFromParent()]))
-            node.isPaused = false
-        }
+        scene.interstitial.flashupNode(named: "GetReady")
     }
     
     func update(deltaTime: TimeInterval, scene: GameScene) {
@@ -89,7 +80,10 @@ struct StateDrivenLevel: Level {
         
         scene.addScore(score: 3)
         
-        if let node = Interstitial.bonusNode {
+        scene.interstitial.flashupNode(named: "Bonus", action: .sequence([.unhide(), .wait(forDuration: 3.0), SKAction(named: "ZoomFadeOut")!, .hide(), .run { stateMachine.enter(EndedState.self)}]))
+        //if let tomRoot = node.childNode(withName: "SuccessLabel") { Bonus().countUpNodeBonus(root: tomRoot) }
+
+        /*if let node = Interstitial.bonusNode {
 
             node.reset()
             scene.interstitialRootNode.addChild(node)
@@ -101,12 +95,11 @@ struct StateDrivenLevel: Level {
             node.isPaused = false
             
             if let tomRoot = node.childNode(withName: "SuccessLabel") { Bonus().countUpNodeBonus(root: tomRoot) }
-        }
+        }*/
     }
     
     func teardown(scene: GameScene) {
         
-        scene.interstitialRootNode.removeAllChildren()
         mobSpawner.kill()
         pickupSpawner.kill()
     }

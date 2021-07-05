@@ -21,20 +21,20 @@ class GameScene: BaseSKScene {
 
     var mobRootNode: SKNode { childNode(withName: "MobRoot")! }
     var playerRootNode: SKNode { childNode(withName: "PlayerRoot")! }
-    var interstitialRootNode: SKNode { childNode(withName: "ISRoot")! }
     
+    lazy var interstitial = { Interstitial(scene: self) }()
+
     private var men = Defaults.initialNumberofMen
     private var menLabel: SKLabelNode?
 
     private var score = Score(dis: 0, acc: 0)
     private var scoreLabel: SKLabelNode?
-
     
     override func didMove(to view: SKView) {
         
         // Global setup
         Global.soundManager.playNode = self
-
+        
         // Set up scene physics
         physicsWorld.contactDelegate = self
         physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
@@ -83,7 +83,7 @@ class GameScene: BaseSKScene {
                 return CountdownTimer(countDownTime: 10.0)
             },
             StateDrivenLevel.BonusState() { self.level?.postamble(scene: self) },
-            StateDrivenLevel.EndedState() { if self.level != nil { self.loadNextLevel() }},
+            StateDrivenLevel.EndedState() { if self.level != nil { self.loadNextLevel() }}
         ])
         
         level?.setup(scene: self)
@@ -111,23 +111,17 @@ class GameScene: BaseSKScene {
         // Level nullify
         level?.teardown(scene: self)
         level = nil
-        
-        // Game over message and scene load action.
-        if let node = Interstitial.gameOverNode {
-            
-            node.reset() { _ in
-                node.run(.sequence([.wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .removeFromParent(), .run {
-                    
-                    DispatchQueue.main.async { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }
 
-                }]))
-                node.isPaused = false
-            }
+        // Fade all mobs
+        mobRootNode.run(.fadeOut(withDuration: 1))
+
+        // Game over message and scene load action.
+        interstitial.flashupNode(named: "GameOver", action: .sequence([.unhide(), .wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .hide(), .run {
             
-            mobRootNode.run(.fadeOut(withDuration: 1))
-            interstitialRootNode.addChild(node)
-        }
-        
+            DispatchQueue.main.async { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }
+
+        }]))
+
         Player.destroyPlayer(scene: self)
         
         ScoreManager.submitHiScore(boardIdentifier: "hiScore", score: score)

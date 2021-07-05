@@ -36,9 +36,9 @@
 		FF4E81B92608EF1C006B1050 /* Mobs.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF4E81B82608EF1C006B1050 /* Mobs.sks */; };
 		FF59B134266BA82F00A6FDF1 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF59B133266BA82F00A6FDF1 /* States.swift */; };
 		FF5D7E19260CCBD300F1956E /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF5D7E18260CCBD300F1956E /* AttractLogo.fsh */; };
-		FF5F860F266E310F004E6648 /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F860E266E310F004E6648 /* Interstitial.swift */; };
 		FF5F8611266F5229004E6648 /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F8610266F5229004E6648 /* Bonus.swift */; };
 		FF67F26B260CE957008D4517 /* Explode.caf in Resources */ = {isa = PBXBuildFile; fileRef = FF67F26A260CE7CA008D4517 /* Explode.caf */; };
+		FF6974A22693087D009D6D8F /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F860E266E310F004E6648 /* Interstitial.swift */; };
 		FF78343A264292070063F453 /* Interstitial.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF783439264292070063F453 /* Interstitial.sks */; };
 		FF8391E5260B3AF40032D8EA /* StarField.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF8391E4260B3AF30032D8EA /* StarField.sks */; };
 		FF88FB4D25B08F1900B09BD8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB4C25B08F1900B09BD8 /* Configuration.swift */; };
@@ -521,6 +521,7 @@
 				FF3EB5AA25FB79200073D402 /* RulesComponent.swift in Sources */,
 				FFE2CA522630257200189FBA /* MobStates.swift in Sources */,
 				FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */,
+				FF6974A22693087D009D6D8F /* Interstitial.swift in Sources */,
 				FF95A5202579303800954B50 /* SplashScene.swift in Sources */,
 				FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */,
 				FF2C03D2263C12B500EDC46C /* Mob.swift in Sources */,
@@ -533,7 +534,6 @@
 				FF5F8611266F5229004E6648 /* Bonus.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
 				FFE2CA682630327500189FBA /* Score.swift in Sources */,
-				FF5F860F266E310F004E6648 /* Interstitial.swift in Sources */,
 				FF33B289260DF951000E92EE /* SoundManager.swift in Sources */,
 				FFF2E58A2649724A0060FE45 /* Global.swift in Sources */,
 				FF29B159265FA6F7000B4353 /* ContactComponent.swift in Sources */,

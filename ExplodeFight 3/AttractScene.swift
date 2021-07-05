@@ -86,7 +86,7 @@ class AttractScene: BaseSKScene {
                     ,
                    
                    ["greetings to all friends, past and present",
-                    "hccs, vic, doobs, biff, sean, gung, etc.",
+                    "hccs, vic, stoffer, doobs, sean, biff, others.",
                     "",
                     "there is a blank line above this line.",
                     "👍🏻 two thumbs fresh 👍🏻"]
