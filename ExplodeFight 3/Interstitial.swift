@@ -11,7 +11,7 @@ import SpriteKit
 struct Interstitial {
 
     private let root: SKNode
-    private let showAction: SKAction = .sequence([.unhide(), .run { print("unhidden") }, .wait(forDuration: 2.3), SKAction(named: "ZoomFadeOut")!, .hide()])
+    private let showAction: SKAction = .sequence([.unhide(), .wait(forDuration: 2.3), SKAction(named: "ZoomFadeOut")!, .hide()])
     
     init(scene: GameScene) {
         

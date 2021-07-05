@@ -21,6 +21,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly).
 
 ### Completed Tasks
+- Fix weapon memory leak.
 - Interstitial references (started on the basilisk)
 - Convert the assets in the Data.zip archive.
 - Re-add player to scene after explode and get the player bullet firing working again.

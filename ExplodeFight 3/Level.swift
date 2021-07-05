@@ -82,20 +82,6 @@ struct StateDrivenLevel: Level {
         
         scene.interstitial.flashupNode(named: "Bonus", action: .sequence([.unhide(), .wait(forDuration: 3.0), SKAction(named: "ZoomFadeOut")!, .hide(), .run { stateMachine.enter(EndedState.self)}]))
         //if let tomRoot = node.childNode(withName: "SuccessLabel") { Bonus().countUpNodeBonus(root: tomRoot) }
-
-        /*if let node = Interstitial.bonusNode {
-
-            node.reset()
-            scene.interstitialRootNode.addChild(node)
-
-            node.run(.sequence([.wait(forDuration: 3.0),
-                                SKAction(named: "ZoomFadeOut")!,
-                                .removeFromParent(),
-                                .run { stateMachine.enter(EndedState.self) }]))
-            node.isPaused = false
-            
-            if let tomRoot = node.childNode(withName: "SuccessLabel") { Bonus().countUpNodeBonus(root: tomRoot) }
-        }*/
     }
     
     func teardown(scene: GameScene) {
@@ -201,10 +187,11 @@ extension StateDrivenLevel {
                                 fc.weaponType = Int.random(in: 1...4)
                                 fc.fireRate = Double.random(in: 0.5...5.0)
                                 fc.fireVector = CGVector(angle: CGFloat.random(in: 0...pi * 2.0))
+                                //fc.fireVector = .zero
                                 
                                 return fc
-                            }()
-
+                            }
+                            
                             let entitySetup: (SKNode) -> GKEntity = { node in
                                 
                                 let mobEntity = GKEntity()
@@ -214,7 +201,7 @@ extension StateDrivenLevel {
                                 mobEntity.addComponent(StateComponent(states: mobDesc.makeStates(node: node, scene: scene, spawner: spawner)))
                                 mobEntity.addComponent(ContactComponent { _ in node.entity?.component(ofType: StateComponent.self)?.stateMachine.enter(MobState.ExplodeState.self) })
                                 mobEntity.addComponent(AIComponent())
-                                mobEntity.addComponent(makeRandomFireComponent)
+                                mobEntity.addComponent(makeRandomFireComponent())
                                 
                                 return mobEntity
                             }
