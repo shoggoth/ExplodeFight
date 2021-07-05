@@ -87,11 +87,15 @@ class RoundBullet: SKShapeNode, NodeBullet {
     
     func fire(completion: ((NodeBullet) -> Void)? = nil) {
 
+        let repeatingKey = "rotateRepeatKey"
+        
         // TODO: Use an action for the movement here and allow the fire method to be switched between that and one propelled by physics velocity.
-        let s = SKAction.playSoundFileNamed("Laser.caf", waitForCompletion: false)
-        let t = SKAction.repeatForever(.rotate(byAngle: pi, duration: 1))
-        let u = SKAction.sequence([.wait(forDuration: 0.75), .fadeOut(withDuration: 0.25), .removeFromParent(), .run { self.reset { _ in completion?(self); self.removeAllActions() }}])
-        run(.group([s, t, u]))
+        let s: SKAction = .playSoundFileNamed("Laser.caf", waitForCompletion: false)
+        let t: SKAction = .repeatForever(.rotate(byAngle: pi, duration: 1))
+        let u: SKAction = .sequence([.wait(forDuration: 0.75), .fadeOut(withDuration: 0.25), .removeFromParent(), .run { self.reset { node in completion?(self); node.removeAction(forKey: repeatingKey) }}])
+        
+        run(.group([s, u]))
+        run(t, withKey: repeatingKey)
     }
 }
 
