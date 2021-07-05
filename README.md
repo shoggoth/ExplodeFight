@@ -2,7 +2,6 @@
 master
 
 ## Current Tasks
-- Pickups and level end postamble.
 - Level snapshot and AI component.
 - Level progress rules.
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
@@ -21,6 +20,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly).
 
 ### Completed Tasks
+- Pickups and level end postamble.
 - Fix weapon memory leak.
 - Interstitial references (started on the basilisk)
 - Convert the assets in the Data.zip archive.
