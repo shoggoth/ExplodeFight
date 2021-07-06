@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- Improve look and feel for devices with different aspect ratios.
 - Level snapshot and AI component.
 - Level progress rules.
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
@@ -9,10 +10,9 @@ master
 ## Next Tasks
 - Player warp-in state.
 - Redo game and level state machines.
-- Make attract message different each time round.
 - Start adding mob experiments on the mob/ branches.
-- Add and remove physics properties on recycle and explode.
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
+- Game controller support
 
 ## Bugs
 
@@ -20,6 +20,8 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly).
 
 ### Completed Tasks
+- Add and remove physics properties on recycle and explode.
+- Make attract message different each time round.
 - Pickups and level end postamble.
 - Fix weapon memory leak.
 - Interstitial references (started on the basilisk)
