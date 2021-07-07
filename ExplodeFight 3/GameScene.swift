@@ -13,12 +13,19 @@ import GameControls
 
 class GameScene: BaseSKScene {
     
+    override var requiredScaleMode: SKSceneScaleMode { UIScreen.main.traitCollection.userInterfaceIdiom == .pad ? .aspectFill : .aspectFit }
+    
     private lazy var spawnNode = { self.childNode(withName: "//SpawnRoot") as? SpawnSKNode }()
 
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
         
+        if UIScreen.main.traitCollection.userInterfaceIdiom == .pad {
+            
+            self.childNode(withName: "//Camera")?.setScale(1.33333)
+        }
+
         // Set up user control
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(spawn)))
         view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(clear)))
@@ -55,7 +62,10 @@ extension SpawnSKNode {
         
         spawn(name: name) { newNode in
             
-            newNode.position = CGPoint(x: CGFloat.random(in: -500...500), y: CGFloat.random(in: -300...300))
+            let w = (self.scene?.size.width ?? 320.0) * 0.5
+            let h = (self.scene?.size.height ?? 200.0) * 0.5
+
+            newNode.position = CGPoint(x: CGFloat.random(in: -w...w), y: CGFloat.random(in: -h...h))
             newNode.isPaused = false
             
             let entity = GKEntity()
