@@ -14,14 +14,16 @@ class AttractScene: BaseSKScene {
     
     lazy var modeScene: SKScene? = { SKScene(fileNamed: "AttractModes") }()
     
-    override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
-    
+    override var requiredScaleMode: SKSceneScaleMode { UIScreen.main.traitCollection.userInterfaceIdiom == .pad ? .aspectFill : .aspectFit }
+
     private var stateMachine: GKStateMachine!
     
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
         
+        if UIScreen.main.traitCollection.userInterfaceIdiom == .pad { self.childNode(withName: "//Camera")?.setScale(1.33333) }
+
         // Set up user control
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(start)))
         
@@ -76,10 +78,11 @@ class AttractScene: BaseSKScene {
                      "created by rich henry at dogstar industries ltd.",
                      "thank you everyone for your valuable feedback."],
                     
-                    ["just how long can i make a line of text I wonder? For the ipad?",
-                     "looks like it might be 64 characters, quite a lot then.",
-                     "there can be quite a lot of lines of text too, even if we start",
-                     "near the middle of the screen",
+                    ["just how long can i make a line of text I wonder?",
+                     "looks like it might be 64 characters on a 16:9 screen",
+                     "what about the iPad though? Is this going to be too long??",
+                     "there can be quite a lot of lines of text too, even if we",
+                     "start near the middle of the screen",
                      "and keep adding lines",
                      "until the bottom is near",
                      "has an extra line here :lol: 🍄"]

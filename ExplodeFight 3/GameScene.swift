@@ -13,8 +13,8 @@ import GameControls
 
 class GameScene: BaseSKScene {
 
-    override var requiredScaleMode: SKSceneScaleMode { .aspectFit }
-    
+    override var requiredScaleMode: SKSceneScaleMode { UIScreen.main.traitCollection.userInterfaceIdiom == .pad ? .aspectFill : .aspectFit }
+
     var level: Level?
     var playerEntity: GKEntity?
     let joystick = TouchJoystick()
@@ -31,7 +31,9 @@ class GameScene: BaseSKScene {
     private var scoreLabel: SKLabelNode?
     
     override func didMove(to view: SKView) {
-        
+
+        if UIScreen.main.traitCollection.userInterfaceIdiom == .pad { self.childNode(withName: "//Camera")?.setScale(1.33333) }
+
         // Global setup
         Global.soundManager.playNode = self
         
