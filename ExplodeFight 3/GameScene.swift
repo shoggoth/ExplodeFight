@@ -13,6 +13,7 @@ import GameControls
 class GameScene: BaseSKScene, ButtonSKSpriteNodeResponder {
     
     private let joystick = TouchJoystick()
+    private let gcontrol = GameControllers()
     
     override func didMove(to view: SKView) {
         

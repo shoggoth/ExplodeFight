@@ -47,7 +47,7 @@ class GameViewController: UIViewController {
     
     @objc func updateActiveStatus(withNotification notification: NSNotification) {
         
-        print("TODO: Handle these with pausing in the current scene = \(notification)")
+        //print("TODO: Handle these with pausing in the current scene = \(notification)")
     }
     
     // MARK: View behaviour
