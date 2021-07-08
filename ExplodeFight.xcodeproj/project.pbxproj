@@ -40,6 +40,7 @@
 		FF88FB4F25B0943E00B09BD8 /* Game.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF88FB4E25B0943E00B09BD8 /* Game.plist */; };
 		FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */; };
 		FF88FB5325B1F38300B09BD8 /* AttractScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF88FB5225B1F38300B09BD8 /* AttractScene.sks */; };
+		FF940E4C26970BBF00CE87A9 /* GatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF940E4B26970BBF00CE87A9 /* GatedState.swift */; };
 		FF95A51E25792F9B00954B50 /* SplashScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF95A51D25792F9B00954B50 /* SplashScene.sks */; };
 		FF95A5202579303800954B50 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF95A51F2579303800954B50 /* SplashScene.swift */; };
 		FFA0F45C261CA1380009EDDC /* Explode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0F45B261CA1380009EDDC /* Explode.swift */; };
@@ -125,6 +126,7 @@
 		FF88FB4E25B0943E00B09BD8 /* Game.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Game.plist; sourceTree = "<group>"; };
 		FF88FB5025B1EF4C00B09BD8 /* AttractScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractScene.swift; sourceTree = "<group>"; };
 		FF88FB5225B1F38300B09BD8 /* AttractScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttractScene.sks; sourceTree = "<group>"; };
+		FF940E4B26970BBF00CE87A9 /* GatedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatedState.swift; sourceTree = "<group>"; };
 		FF95A51D25792F9B00954B50 /* SplashScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SplashScene.sks; sourceTree = "<group>"; };
 		FF95A51F2579303800954B50 /* SplashScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
 		FFA0F45B261CA1380009EDDC /* Explode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explode.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 			children = (
 				FFE2CA7F263036F400189FBA /* Tests.swift */,
 				FF59B133266BA82F00A6FDF1 /* States.swift */,
+				FF940E4B26970BBF00CE87A9 /* GatedState.swift */,
 				FFE2CA81263036F400189FBA /* Info.plist */,
 			);
 			path = Tests;
@@ -481,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF59B134266BA82F00A6FDF1 /* States.swift in Sources */,
+				FF940E4C26970BBF00CE87A9 /* GatedState.swift in Sources */,
 				FFE2CA88263037ED00189FBA /* Score.swift in Sources */,
 				FFE2CA80263036F400189FBA /* Tests.swift in Sources */,
 			);
