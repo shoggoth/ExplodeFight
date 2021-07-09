@@ -17,7 +17,16 @@ struct Interstitial {
         
         root = SKReferenceNode(fileNamed: "Interstitial")
         
-        ["GetReady", "GameOver", "Bonus"].forEach { name in
+        hideNodes(names: ["GetReady", "GameOver", "Bonus"])
+        
+        root.childNode(withName: "//Bonus/Tomato")?.isHidden = true
+
+        scene.addChild(root)
+    }
+    
+    func hideNodes(names: [String]) {
+        
+        names.forEach { name in
             
             root.childNode(withName: "//\(name)")?.reset() { node in
                 
@@ -25,10 +34,6 @@ struct Interstitial {
                 node.position = .zero
             }
         }
-        
-        root.childNode(withName: "//Bonus/Tomato")?.isHidden = true
-
-        scene.addChild(root)
     }
     
     func flashupNode(named: String, action: SKAction? = nil) {

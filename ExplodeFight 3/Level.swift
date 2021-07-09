@@ -86,6 +86,7 @@ struct StateDrivenLevel: Level {
     
     func teardown(scene: GameScene) {
         
+        scene.interstitial.hideNodes(names: ["GetReady", "GameOver", "Bonus"])
         mobSpawner.kill()
         pickupSpawner.kill()
     }
