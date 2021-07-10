@@ -62,6 +62,8 @@ struct Mob {
             
             scene.addScore(score: pointValue)
             spawner.kill(node: node, recycle: true)
+            
+            scene.level?.snapshot.mobsKilled += 1
         }
         
         return [resetState, explodeState, dieState]

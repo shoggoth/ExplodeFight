@@ -2,8 +2,6 @@
 master
 
 ## Current Tasks
-- Level snapshot, states and AI component.
-- Level progress rules.
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 
 ## Next Tasks
@@ -19,6 +17,8 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly).
 
 ### Completed Tasks
+- Level snapshot, states and AI component.
+- Level progress rules.
 - Improve look and feel for devices with different aspect ratios.
 - Add and remove physics properties on recycle and explode.
 - Make attract message different each time round.

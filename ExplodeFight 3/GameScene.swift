@@ -78,14 +78,9 @@ class GameScene: BaseSKScene {
         
         level = StateDrivenLevel(levelNum: (level?.levelNum ?? 0) + 1, name: "Unnamed", states: [
             
-            StateDrivenLevel.PlayState() {
-                
-                self.level?.teardown(scene: self)
-
-                return CountdownTimer(countDownTime: 10.0)
-            },
-            StateDrivenLevel.BonusState() { self.level?.postamble(scene: self) },
-            StateDrivenLevel.EndedState() { if self.level != nil { self.loadNextLevel() }}
+            StateDrivenLevel.PlayState(scene: self),
+            StateDrivenLevel.BonusState(scene: self),
+            StateDrivenLevel.EndedState(scene: self)
         ])
         
         level?.setup(scene: self)

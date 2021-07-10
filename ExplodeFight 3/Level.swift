@@ -49,8 +49,10 @@ struct StateDrivenLevel: Level {
         if let firstState = states.first { stateMachine.enter(type(of: firstState)) }
         
         // Setup level rules
-        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$activeMobCount.intValue < 100"), assertingFact: "activeMobCountIsLow" as NSObject, grade: 1.0))
+        let spawnTemp = 100
+        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$activeMobCount.intValue < \(spawnTemp)"), assertingFact: "activeMobCountIsLow" as NSObject, grade: 1.0))
         ruleSystem.add(GKRule(predicate: NSPredicate(format: "$activeMobCount.intValue == 0"), assertingFact: "allMobsDestroyed" as NSObject, grade: 1.0))
+        ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobsKilled.intValue >= \(spawnTemp)"), assertingFact: "levelIsOver" as NSObject, grade: 1.0))
     }
     
     func setup(scene: GameScene) {
@@ -66,13 +68,16 @@ struct StateDrivenLevel: Level {
         
         ruleSystem.reset()
         ruleSystem.state["activeMobCount"] = mobSpawner.activeCount
+        ruleSystem.state["activePickupCount"] = pickupSpawner.activeCount
+        ruleSystem.state["mobsKilled"] = snapshot.mobsKilled
         ruleSystem.evaluate()
         
         mobSpawner.update(deltaTime: deltaTime)
         pickupSpawner.update(deltaTime: deltaTime)
 
         if ruleSystem.grade(forFact: "levelIsOver" as NSObjectProtocol) >= 1.0 { stateMachine.enter(BonusState.self) }
-        
+        if ruleSystem.grade(forFact: "levelIsOver" as NSObjectProtocol) >= 1.0 { print("LEVEL OVER!!!! TODO: Move this check to play state?") }
+
         tempSpawnUpdate(deltaTime: deltaTime, scene: scene)
     }
     
@@ -80,7 +85,7 @@ struct StateDrivenLevel: Level {
         
         scene.addScore(score: 3)
         
-        scene.interstitial.flashupNode(named: "Bonus", action: .sequence([.unhide(), .wait(forDuration: 3.0), SKAction(named: "ZoomFadeOut")!, .hide(), .run { stateMachine.enter(EndedState.self)}]))
+        scene.interstitial.flashupNode(named: "Bonus", action: .sequence([.unhide(), .wait(forDuration: 3.0), SKAction(named: "ZoomFadeOut")!, .hide(), .wait(forDuration: 1.0), .run { stateMachine.enter(EndedState.self)}]))
         scene.interstitial.countBonus()
     }
     
@@ -97,6 +102,8 @@ struct StateDrivenLevel: Level {
 class LevelSnapshot {
     
     var mobEntities = [GKEntity]()
+    
+    var mobsKilled: Int = 0
 }
 
 extension StateDrivenLevel {
@@ -131,33 +138,37 @@ extension StateDrivenLevel {
 
 extension StateDrivenLevel {
     
-    class PlayState: CountdownState {
+    class PlayState: GKState {
         
-        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(BonusState.self) }) }
+        let scene: GameScene
+        
+        init(scene: GameScene) { self.scene = scene }
+        
+        override func didEnter(from previousState: GKState?) { scene.level?.teardown(scene: scene) }
         
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is EndedState.Type || stateClass is BonusState.Type }
     }
     
     class BonusState: GKState {
         
-        private var countFunc: (() -> Void)?
+        let scene: GameScene
         
-        init(completion: (() -> Void)? = nil) { countFunc = completion }
+        init(scene: GameScene) { self.scene = scene }
 
-        override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is EndedState.Type }
+        override func didEnter(from previousState: GKState?) { scene.level?.postamble(scene: scene) }
         
-        override func didEnter(from previousState: GKState?) { countFunc?() }
+        override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is EndedState.Type }
     }
     
     class EndedState: GKState {
         
-        private var endFunc: (() -> Void)?
+        let scene: GameScene
         
-        init(completion: (() -> Void)? = nil) { endFunc = completion }
-        
+        init(scene: GameScene) { self.scene = scene }
+
+        override func didEnter(from previousState: GKState?) { if scene.level != nil { scene.loadNextLevel() }}
+
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { false }
-        
-        override func didEnter(from previousState: GKState?) { endFunc?() }
     }
 }
 

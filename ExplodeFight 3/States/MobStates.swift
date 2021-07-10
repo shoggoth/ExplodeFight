@@ -13,14 +13,14 @@ struct MobState {
     
     class ResetState: CountdownState {
         
-        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(ExplodeState.self) }) }
+        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, expire: { stateMachine in stateMachine?.enter(ExplodeState.self) }) }
         
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type || stateClass is ExplodeState.Type }
     }
     
     class ExplodeState: CountdownState {
         
-        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, exit: { stateMachine in stateMachine?.enter(DieState.self) }) }
+        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, expire: { stateMachine in stateMachine?.enter(DieState.self) }) }
         
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type }
     }

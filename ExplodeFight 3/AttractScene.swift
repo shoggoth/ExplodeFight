@@ -107,7 +107,7 @@ class AttractScene: BaseSKScene {
                 return CountdownTimer(countDownTime: revealTime * Double(textStrings.count) + fadeTime)
             },
             
-            exit: { stateMachine in
+            expire: { stateMachine in
                 
                 sourceNode.removeFromParent()
                 stateMachine?.enter(ShowHiScores.self) }
@@ -147,7 +147,7 @@ class AttractScene: BaseSKScene {
                 return CountdownTimer(countDownTime: 5.0)
             },
             
-            exit: { stateMachine in
+            expire: { stateMachine in
                 
                 sourceNode.removeFromParent()
                 stateMachine?.enter(ShowEnemies.self) }
@@ -167,7 +167,7 @@ class AttractScene: BaseSKScene {
                 return CountdownTimer(countDownTime: 3.0)
             },
             
-            exit: { stateMachine in
+            expire: { stateMachine in
                 
                 sourceNode.removeFromParent()
                 stateMachine?.enter(ShowPlayDemo.self) }
@@ -187,7 +187,7 @@ class AttractScene: BaseSKScene {
                 return CountdownTimer(countDownTime: 3.0)
             },
             
-            exit: { stateMachine in
+            expire: { stateMachine in
                 
                 sourceNode.removeFromParent()
                 stateMachine?.enter(ShowExplanation.self) }
