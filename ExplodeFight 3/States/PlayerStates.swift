@@ -23,8 +23,6 @@ struct PlayerState {
         override func didEnter(from previousState: GKState?) {
             
             print("Entered play state")
-            
-            stateMachine?.enter(ExplodeState.self)
         }
         
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type || stateClass is ExplodeState.Type }

@@ -20,7 +20,7 @@ struct Player {
                 let entity = GKEntity()
                 
                 entity.addComponent(GKSKNodeComponent(node: node))
-                entity.addComponent(GKAgent2D(node: node, maxSpeed: 600, maxAcceleration: 20, radius: 20, mass: Float(node.physicsBody?.mass ?? 1)))
+                entity.addComponent(GKAgent2D(node: node, maxSpeed: 300, maxAcceleration: 30, radius: 16, mass: Float(node.physicsBody?.mass ?? 1)))
                 entity.addComponent(PlayerControlComponent(joystick: scene.joystick))
                 entity.addComponent(StateComponent(states: Player.makeStates(node: node, scene: scene)))
                 entity.addComponent(DebugComponent())
@@ -32,7 +32,7 @@ struct Player {
                 entity.addComponent({
                     let fc = FireComponent()
                     fc.weaponType = Int.random(in: 1...4)
-                    fc.fireRate = 0.5
+                    fc.fireRate = 0.25
                     return fc
                 }())
 
@@ -72,7 +72,7 @@ struct Player {
                 }
             }
             
-            return CountdownTimer(countDownTime: 30.0)
+            return CountdownTimer(countDownTime: 3.0)
         }
         
         let playState = PlayerState.PlayState()
