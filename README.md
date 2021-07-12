@@ -2,16 +2,15 @@
 master
 
 ## Current Tasks
-- Make rules configurable per-level.
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
-- Use bt controller
+- Game controller support
 
 ## Next Tasks
+- Make rules configurable per-level.
 - Player warp-in state.
 - Redo game and level state machines.
 - Start adding mob experiments on the mob/ branches.
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
-- Game controller support
 
 ## Bugs
 

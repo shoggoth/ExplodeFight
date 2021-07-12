@@ -64,20 +64,18 @@ struct StateDrivenLevel: Level {
     func update(deltaTime: TimeInterval, scene: GameScene) {
         
         stateMachine.update(deltaTime: deltaTime)
-        
-        updateSnapShot(scene: scene)
+        snapshot.update(scene: scene, mobSpawner: mobSpawner)
         
         ruleSystem.reset()
         ruleSystem.state["activeMobCount"] = mobSpawner.activeCount
         ruleSystem.state["activePickupCount"] = pickupSpawner.activeCount
         ruleSystem.state["mobsKilled"] = snapshot.mobsKilled
         ruleSystem.evaluate()
-        
-        mobSpawner.update(deltaTime: deltaTime)
-        pickupSpawner.update(deltaTime: deltaTime)
 
         if ruleSystem.grade(forFact: "levelIsOver" as NSObjectProtocol) >= 1.0 { stateMachine.enter(BonusState.self) }
-        if ruleSystem.grade(forFact: "levelIsOver" as NSObjectProtocol) >= 1.0 { print("LEVEL OVER!!!! TODO: Move this check to play state?") }
+
+        mobSpawner.update(deltaTime: deltaTime)
+        pickupSpawner.update(deltaTime: deltaTime)
 
         tempSpawnUpdate(deltaTime: deltaTime, scene: scene)
     }
@@ -96,42 +94,6 @@ struct StateDrivenLevel: Level {
         
         mobSpawner.kill()
         pickupSpawner.kill()
-    }
-}
-
-// MARK: - SnapShotting
-
-class LevelSnapshot {
-    
-    var mobEntities = [GKEntity]()
-    
-    var mobsKilled: Int = 0
-}
-
-extension StateDrivenLevel {
-    
-    func updateSnapShot(scene: GameScene) {
-        
-        var count = 0
-        var ships = 0
-        var nearp = 0
-        
-        snapshot.mobEntities = []
-        
-        mobSpawner.iterateEntities { e in
-            
-            snapshot.mobEntities.append(e)
-            count += 1
-            if e.spriteComponent?.node.name == "Ship" { ships += 1 }
-            
-            if let ppos = scene.playerEntity?.spriteComponent?.node.position, let epos = e.spriteComponent?.node.position {
-                
-                if abs(hypotf(Float(epos.x - ppos.x), Float(epos.y - ppos.y))) < 64 { nearp += 1 }
-            }
-        }
-        
-        //let bum = mobs.filter { $0.agent?.position.y ?? 0 >= 350 }
-        //print("entity = \(count) ships = \(ships) mobs = \(bum.count) near = \(nearp)")
     }
 }
 

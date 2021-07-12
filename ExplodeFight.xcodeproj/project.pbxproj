@@ -76,6 +76,7 @@
 		FFF2E58A2649724A0060FE45 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2E5892649724A0060FE45 /* Global.swift */; };
 		FFF2E58E264BE6F60060FE45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF2E58C264BE6F60060FE45 /* Assets.xcassets */; };
 		FFF2E58F264BE6F60060FE45 /* Explode0.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFF2E58D264BE6F60060FE45 /* Explode0.sks */; };
+		FFF3D2D1269C58E800F5947F /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF3D2D0269C58E800F5947F /* Snapshot.swift */; };
 		FFF47C34260B432300BB2930 /* attractOverlay.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFF47C33260B432300BB2930 /* attractOverlay.fsh */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +178,7 @@
 		FFF2E5892649724A0060FE45 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		FFF2E58C264BE6F60060FE45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFF2E58D264BE6F60060FE45 /* Explode0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explode0.sks; sourceTree = "<group>"; };
+		FFF3D2D0269C58E800F5947F /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 		FFF47C33260B432300BB2930 /* attractOverlay.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attractOverlay.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,6 +216,7 @@
 				FF129B46266A56BA00683407 /* Pickups.sks */,
 				FF2C03D1263C12B500EDC46C /* Mob.swift */,
 				FF3EB5AD25FB99F80073D402 /* Level.swift */,
+				FFF3D2D0269C58E800F5947F /* Snapshot.swift */,
 				FFE2CA672630327500189FBA /* Score.swift */,
 				FF5F8610266F5229004E6648 /* Bonus.swift */,
 				FF21CD6425EE503900873CD3 /* Weapon.swift */,
@@ -523,6 +526,7 @@
 				FF88FB5125B1EF4C00B09BD8 /* AttractScene.swift in Sources */,
 				FF6974A22693087D009D6D8F /* Interstitial.swift in Sources */,
 				FF95A5202579303800954B50 /* SplashScene.swift in Sources */,
+				FFF3D2D1269C58E800F5947F /* Snapshot.swift in Sources */,
 				FF49712D25B72CF20083C36B /* PlayerControlComponent.swift in Sources */,
 				FF2C03D2263C12B500EDC46C /* Mob.swift in Sources */,
 				FFE2CA5426302BEF00189FBA /* PlayerStates.swift in Sources */,
