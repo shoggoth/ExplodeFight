@@ -2,7 +2,9 @@
 master
 
 ## Current Tasks
+- Make rules configurable per-level.
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
+- Use bt controller
 
 ## Next Tasks
 - Player warp-in state.
@@ -17,6 +19,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly).
 
 ### Completed Tasks
+- Restore level naming 
 - Level snapshot, states and AI component.
 - Level progress rules.
 - Improve look and feel for devices with different aspect ratios.

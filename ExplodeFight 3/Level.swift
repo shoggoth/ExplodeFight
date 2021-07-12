@@ -43,7 +43,7 @@ struct StateDrivenLevel: Level {
     init(levelNum: Int, name: String, states: [GKState]) {
         
         self.levelNum = levelNum
-        self.name = "Level \(levelNum) - \(name)"
+        self.name = "LEVEL \(levelNum) - \(name)"
         
         stateMachine = GKStateMachine(states: states)
         if let firstState = states.first { stateMachine.enter(type(of: firstState)) }
@@ -57,6 +57,7 @@ struct StateDrivenLevel: Level {
     
     func setup(scene: GameScene) {
         
+        scene.interstitial.setLevelName(name: name)
         scene.interstitial.flashupNode(named: "GetReady")
     }
     
@@ -92,6 +93,7 @@ struct StateDrivenLevel: Level {
     func teardown(scene: GameScene) {
         
         scene.interstitial.hideNodes(names: ["GetReady", "GameOver", "Bonus"])
+        
         mobSpawner.kill()
         pickupSpawner.kill()
     }
@@ -123,7 +125,6 @@ extension StateDrivenLevel {
             if e.spriteComponent?.node.name == "Ship" { ships += 1 }
             
             if let ppos = scene.playerEntity?.spriteComponent?.node.position, let epos = e.spriteComponent?.node.position {
-                
                 
                 if abs(hypotf(Float(epos.x - ppos.x), Float(epos.y - ppos.y))) < 64 { nearp += 1 }
             }
@@ -191,7 +192,7 @@ extension StateDrivenLevel {
                         
                         if let spawner = mobSpawner.spawner(named: s) {
 
-                            let mobDesc = Mob(name: s, maxSpeed: 600, pointValue: 100, position: p, rotation: CGVector(point: p).angle)
+                            let mobDesc = Mob(name: s, maxSpeed: 600, pointValue: 1, position: p, rotation: CGVector(point: p).angle)
                             
                             let makeRandomFireComponent = { () -> FireComponent in
                                 
@@ -237,7 +238,7 @@ extension StateDrivenLevel {
                     
                     pickupEntity.addComponent(ContactComponent { _ in
                         
-                        scene.addScore(score: 999)
+                        scene.addScore(score: 7)
                         
                         pickupSpawner.kill(node: node)
                     })

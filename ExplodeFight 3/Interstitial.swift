@@ -36,6 +36,11 @@ struct Interstitial {
         }
     }
     
+    func setLevelName(name: String) {
+        
+        if let nameRoot = root.childNode(withName: "//GetReady/Root") as? SKLabelNode { nameRoot.text = name }
+    }
+    
     func flashupNode(named: String, action: SKAction? = nil) {
         
         root.childNode(withName: "//\(named)")?.reset() { node in node.run(action ?? showAction) }
