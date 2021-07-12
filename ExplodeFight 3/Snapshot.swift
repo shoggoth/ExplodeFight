@@ -35,8 +35,6 @@ class LevelSnapshot {
             }
         }
         
-        print(nearp)
-        
         //let bum = mobs.filter { $0.agent?.position.y ?? 0 >= 350 }
         //print("entity = \(count) ships = \(ships) mobs = \(bum.count) near = \(nearp)")
     }

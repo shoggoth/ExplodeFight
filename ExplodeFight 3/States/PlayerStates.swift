@@ -13,7 +13,19 @@ struct PlayerState {
     
     class ResetState: CountdownState {
         
-        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, expire: { stateMachine in stateMachine?.enter(ExplodeState.self) }) }
+        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, expire: { stateMachine in stateMachine?.enter(PlayState.self) }) }
+        
+        override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is PlayState.Type }
+    }
+    
+    class PlayState: GKState {
+        
+        override func didEnter(from previousState: GKState?) {
+            
+            print("Entered play state")
+            
+            stateMachine?.enter(ExplodeState.self)
+        }
         
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type || stateClass is ExplodeState.Type }
     }

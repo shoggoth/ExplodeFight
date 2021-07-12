@@ -75,6 +75,8 @@ struct Player {
             return CountdownTimer(countDownTime: 30.0)
         }
         
+        let playState = PlayerState.PlayState()
+        
         let explodeState = PlayerState.ExplodeState {
             
             if let node = node as? SKSpriteNode {
@@ -100,6 +102,6 @@ struct Player {
             return CountdownTimer(countDownTime: 0.4)
         }
         
-        return [resetState, explodeState, dieState]
+        return [resetState, playState, explodeState, dieState]
     }
 }
