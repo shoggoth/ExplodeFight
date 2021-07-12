@@ -25,6 +25,7 @@ struct Bonus {
             tomNode.position = CGPoint(x: spacing * index, y: 0)
             tomNode.setScale(2)
             root.addChild(tomNode)
+            tomNode.run(.playSoundFileNamed("Fire2.caf", waitForCompletion: false))
             
             index += 1
         }
