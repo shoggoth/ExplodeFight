@@ -49,7 +49,8 @@ class GameScene: BaseSKScene {
 public class DebugComponent: GKComponent {
     
     @GKInspectable var identifier: String = "Anonymous"
-    
+    @GKInspectable var dumpTiming: Bool = false
+
     public override class var supportsSecureCoding: Bool { true }
     
     deinit { print(" \(self.identifier) \(self) deinits") }
@@ -60,7 +61,7 @@ public class DebugComponent: GKComponent {
         
         super.update(deltaTime: seconds)
         
-        print("\(self) update at \(seconds)s")
+        if dumpTiming { print("\(self) update at \(seconds)s") }
     }
     
     public override func didAddToEntity() {

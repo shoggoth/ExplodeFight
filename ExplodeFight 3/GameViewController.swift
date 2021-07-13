@@ -32,6 +32,7 @@ class GameViewController: UIViewController {
         view.showsNodeCount = true
         
         view.load(sceneWithFileName: "GameScene")
+        //view.load(sceneWithFileName: "Starfield")
         //sceneManager.load(sceneWithFileName: "PlayScene")
         #else
         //sceneManager.load(sceneWithFileName: "SplashScene")

@@ -28,6 +28,9 @@
 		FFC222E8257003B400CFA23F /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; };
 		FFC222E9257003B400CFA23F /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFC222E7257003B400CFA23F /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFD684AB25769EC30089842A /* pixelShatter.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFD684AA25769EC30089842A /* pixelShatter.fsh */; };
+		FFF3D2D3269C83C400F5947F /* starfield.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FFF3D2D2269C83C400F5947F /* starfield.fsh */; };
+		FFF3D2D5269C855900F5947F /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFF3D2D4269C855900F5947F /* Starfield.sks */; };
+		FFF3D2D7269C864600F5947F /* StarfieldScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF3D2D6269C864600F5947F /* StarfieldScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +72,9 @@
 		FFC6773D256A8F560011CE34 /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		FFC6773E256A8FB20011CE34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFD684AA25769EC30089842A /* pixelShatter.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = pixelShatter.fsh; sourceTree = "<group>"; };
+		FFF3D2D2269C83C400F5947F /* starfield.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = starfield.fsh; sourceTree = "<group>"; };
+		FFF3D2D4269C855900F5947F /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
+		FFF3D2D6269C864600F5947F /* StarfieldScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarfieldScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +94,9 @@
 			isa = PBXGroup;
 			children = (
 				FF080696256BD29700F2EBA7 /* GameScene.swift */,
+				FFF3D2D6269C864600F5947F /* StarfieldScene.swift */,
 				FF080692256BD29700F2EBA7 /* GameScene.sks */,
+				FFF3D2D4269C855900F5947F /* Starfield.sks */,
 				FF080694256BD29700F2EBA7 /* Actions.sks */,
 				FF08069D256BD29800F2EBA7 /* Assets.xcassets */,
 				FF3E025225765A310074FCC2 /* Textures.xcassets */,
@@ -97,6 +105,7 @@
 				FF3E025F257676D50074FCC2 /* distance.fsh */,
 				FF3E025B25765D210074FCC2 /* shield.fsh */,
 				FF3E025D25766F890074FCC2 /* shield2.fsh */,
+				FFF3D2D2269C83C400F5947F /* starfield.fsh */,
 				FF2662252575152B0082D4E0 /* vortexSprite.fsh */,
 				FFBDFE71257686D900FD33EA /* texOffset.fsh */,
 				FFD684AA25769EC30089842A /* pixelShatter.fsh */,
@@ -211,8 +220,10 @@
 				FF08069E256BD29800F2EBA7 /* Assets.xcassets in Resources */,
 				FFD684AB25769EC30089842A /* pixelShatter.fsh in Resources */,
 				FF266224257515130082D4E0 /* hotPink.fsh in Resources */,
+				FFF3D2D3269C83C400F5947F /* starfield.fsh in Resources */,
 				FF3E025E25766F890074FCC2 /* shield2.fsh in Resources */,
 				FF2662262575152B0082D4E0 /* vortexSprite.fsh in Resources */,
+				FFF3D2D5269C855900F5947F /* Starfield.sks in Resources */,
 				FFC222DB256FCD4100CFA23F /* LaunchScreen.storyboard in Resources */,
 				FFBDFE72257686D900FD33EA /* texOffset.fsh in Resources */,
 				FF3E0260257676D50074FCC2 /* distance.fsh in Resources */,
@@ -231,6 +242,7 @@
 				FF080697256BD29700F2EBA7 /* GameScene.swift in Sources */,
 				FF080699256BD29700F2EBA7 /* GameViewController.swift in Sources */,
 				FF080691256BD29700F2EBA7 /* AppDelegate.swift in Sources */,
+				FFF3D2D7269C864600F5947F /* StarfieldScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
