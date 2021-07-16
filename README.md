@@ -8,7 +8,6 @@ master
 ## Next Tasks
 - Make rules configurable per-level.
 - Player warp-in state.
-- Redo game and level state machines.
 - Start adding mob experiments on the mob/ branches.
 - Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 

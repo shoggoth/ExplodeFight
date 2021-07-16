@@ -23,12 +23,10 @@ class GameScene: BaseSKScene {
     var playerRootNode: SKNode { childNode(withName: "PlayerRoot")! }
     
     lazy var interstitial = { Interstitial(scene: self) }()
+    lazy var hud = { HUD(scene: self) }()
 
     private var men = Defaults.initialNumberofMen
-    private var menLabel: SKLabelNode?
-
     private var score = Score(dis: 0, acc: 0)
-    private var scoreLabel: SKLabelNode?
     
     override func didMove(to view: SKView) {
 
@@ -40,11 +38,6 @@ class GameScene: BaseSKScene {
         // Set up scene physics
         physicsWorld.contactDelegate = self
         physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
-
-        // Setup HUD
-        scoreLabel = (self.childNode(withName: "Camera/Score") as? SKLabelNode)
-        menLabel = (self.childNode(withName: "Camera/Men") as? SKLabelNode)
-        menLabel?.text = "MEN: \(men)"
 
         // Setup Player
         Player.createPlayer(scene: self)
@@ -64,7 +57,7 @@ class GameScene: BaseSKScene {
         
         if score.acc > 0 {
             
-            score = score.tick() { displayScore in self.scoreLabel?.text = "SCORE: \(displayScore)" }
+            score = score.tick() { displayScore in self.hud.displayScore(score: displayScore) }
             
             // ScoreManager.updateChieve(id: "millionaire", percent: 100)
         }
@@ -88,17 +81,14 @@ class GameScene: BaseSKScene {
     
     // MARK: Score events
 
-    func addScore(score s: Int64) {
-        
-        score = score.add(add: s)
-    }
+    func addScore(score s: Int64) { score = score.add(add: s) }
     
     // MARK: Game events
     
     func playerDeath() {
         
         men -= 1
-        self.menLabel?.text = "MEN: \(men)"
+        hud.displayMen(men: men)
 
         if men <= 0 { gameOver() }
     }
