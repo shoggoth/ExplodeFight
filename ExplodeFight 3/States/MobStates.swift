@@ -11,9 +11,7 @@ import SpriteKitAddons
 
 struct MobState {
     
-    class ResetState: CountdownState {
-        
-        init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, expire: { stateMachine in stateMachine?.enter(ExplodeState.self) }) }
+    class ResetState: LambdaState {
         
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type || stateClass is ExplodeState.Type }
     }

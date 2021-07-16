@@ -18,12 +18,7 @@ struct PlayerState {
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is PlayState.Type }
     }
     
-    class PlayState: GKState {
-        
-        override func didEnter(from previousState: GKState?) {
-            
-            print("Entered play state")
-        }
+    class PlayState: LambdaState {
         
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type || stateClass is ExplodeState.Type }
     }

@@ -55,12 +55,7 @@ class GameScene: BaseSKScene {
         
         level?.update(deltaTime: deltaTime, scene: self)
         
-        if score.acc > 0 {
-            
-            score = score.tick() { displayScore in self.hud.displayScore(score: displayScore) }
-            
-            // ScoreManager.updateChieve(id: "millionaire", percent: 100)
-        }
+        if score.acc > 0 { score = score.tick() { s in self.hud.displayScore(score: s) }}
         
         super.update(deltaTime: deltaTime)
     }
@@ -103,11 +98,8 @@ class GameScene: BaseSKScene {
         mobRootNode.run(.fadeOut(withDuration: 1))
 
         // Game over message and scene load action.
-        interstitial.flashupNode(named: "GameOver", action: .sequence([.unhide(), .wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .hide(), .run {
-            
-            DispatchQueue.main.async { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }
-
-        }]))
+        let sceneLoadAction = SKAction.run { DispatchQueue.main.async { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }}
+        interstitial.flashupNode(named: "GameOver", action: .sequence([.unhide(), .wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .hide(), sceneLoadAction]))
 
         Player.destroyPlayer(scene: self)
         

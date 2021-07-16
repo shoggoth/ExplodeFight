@@ -75,7 +75,7 @@ struct Player {
             return CountdownTimer(countDownTime: 3.0)
         }
         
-        let playState = PlayerState.PlayState()
+        let playState = PlayerState.PlayState(enter: { _ in print("Entered play state") })
         
         let explodeState = PlayerState.ExplodeState {
             

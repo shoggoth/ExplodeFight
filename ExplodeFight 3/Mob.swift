@@ -20,7 +20,7 @@ struct Mob {
     
     func makeStates(node: SKNode, scene: GameScene, spawner: Spawner) -> [GKState] {
         
-        let resetState = MobState.ResetState {
+        let resetState = MobState.ResetState(enter: { _ in
             
             node.reset { _ in
                 
@@ -36,21 +36,17 @@ struct Mob {
                     node.warpGeometry = nil
                 }
             }
-            
-            return CountdownTimer(countDownTime: 30.0)
-        }
+        })
         
         let explodeState = MobState.ExplodeState {
             
             if let node = node as? SKSpriteNode {
                 
-                // TODO: Decide which explosion suits best
-                //node.removeAllActions()
-                //Global.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
+                // TODO: enum for declarative explosion
                 //Global.particleExploder.explode(node: node, duration: 1.0)
-                //Global.explodeShader.rttExplode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
                 //Global.scoreCharSet.scoreFlyup(string: "HELLO", spacing: 5, parentNode: node)
-                Global.explodeShader.explode(node: node, toScale: vector_float2(7, 1), withSplits: vector_float2(16, 1), duration: 1)
+                Global.explodeShader.explode(node: node, toScale: vector_float2(16, 1), withSplits: vector_float2(16, 1), duration: 1)
+                //Global.explodeShader.explode(node: node, toScale: vector_float2(16, 8), withSplits: vector_float2(32, 16), duration: 1)
             }
             
             Global.soundManager.playSound(name: "Explode")
