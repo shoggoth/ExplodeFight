@@ -15,7 +15,7 @@ struct PlayerState {
         
         init(completion: (() -> CountdownTimer?)? = nil) { super.init(enter: completion, expire: { stateMachine in stateMachine?.enter(PlayState.self) }) }
         
-        override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is PlayState.Type }
+        override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type || stateClass is PlayState.Type }
     }
     
     class PlayState: LambdaState {

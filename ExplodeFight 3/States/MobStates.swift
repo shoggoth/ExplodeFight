@@ -23,14 +23,8 @@ struct MobState {
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is DieState.Type }
     }
     
-    class DieState: GKState {
-        
-        private var dieFunc: (() -> Void)?
-        
-        init(completion: (() -> Void)? = nil) { dieFunc = completion }
-        
+    class DieState: LambdaState {
+                
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { false }
-        
-        override func didEnter(from previousState: GKState?) { dieFunc?() }
     }
 }

@@ -54,13 +54,13 @@ struct Mob {
             return CountdownTimer(countDownTime: 1.0)
         }
         
-        let dieState = MobState.DieState {
+        let dieState = MobState.DieState(enter: { _ in
             
             scene.addScore(score: pointValue)
             spawner.kill(node: node, recycle: true)
             
             scene.level?.snapshot.mobsKilled += 1
-        }
+        })
         
         return [resetState, explodeState, dieState]
     }
