@@ -49,7 +49,7 @@ struct StateDrivenLevel: Level {
         if let firstState = states.first { stateMachine.enter(type(of: firstState)) }
         
         // Setup level rules
-        let spawnTemp = 100
+        let spawnTemp = levelNum * 10
         ruleSystem.add(GKRule(predicate: NSPredicate(format: "$activeMobCount.intValue < \(spawnTemp)"), assertingFact: "activeMobCountIsLow" as NSObject, grade: 1.0))
         ruleSystem.add(GKRule(predicate: NSPredicate(format: "$activeMobCount.intValue == 0"), assertingFact: "allMobsDestroyed" as NSObject, grade: 1.0))
         ruleSystem.add(GKRule(predicate: NSPredicate(format: "$mobsKilled.intValue >= \(spawnTemp)"), assertingFact: "levelIsOver" as NSObject, grade: 1.0))
