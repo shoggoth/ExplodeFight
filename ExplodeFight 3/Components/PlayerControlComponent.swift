@@ -83,6 +83,6 @@ class PlayerControlComponent: GKComponent, MoveFireVectors {
     
     private func fireUpdate() {
 
-        entity?.component(ofType: EF3.FireComponent.self)?.fireVector = fireVector.normalized()
+        entity?.component(ofType: FireComponent.self)?.fireVector = fireVector.normalized()
     }
 }

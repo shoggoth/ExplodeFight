@@ -4,25 +4,45 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ExplodeFight 3.xcscheme_^#shared#^_</key>
+		<key>ExplodeFight iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>1</integer>
+		</dict>
+		<key>ExplodeFight macOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>ExplodeFight tvOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Tests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>FF08068D256BD29700F2EBA7</key>
+		<key>FF9BC5B926A6F72800E3F570</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FF0806A3256BD29800F2EBA7</key>
+		<key>FF9BC5CB26A6F72800E3F570</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FF0806AE256BD29800F2EBA7</key>
+		<key>FF9BC5DC26A6F72800E3F570</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF9BC60526A6FC1E00E3F570</key>
 		<dict>
 			<key>primary</key>
 			<true/>
