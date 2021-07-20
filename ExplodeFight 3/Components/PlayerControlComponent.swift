@@ -15,15 +15,15 @@ protocol MoveFireVectors {
     var fireVector: CGVector { get }
 }
 
-class PlayerControlComponent: GKComponent {
+class PlayerControlComponent: GKComponent, MoveFireVectors {
     
     private let joystick: TouchJoystick
-    
+
+    internal var moveVector: CGVector = .zero
+    internal var fireVector: CGVector = .zero
+
     private let moveBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 2000), weight: 100.0)
     private let stopBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 0), weight: 10.0)
-
-    private var moveVector: CGVector = .zero
-    private var fireVector: CGVector = .zero
     
     init(joystick: TouchJoystick) {
         
@@ -84,18 +84,5 @@ class PlayerControlComponent: GKComponent {
     private func fireUpdate() {
 
         entity?.component(ofType: EF3.FireComponent.self)?.fireVector = fireVector.normalized()
-    }
-    
-    // MARK: Contact handling
-    
-    func contactWithNodeDidBegin(_ node: SKNode) {
-        
-        print("Player Contact begins: \(self) with \(node)")
-        //stateMachine.enter(MobState.ExplodeState.self)
-    }
-    
-    func contactWithNodeDidEnd(_ node: SKNode) {
-        
-        //print("MC Contact ends: \(self) with \(node)")
     }
 }
