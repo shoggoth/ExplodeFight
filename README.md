@@ -2,14 +2,14 @@
 master
 
 ## Current Tasks
-- Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
-- Game controller support
+- Game controller support for macOS and tvOS (required for MacOS)
+- Look at the button class and get the focus rings to work on tvOS.
 
 ## Next Tasks
+- Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 - Make rules configurable per-level.
 - Player warp-in state.
 - Start adding mob experiments on the mob/ branches.
-- Make this build on TVOS as well. Look at the button class and get the focus rings to work. The frameworks will have to have new targets as well.
 
 ## Bugs
 

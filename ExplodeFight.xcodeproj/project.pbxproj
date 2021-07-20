@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF0310C026A70AE800EF8018 /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310BE26A70AE800EF8018 /* GameControls.framework */; };
+		FF0310C126A70AE800EF8018 /* GameControls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310BE26A70AE800EF8018 /* GameControls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF0310C226A70AE800EF8018 /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310BF26A70AE800EF8018 /* SpriteKitAddons.framework */; };
+		FF0310C326A70AE800EF8018 /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310BF26A70AE800EF8018 /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF0310C726A70AF700EF8018 /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310C526A70AF700EF8018 /* GameControls.framework */; };
+		FF0310C826A70AF700EF8018 /* GameControls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310C526A70AF700EF8018 /* GameControls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF0310C926A70AF700EF8018 /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310C626A70AF700EF8018 /* SpriteKitAddons.framework */; };
+		FF0310CA26A70AF700EF8018 /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310C626A70AF700EF8018 /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF2A3A9F26A706A800562ACC /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2A3A9D26A706A800562ACC /* GameControls.framework */; };
 		FF2A3AA026A706A800562ACC /* GameControls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF2A3A9D26A706A800562ACC /* GameControls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF2A3AA126A706A800562ACC /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2A3A9E26A706A800562ACC /* SpriteKitAddons.framework */; };
@@ -219,6 +227,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		FF0310C426A70AE800EF8018 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FF0310C126A70AE800EF8018 /* GameControls.framework in Embed Frameworks */,
+				FF0310C326A70AE800EF8018 /* SpriteKitAddons.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF0310CB26A70AF700EF8018 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FF0310C826A70AF700EF8018 /* GameControls.framework in Embed Frameworks */,
+				FF0310CA26A70AF700EF8018 /* SpriteKitAddons.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF2A3AA326A706A800562ACC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,6 +266,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF0310BE26A70AE800EF8018 /* GameControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF0310BF26A70AE800EF8018 /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF0310C526A70AF700EF8018 /* GameControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF0310C626A70AF700EF8018 /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2A3A9D26A706A800562ACC /* GameControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2A3A9E26A706A800562ACC /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2A3AA526A7076500562ACC /* PlayerStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStates.swift; sourceTree = "<group>"; };
@@ -338,6 +374,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF0310C026A70AE800EF8018 /* GameControls.framework in Frameworks */,
+				FF0310C226A70AE800EF8018 /* SpriteKitAddons.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +383,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF0310C726A70AF700EF8018 /* GameControls.framework in Frameworks */,
+				FF0310C926A70AF700EF8018 /* SpriteKitAddons.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +401,10 @@
 		FF2A3A9C26A706A800562ACC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF0310C526A70AF700EF8018 /* GameControls.framework */,
+				FF0310C626A70AF700EF8018 /* SpriteKitAddons.framework */,
+				FF0310BE26A70AE800EF8018 /* GameControls.framework */,
+				FF0310BF26A70AE800EF8018 /* SpriteKitAddons.framework */,
 				FF2A3A9D26A706A800562ACC /* GameControls.framework */,
 				FF2A3A9E26A706A800562ACC /* SpriteKitAddons.framework */,
 			);
@@ -600,6 +644,7 @@
 				FF9BC5C826A6F72800E3F570 /* Sources */,
 				FF9BC5C926A6F72800E3F570 /* Frameworks */,
 				FF9BC5CA26A6F72800E3F570 /* Resources */,
+				FF0310C426A70AE800EF8018 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -617,6 +662,7 @@
 				FF9BC5D926A6F72800E3F570 /* Sources */,
 				FF9BC5DA26A6F72800E3F570 /* Frameworks */,
 				FF9BC5DB26A6F72800E3F570 /* Resources */,
+				FF0310CB26A70AF700EF8018 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1161,13 +1207,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 5F9CYF5K3F;
 				INFOPLIST_FILE = tvOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mobi.dogstar.ExplodeFight;
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi.dogstar.ExplodeFight-3";
 				PRODUCT_NAME = ExplodeFight;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
@@ -1182,13 +1229,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 5F9CYF5K3F;
 				INFOPLIST_FILE = tvOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mobi.dogstar.ExplodeFight;
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi.dogstar.ExplodeFight-3";
 				PRODUCT_NAME = ExplodeFight;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
@@ -1206,6 +1254,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/ExplodeFight_macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 5F9CYF5K3F;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
@@ -1214,7 +1263,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
-				PRODUCT_BUNDLE_IDENTIFIER = mobi.dogstar.ExplodeFight;
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi.dogstar.ExplodeFight-3";
 				PRODUCT_NAME = ExplodeFight;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -1229,6 +1278,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/ExplodeFight_macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 5F9CYF5K3F;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
@@ -1237,7 +1287,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
-				PRODUCT_BUNDLE_IDENTIFIER = mobi.dogstar.ExplodeFight;
+				PRODUCT_BUNDLE_IDENTIFIER = "mobi.dogstar.ExplodeFight-3";
 				PRODUCT_NAME = ExplodeFight;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
