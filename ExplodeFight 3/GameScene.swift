@@ -98,6 +98,7 @@ class GameScene: BaseSKScene {
         mobRootNode.run(.fadeOut(withDuration: 1))
 
         // Game over message and scene load action.
+        // TODO: Try this on release build, does it return to the splash?
         let sceneLoadAction = SKAction.run { DispatchQueue.main.async { self.view?.load(sceneWithFileName: GameViewController.config.initialSceneName) }}
         interstitial.flashupNode(named: "GameOver", action: .sequence([.unhide(), .wait(forDuration: 5.0), SKAction(named: "ZoomFadeOut")!, .hide(), sceneLoadAction]))
 

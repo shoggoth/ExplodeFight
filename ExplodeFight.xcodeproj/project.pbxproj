@@ -15,6 +15,7 @@
 		FF0310C826A70AF700EF8018 /* GameControls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310C526A70AF700EF8018 /* GameControls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF0310C926A70AF700EF8018 /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310C626A70AF700EF8018 /* SpriteKitAddons.framework */; };
 		FF0310CA26A70AF700EF8018 /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310C626A70AF700EF8018 /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF0310CD26A70FF000EF8018 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BC5D026A6F72800E3F570 /* GameViewController.swift */; };
 		FF2A3A9F26A706A800562ACC /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2A3A9D26A706A800562ACC /* GameControls.framework */; };
 		FF2A3AA026A706A800562ACC /* GameControls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF2A3A9D26A706A800562ACC /* GameControls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF2A3AA126A706A800562ACC /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2A3A9E26A706A800562ACC /* SpriteKitAddons.framework */; };
@@ -192,7 +193,6 @@
 		FF9BC5C326A6F72800E3F570 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9BC5C126A6F72800E3F570 /* Main.storyboard */; };
 		FF9BC5C626A6F72800E3F570 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9BC5C426A6F72800E3F570 /* LaunchScreen.storyboard */; };
 		FF9BC5CF26A6F72800E3F570 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BC5CE26A6F72800E3F570 /* AppDelegate.swift */; };
-		FF9BC5D126A6F72800E3F570 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BC5D026A6F72800E3F570 /* GameViewController.swift */; };
 		FF9BC5D426A6F72800E3F570 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9BC5D226A6F72800E3F570 /* Main.storyboard */; };
 		FF9BC5D726A6F72800E3F570 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF9BC5D526A6F72800E3F570 /* LaunchScreen.storyboard */; };
 		FF9BC5E026A6F72800E3F570 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BC5DF26A6F72800E3F570 /* AppDelegate.swift */; };
@@ -922,10 +922,10 @@
 				FF936B6226A7059F0027D7A2 /* Mob.swift in Sources */,
 				FF936AE126A703FD0027D7A2 /* AIComponent.swift in Sources */,
 				FF936B5F26A7059F0027D7A2 /* Level.swift in Sources */,
+				FF0310CD26A70FF000EF8018 /* GameViewController.swift in Sources */,
 				FF936B4326A7052B0027D7A2 /* AttractScene.swift in Sources */,
 				FF936AED26A703FD0027D7A2 /* ContactComponent.swift in Sources */,
 				FF936B7A26A7059F0027D7A2 /* Snapshot.swift in Sources */,
-				FF9BC5D126A6F72800E3F570 /* GameViewController.swift in Sources */,
 				FF936AEA26A703FD0027D7A2 /* DebugComponent.swift in Sources */,
 				FF936B6B26A7059F0027D7A2 /* TextEffects.swift in Sources */,
 				FF936ADE26A703FD0027D7A2 /* StateComponent.swift in Sources */,
@@ -1219,7 +1219,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.5;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
 			};
 			name = Debug;
 		};
@@ -1241,7 +1241,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.5;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
