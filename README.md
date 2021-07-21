@@ -2,8 +2,8 @@
 master
 
 ## Current Tasks
-- Game controller support for macOS and tvOS (required for MacOS)
-- Look at the button class and get the focus rings to work on tvOS.
+- Try different scenes for the different platforms rather than the runtime check we have at the moment. Also remove the pause button on all but iOS devices.
+- Game controller support for macOS and tvOS (required for MacOS).
 
 ## Next Tasks
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
@@ -17,6 +17,7 @@ master
 - Shoud I use a GKComponentSystem for rule updates to the level? It's not an entity after all. (Could add entity to the Scene as I did in the other branch possibly).
 
 ### Completed Tasks
+- Look at the button class and get the focus rings to work on tvOS. (obsolete)
 - Restore level naming 
 - Level snapshot, states and AI component.
 - Level progress rules.
