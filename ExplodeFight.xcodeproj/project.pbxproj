@@ -214,6 +214,7 @@
 		FF9BC61B26A6FE2400E3F570 /* Game.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF9BC61A26A6FE2400E3F570 /* Game.xcassets */; };
 		FF9BC61C26A6FE2400E3F570 /* Game.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF9BC61A26A6FE2400E3F570 /* Game.xcassets */; };
 		FF9BC61D26A6FE2400E3F570 /* Game.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF9BC61A26A6FE2400E3F570 /* Game.xcassets */; };
+		FFAEB34E26A81EDF00517B25 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF936B5326A7059E0027D7A2 /* Score.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -987,6 +988,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF9BC61426A6FCC000E3F570 /* States.swift in Sources */,
+				FFAEB34E26A81EDF00517B25 /* Score.swift in Sources */,
 				FF9BC61326A6FCC000E3F570 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
