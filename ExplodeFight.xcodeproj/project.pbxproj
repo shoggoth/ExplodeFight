@@ -26,6 +26,9 @@
 		FF2A3AAA26A7076500562ACC /* MobStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A3AA626A7076500562ACC /* MobStates.swift */; };
 		FF2A3AAB26A7076500562ACC /* MobStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A3AA626A7076500562ACC /* MobStates.swift */; };
 		FF2A3AAC26A7076500562ACC /* MobStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A3AA626A7076500562ACC /* MobStates.swift */; };
+		FF36F52C26A96CD400B0F2AC /* GameScene+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36F52B26A96CD400B0F2AC /* GameScene+Touch.swift */; };
+		FF36F53026A9727800B0F2AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF36F52F26A9727800B0F2AC /* Assets.xcassets */; };
+		FF36F53126A97BC600B0F2AC /* GameScene+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36F52B26A96CD400B0F2AC /* GameScene+Touch.swift */; };
 		FF936ACB26A703FD0027D7A2 /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF936AA826A703FC0027D7A2 /* AttractLogo.fsh */; };
 		FF936ACC26A703FD0027D7A2 /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF936AA826A703FC0027D7A2 /* AttractLogo.fsh */; };
 		FF936ACD26A703FD0027D7A2 /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF936AA826A703FC0027D7A2 /* AttractLogo.fsh */; };
@@ -275,6 +278,8 @@
 		FF2A3A9E26A706A800562ACC /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2A3AA526A7076500562ACC /* PlayerStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStates.swift; sourceTree = "<group>"; };
 		FF2A3AA626A7076500562ACC /* MobStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobStates.swift; sourceTree = "<group>"; };
+		FF36F52B26A96CD400B0F2AC /* GameScene+Touch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Touch.swift"; sourceTree = "<group>"; };
+		FF36F52F26A9727800B0F2AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF936AA826A703FC0027D7A2 /* AttractLogo.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AttractLogo.fsh; sourceTree = "<group>"; };
 		FF936AA926A703FC0027D7A2 /* charMap.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = charMap.fsh; sourceTree = "<group>"; };
 		FF936AAA26A703FC0027D7A2 /* explode.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = explode.fsh; sourceTree = "<group>"; };
@@ -563,6 +568,7 @@
 			children = (
 				FF9BC5BD26A6F72800E3F570 /* AppDelegate.swift */,
 				FF9BC5BF26A6F72800E3F570 /* GameViewController.swift */,
+				FF36F52B26A96CD400B0F2AC /* GameScene+Touch.swift */,
 				FF9BC5C126A6F72800E3F570 /* Main.storyboard */,
 				FF9BC5C426A6F72800E3F570 /* LaunchScreen.storyboard */,
 				FF9BC61826A6FD9500E3F570 /* Assets.xcassets */,
@@ -591,6 +597,7 @@
 				FF9BC5DF26A6F72800E3F570 /* AppDelegate.swift */,
 				FF9BC5E126A6F72800E3F570 /* GameViewController.swift */,
 				FF9BC5E326A6F72800E3F570 /* Main.storyboard */,
+				FF36F52F26A9727800B0F2AC /* Assets.xcassets */,
 				FF9BC5E626A6F72800E3F570 /* Info.plist */,
 				FF9BC5E726A6F72800E3F570 /* ExplodeFight_macOS.entitlements */,
 			);
@@ -600,9 +607,9 @@
 		FF9BC5FF26A6F8D500E3F570 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
-				FF9BC5DE26A6F72800E3F570 /* macOS */,
-				FF9BC5CD26A6F72800E3F570 /* tvOS */,
 				FF9BC5BC26A6F72800E3F570 /* iOS */,
+				FF9BC5CD26A6F72800E3F570 /* tvOS */,
+				FF9BC5DE26A6F72800E3F570 /* macOS */,
 			);
 			name = Platform;
 			sourceTree = "<group>";
@@ -832,6 +839,7 @@
 				FF936B0626A703FD0027D7A2 /* Roop.caf in Resources */,
 				FF936B1226A703FD0027D7A2 /* Fire2.caf in Resources */,
 				FF936B1826A703FD0027D7A2 /* Explode.caf in Resources */,
+				FF36F53026A9727800B0F2AC /* Assets.xcassets in Resources */,
 				FF936B0C26A703FD0027D7A2 /* Fire4.caf in Resources */,
 				FF936AD026A703FD0027D7A2 /* charMap.fsh in Resources */,
 				FF936B3726A704EC0027D7A2 /* AttractModes.sks in Resources */,
@@ -894,6 +902,7 @@
 				FF936AE926A703FD0027D7A2 /* DebugComponent.swift in Sources */,
 				FF936B6A26A7059F0027D7A2 /* TextEffects.swift in Sources */,
 				FF936ADD26A703FD0027D7A2 /* StateComponent.swift in Sources */,
+				FF36F52C26A96CD400B0F2AC /* GameScene+Touch.swift in Sources */,
 				FF936AE326A703FD0027D7A2 /* PlayerControlComponent.swift in Sources */,
 				FF936AE626A703FD0027D7A2 /* RulesComponent.swift in Sources */,
 				FF9BC5BE26A6F72800E3F570 /* AppDelegate.swift in Sources */,
@@ -930,6 +939,7 @@
 				FF936AEA26A703FD0027D7A2 /* DebugComponent.swift in Sources */,
 				FF936B6B26A7059F0027D7A2 /* TextEffects.swift in Sources */,
 				FF936ADE26A703FD0027D7A2 /* StateComponent.swift in Sources */,
+				FF36F53126A97BC600B0F2AC /* GameScene+Touch.swift in Sources */,
 				FF936AE426A703FD0027D7A2 /* PlayerControlComponent.swift in Sources */,
 				FF936AE726A703FD0027D7A2 /* RulesComponent.swift in Sources */,
 				FF9BC5CF26A6F72800E3F570 /* AppDelegate.swift in Sources */,

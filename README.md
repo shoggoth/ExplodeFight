@@ -2,6 +2,7 @@
 master
 
 ## Current Tasks
+- Twin stick abstraction with controller priority and touch fallback.
 - Try different scenes for the different platforms rather than the runtime check we have at the moment. Also remove the pause button on all but iOS devices.
 - Game controller support for macOS and tvOS (required for MacOS).
 
