@@ -9,11 +9,11 @@ import SpriteKit
 
 extension GameScene {
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesBegan(touches, with: event) }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchJoystick.touchesBegan(touches, with: event) }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesMoved(touches, with: event) }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchJoystick.touchesMoved(touches, with: event) }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesEnded(touches, with: event) }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchJoystick.touchesEnded(touches, with: event) }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchesCancelled(touches, with: event) }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) { joystick.touchJoystick.touchesCancelled(touches, with: event) }
 }

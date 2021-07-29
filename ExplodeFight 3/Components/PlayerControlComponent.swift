@@ -9,22 +9,14 @@
 import GameplayKit
 import GameControls
 
-protocol MoveFireVectors {
+class PlayerControlComponent: GKComponent {
     
-    var moveVector: CGVector { get }
-    var fireVector: CGVector { get }
-}
-
-class PlayerControlComponent: GKComponent, MoveFireVectors {
-    
-    private let joystick: TouchJoystick
-
-    internal var moveVector: CGVector = .zero
-    internal var fireVector: CGVector = .zero
+    private let joystick: TwinStick
 
     private let moveBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 2000), weight: 100.0)
     private let stopBehaviour = GKBehavior(goal: GKGoal(toReachTargetSpeed: 0), weight: 10.0)
     
+    /*
     init(joystick: TouchJoystick) {
         
         self.joystick = joystick
@@ -47,6 +39,13 @@ class PlayerControlComponent: GKComponent, MoveFireVectors {
                 self.fireVector = fireWindowFunc.windowVector.snapped(to: .pi * 0.25)
             }
         ]
+    }*/
+    
+    init(joystick: TwinStick) {
+        
+        self.joystick = joystick
+        
+        super.init()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -69,13 +68,13 @@ class PlayerControlComponent: GKComponent, MoveFireVectors {
         
         if let agent = entity.agent {
             
-            if moveVector.lengthSquared() == 0 {
+            if joystick.moveVector.lengthSquared() == 0 {
                 
                 agent.behavior = stopBehaviour
             
             } else {
                 
-                entity.spriteComponent?.node.zRotation = moveVector.angle
+                entity.spriteComponent?.node.zRotation = joystick.moveVector.angle
                 agent.behavior = moveBehaviour
             }
         }
@@ -83,6 +82,6 @@ class PlayerControlComponent: GKComponent, MoveFireVectors {
     
     private func fireUpdate() {
 
-        entity?.component(ofType: FireComponent.self)?.fireVector = fireVector.normalized()
+        entity?.component(ofType: FireComponent.self)?.fireVector = joystick.fireVector.normalized()
     }
 }

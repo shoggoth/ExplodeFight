@@ -9,23 +9,34 @@
 import SpriteKit
 import SpriteKitAddons
 import GameplayKit
+import GameControls
 
 class AttractScene: BaseSKScene {
     
     lazy var modeScene: SKScene? = { SKScene(fileNamed: "AttractModes") }()
     
-    override var requiredScaleMode: SKSceneScaleMode { UIScreen.main.traitCollection.userInterfaceIdiom == .pad ? .aspectFill : .aspectFit }
+    private var controllerManager: GameControllerManager?
 
+    #if os(iOS)
+    override var requiredScaleMode: SKSceneScaleMode { UIScreen.main.traitCollection.userInterfaceIdiom == .pad ? .aspectFill : .aspectFit }
+    #endif
+    
     private var stateMachine: GKStateMachine!
     
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
         
+        #if os(iOS)
         if UIScreen.main.traitCollection.userInterfaceIdiom == .pad { self.childNode(withName: "//Camera")?.setScale(1.33333) }
+        #endif
 
         // Set up user control
+        Global.controllerManager.handler = { pad, element in if pad.buttonA.isPressed { self.startGame() }}
+
+        #if os(iOS) || os(tvOS)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(start)))
+        #endif
         
         // Force explode shader load
         if let explodeNode = childNode(withName: "DummyExplode") as? SKSpriteNode { Global.explodeShader.preload(node: explodeNode) }
@@ -45,13 +56,17 @@ class AttractScene: BaseSKScene {
         stateMachine.enter(ShowExplanation.self)
     }
     
-    @objc func start(_ tap: UITapGestureRecognizer) {
+    private func startGame() {
         
         let transition = SKTransition.crossFade(withDuration: 0.23)
         transition.pausesIncomingScene = false
         
         DispatchQueue.main.async { self.view?.load(sceneWithFileName: "GameScene", transition: transition) }
     }
+    
+    #if os(iOS) || os(tvOS)
+    @objc func start(_ tap: UITapGestureRecognizer) { startGame() }
+    #endif
     
     override func update(deltaTime: TimeInterval) {
         

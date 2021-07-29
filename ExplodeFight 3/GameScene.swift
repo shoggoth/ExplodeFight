@@ -13,11 +13,13 @@ import GameControls
 
 class GameScene: BaseSKScene {
 
+    #if os(iOS)
     override var requiredScaleMode: SKSceneScaleMode { UIScreen.main.traitCollection.userInterfaceIdiom == .pad ? .aspectFill : .aspectFit }
-
+    #endif
+    
     var level: Level?
     var playerEntity: GKEntity?
-    let joystick = TouchJoystick()
+    let joystick = RobotronControls(controllers: Global.controllerManager)
 
     var mobRootNode: SKNode { childNode(withName: "MobRoot")! }
     var playerRootNode: SKNode { childNode(withName: "PlayerRoot")! }
@@ -30,7 +32,9 @@ class GameScene: BaseSKScene {
     
     override func didMove(to view: SKView) {
 
+        #if os(iOS)
         if UIScreen.main.traitCollection.userInterfaceIdiom == .pad { self.childNode(withName: "//Camera")?.setScale(1.33333) }
+        #endif
 
         // Global setup
         Global.soundManager.playNode = self
