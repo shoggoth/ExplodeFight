@@ -33,10 +33,9 @@ class GameViewController: UIViewController {
         view.showsFPS = true
         view.showsNodeCount = true
         
-        view.load(sceneWithFileName: "GameScene")
-        #else
-        view.load(sceneWithFileName: "SplashScene")
         #endif
+        
+        view.load(sceneWithFileName: "GameScene", tryLoadingGKScene: true)
     }
 
     deinit {

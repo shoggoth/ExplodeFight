@@ -55,6 +55,14 @@ class FireComponent: GKComponent {
 
                 return w
             }()
+        case 5:
+            weapon = {
+                let w = Laser()
+                w.emitNode = entity?.spriteComponent?.node
+
+                return w
+            }()
+
         default: break
         }
     }

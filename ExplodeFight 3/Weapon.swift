@@ -22,6 +22,18 @@ protocol NodeBullet: SKNode {
 
 // MARK: - Weapons -
 
+class Laser: Weapon {
+    
+    var emitNode: SKNode?
+
+    func fire(direction: CGVector) {
+        
+        print("Pew!")
+    }
+}
+
+// MARK: -
+
 class NodeCannon: Weapon {
     
     var magazine: [NodeBullet]?
