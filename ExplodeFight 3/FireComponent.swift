@@ -57,7 +57,7 @@ class FireComponent: GKComponent {
             }()
         case 5:
             weapon = {
-                let w = Laser()
+                let w = LaserCannon()
                 w.emitNode = entity?.spriteComponent?.node
 
                 return w

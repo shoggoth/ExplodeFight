@@ -17,18 +17,29 @@ protocol Weapon {
 protocol NodeBullet: SKNode {
     
     func fire(completion: ((NodeBullet) -> Void)?)
-    func reset()
 }
 
 // MARK: - Weapons -
 
-class Laser: Weapon {
+class LaserCannon: Weapon {
     
     var emitNode: SKNode?
 
     func fire(direction: CGVector) {
         
-        print("Pew!")
+        guard let emitNode = self.emitNode, let scene = emitNode.scene else { return }
+        
+        let firePos = direction * 64
+        let fireVel = direction * 1024
+        
+        //laserBeam.position = scene.convert(CGPoint.zero, from: emitNode) + firePos
+
+        //laserBeam.physicsBody?.velocity = fireVel
+        //laserBeam.run(.move(by: fireVel, duration: 2.0))
+         
+        //scene.addChild(laserBeam)
+
+        //laserBeam.fire { b in b.reset { _ in }}
     }
 }
 
@@ -45,23 +56,22 @@ class NodeCannon: Weapon {
               let scene = emitNode.scene,
               let bullet = magazine?.popLast() else { return }
         
-        //bullet.physicsBody = nil
-        bullet.physicsBody?.velocity = direction * 1024
+        let firePos = direction * 64
+        let fireVel = direction * 1024
         
-        let firePos = CGPoint(x: 0, y: 34)
-        bullet.position = scene.convert(firePos, from: emitNode)
-        
+        bullet.position = scene.convert(CGPoint.zero, from: emitNode) + firePos
+
+        bullet.physicsBody?.velocity = fireVel
+        //bullet.run(.move(by: fireVel, duration: 2.0))
+         
         scene.addChild(bullet)
 
-        bullet.fire { b in
-            
-            b.reset()
-            self.magazine?.insert(b, at: 0)
-        }
+        bullet.fire { b in b.reset { _ in self.magazine?.insert(b, at: 0) }}
     }
 }
 
 // MARK: - Bullets -
+// TODO: Move these to seperate file
 
 class RoundBullet: SKShapeNode, NodeBullet {
     
@@ -86,39 +96,29 @@ class RoundBullet: SKShapeNode, NodeBullet {
         
         let diameter = radius * 2
         
-        path = CGPath(ellipseIn: CGRect(origin: CGPoint(x: -radius, y: -radius), size: CGSize(width: diameter, height: diameter)), transform: nil)
+        path = CGPath(ellipseIn: CGRect(origin: CGPoint(x: -radius, y: -radius), size: CGSize(width: diameter / 2, height: diameter)), transform: nil)
         lineWidth = radius * 0.25
         //glowWidth = radius * 0.125
-        strokeColor = .blue
+        strokeColor = .white
         
-        // TODO: Need physics for collision?
-        physicsBody = SKPhysicsBody(circleOfRadius: radius)
+        physicsBody = {
+            let body = SKPhysicsBody(circleOfRadius: radius)
+            body.categoryBitMask = 0b0100
+            
+            return body
+        }()
     }
     
     func fire(completion: ((NodeBullet) -> Void)? = nil) {
 
-        // TODO: Use an action for the movement here abd allow the fire method to be switched between that and one propelled by physics velocity.
-        //run(SKAction.playSoundFileNamed("blast.caf", waitForCompletion: false))
-        run(SKAction.repeatForever(SKAction.rotate(byAngle: pi, duration: 1)))
-        run(SKAction.sequence([SKAction.wait(forDuration: 0.75), SKAction.fadeOut(withDuration: 0.25), SKAction.removeFromParent(), SKAction.run { self.reset(); completion?(self) }]))
-    }
-    
-    func reset() {
+        let repeatingKey = "rotateRepeatKey"
         
-        removeAllActions()
+        // TODO: Use an action for the movement here and allow the fire method to be switched between that and one propelled by physics velocity.
+        let s: SKAction = .playSoundFileNamed("Laser.caf", waitForCompletion: false)
+        let t: SKAction = .repeatForever(.rotate(byAngle: pi, duration: 1))
+        let u: SKAction = .sequence([.wait(forDuration: 0.75), .fadeOut(withDuration: 0.25), .removeFromParent(), .run { self.reset { node in completion?(self); node.removeAction(forKey: repeatingKey) }}])
         
-        alpha = 1
+        run(.group([s, u]))
+        run(t, withKey: repeatingKey)
     }
 }
-
-// MARK: -
-
-class DebugBullet: RoundBullet {
-    
-    override init() { super.init() }
-    
-    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
-    deinit { print("deinit") }
-}
-
