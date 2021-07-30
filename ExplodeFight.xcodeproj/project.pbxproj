@@ -16,6 +16,7 @@
 		FF0310C926A70AF700EF8018 /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310C626A70AF700EF8018 /* SpriteKitAddons.framework */; };
 		FF0310CA26A70AF700EF8018 /* SpriteKitAddons.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF0310C626A70AF700EF8018 /* SpriteKitAddons.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF0310CD26A70FF000EF8018 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9BC5D026A6F72800E3F570 /* GameViewController.swift */; };
+		FF047E1D26B40AB200020648 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF047E1C26B40AB200020648 /* Bullet.swift */; };
 		FF2A3A9F26A706A800562ACC /* GameControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2A3A9D26A706A800562ACC /* GameControls.framework */; };
 		FF2A3AA026A706A800562ACC /* GameControls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF2A3A9D26A706A800562ACC /* GameControls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF2A3AA126A706A800562ACC /* SpriteKitAddons.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2A3A9E26A706A800562ACC /* SpriteKitAddons.framework */; };
@@ -274,6 +275,7 @@
 		FF0310BF26A70AE800EF8018 /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0310C526A70AF700EF8018 /* GameControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0310C626A70AF700EF8018 /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF047E1C26B40AB200020648 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		FF2A3A9D26A706A800562ACC /* GameControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GameControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2A3A9E26A706A800562ACC /* SpriteKitAddons.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpriteKitAddons.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2A3AA526A7076500562ACC /* PlayerStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerStates.swift; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 				FF936B5526A7059F0027D7A2 /* TextEffects.swift */,
 				FF936B5626A7059F0027D7A2 /* Wave.swift */,
 				FF936B5826A7059F0027D7A2 /* Weapon.swift */,
+				FF047E1C26B40AB200020648 /* Bullet.swift */,
 				FF9BC5B226A6F72700E3F570 /* Actions.sks */,
 				FF936B4D26A7056C0027D7A2 /* Game.plist */,
 				FF9BC61A26A6FE2400E3F570 /* Game.xcassets */,
@@ -917,6 +920,7 @@
 				FF936B7626A7059F0027D7A2 /* Configuration.swift in Sources */,
 				FF936B4A26A7055A0027D7A2 /* SplashScene.swift in Sources */,
 				FF936B7026A7059F0027D7A2 /* Global.swift in Sources */,
+				FF047E1D26B40AB200020648 /* Bullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
