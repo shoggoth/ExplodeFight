@@ -30,6 +30,8 @@
 		FF36F52C26A96CD400B0F2AC /* GameScene+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36F52B26A96CD400B0F2AC /* GameScene+Touch.swift */; };
 		FF36F53026A9727800B0F2AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF36F52F26A9727800B0F2AC /* Assets.xcassets */; };
 		FF36F53126A97BC600B0F2AC /* GameScene+Touch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36F52B26A96CD400B0F2AC /* GameScene+Touch.swift */; };
+		FF88A56026C2BF5E0026EF62 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF047E1C26B40AB200020648 /* Bullet.swift */; };
+		FF88A56126C2BF5F0026EF62 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF047E1C26B40AB200020648 /* Bullet.swift */; };
 		FF936ACB26A703FD0027D7A2 /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF936AA826A703FC0027D7A2 /* AttractLogo.fsh */; };
 		FF936ACC26A703FD0027D7A2 /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF936AA826A703FC0027D7A2 /* AttractLogo.fsh */; };
 		FF936ACD26A703FD0027D7A2 /* AttractLogo.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FF936AA826A703FC0027D7A2 /* AttractLogo.fsh */; };
@@ -958,6 +960,7 @@
 				FF936B7726A7059F0027D7A2 /* Configuration.swift in Sources */,
 				FF936B4B26A7055A0027D7A2 /* SplashScene.swift in Sources */,
 				FF936B7126A7059F0027D7A2 /* Global.swift in Sources */,
+				FF88A56026C2BF5E0026EF62 /* Bullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +985,7 @@
 				FF936ADF26A703FD0027D7A2 /* StateComponent.swift in Sources */,
 				FF936AE526A703FD0027D7A2 /* PlayerControlComponent.swift in Sources */,
 				FF936AE826A703FD0027D7A2 /* RulesComponent.swift in Sources */,
+				FF88A56126C2BF5F0026EF62 /* Bullet.swift in Sources */,
 				FF9BC5E026A6F72800E3F570 /* AppDelegate.swift in Sources */,
 				FF936B6F26A7059F0027D7A2 /* Wave.swift in Sources */,
 				FF936B8126A7059F0027D7A2 /* Player.swift in Sources */,
