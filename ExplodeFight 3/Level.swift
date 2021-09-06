@@ -23,7 +23,7 @@ protocol Level {
     func setup(scene: GameScene)
     func update(deltaTime: TimeInterval, scene: GameScene)
     func postamble(scene: GameScene)
-    func teardown(scene: GameScene)
+    func teardown(scene: GameScene) -> Level?
 }
 
 // MARK: -
@@ -88,12 +88,14 @@ struct StateDrivenLevel: Level {
         scene.interstitial.countBonus()
     }
     
-    func teardown(scene: GameScene) {
+    func teardown(scene: GameScene) -> Level? {
         
         scene.interstitial.hideNodes(names: ["GetReady", "GameOver", "Bonus"])
         
         mobSpawner.kill()
         pickupSpawner.kill()
+        
+        return nil
     }
 }
 
@@ -101,34 +103,29 @@ struct StateDrivenLevel: Level {
 
 extension StateDrivenLevel {
     
-    class PlayState: GKState {
+    class LevelState: GKState {
         
         let scene: GameScene
         
         init(scene: GameScene) { self.scene = scene }
+    }
+    
+    class PlayState: LevelState {
         
-        override func didEnter(from previousState: GKState?) { scene.level?.teardown(scene: scene) }
+        override func didEnter(from previousState: GKState?) { let _ = scene.level?.teardown(scene: scene) }
         
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is EndedState.Type || stateClass is BonusState.Type }
     }
     
-    class BonusState: GKState {
+    class BonusState: LevelState {
         
-        let scene: GameScene
-        
-        init(scene: GameScene) { self.scene = scene }
-
         override func didEnter(from previousState: GKState?) { scene.level?.postamble(scene: scene) }
         
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { stateClass is EndedState.Type }
     }
     
-    class EndedState: GKState {
+    class EndedState: LevelState {
         
-        let scene: GameScene
-        
-        init(scene: GameScene) { self.scene = scene }
-
         override func didEnter(from previousState: GKState?) { if scene.level != nil { scene.loadNextLevel() }}
 
         override func isValidNextState(_ stateClass: AnyClass) -> Bool { false }

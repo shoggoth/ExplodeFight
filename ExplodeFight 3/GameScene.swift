@@ -95,8 +95,7 @@ class GameScene: BaseSKScene {
     private func gameOver() {
         
         // Level nullify
-        level?.teardown(scene: self)
-        level = nil
+        level = level?.teardown(scene: self)
 
         // Fade all mobs
         mobRootNode.run(.fadeOut(withDuration: 1))
