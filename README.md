@@ -2,6 +2,8 @@
 master
 
 ## Current Tasks
+- Review the code base as it's been a really long time since I looke at it. Don't give up and start all over again or you'll never get anything out the door.
+- See what the problem is with the source control branch naming for the multiple branches and if there is a way round the weirdness.
 - Twin stick abstraction with controller priority and touch fallback.
 - Try different scenes for the different platforms rather than the runtime check we have at the moment. Also remove the pause button on all but iOS devices.
 - Game controller support for macOS and tvOS (required for MacOS).
@@ -10,6 +12,7 @@ master
 - Add mob info protocol for use with spawning. Make an enum as well with the predefined types of mob already part populated.
 - Make rules configurable per-level.
 - Player warp-in state.
+- Update the mob branch base to suit the new development environment and then…
 - Start adding mob experiments on the mob/ branches.
 
 ## Bugs
@@ -99,6 +102,7 @@ master
 ### Resources
 https://code.bitbebop.com/spritekit-game-aspect-ratio-resolution/ - Device screen size independance example.
 https://kenney.nl - Free game assets.
+https://kenney.itch.io/ship-mixer - Online spaceship creator.
 https://developer.apple.com/library/archive/documentation/General/Conceptual/GameplayKit_Guide/StateMachine.html - State machine info.  
 
 ### Story
