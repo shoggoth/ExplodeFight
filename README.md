@@ -2,7 +2,7 @@
 master
 
 ## Current Tasks
-- Review the code base as it's been a really long time since I looke at it. Don't give up and start all over again or you'll never get anything out the door.
+- Review the code base as it's been a really long time since I looked at it. Don't give up and start all over again or you'll never get anything out the door.
 - See what the problem is with the source control branch naming for the multiple branches and if there is a way round the weirdness.
 - Twin stick abstraction with controller priority and touch fallback.
 - Try different scenes for the different platforms rather than the runtime check we have at the moment. Also remove the pause button on all but iOS devices.
@@ -112,6 +112,7 @@ Robotron & crystal quest crossover with retro influences and references to some 
 - Stay awhile... stay forever.
 - Weirding module.
 - Do-gooder project.
+- Struggle session #237
 - Friendship ended with Mudasir.
 - Discordian recipe items.
 - An open letter to Jochen Mass.
