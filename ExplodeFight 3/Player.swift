@@ -31,7 +31,7 @@ struct Player {
                 })
                 entity.addComponent({
                     let fc = FireComponent()
-                    fc.weaponType = Int.random(in: 1...4)
+                    fc.weaponType = 5
                     fc.fireRate = 0.25
                     return fc
                 }())

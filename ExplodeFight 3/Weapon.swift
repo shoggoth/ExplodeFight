@@ -11,6 +11,7 @@ import SpriteKitAddons
 
 protocol Weapon {
     
+    var emitNode: SKNode? { get set }
     func fire(direction: CGVector)
 }
 
@@ -39,5 +40,16 @@ class NodeCannon: Weapon {
         scene.addChild(bullet)
 
         bullet.fire(vector: fireVel) { b in b.reset { _ in self.magazine?.insert(b, at: 0) }}
+    }
+}
+
+// MARK: -
+
+class LaserCannon: Weapon {
+    
+    var emitNode: SKNode?
+
+    func fire(direction: CGVector) {
+        print("Firing ma laser")
     }
 }
