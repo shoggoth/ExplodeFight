@@ -90,6 +90,7 @@ class AttractScene: BaseSKScene {
                 let spiels = [
                     ["this is going to be a twin stick shooter for the ios",
                      "inspired by robotron 2084 and crystal quest",
+                     "",
                      "created by rich henry at dogstar industries ltd.",
                      "thank you everyone for your valuable feedback."],
                     
@@ -110,16 +111,16 @@ class AttractScene: BaseSKScene {
                     "👍🏻 two thumbs fresh 👍🏻"]
                 ]
                 
-                let textStrings = spiels[spielIndex % spiels.count]
+                let revealText = spiels[spielIndex % spiels.count].enumerated().filter { !$1.isEmpty }
                 let revealTime = 2.3
-                let fadeTime = 0.23
+                let fadeTime = 0.7
                 
-                sourceNode.addChild(makeRevealer(text: textStrings, rt: revealTime, ft: fadeTime))
+                sourceNode.addChild(makeRevealer(text: revealText, rt: revealTime, ft: fadeTime))
                 sourceNode.isPaused = false
                 
                 spielIndex += 1
                 
-                return CountdownTimer(countDownTime: revealTime * Double(textStrings.count) + fadeTime)
+                return CountdownTimer(countDownTime: revealTime * Double(revealText.count) + fadeTime)
             },
             
             expire: { stateMachine in

@@ -8,14 +8,15 @@
 
 import SpriteKit
 
-func makeRevealer(text: [String], rt: Double, ft: Double) -> SKNode {
+func makeRevealer(text: [(Int, String)], rt: Double, ft: Double) -> SKNode {
 
     let size = CGFloat(24)
     
     let rootNode = SKNode()
+    var timeBase = 0.0
     rootNode.run(.sequence([.wait(forDuration: rt * Double(text.count)), .fadeOut(withDuration: ft)]))
     
-    text.enumerated().forEach { i, s in
+    text.forEach { i, s in
         
         let label = SKLabelNode(text: s)
         label.alpha = 1.0
@@ -28,10 +29,12 @@ func makeRevealer(text: [String], rt: Double, ft: Double) -> SKNode {
         let revealer = SKSpriteNode(color: .black, size: CGSize(width: 1024, height: size))
         revealer.zPosition = 1
         revealer.position = CGPoint(x: 0, y: 0.4 * size)
-        revealer.run(.sequence([.wait(forDuration: Double(i) * rt), .move(by: CGVector(dx: 1024, dy: 0), duration: rt)]))
+        revealer.run(.sequence([.wait(forDuration: timeBase * rt), .move(by: CGVector(dx: 1024, dy: 0), duration: rt)]))
         
         label.addChild(revealer)
         rootNode.addChild(label)
+        
+        timeBase += 1.0
     }
     
     return rootNode
