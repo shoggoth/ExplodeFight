@@ -50,6 +50,14 @@ class LaserCannon: Weapon {
     var emitNode: SKNode?
 
     func fire(direction: CGVector) {
-        print("Firing ma laser")
+        
+        guard let emitNode = self.emitNode,
+              let scene = emitNode.scene else { return }
+
+        let pos = scene.convert(CGPoint.zero, from: emitNode)
+
+        let beam = SKShapeNode(rect: CGRect(x: pos.x, y: pos.y, width: 10, height: 100))
+        
+        emitNode.scene?.addChild(beam)
     }
 }
